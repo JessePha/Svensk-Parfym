@@ -3,7 +3,7 @@ import classes from "../CheckoutButton/CheckoutButton.module.css";
 let CheckoutButton = () => {
   return (
     <div>
-        <button className={classes.CheckoutButton}>CheckoutButton</button>
+      <button className={classes.CheckoutButton}>CheckoutButton</button>
     </div>
   );
 };

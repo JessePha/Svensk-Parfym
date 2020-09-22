@@ -1,11 +1,10 @@
-import React from 'react';
-import './App.css';
-import HomeView from "./view/HomeView/HomeView"
+import React from "react";
+import HomeView from "./view/HomeView/HomeView";
 
 function App() {
   return (
-    <div className="App">
-    <HomeView/>
+    <div>
+      <HomeView />
     </div>
   );
 }
