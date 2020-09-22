@@ -6,10 +6,13 @@
     flex-flow: column;
     align-items: center;
     height: 100%;
+    color: rgb(220,181,72);
+    
 }
 
 @media (min-width: 500px) {
     .NavigationItems {
         flex-flow: row;
+        
     }
 }

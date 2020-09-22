@@ -1,10 +1,10 @@
 import React from "react";
 
-let HomeView = () => {
+let AboutUs = () => {
   return (
     <div>
     </div>
   );
 };
 
-export default HomeView;
+export default AboutUs;
