@@ -8,7 +8,7 @@ const Perfume = ({ img, name, description, price, addToCart }) => {
       <h3>{name}</h3>
       <p>{description}</p>
       <p>{price} Kr</p>
-      <button onClick={addToCart}>Add to card</button>
+      <button className="toCartButton" onClick={addToCart}>Add to card</button>
     </div>
   );
 };

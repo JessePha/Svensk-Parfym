@@ -11,7 +11,7 @@ const App = () => {
   return (
     <div>
       <View>
-        <Route path="/shopview" component={ShopView} />
+      <ShopView/>
         <Route path="/homeview" component={HomeView} />
         <Route path="/aboutusview" component={AboutUs} />
       </View>
