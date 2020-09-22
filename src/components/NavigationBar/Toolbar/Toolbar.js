@@ -16,7 +16,11 @@ const toolbar = (props) => (
     </nav>
     <div className="TCart-div">
       <p>{props.amountInCart}</p>
-      <FontAwesomeIcon icon={faShoppingBag} className = "TCart" onClick = {props.cartToggle} />
+      <FontAwesomeIcon
+        icon={faShoppingBag}
+        className="TCart"
+        onClick={props.cartToggle}
+      />
     </div>
     <Burger clicked={props.drawerToggleClicked} />
   </header>

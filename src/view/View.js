@@ -11,7 +11,7 @@ import skymning from "../shared/Images/skymning.png";
 import stilla from "../shared/Images/stilla.png";
 import virke from "../shared/Images/virke.png";
 import "./View.css";
-import Cart from '../components/NavigationBar/Cart/Cart'
+import Cart from "../components/NavigationBar/Cart/Cart";
 
 const View = (props) => {
   const [data] = useState([
@@ -19,55 +19,55 @@ const View = (props) => {
       img: en,
       name: "En",
       description: "Test data for perfume.",
-      price: 175
+      price: 175,
     },
     {
       img: fröjd,
       name: "Fröjd",
       description: "Test data for perfume.",
-      price: 175
+      price: 175,
     },
     {
       img: idyll,
       name: "Idyll",
       description: "Test data for perfume.",
-      price: 175
+      price: 175,
     },
     {
       img: ljus,
       name: "Ljus",
       description: "Test data for perfume.",
-      price: 175
+      price: 175,
     },
     {
       img: prakt,
       name: "Prakt",
       description: "Test data for perfume.",
-      price: 175
+      price: 175,
     },
     {
       img: sadel,
       name: "Sadel",
       description: "Test data for perfume.",
-      price: 175
+      price: 175,
     },
     {
       img: skymning,
       name: "Shymning",
       description: "Test data for perfume.",
-      price: 175
+      price: 175,
     },
     {
       img: stilla,
       name: "Stilla",
       description: "Test data for perfume.",
-      price: 175
+      price: 175,
     },
     {
       img: virke,
       name: "Virke",
       description: "Test data for perfume.",
-      price: 175
+      price: 175,
     },
   ]);
   const [cart, setCart] = useState([]);
@@ -108,26 +108,30 @@ const View = (props) => {
     setShowOrderInfo({ showOrderInfo: !showOrderInfo });
   };
 
-  const cloneChildren =  () => {
-    const childrenWithProps = React.Children.map(props.children, child => {
+  const cloneChildren = () => {
+    const childrenWithProps = React.Children.map(props.children, (child) => {
       // checking isValidElement is the safe way and avoids a typescript error too
-      const props = {data:[...data], addToCartHandler};
+      const props = { data: [...data], addToCartHandler };
       if (React.isValidElement(child)) {
-          return React.cloneElement(child, props);
+        return React.cloneElement(child, props);
       }
       return child;
-  });
-  return <main>{childrenWithProps}</main>;
-}
+    });
+    return <main>{childrenWithProps}</main>;
+  };
 
   return (
     <div className="Content">
-      <Toolbar amountInCart = {cart.length} drawerToggleClicked={sidebarToggleHandler} cartToggle = {cartSideBarHandler} />
+      <Toolbar
+        amountInCart={cart.length}
+        drawerToggleClicked={sidebarToggleHandler}
+        cartToggle={cartSideBarHandler}
+      />
       <Sidebar open={sidebar} closed={sidebarClosedHandler} />
-      <Cart open = {showOrderInfo} closed = {cartSideBarClose}/>
+      <Cart open={showOrderInfo} closed={cartSideBarClose} />
       {cloneChildren()}
     </div>
-  )
+  );
 };
 
 export default View;

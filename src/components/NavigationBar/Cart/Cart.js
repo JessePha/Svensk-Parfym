@@ -2,6 +2,7 @@ import React from "react";
 import NavigationItems from "../NavigationItems/NavigationItems";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import "./Cart.css";
+import CheckoutButton from "../../CheckoutButton/CheckoutButton";
 
 const Cart = (props) => {
   let attachedClasses = ["Cart", "CloseCart"];
@@ -15,6 +16,7 @@ const Cart = (props) => {
         Cart Information
         <div className="Cart-Info"></div>
       </div>
+      <CheckoutButton/>
     </div>
   );
 };
