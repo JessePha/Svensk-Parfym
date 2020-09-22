@@ -9,6 +9,7 @@ const Perfumes = (props) => {
       img={perfume.img}
       name={perfume.name}
       description={perfume.description}
+      price = {perfume.price}
       addToCart = {() => props.addToCart(perfume)}
     />
   ));

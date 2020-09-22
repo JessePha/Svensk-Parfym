@@ -19,46 +19,55 @@ const View = (props) => {
       img: en,
       name: "En",
       description: "Test data for perfume.",
+      price: 175
     },
     {
       img: fröjd,
       name: "Fröjd",
       description: "Test data for perfume.",
+      price: 175
     },
     {
       img: idyll,
       name: "Idyll",
       description: "Test data for perfume.",
+      price: 175
     },
     {
       img: ljus,
       name: "Ljus",
       description: "Test data for perfume.",
+      price: 175
     },
     {
       img: prakt,
       name: "Prakt",
       description: "Test data for perfume.",
+      price: 175
     },
     {
       img: sadel,
       name: "Sadel",
       description: "Test data for perfume.",
+      price: 175
     },
     {
       img: skymning,
       name: "Shymning",
       description: "Test data for perfume.",
+      price: 175
     },
     {
       img: stilla,
       name: "Stilla",
       description: "Test data for perfume.",
+      price: 175
     },
     {
       img: virke,
       name: "Virke",
       description: "Test data for perfume.",
+      price: 175
     },
   ]);
   const [cart, setCart] = useState([]);
