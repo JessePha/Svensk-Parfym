@@ -20,18 +20,19 @@
 .TLogo {
   height: 80%;
 }
-.Cart-div {
+.TCart-div {
     position: relative;
     width: 19px;
 }
-.Cart-div p{
+.TCart-div p{
     font-size: 7px;
     top: 0;
     right: 0;
     position: absolute;
     color: white;
 }
-.Cart {
+.TCart {
+  cursor: pointer;
   color: white;
   z-index: 1;
 }
