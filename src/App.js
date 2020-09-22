@@ -1,13 +1,16 @@
 import React from "react";
-import { Route } from "react-router-dom";
-import HomeView from "./view/HomeView/HomeView";
-import {Router} from "react-router-dom"
-function App() {
+import {Route, Switch} from 'react-router-dom';
+import "./App.css";
+import ShopView from "./view/ShopView/ShopView";
+import View from "./view/View";
+const App = () => {
   return (
     <div>
-    <Route path="/" exact component={HomeView}/>
+      <View>
+          <ShopView />
+      </View>
     </div>
   );
-}
+};
 
 export default App;
