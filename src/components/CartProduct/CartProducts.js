@@ -1,9 +1,8 @@
 import React from "react";
 
-import Render from "../AddSubRemoveItems/AddSubRemoveItemRender/AddSubRemoveItemRender";
+import Render from "./CartProductRender/CartProductRender";
 
 const AddSubRemoveItems = (props) => {
-
   return (
     <div>
       {props.products.map((product, index) => (

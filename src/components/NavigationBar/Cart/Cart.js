@@ -2,7 +2,7 @@ import React from "react";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import "./Cart.css";
 import CheckoutButton from "../../CheckoutButton/CheckoutButton";
-import AddSubRemoveItems from "../../AddSubRemoveItems/AddSubRemoveItems";
+import AddSubRemoveItems from "../../CartProduct/CartProducts";
 
 const Cart = (props) => {
   let attachedClasses = ["Cart", "CloseCart"];

@@ -51,8 +51,11 @@
   .DesktopOnly {
     display: none;
   }
-  .TSearchIcon {
+  .TSearchBar {
     position: absolute;
-    right: 20%;
+    right: 15%;
+  }
+  .Input {
+    width: 140px;
   }
 }

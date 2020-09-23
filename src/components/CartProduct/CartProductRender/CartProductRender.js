@@ -1,6 +1,6 @@
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import classes from "./AddSubRemoveRender.module.css";
+import classes from "./CartProductRender.module.css";
 import React, { useState } from "react";
 
 let AddRemoveItem = (props) => {
@@ -23,6 +23,7 @@ let AddRemoveItem = (props) => {
     <div>
    
       <p>{currentAmount}</p>
+      <img className={classes.productImage} src={props.products[props.index].img} alt="product"/>
       <button onClick={addFromItem} className={classes.AddSubRemoveButtons}>
       <FontAwesomeIcon icon={faPlus} />
     </button>

@@ -10,8 +10,7 @@ const Toolbar = (props) => {
   let searchBar = null;
 
   if(props.searchBar === true) {
-    console.log(props.searchBar)
-    searchBar = <input></input>
+    searchBar = <input className="Input"></input>
   }
   return (
     <header className="TToolbar">
