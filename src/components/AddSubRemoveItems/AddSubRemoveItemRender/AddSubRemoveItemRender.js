@@ -14,9 +14,9 @@ let AddRemoveItem = (props) => {
       setCurrentAmount(currentAmount - 1);
     }
   };
-  let removeItem = (productIndex) => {
+  let removeItem = () => {
     const products = props.products;
-    const filter = products.filter((product, index) => index !== productIndex);
+    const filter = products.filter((product, index) => index !== props.index);
     props.setProducts(filter);
   };
   return (
