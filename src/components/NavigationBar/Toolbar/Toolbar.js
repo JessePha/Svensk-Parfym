@@ -21,6 +21,7 @@ const toolbar = (props) => (
         icon={faShoppingBag}
         className="TCart"
         onClick={props.cartToggle}
+        amount={props.amountInCart}
       />
     </div>
   </header>

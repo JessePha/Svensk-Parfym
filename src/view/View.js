@@ -128,7 +128,12 @@ const View = (props) => {
         cartToggle={cartSideBarHandler}
       />
       <Sidebar open={sidebar} closed={sidebarClosedHandler} />
-      <Cart open={showOrderInfo} closed={cartSideBarClose} />
+      <Cart
+        open={showOrderInfo}
+        closed={cartSideBarClose}
+        products={cart}
+        setProducts={setCart}
+      />
       {cloneChildren()}
     </div>
   );
