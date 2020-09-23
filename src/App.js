@@ -12,8 +12,8 @@ const App = () => {
     <div>
       <View>
       <ShopView/>
-        <Route path="/homeview" component={HomeView} />
-        <Route path="/aboutusview" component={AboutUs} />
+        <Route path="/home" component={HomeView} />
+        <Route path="/aboutus" component={AboutUs} />
       </View>
     </div>
   );

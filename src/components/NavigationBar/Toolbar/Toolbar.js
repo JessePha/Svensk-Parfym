@@ -8,6 +8,7 @@ import Logo from "../Logo/Logo";
 
 const toolbar = (props) => (
   <header className="TToolbar">
+    <Burger clicked={props.drawerToggleClicked} />
     <div className="TLogo">
       <Logo />
     </div>
@@ -22,7 +23,6 @@ const toolbar = (props) => (
         onClick={props.cartToggle}
       />
     </div>
-    <Burger clicked={props.drawerToggleClicked} />
   </header>
 );
 
