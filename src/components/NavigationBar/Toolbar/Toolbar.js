@@ -1,6 +1,6 @@
 import React from "react";
 import "./Toolbar.css";
-import Burger from "../NavigationItems/Sidebar/Burger/Burger";
+import Burger from "../NavigationItems/Sidebar/DropDownButton/DropDownButton";
 import NavigationItems from "../NavigationItems/NavigationItems";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";

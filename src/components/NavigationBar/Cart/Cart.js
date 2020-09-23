@@ -2,6 +2,7 @@ import React from "react";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import "./Cart.css";
 import CheckoutButton from "../../CheckoutButton/CheckoutButton";
+import AddRemoveItem from "../../AddRemoveItem/AddSubRemoveItem";
 
 const Cart = (props) => {
   let attachedClasses = ["Cart", "CloseCart"];
@@ -14,6 +15,7 @@ const Cart = (props) => {
       <div className={attachedClasses.join(" ")}>
         Cart Information
         <div className="Cart-Info"></div>
+        <AddRemoveItem/>
         <CheckoutButton/>
       </div>
     </div>
