@@ -71,6 +71,7 @@ const View = (props) => {
     },
   ]);
   const [cart, setCart] = useState([]);
+  let [totalPrice, setTotalPrice] = useState(null);
 
   const addToCartHandler = (product) => {
     console.log(product);
@@ -80,9 +81,11 @@ const View = (props) => {
       if (item.name === product.name) {
         item.count++;
         alreadyInCart = true;
+        setTotalPrice((totalPrice += product.price));
       }
     });
     if (!alreadyInCart) {
+      setTotalPrice((totalPrice += product.price));
       cartItems.push({ ...product, count: 1 });
     }
     setCart(cartItems);
@@ -142,6 +145,8 @@ const View = (props) => {
         closed={cartSideBarClose}
         products={cart}
         setProducts={setCart}
+        totalPrice={totalPrice}
+        setTotalPrice={setTotalPrice}
       />
       {cloneChildren()}
     </div>

@@ -11,6 +11,8 @@ const AddSubRemoveItems = (props) => {
           products={props.products}
           index={index}
           setProducts={props.setProducts}
+          totalPrice={props.totalPrice}
+          setTotalPrice={props.setTotalPrice}
         />
       ))}
     </div>
