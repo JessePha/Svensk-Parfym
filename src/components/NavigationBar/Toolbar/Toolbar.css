@@ -21,24 +21,38 @@
   height: 80%;
 }
 .TCart-div {
-    position: relative;
-    width: 19px;
+  width: 20px;
+  position: absolute;
+  left: 90%;
+  bottom: 30%;
 }
-.TCart-div p{
-    font-size: 7px;
-    top: 0;
-    right: 0;
-    position: absolute;
-    color: white;
+.TCart-div p {
+  font-size: 8px;
+  color: white;
 }
 .TCart {
   cursor: pointer;
   color: white;
   z-index: 1;
 }
-
-@media (max-width: 499px) {
+.TCart:hover {
+  color: rgb(220, 181, 72);
+}
+.TSearchBar {
+  margin: 2px 2px 2px 2px;
+}
+.TSearchIcon {
+  color: white;
+}
+.TSearchIcon:hover {
+  color: rgb(220, 181, 72);
+}
+@media (max-width: 500px) {
   .DesktopOnly {
     display: none;
+  }
+  .TSearchIcon {
+    position: absolute;
+    right: 20%;
   }
 }

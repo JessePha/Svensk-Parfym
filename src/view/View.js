@@ -92,6 +92,8 @@ const View = (props) => {
 
   const [showOrderInfo, setShowOrderInfo] = useState(false);
 
+  const [searchBar, setSearchBar] = useState(false);
+
   const sidebarClosedHandler = () => {
     setSidebar(false);
   };
@@ -105,7 +107,12 @@ const View = (props) => {
   };
 
   const cartSideBarHandler = () => {
+    console.log(showOrderInfo);
     setShowOrderInfo({ showOrderInfo: !showOrderInfo });
+  };
+  const searchBarToggle = () => {
+    console.log(searchBar);
+    setSearchBar(!searchBar);
   };
 
   const cloneChildren = () => {
@@ -126,6 +133,8 @@ const View = (props) => {
         amountInCart={cart.length}
         drawerToggleClicked={sidebarToggleHandler}
         cartToggle={cartSideBarHandler}
+        searchToggle={searchBarToggle}
+        searchBar={searchBar}
       />
       <Sidebar open={sidebar} closed={sidebarClosedHandler} />
       <Cart
