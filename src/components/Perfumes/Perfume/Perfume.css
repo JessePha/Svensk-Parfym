@@ -1,7 +1,7 @@
 .perfume{
     color: white;
     text-align: center;
-    background-color: rgb(59, 34, 10);
+    background-color: rgba(70, 44, 24, 0.699);
     transition-property: border;
     transition-timing-function: ease-in;
     transition-duration: 0.3s;

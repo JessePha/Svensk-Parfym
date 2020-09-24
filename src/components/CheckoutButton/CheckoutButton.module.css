@@ -9,4 +9,6 @@
   cursor: pointer; 
   margin-top: 4px;
   margin-left: 2px;
+  width: 200px;
+  height: 40px;
 }

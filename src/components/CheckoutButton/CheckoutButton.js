@@ -5,7 +5,7 @@ let CheckoutButton = () => {
   return (
     <div>
       <Link to={"/checkout"}>
-        <button className={classes.CheckoutButton}>CheckoutButton</button>
+        <button className={classes.CheckoutButton}>Checkout</button>
       </Link>
     </div>
   );

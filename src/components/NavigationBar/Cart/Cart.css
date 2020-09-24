@@ -26,3 +26,8 @@
 .CloseCart {
     transform: translateX(100%);
 }
+
+.result {
+    position: fixed;
+    bottom: 0;
+}

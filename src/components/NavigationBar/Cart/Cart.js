@@ -23,8 +23,10 @@ const Cart = (props) => {
           totalPrice={props.totalPrice}
           setTotalPrice={props.setTotalPrice}
         />
-        <CheckoutButton />
+        <div className={"result"}>
         <TotalPrice products={props.products} totalPrice={props.totalPrice} />
+        <CheckoutButton />
+        </div>
       </div>
     </div>
   );
