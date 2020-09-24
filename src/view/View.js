@@ -11,6 +11,7 @@ import skymning from "../shared/Images/skymning.png";
 import stilla from "../shared/Images/stilla.png";
 import virke from "../shared/Images/virke.png";
 import "./View.css";
+import Cart from '../components/NavigationBar/Cart/Cart'
 
 const View = (props) => {
   const [data] = useState([
@@ -80,12 +81,22 @@ const View = (props) => {
 
   const [sidebar, setSidebar] = useState(false);
 
+  const [showOrderInfo, setShowOrderInfo] = useState(false);
+
   const sidebarClosedHandler = () => {
     setSidebar(false);
   };
 
   const sidebarToggleHandler = () => {
     setSidebar({ sidebar: !sidebar });
+  };
+
+  const cartSideBarClose = () => {
+    setShowOrderInfo(false);
+  };
+
+  const cartSideBarHandler = () => {
+    setShowOrderInfo({ showOrderInfo: !showOrderInfo });
   };
 
   const cloneChildren =  () => {
@@ -102,8 +113,9 @@ const View = (props) => {
 
   return (
     <div className="Content">
-      <Toolbar amountInCart = {cart.length} drawerToggleClicked={sidebarToggleHandler} />
+      <Toolbar amountInCart = {cart.length} drawerToggleClicked={sidebarToggleHandler} cartToggle = {cartSideBarHandler} />
       <Sidebar open={sidebar} closed={sidebarClosedHandler} />
+      <Cart open = {showOrderInfo} closed = {cartSideBarClose}/>
       {cloneChildren()}
     </div>
   )

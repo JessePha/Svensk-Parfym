@@ -7,7 +7,6 @@ import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../Logo/Logo";
 
 const toolbar = (props) => (
-  
   <header className="TToolbar">
     <div className="TLogo">
       <Logo />
@@ -15,9 +14,9 @@ const toolbar = (props) => (
     <nav className="DesktopOnly">
       <NavigationItems />
     </nav>
-    <div className="Cart-div">
-<p>{props.amountInCart}</p>
-      <FontAwesomeIcon icon={faShoppingBag} className="Cart" />
+    <div className="TCart-div">
+      <p>{props.amountInCart}</p>
+      <FontAwesomeIcon icon={faShoppingBag} className = "TCart" onClick = {props.cartToggle} />
     </div>
     <Burger clicked={props.drawerToggleClicked} />
   </header>
