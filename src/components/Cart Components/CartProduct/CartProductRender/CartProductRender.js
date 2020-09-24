@@ -5,6 +5,7 @@ import React, { useState } from "react";
 
 let AddRemoveItem = (props) => {
   let [currentAmount, setCurrentAmount] = useState(1);
+  console.log(currentAmount)
   console.log(props.totalPrice);
 
   let addFromItem = () => {
@@ -22,12 +23,17 @@ let AddRemoveItem = (props) => {
 
   let removeItem = () => {
     const products = props.products;
+    console.log(props.index);
     const filter = products.filter((product, index) => index !== props.index);
     props.setTotalPrice(
       props.totalPrice - currentAmount * props.products[props.index].price
     );
+    console.log(filter)
     props.setProducts(filter);
+    //TODO FixBug    
+    setCurrentAmount(currentAmount - (currentAmount - 1))
   };
+
   return (
     <div>
       <div className={classes.infoDiv}>

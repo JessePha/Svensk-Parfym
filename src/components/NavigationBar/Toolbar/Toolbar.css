@@ -23,7 +23,6 @@
 .TCart-div {
   width: 20px;
   position: absolute;
-  left: 90%;
   bottom: 30%;
 }
 .TCart-div p {
@@ -55,7 +54,26 @@
     position: absolute;
     right: 15%;
   }
-  .Input {
+  .TSearchBar input {
     width: 140px;
+  }
+  .TCart-div {
+    position: absolute;
+    left: 90%;
+  }
+}
+@media (min-width: 500px) {
+  .TSearchBar {
+    position: absolute;
+    left: 90%;
+  }
+  .TCart-div {
+    position: absolute;
+    left: 95%;
+  }
+  .TSearchBar input {
+    position: absolute;
+    right: 120%;
+    top: 10%;
   }
 }
