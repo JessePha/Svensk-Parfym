@@ -70,6 +70,7 @@ const View = (props) => {
       price: 175,
     },
   ]);
+
   const [cart, setCart] = useState([]);
   let [totalPrice, setTotalPrice] = useState(null);
 

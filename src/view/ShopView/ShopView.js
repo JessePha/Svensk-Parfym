@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ShowView.css";
 import Perfumes from "../../components/Perfumes/Perfumes";
 
 const ShopView = (props) => {
+  
   return (
     <div className="ShowView">
       <Perfumes perfumes={props.data} addToCart={props.addToCartHandler} />
