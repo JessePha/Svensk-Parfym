@@ -1,11 +1,11 @@
 import React from "react";
-import "./ShowView.css";
+import "./ShopView.css";
 import Perfumes from "../../components/Perfumes/Perfumes";
 
 const ShopView = (props) => {
   
   return (
-    <div className="ShowView">
+    <div className="ShopView">
       <Perfumes perfumes={props.data} addToCart={props.addToCartHandler} />
     </div>
   );

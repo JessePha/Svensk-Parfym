@@ -1,9 +1,9 @@
 import React from "react";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import "./Cart.css";
-import CheckoutButton from "../../CheckoutButton/CheckoutButton";
-import CartProducts from "../../CartProduct/CartProducts";
-import TotalPrice from "../../TotalPrice/TotalPrice";
+import CheckoutButton from "../../Cart Components/CheckoutButton/CheckoutButton";
+import CartProducts from "../../Cart Components/CartProduct/CartProducts";
+import TotalPrice from "../../Cart Components/TotalPrice/TotalPrice";
 
 const Cart = (props) => {
   let attachedClasses = ["Cart", "CloseCart"];
