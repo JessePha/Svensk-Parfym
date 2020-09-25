@@ -25,13 +25,13 @@ let AddRemoveItem = (props) => {
     const products = props.products;
     console.log(props.index);
     const filter = products.filter((product, index) => index !== props.index);
+    console.log(filter)
     props.setTotalPrice(
       props.totalPrice - currentAmount * props.products[props.index].price
     );
     console.log(filter)
     props.setProducts(filter);
-    //TODO FixBug    
-    setCurrentAmount(currentAmount - (currentAmount - 1))
+    //TODO Fix bug
   };
 
   return (
