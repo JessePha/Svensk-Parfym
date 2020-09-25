@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Toolbar from "../components/NavigationBar/Toolbar/Toolbar";
 import Sidebar from "../components/NavigationBar/NavigationItems/Sidebar/Sidebar";
 import en from "../shared/Images/en.png";
@@ -14,65 +14,73 @@ import "./View.css";
 import Cart from "../components/NavigationBar/Cart/Cart";
 
 const View = (props) => {
-  const [data] = useState([
-    {
-      img: en,
-      name: "En",
-      description: "Test data for perfume.",
-      price: 175,
-    },
-    {
-      img: fröjd,
-      name: "Fröjd",
-      description: "Test data for perfume.",
-      price: 175,
-    },
-    {
-      img: idyll,
-      name: "Idyll",
-      description: "Test data for perfume.",
-      price: 175,
-    },
-    {
-      img: ljus,
-      name: "Ljus",
-      description: "Test data for perfume.",
-      price: 175,
-    },
-    {
-      img: prakt,
-      name: "Prakt",
-      description: "Test data for perfume.",
-      price: 175,
-    },
-    {
-      img: sadel,
-      name: "Sadel",
-      description: "Test data for perfume.",
-      price: 175,
-    },
-    {
-      img: skymning,
-      name: "Shymning",
-      description: "Test data for perfume.",
-      price: 175,
-    },
-    {
-      img: stilla,
-      name: "Stilla",
-      description: "Test data for perfume.",
-      price: 175,
-    },
-    {
-      img: virke,
-      name: "Virke",
-      description: "Test data for perfume.",
-      price: 175,
-    },
-  ]);
+  const [data, setData] = useState({
+    items: [
+      {
+        img: en,
+        name: "En",
+        description: "Test data for perfume.",
+        price: 175,
+      },
+      {
+        img: fröjd,
+        name: "Fröjd",
+        description: "Test data for perfume.",
+        price: 175,
+      },
+      {
+        img: idyll,
+        name: "Idyll",
+        description: "Test data for perfume.",
+        price: 175,
+      },
+      {
+        img: ljus,
+        name: "Ljus",
+        description: "Test data for perfume.",
+        price: 175,
+      },
+      {
+        img: prakt,
+        name: "Prakt",
+        description: "Test data for perfume.",
+        price: 175,
+      },
+      {
+        img: sadel,
+        name: "Sadel",
+        description: "Test data for perfume.",
+        price: 175,
+      },
+      {
+        img: skymning,
+        name: "Shymning",
+        description: "Test data for perfume.",
+        price: 175,
+      },
+      {
+        img: stilla,
+        name: "Stilla",
+        description: "Test data for perfume.",
+        price: 175,
+      },
+      {
+        img: virke,
+        name: "Virke",
+        description: "Test data for perfume.",
+        price: 175,
+      },
+    ],
+    totalPrice: 0,
+    totalAmount: 0,
+  });
 
   const [cart, setCart] = useState([]);
-  let [totalPrice, setTotalPrice] = useState(null);
+
+  useEffect(() => {
+    let updataCart = [...cart];
+    addAmount(updataCart);
+  }, [, cart]);
 
   const addToCartHandler = (product) => {
     console.log(product);
@@ -82,14 +90,30 @@ const View = (props) => {
       if (item.name === product.name) {
         item.count++;
         alreadyInCart = true;
-        setTotalPrice((totalPrice += product.price));
       }
     });
     if (!alreadyInCart) {
-      setTotalPrice((totalPrice += product.price));
       cartItems.push({ ...product, count: 1 });
     }
     setCart(cartItems);
+    addAmount(cartItems);
+  };
+
+  const addAmount = (itemInCart) => {
+    const tempItem = { ...itemInCart };
+    const tempData = { ...data.items };
+    let amount = Object.values(tempItem)
+      .map((item) => item.count)
+      .reduce((num, sum) => {
+        return num + sum;
+      }, 0);
+    let price = Object.values(tempItem)
+      .map((item) => item.price)
+      .reduce((num, sum) => {
+        return num + sum;
+      }, 0);
+
+    setData({ items: tempData, totalAmount: amount, totalPrice: price });
   };
 
   const [sidebar, setSidebar] = useState(false);
@@ -111,18 +135,15 @@ const View = (props) => {
   };
 
   const cartSideBarHandler = () => {
-    console.log(showOrderInfo);
     setShowOrderInfo({ showOrderInfo: !showOrderInfo });
   };
   const searchBarToggle = () => {
-    console.log(searchBar);
     setSearchBar(!searchBar);
   };
 
   const cloneChildren = () => {
     const childrenWithProps = React.Children.map(props.children, (child) => {
-      // checking isValidElement is the safe way and avoids a typescript error too
-      const props = { data: [...data], addToCartHandler };
+      const props = { data: { ...data }, addToCartHandler };
       if (React.isValidElement(child)) {
         return React.cloneElement(child, props);
       }
@@ -146,8 +167,8 @@ const View = (props) => {
         closed={cartSideBarClose}
         products={cart}
         setProducts={setCart}
-        totalPrice={totalPrice}
-        setTotalPrice={setTotalPrice}
+        totalPrice={data.totalPrice}
+        totalAmount={data.totalAmount}
       />
       {cloneChildren()}
     </div>

@@ -10,7 +10,6 @@ const Cart = (props) => {
   if (props.open) {
     attachedClasses = ["Cart", "OpenCart"];
   }
-  console.log(props.totalPrice);
   return (
     <div className={attachedClasses}>
       <Backdrop show={props.open} clicked={props.closed} />
