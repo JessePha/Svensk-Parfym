@@ -1,13 +1,13 @@
 .perfume{
     color: white;
     text-align: center;
-    background-color: rgba(70, 44, 24, 0.699);
+    background-color: rgba(94, 93, 93, 0.699);
     transition-property: border;
     transition-timing-function: ease-in;
-    transition-duration: 0.3s;
+    transition-duration: 0.5s;
 }
 .perfume:hover{
-    border: solid 8px rgb(129, 83, 29);
+    border: solid 6px rgb(56, 56, 56);
 }
 .perfume img {
     width: 100%;

@@ -4,7 +4,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #703b09;
+  background-color: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -33,6 +33,7 @@
   cursor: pointer;
   color: white;
   z-index: 1;
+  transition: 0.3s ease-in;
 }
 .TCart:hover {
   color: rgb(220, 181, 72);

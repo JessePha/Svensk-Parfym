@@ -1,0 +1,46 @@
+.CartItem {
+  margin: 20px 0px;
+  border-bottom: 1px solid rgb(85, 64, 10);
+}
+.InnerCartItemContainer {
+  margin: 1%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+.InnerContainer {
+  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.InnerItem {
+  display: flex;
+  flex-direction: row;
+}
+.InnerItem p {
+  font-size: 1rem;
+  margin: 20% 15% 0px 0px;
+  color: black;
+}
+.InnerItem button {
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  background: none;
+  margin: 20% 15% 0px 0px;
+  color: black;
+  transition: 0.5s ease-out;
+}
+
+.InnerItem p:hover,
+.InnerItem button:hover {
+  color: gray;
+}
+
+@media (max-width: 500px) {
+  .InnerItem button, .InnerItem p{
+    font-size: 12px;
+    margin: 15% 10% 0px 0px;
+  }
+}

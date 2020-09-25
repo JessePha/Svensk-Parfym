@@ -83,7 +83,6 @@ const View = (props) => {
   }, [, cart]);
 
   const addToCartHandler = (product) => {
-    console.log(product);
     const cartItems = cart.slice();
     let alreadyInCart = false;
     cartItems.forEach((item) => {
@@ -101,19 +100,21 @@ const View = (props) => {
 
   const addAmount = (itemInCart) => {
     const tempItem = { ...itemInCart };
-    const tempData = { ...data.items };
+    const tempData = [...data.items];
     let amount = Object.values(tempItem)
       .map((item) => item.count)
       .reduce((num, sum) => {
         return num + sum;
       }, 0);
-    let price = Object.values(tempItem)
-      .map((item) => item.price)
-      .reduce((num, sum) => {
-        return num + sum;
-      }, 0);
+    setData({ items: tempData, totalAmount: amount, totalPrice: addTotalPrice(itemInCart) });
+  };
 
-    setData({ items: tempData, totalAmount: amount, totalPrice: price });
+  const addTotalPrice = (itemInCart) => {
+    // add total price logic here in the map function Joakim
+    const tempItem = { ...itemInCart };
+    let price = Object.values(tempItem)
+      .map((item) => item.totalPrice)
+    return price
   };
 
   const [sidebar, setSidebar] = useState(false);
@@ -155,7 +156,7 @@ const View = (props) => {
   return (
     <div className="Content">
       <Toolbar
-        amountInCart={cart.length}
+        amountInCart={data.totalAmount}
         drawerToggleClicked={sidebarToggleHandler}
         cartToggle={cartSideBarHandler}
         searchToggle={searchBarToggle}
