@@ -56,7 +56,7 @@ const Cart = (props) => {
             <div className = {classes.CartHeader}>My basket ({props.totalAmount} items)</div>
           )}
           <div className={classes.result}>
-            <h3>Total Price: ${props.totalPrice}</h3>
+            <h3>Total Price: {props.totalPrice} Kr</h3>
             <CheckoutButton />
           </div>
         </div>

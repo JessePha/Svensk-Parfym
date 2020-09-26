@@ -80,7 +80,7 @@ const View = (props) => {
   useEffect(() => {
     let updataCart = [...cart];
     addAmount(updataCart);
-  }, [, cart]);
+  }, [cart]);
 
   const addToCartHandler = (product) => {
     const cartItems = cart.slice();
@@ -106,15 +106,21 @@ const View = (props) => {
       .reduce((num, sum) => {
         return num + sum;
       }, 0);
-    setData({ items: tempData, totalAmount: amount, totalPrice: addTotalPrice(itemInCart) });
+    setData({
+      items: tempData,
+      totalAmount: amount,
+      totalPrice: addTotalPrice(itemInCart)
+    });
   };
 
   const addTotalPrice = (itemInCart) => {
-    // add total price logic here in the map function Joakim
     const tempItem = { ...itemInCart };
     let price = Object.values(tempItem)
-      .map((item) => item.totalPrice)
-    return price
+      .map((item) => item.price * item.count)
+      .reduce((num, sum) => {
+        return num + sum;
+      }, 0);
+    return price;
   };
 
   const [sidebar, setSidebar] = useState(false);
