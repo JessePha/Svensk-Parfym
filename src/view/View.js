@@ -78,8 +78,8 @@ const View = (props) => {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    let updataCart = [...cart];
-    addAmount(updataCart);
+    let updateCart = [...cart];
+    addAmount(updateCart);
   }, [cart]);
 
   const addToCartHandler = (product) => {

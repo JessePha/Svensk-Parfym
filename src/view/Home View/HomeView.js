@@ -1,11 +1,15 @@
 import React from "react";
-import Header from "../../components/Home Component/Header/Header";
+import HomeText from "../../components/Home Component/HomeText/HomeText";
 import "./HomeView.css";
+import HomeImage from "../../components/Home Component/Image/HomeImage";
+import Slide from "../../components/Home Component/Slide/Slide";
 
-let HomeView = () => {
+let HomeView = (props) => {
   return (
-    <div className={"HomeView"}>
-    <Header/>
+    <div className="HomeView">
+      <HomeImage />
+      <HomeText />
+      <Slide perfumes={props.data.items} addToCart={props.addToCartHandler} />
     </div>
   );
 };

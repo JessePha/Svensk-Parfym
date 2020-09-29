@@ -17,7 +17,7 @@ const Cart = (props) => {
     props.setProducts(addItem);
   };
 
-  const minusItem = (itemName) => {
+  const subtractItem = (itemName) => {
     const itemInCart = [...Object.values(props.products)];
     let removeItem = null;
     if (itemInCart.length > 0) {
@@ -48,7 +48,7 @@ const Cart = (props) => {
               <CartProducts
                 itemInCart={props.products}
                 add={addItem}
-                minus={minusItem}
+                minus={subtractItem}
                 remove={removeItem}
               />
             </div>

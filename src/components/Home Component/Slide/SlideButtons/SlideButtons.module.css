@@ -1,0 +1,20 @@
+.SlideButtons {
+  list-style: none;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  height: 100%;
+  color: white;
+  font-weight: 400;
+  font-size: larger;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+#left:active {
+  color: rgb(220, 181, 72);
+}
+#rigth:active {
+  color: rgb(220, 181, 72);
+}
