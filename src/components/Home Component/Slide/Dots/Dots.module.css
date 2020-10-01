@@ -1,0 +1,10 @@
+.dots {
+  color: white;
+  text-align: center;
+}
+#soloDot:active {
+  color: rgb(220, 181, 72);
+}
+#soloDot {
+    margin: 2px 2px 2px 2px;
+}
