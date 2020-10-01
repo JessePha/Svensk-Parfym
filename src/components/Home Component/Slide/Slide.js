@@ -85,41 +85,62 @@ let Slide = (props) => {
   for (let i = 1; i <= div; i++) {
     dotsArray.push(i);
   }
-  console.log(dotsArray)
   let dots = dotsArray.map((data, index) => {
     return <Dots shownData={shownData} data={data} key={index} />;
   });
 
   let updatePage = (e) => {
+    e.preventDefault();
     let value = parseInt(e.target.value);
     if (pagesArray.includes(value)) {
       setCurrentPage(value);
       setCurrentData(data.items.slice(value - shownData, value));
+    } else if (!pagesArray.includes(value) && value > totalData) {
+      setCurrentPage(totalData - totalData + 3);
+      setCurrentData(data.items.slice(0, totalData - totalData + 3));
+    } else if (
+      !pagesArray.includes(value) &&
+      value < totalData - totalData + 1
+    ) {
+      setCurrentPage(totalData);
+      setCurrentData(data.items.slice(totalData - 3, totalData));
     }
   };
 
   let render = currentData.map((data, index) => {
     return <SlideRender data={data} key={index} />;
   });
-  return (
-    <div className={classes.Slide}>
-      <form onClick={updatePage} id={"pageSwitchForm"}>
-        <LeftButton
-          currentPage={currentPage}
-          currentData={currentData}
-          shownData={shownData}
-          updatePage={updatePage}
-        />
-        {render}
-        <RightButton
-          currentPage={currentPage}
-          currentData={currentData}
-          shownData={shownData}
-        />
-        {dots}
-      </form>
-    </div>
-  );
+  let availableItems = null;
+  if (data.items.length > 0) {
+    availableItems = (
+      <div>
+        <form onClick={updatePage}>
+          <div className={classes.Slide}>
+            <LeftButton
+              currentPage={currentPage}
+              currentData={currentData}
+              shownData={shownData}
+              updatePage={updatePage}
+            />
+            {render}
+            <RightButton
+              currentPage={currentPage}
+              currentData={currentData}
+              shownData={shownData}
+            />
+          </div>
+          {dots}
+        </form>
+      </div>
+    );
+  } else {
+    availableItems = (
+      <div className={classes.Slide}>
+        <p>No items found</p>
+      </div>
+    );
+  }
+  return availableItems;
 };
 
 export default Slide;

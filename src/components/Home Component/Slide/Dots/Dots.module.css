@@ -1,10 +1,17 @@
 .dots {
-  color: white;
-  text-align: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  height: 100%;
+  color: rgb(220,181,72);
+  font-weight: 400;
+  font-size: larger;
+}
+#soloDot {
+  margin: 2px 2px 2px 2px;
+  padding: 5px 5px 5px 5px;
 }
 #soloDot:active {
   color: rgb(220, 181, 72);
-}
-#soloDot {
-    margin: 2px 2px 2px 2px;
 }
