@@ -1,13 +1,20 @@
 import React from "react";
-import {Route, Switch} from 'react-router-dom';
+
 import "./App.css";
-import ShopView from "./view/ShopView/ShopView";
+import HomeView from "./view/Home View/HomeView";
+import ShopView from "./view/Shop View/ShopView";
 import View from "./view/View";
+import { Route } from "react-router-dom";
+import AboutUs from "./view/AboutUs View/AboutUs";
+
 const App = () => {
+
   return (
     <div>
       <View>
-          <ShopView />
+      <ShopView/>
+        <Route path="/home" component={HomeView} />
+        <Route path="/aboutus" component={AboutUs} />
       </View>
     </div>
   );
