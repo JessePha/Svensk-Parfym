@@ -1,7 +1,7 @@
 import classes from "../Dots/Dots.module.css";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDotCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
 const Dots = (props) => {
   return (
@@ -11,7 +11,7 @@ const Dots = (props) => {
       value={props.data * props.shownData}
       key={props.index}
     >
-      <FontAwesomeIcon icon={faDotCircle} style={{ pointerEvents: "none" }} />
+      <FontAwesomeIcon icon={faCircle} style={{ pointerEvents: "none" }} />
     </button>
   );
 };

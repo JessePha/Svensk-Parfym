@@ -1,9 +1,10 @@
 import React from "react";
-import nature from "../../../shared/Images/SwedishNature.jpg";
+import home from "../../../shared/Images/HomeImage.jpg";
+import classes from "./HomeImage.module.css"
 
 const App = () => {
   return (
-    <img src={nature} alt="nature" style={{ width: "100%"}} />
+    <img src={home} alt="nature" className={classes.HomeImage}/>
   );
 };
 

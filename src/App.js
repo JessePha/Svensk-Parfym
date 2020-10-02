@@ -59,13 +59,17 @@ const App = () => {
     return price;
   };
   return (
-    <div className = "App">
+    <div className="App">
       <BrowserRouter>
         <View data={data} cartProducts={cart} setCartProducts={setCart}>
           <Switch>
-            <Route exact path="/" component={HomeView} />
+            <Route exact path="/" render={() => <HomeView data={data} />} />
             <Route exact path="/invent" component={AboutUs} />
-            <Route exact path="/Fragrance" render={() => <ShopView data={data} />} />
+            <Route
+              exact
+              path="/Fragrance"
+              render={() => <ShopView data={data} />}
+            />
             <Route
               exact
               path={"/Fragrance/:name"}

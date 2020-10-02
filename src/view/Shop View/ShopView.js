@@ -1,6 +1,6 @@
 import React from "react";
 import "./ShopView.css";
-import Perfumes from "../../components/Perfumes/Perfumes";
+import Shop from "../../components/Shop Component/Shop";
 import { useHistory } from "react-router-dom";
 
 const ShopView = (props) => {
@@ -12,7 +12,7 @@ const ShopView = (props) => {
   return (
     <div className="ShopView">
       <section>
-        <Perfumes
+        <Shop
           perfumes={props.data.items}
           goTo={goTo}
         />

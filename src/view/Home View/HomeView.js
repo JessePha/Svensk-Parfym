@@ -3,13 +3,21 @@ import HomeText from "../../components/Home Component/HomeText/HomeText";
 import "./HomeView.css";
 import HomeImage from "../../components/Home Component/Image/HomeImage";
 import Slide from "../../components/Home Component/Slide/Slide";
+import { useHistory } from "react-router";
 
 let HomeView = (props) => {
+  let history = useHistory();
+  const goTo = (name) => {
+    history.push("/Fragrance/" + name);
+  };
+
   return (
     <div className="HomeView">
-      <HomeImage />
-      <HomeText />
-      <Slide perfumes={props.data.items} addToCart={props.addToCartHandler} />
+      <section>
+        <HomeImage />
+        <HomeText />
+        <Slide products={props.data.items} goTo={goTo} />
+      </section>
     </div>
   );
 };

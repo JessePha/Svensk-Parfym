@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Toolbar.css";
-import Burger from "../NavigationItems/Sidebar/DropDownButton/DropDownButton";
+import DropDownButton from "../NavigationItems/Sidebar/DropDownButton/DropDownButton";
 import NavigationItems from "../NavigationItems/NavigationItems";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch,faShoppingCart } from "@fortawesome/free-solid-svg-icons";
@@ -30,7 +30,7 @@ const Toolbar = (props) => {
   }
   return (
     <header className={show.visible ? "TToolbar" : "Toolbar-hidden"}>
-      <Burger clicked={props.drawerToggleClicked} />
+      <DropDownButton clicked={props.drawerToggleClicked} />
       <div className="TLogo">
         <Logo />
       </div>
