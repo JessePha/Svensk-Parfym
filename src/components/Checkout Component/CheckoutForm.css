@@ -1,0 +1,22 @@
+label {
+}
+
+form {
+  padding-left: 20px;
+  background-color: lightgrey;
+  width: 30%;
+}
+input[type="text"],
+select {
+  padding: 12px 20px;
+  padding-top: 5px;
+  padding-right: 20px;
+  margin: 10px;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type="text"]:focus {
+  border: 3px solid lightskyblue;
+}
