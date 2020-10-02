@@ -5,16 +5,14 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-    height: 100%;
     color: rgb(220,181,72);
     font-weight: 100;
-
 }
 
 @media (min-width: 500px) {
     .NavigationItems {
         flex-flow: row;
         position: absolute;
-        right: 320px;
+        left: 220px;
     }
 }

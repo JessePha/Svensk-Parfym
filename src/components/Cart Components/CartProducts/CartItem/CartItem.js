@@ -8,15 +8,16 @@ const CartItem = ({ img, name, add, amount, size, price, minus, remove }) => {
         <img
           src={img}
           alt="product"
-          style={{ height: "70px", width: "70px" }}
+          style={{ height: "80px", width: "80px" }}
         ></img>
         <div className={classes.InnerContainer}>
           <p>{name}</p>
+          <p>{size}</p>
           <div className={classes.InnerItem}>
-            <button onClick={() => add(name)}>+</button>
+            <button onClick={() => add(name,size)}>+</button>
             <p>{amount}</p>
-            <button onClick={() => minus(name)}>-</button>
-            <button onClick={() => remove(name)}>remove</button>
+            <button onClick={() => minus(name,size)}>-</button>
+            <button onClick={() => remove(name,price)}>remove</button>
             <p>{price}</p>
             <p>kr</p>
           </div>

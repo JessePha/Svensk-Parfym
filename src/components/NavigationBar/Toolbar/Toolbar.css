@@ -8,9 +8,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
   box-sizing: border-box;
   z-index: 90;
+  transition: 2s;
+}
+.Toolbar-hidden{
+  top: -57px;
+  opacity: 0.5;
 }
 
 .TToolbar nav {

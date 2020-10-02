@@ -9,30 +9,30 @@ const Cart = (props) => {
   if (props.open) {
     attachedClasses = [classes.Cart, classes.Open];
   }
-  const addItem = (itemName) => {
+  const addItem = (itemName,size) => {
     const itemInCart = [...Object.values(props.products)];
     let addItem = itemInCart.filter((item) =>
-      item.name === itemName ? item.count++ : item.count
+      item.name === itemName && item.size === size ? item.count++ : item.count
     );
     props.setProducts(addItem);
   };
 
-  const subtractItem = (itemName) => {
+  const minusItem = (itemName,size) => {
     const itemInCart = [...Object.values(props.products)];
     let removeItem = null;
     if (itemInCart.length > 0) {
       removeItem = itemInCart.filter((item) =>
-        item.count > 0 && item.name === itemName ? --item.count : item.count
+        item.count > 0 && item.name === itemName && item.size===size ? --item.count : item.count
       );
     }
     props.setProducts(removeItem);
   };
 
-  const removeItem = (itemName) => {
+  const removeItem = (itemName, price) => {  
     const itemInCart = [...Object.values(props.products)];
     let removeItem = null;
     if (itemInCart.length > 0) {
-      removeItem = itemInCart.filter((item) => item.name !== itemName);
+      removeItem = itemInCart.filter((item) => item.name === itemName && item.price !== price);
     }
     props.setProducts(removeItem);
   };
