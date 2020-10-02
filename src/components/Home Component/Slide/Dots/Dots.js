@@ -11,7 +11,7 @@ const Dots = (props) => {
       value={props.data * props.shownData}
       key={props.index}
     >
-      <FontAwesomeIcon icon={faDotCircle} />
+      <FontAwesomeIcon icon={faDotCircle} style={{ pointerEvents: "none" }} />
     </button>
   );
 };

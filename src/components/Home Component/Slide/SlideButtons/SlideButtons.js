@@ -1,6 +1,6 @@
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import classes from "./SlideButtons.module.css"
+import classes from "./SlideButtons.module.css";
 import React from "react";
 
 const LeftButton = (props) => {
@@ -9,8 +9,9 @@ const LeftButton = (props) => {
       id={"left"}
       type={"button"}
       value={props.currentPage - props.shownData}
+      className={classes.SlideButtons}
     >
-      <FontAwesomeIcon icon={faArrowLeft} />
+      <FontAwesomeIcon icon={faArrowLeft} style={{ pointerEvents: "none" }} />
     </button>
   );
 };
@@ -20,8 +21,10 @@ const RightButton = (props) => {
       id={"rigth"}
       type={"button"}
       value={props.currentPage + props.shownData}
+      className={classes.SlideButtons}
+
     >
-      <FontAwesomeIcon icon={faArrowRight} />
+      <FontAwesomeIcon icon={faArrowRight} style={{ pointerEvents: "none" }} />
     </button>
   );
 };
