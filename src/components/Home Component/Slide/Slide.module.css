@@ -1,18 +1,17 @@
 .Slide {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-flow: row;
-    align-items: center;
-    height: 100%;
-    color: rgb(220,181,72);
-    font-weight: 400;
-    font-size: larger;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-weight: 400;
+  font-size: larger;
 }
 
-.Dots{
-    display: flex;
-  justify-content: center; 
-  align-items: center; 
+.Dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

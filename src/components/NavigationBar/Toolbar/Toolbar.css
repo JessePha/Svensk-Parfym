@@ -12,7 +12,7 @@
   z-index: 90;
   transition: 2s;
 }
-.Toolbar-hidden{
+.Toolbar-hidden {
   top: -57px;
   opacity: 0.5;
 }

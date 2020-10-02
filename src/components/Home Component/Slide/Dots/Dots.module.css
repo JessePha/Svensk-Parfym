@@ -5,12 +5,15 @@
   background-color: black;
   font-size: larger;
   outline: none;
-  border: none; 
-
+  border: none;
+  opacity: 0.2;
 }
 #soloDot {
   margin: 2px 2px 2px 2px;
   padding: 10px 10px 10px 10px;
+}
+#soloDot:hover {
+  opacity: 1;
 }
 #soloDot:active {
   color: rgb(220, 181, 72);

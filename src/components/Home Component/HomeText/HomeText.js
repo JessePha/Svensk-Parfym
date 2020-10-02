@@ -8,10 +8,9 @@ const Header = (props) => {
       <p>INSPIRED BY SWEDEN</p>
       <p>MADE IN SWEDEN</p>
       <p className={classes.citation}>
-        “Perfection is achieved, not when there is nothing left to add, but when
-        there is nothing left to take away.” För att citera Antoine de
-        Saint-Exupéry: “Perfection is achieved, not when there is nothing left
-        to add, but when there is nothing left to take away.”
+        För att citera Antoine de Saint-Exupéry: “Perfection is achieved, not
+        when there is nothing left to add, but when there is nothing left to
+        take away.”
       </p>
     </div>
   );
