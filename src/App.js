@@ -64,7 +64,7 @@ const App = () => {
         <View data={data} cartProducts={cart} setCartProducts={setCart}>
           <Switch>
             <Route exact path="/" component={HomeView} />
-            <Route exact path="/invent" component={AboutUs} />
+            <Route exact path="/Invent" component={AboutUs} />
             <Route exact path="/Fragrance" render={() => <ShopView data={data} />} />
             <Route
               exact
