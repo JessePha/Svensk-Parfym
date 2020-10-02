@@ -7,12 +7,12 @@ const CartProducts = (props) => {
     <div className = {classes.CartProducts}>
       {props.itemInCart.map((item) => (
         <CartItem
-          key={item.name}
+          key={item.name + item.size}
           img={item.img}
           name={item.name}
           amount={item.count}
           price={item.price}
-          size = {props.size}
+          size = {item.size}
           add={props.add}
           minus={props.minus}
           remove ={props.remove}

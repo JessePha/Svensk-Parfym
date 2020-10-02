@@ -1,19 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Toolbar.css";
 import Burger from "../NavigationItems/Sidebar/DropDownButton/DropDownButton";
 import NavigationItems from "../NavigationItems/NavigationItems";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
+import { faSearch,faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../Logo/Logo";
 
 const Toolbar = (props) => {
-  let searchBar = null;
+  const [show, setShow] = useState({
+    visible: true,
+    prevScroll: window.pageYOffset,
+  });
+  useEffect(() => {
+    const handScroll = () => {
+      const { prevScroll } = { ...show };
+      const currentScrollPos = window.pageYOffset;
+      const visible = prevScroll > currentScrollPos;
+      setShow({ visible, prevScroll: currentScrollPos });
+    };
+    window.addEventListener("scroll", handScroll);
+    return () => {
+      window.removeEventListener("scroll", handScroll);
+    };
+  }, [show]);
 
-  if(props.searchBar === true) {
-    searchBar = <input></input>
+  let searchBar = null;
+  if (props.searchBar === true) {
+    searchBar = <input></input>;
   }
   return (
-    <header className="TToolbar">
+    <header className={show.visible ? "TToolbar" : "Toolbar-hidden"}>
       <Burger clicked={props.drawerToggleClicked} />
       <div className="TLogo">
         <Logo />
@@ -24,19 +40,19 @@ const Toolbar = (props) => {
       <div className="TCart-div">
         <p>{props.amountInCart}</p>
         <FontAwesomeIcon
-          icon={faShoppingBag}
+          icon={faShoppingCart}
           className="TCart"
           onClick={props.cartToggle}
           amount={props.amountInCart}
         />
       </div>
       <div className="TSearchBar">
-      {searchBar}
-      <FontAwesomeIcon
-        onClick={props.searchToggle}
-        icon={faSearch}
-        className="TSearchIcon"
-      />
+        {searchBar}
+        <FontAwesomeIcon
+          onClick={props.searchToggle}
+          icon={faSearch}
+          className="TSearchIcon"
+        />
       </div>
     </header>
   );

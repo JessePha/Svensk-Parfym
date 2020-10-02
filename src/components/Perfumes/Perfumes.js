@@ -3,14 +3,14 @@ import Perfume from "./Perfume/Perfume";
 import "./Perfumes.css";
 
 const Perfumes = (props) => {
+
   const perfumes = props.perfumes.map((perfume) => (
     <Perfume
       key={perfume.name}
       img={perfume.img}
       name={perfume.name}
       description={perfume.description}
-      price = {perfume.price}
-      addToCart = {() => props.addToCart(perfume)}
+      moreInfo={() => props.goTo(perfume.name)}
     />
   ));
   return <div className="perfumes">{perfumes}</div>;
