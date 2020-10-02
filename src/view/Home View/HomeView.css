@@ -1,5 +1,16 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.HomeImageDiv {
+  padding: 20px;
+}
+
+
+@media (min-width: 600px) {
+    .HomeImageDiv {
+        padding: 100px;
+    }
 }

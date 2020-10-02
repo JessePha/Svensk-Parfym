@@ -12,9 +12,11 @@ let HomeView = (props) => {
   };
 
   return (
-    <div className="HomeView">
+    <div>
       <section>
-        <HomeImage />
+        <div className={"HomeImageDiv"}>
+          <HomeImage />
+        </div>
         <HomeText />
         <Slide products={props.data.items} goTo={goTo} />
       </section>

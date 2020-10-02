@@ -1,10 +1,12 @@
 import React from "react";
 import home from "../../../shared/Images/HomeImage.jpg";
-import classes from "./HomeImage.module.css"
+import classes from "./HomeImage.module.css";
 
 const App = () => {
   return (
-    <img src={home} alt="nature" className={classes.HomeImage}/>
+    <div className={classes.imageDiv}>
+      <img className={classes.HomeImage} src={home} alt="nature" />
+    </div>
   );
 };
 
