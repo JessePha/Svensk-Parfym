@@ -43,17 +43,20 @@ const Cart = (props) => {
         <div className="Cart-Info">
           {props.products.length > 0 ? (
             <div>
-
-              <div className = {classes.CartHeader}>My basket ({props.totalAmount} items)</div>
+              <div className={classes.CartHeader}>
+                My basket ({props.totalAmount} items)
+              </div>
               <CartProducts
                 itemInCart={props.products}
                 add={addItem}
-                minus={minusItem}
+                minus={subtractItem}
                 remove={removeItem}
               />
             </div>
           ) : (
-            <div className = {classes.CartHeader}>My basket ({props.totalAmount} items)</div>
+            <div className={classes.CartHeader}>
+              My basket ({props.totalAmount} items)
+            </div>
           )}
           <div className={classes.result}>
             <h3>Total Price: {props.totalPrice} Kr</h3>

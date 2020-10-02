@@ -1,9 +1,9 @@
-import classes from "../Header.module.css";
+import classes from "./HomeText.module.css";
 import React from "react";
 
 const Header = (props) => {
   return (
-    <div className={classes.Header}>
+    <div className={classes.HomeText}>
       <p>FRAGRANCE </p>
       <p>ARTISTERY </p>
       <p>INSPIRED BY SWEDEN</p>

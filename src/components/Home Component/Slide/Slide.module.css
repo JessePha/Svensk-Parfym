@@ -1,9 +1,9 @@
-.Header {
+.Slide {
     margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
-    flex-flow: column;
+    flex-flow: row;
     align-items: center;
     height: 100%;
     color: rgb(220,181,72);
