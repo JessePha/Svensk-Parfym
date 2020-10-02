@@ -10,3 +10,9 @@
     font-weight: 400;
     font-size: larger;
 }
+
+.Dots{
+    display: flex;
+  justify-content: center; 
+  align-items: center; 
+}

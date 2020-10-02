@@ -13,6 +13,6 @@
     .NavigationItems {
         flex-flow: row;
         position: absolute;
-        left: 220px;
+        left: 20%;
     }
 }

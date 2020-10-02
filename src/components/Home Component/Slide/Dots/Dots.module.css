@@ -4,14 +4,15 @@
   color: white;
   background-color: black;
   font-size: larger;
-  border: none;
+  outline: none;
+  border: none; 
+
 }
 #soloDot {
   margin: 2px 2px 2px 2px;
   padding: 10px 10px 10px 10px;
-  position: relative;
-  
 }
 #soloDot:active {
   color: rgb(220, 181, 72);
+  border: none;
 }

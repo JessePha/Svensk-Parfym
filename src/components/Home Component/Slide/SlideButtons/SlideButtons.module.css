@@ -1,19 +1,12 @@
 .SlideButtons {
   margin: 0;
   padding: 0;
-  list-style: none;
-
-  height: 100%;
   color: white;
-  border: none;
   background-color: black;
-  font-weight: 400;
   font-size: larger;
+  border: none;
+  outline: none;
 }
-
-#left:active {
-  color: white;
-}
-#rigth:active {
-  color: white;
+.SlideButtons:active {
+  color: rgb(220, 181, 72);
 }

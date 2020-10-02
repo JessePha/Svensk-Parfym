@@ -1,11 +1,11 @@
 import React from "react";
-import Perfume from "./Perfume/Perfume";
-import "./Perfumes.css";
+import ShopRender from "./ShopRender/ShopRender";
+import "./Shop.css";
 
 const Perfumes = (props) => {
 
   const perfumes = props.perfumes.map((perfume) => (
-    <Perfume
+    <ShopRender
       key={perfume.name}
       img={perfume.img}
       name={perfume.name}

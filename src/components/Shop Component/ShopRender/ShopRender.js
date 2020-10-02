@@ -1,5 +1,5 @@
 import React from "react";
-import "./Perfume.css";
+import "./ShopRender.css";
 
 const Perfume = ({ img, name, description, moreInfo }) => {
   return (
@@ -7,7 +7,7 @@ const Perfume = ({ img, name, description, moreInfo }) => {
       <img src={img} alt="perfume"></img>
       <h3>{name}</h3>
       <p>{description}</p>
-      <button onClick = {moreInfo}>View detail</button>
+      <button className="toCartButton" onClick = {moreInfo}>View detail</button>
     </div>
   );
 };
