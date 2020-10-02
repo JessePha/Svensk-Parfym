@@ -1,0 +1,19 @@
+.Total {
+    list-style: none;
+    display: flex;
+    flex-flow: row;
+    font-weight: 100;
+}
+
+.Item {
+    margin: 10px 0;
+    width: 100%;
+    font-size: large;
+  }
+  
+  .Item a:hover,
+  .Item a:active,
+  .Item a.active {
+    color: rgb(27,56,100);
+  }
+  

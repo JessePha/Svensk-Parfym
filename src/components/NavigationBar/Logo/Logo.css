@@ -1,0 +1,18 @@
+.Logo img {
+  height: 50px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+}
+
+@media (min-width: 500px) {
+  .Logo {
+    position: absolute;
+    left: 10px;
+  }
+}
+@media (max-width: 500px) {
+    .Logo {
+      position: absolute;
+      left: 80px;
+    }
+  }
