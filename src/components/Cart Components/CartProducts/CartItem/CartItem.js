@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./CartItem.module.css";
+import Price from "../../../UI/Price/Price";
 
 const CartItem = ({ img, name, add, amount, size, price, minus, remove }) => {
   return (
@@ -8,18 +9,17 @@ const CartItem = ({ img, name, add, amount, size, price, minus, remove }) => {
         <img
           src={img}
           alt="product"
-          style={{ height: "80px", width: "80px" }}
+          style={{ height: "50%", width: "50%" }}
         ></img>
         <div className={classes.InnerContainer}>
           <p>{name}</p>
-          <p>{size}</p>
+          <p>size: {size} </p>
+          {<Price price={price} value="Kr" />}
           <div className={classes.InnerItem}>
-            <button onClick={() => add(name,size)}>+</button>
+            <button onClick={() => add(name, size)}>+</button>
             <p>{amount}</p>
-            <button onClick={() => minus(name,size)}>-</button>
-            <button onClick={() => remove(name,price)}>remove</button>
-            <p>{price}</p>
-            <p>kr</p>
+            <button onClick={() => minus(name, size)}>-</button>
+            <button onClick={() => remove(name, price, size)}>remove</button>
           </div>
         </div>
       </div>

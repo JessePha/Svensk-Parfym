@@ -16,6 +16,8 @@ const data = {
       description: "Test data for perfume.",
       size: ["30ml bottle", "5ml Deluxe sample"],
       price: [175,850],
+      stock: 5,
+      available: true
     },
     {
       img: fröjd,
@@ -23,6 +25,8 @@ const data = {
       description: "Test data for perfume.",
       size: ["30ml bottle", "5ml Deluxe sample"],
       price: [175,850],
+      stock: 5,
+      available: true
     },
     {
       img: idyll,
@@ -30,6 +34,8 @@ const data = {
       description: "Test data for perfume.",
       size: ["30ml bottle", "5ml Deluxe sample"],
       price: [175,850],
+      stock: 5,
+      available: true
     },
     {
       img: ljus,
@@ -37,6 +43,8 @@ const data = {
       description: "Test data for perfume.",
       size: ["30ml bottle", "5ml Deluxe sample"],
       price: [175,850],
+      stock: 5,
+      available: true
     },
     {
       img: prakt,
@@ -44,6 +52,8 @@ const data = {
       description: "Test data for perfume.",
       size: ["30ml bottle", "5ml Deluxe sample"],
       price: [175,850],
+      stock: 5,
+      available: true
     },
     {
       img: sadel,
@@ -51,6 +61,8 @@ const data = {
       description: "Test data for perfume.",
       size: ["30ml bottle", "5ml Deluxe sample"],
       price: [175,850],
+      stock: 5,
+      available: true
     },
     {
       img: skymning,
@@ -58,6 +70,8 @@ const data = {
       description: "Test data for perfume.",
       size: ["30ml bottle", "5ml Deluxe sample"],
       price: [175,850],
+      stock: 5,
+      available: true
     },
     {
       img: stilla,
@@ -65,6 +79,8 @@ const data = {
       description: "Test data for perfume.",
       size: ["30ml bottle", "5ml Deluxe sample"],
       price: [175,850],
+      stock: 5,
+      available: true
     },
     {
       img: virke,
@@ -72,6 +88,8 @@ const data = {
       description: "Test data for perfume.",
       size: ["30ml bottle", "5ml Deluxe sample"],
       price: [175,850],
+      stock: 5,
+      available: true
     },
   ],
   totalPrice: 0,

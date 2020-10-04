@@ -1,0 +1,65 @@
+.Toolbar {
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 90;
+  transition: 1.5s ease;
+}
+
+.Toolbarhidden {
+  top: -100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  opacity: 0.5;
+}
+.NavigationItems{
+  flex: 1 1 50%;
+}
+.Cartdiv {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 15%;
+}
+.Cartdiv span {
+  text-align: center;
+  background-color: grey;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  font-size: 7px;
+  color: white;
+}
+.Cart {
+  cursor: pointer;
+  color: white;
+  z-index: 1;
+  transition: 0.3s ease-in;
+}
+.Cart:hover {
+  color: rgb(220, 181, 72);
+}
+@media (max-width: 500px) {
+  .NavigationItems {
+    display: none;
+  }
+  .Cartdiv {
+    margin-right: 5%;
+  }
+  .Cart{
+    margin-right: 15%;
+  }
+}
+@media (min-width: 500px) {
+  .Cartdiv{
+    margin-left: 50%;
+  }
+}

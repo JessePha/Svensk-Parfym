@@ -21,9 +21,12 @@ const App = () => {
   const addToCartHandler = (product, amount = 1) => {
     const cartItems = cart.slice();
     let alreadyInCart = false;
+    if(amount === 0){
+      return
+    }
     cartItems.forEach((item) => {
       if (item.name === product.name && item.size === product.size) {
-        item.count++;
+        item.count += amount;
         alreadyInCart = true;
       }
     });

@@ -1,10 +1,10 @@
 import React from "react";
-import "./DropDownButton.css";
+import classes from  "./Burger.module.css";
 
 const Burger = (props) => {
   return (
-    <div className="BurgerWrapper">
-      <div className="Burger" onClick={props.clicked}>
+    <div className= {classes.BurgerWrapper}>
+      <div className={classes.Burger} onClick={props.clicked}>
         <div></div>
         <div></div>
         <div></div>
