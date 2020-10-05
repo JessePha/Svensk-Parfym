@@ -4,6 +4,7 @@ import "./HomeView.css";
 import HomeImage from "../../components/Home Component/Image/HomeImage";
 import Slide from "../../components/Home Component/Slide/Slide";
 import { useHistory } from "react-router";
+import {connect} from 'react-redux'
 
 let HomeView = (props) => {
   let history = useHistory();
@@ -16,10 +17,16 @@ let HomeView = (props) => {
       <section>
         <HomeImage />
         <HomeText />
-        <Slide products={props.data.items} goTo={goTo} />
+        <Slide products = {props.products} goTo={goTo} />
       </section>
     </div>
   );
 };
 
-export default HomeView;
+const mapStateToProps = (state) => {
+  return {
+    products: state.prd.items
+  }
+}
+
+export default connect(mapStateToProps,null)(HomeView);
