@@ -2,17 +2,12 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
     color: rgb(220,181,72);
     font-weight: 100;
 }
-
 @media (min-width: 500px) {
     .NavigationItems {
-        flex-flow: row;
-        position: absolute;
-        left: 20%;
+        display: flex;
+        flex-direction: row;
     }
 }

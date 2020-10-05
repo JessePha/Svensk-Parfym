@@ -1,6 +1,6 @@
 import React from "react";
 import Backdrop from "../../UI/Backdrop/Backdrop";
-import CheckoutButton from "../../Cart Components/CheckoutButton/CheckoutButton";
+import CheckoutButton from "../../UI/CheckoutButton/CheckoutButton";
 import CartProducts from "../../Cart Components/CartProducts/CartProducts";
 import classes from "./Cart.module.css";
 
@@ -9,7 +9,7 @@ const Cart = (props) => {
   if (props.open) {
     attachedClasses = [classes.Cart, classes.Open];
   }
-  const addItem = (itemName,size) => {
+  const addItem = (itemName, size) => {
     const itemInCart = [...Object.values(props.products)];
     let addItem = itemInCart.filter((item) =>
       item.name === itemName && item.size === size ? item.count++ : item.count
@@ -17,22 +17,28 @@ const Cart = (props) => {
     props.setProducts(addItem);
   };
 
-  const subtractItem = (itemName,size) => {
+  const subtractItem = (itemName, size) => {
     const itemInCart = [...Object.values(props.products)];
     let removeItem = null;
     if (itemInCart.length > 0) {
       removeItem = itemInCart.filter((item) =>
-        item.count > 0 && item.name === itemName && item.size===size ? --item.count : item.count
+        item.count > 0 && item.name === itemName && item.size === size
+          ? --item.count
+          : item.count
       );
     }
     props.setProducts(removeItem);
   };
 
-  const removeItem = (itemName, price) => {  
+  const removeItem = (itemName, price, size) => {
+    console.log(itemName, price, size);
     const itemInCart = [...Object.values(props.products)];
     let removeItem = null;
     if (itemInCart.length > 0) {
-      removeItem = itemInCart.filter((item) => item.name === itemName && item.price !== price);
+      removeItem = itemInCart.filter(
+        (item) =>
+          item.name !== itemName || item.size !== size || item.price !== price
+      );
     }
     props.setProducts(removeItem);
   };

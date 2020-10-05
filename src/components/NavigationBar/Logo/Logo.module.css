@@ -1,0 +1,10 @@
+.Logo{
+  margin-left: 5%;
+}
+.Logo img {
+  height: 57px;
+  cursor: pointer;
+}
+.DesktopOnly {
+  display: none;
+}

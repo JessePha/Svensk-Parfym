@@ -1,46 +1,54 @@
 .CartItem {
-  margin: 20px 0px;
+  padding: 5%;
   border-bottom: 1px solid rgb(85, 64, 10);
+  width: 100%;
 }
 .InnerCartItemContainer {
-  margin: 1%;
-  width: 100%;
   display: flex;
-  justify-content: flex-start;
+  align-items: center;
 }
 .InnerContainer {
-  margin-left: 5%;
+  text-align: left;
+  width: 100%;
+  padding: 5%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+}
+.InnerContainer p{
+  font-size: 1rem;
+  padding: 2%;
 }
 .InnerItem {
   display: flex;
   flex-direction: row;
+  text-align: left;
 }
 .InnerItem p {
   font-size: 1rem;
-  margin: 20% 15% 0px 0px;
   color: black;
 }
-.InnerItem button {
+.InnerItem button, .InnerContainer p {
   font-size: 1rem;
+  margin: 0px 5% 0px 0px;
   outline: none;
   border: none;
   background: none;
-  margin: 20% 15% 0px 0px;
   color: black;
-  transition: 0.5s ease-out;
+  transition: 1s ease-out;
 }
 
-.InnerItem p:hover,
 .InnerItem button:hover {
   color: gray;
+  border-bottom: 0.5px solid goldenrod;
 }
 
 @media (max-width: 500px) {
+  .InnerContainer p{
+    font-size: 0.6rem;
+    padding: 2% 0px;
+  }
   .InnerItem button, .InnerItem p{
-    font-size: 12px;
-    margin: 15% 10% 0px 0px;
+    font-size: 0.6rem;
+    margin: 0px 5% 0px 0px;
   }
 }
