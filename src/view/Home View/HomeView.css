@@ -5,12 +5,12 @@
 }
 
 .HomeImageDiv {
-  padding: 20px;
+  padding: 5%;
 }
 
 
 @media (min-width: 600px) {
     .HomeImageDiv {
-        padding: 100px;
+        padding: 5%;
     }
 }

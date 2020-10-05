@@ -14,15 +14,15 @@ const App = () => {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    let updataCart = [...cart];
-    addAmount(updataCart);
+    let updateCart = [...cart];
+    addAmount(updateCart);
   }, [cart]);
 
   const addToCartHandler = (product, amount = 1) => {
     const cartItems = cart.slice();
     let alreadyInCart = false;
-    if(amount === 0){
-      return
+    if (amount === 0) {
+      return;
     }
     cartItems.forEach((item) => {
       if (item.name === product.name && item.size === product.size) {
@@ -66,7 +66,13 @@ const App = () => {
       <BrowserRouter>
         <View data={data} cartProducts={cart} setCartProducts={setCart}>
           <Switch>
-            <Route exact path="/" render={() => <HomeView data={data} />} />
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <HomeView data={data}/>
+              )}
+            />
             <Route exact path="/invent" component={AboutUs} />
             <Route
               exact

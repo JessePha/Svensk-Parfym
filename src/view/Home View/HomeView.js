@@ -18,7 +18,7 @@ let HomeView = (props) => {
           <HomeImage />
         </div>
         <HomeText />
-        <Slide products={props.data.items} goTo={goTo} />
+        <Slide products={props.data.items}  goTo={goTo}/>
       </section>
     </div>
   );

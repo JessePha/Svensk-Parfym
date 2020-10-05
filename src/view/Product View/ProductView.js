@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router";
 import Button from "../../components/UI/Button/Button";
 import classes from "./ProductView.module.css";
-import Price from '../../components/UI/Price/Price'
+import Price from "../../components/UI/Price/Price";
 
 const ProductView = (props) => {
   let { name } = useParams();
@@ -46,43 +46,48 @@ const ProductView = (props) => {
     }
   };
 
-
   return (
     <div className={classes.ProductView}>
-      <img
-        src={viewProduct.img}
-        style={{ height: "30%", width: "30%" }}
-        alt="perfume"
-      />
+      <div className={classes.Options}>
+        <img
+          src={viewProduct.img}
+          style={{ height: "30%", width: "30%" }}
+          alt="perfume"
+        />
+        <div>
+          <select value={selectSize} onChange={selectedSize}>
+            <option value="Select size">Select size</option>
+            <option value={viewProduct.size[0]}>
+              {viewProduct.size[0]} kr
+            </option>
+            <option value={viewProduct.size[1]}>
+              {viewProduct.size[1]} kr
+            </option>
+          </select>
+          {showPrice ? <Price price={price} value="Kr" /> : ""}
+          <div className={classes.AddandRemove}>
+            <Button
+              disable={showPrice}
+              text="-"
+              click={() => minusItem(viewProduct.name)}
+            />
+            <p>{amount}</p>
+            <Button
+              disable={showPrice}
+              text="+"
+              click={() => addItem(viewProduct.name)}
+            />
+            <Button
+              text="Add to cart"
+              click={() => props.addToCartHandler(chosenItem, amount)}
+              disable={showPrice}
+            />
+          </div>
+        </div>
+      </div>
       <div className={classes.SelectOption}>
         <h3>{viewProduct.name}</h3>
         <p>{viewProduct.description}</p>
-      </div>
-      <div>
-        <select value={selectSize} onChange={selectedSize}>
-          <option value="Select size">Select size</option>
-          <option value={viewProduct.size[0]}>{viewProduct.size[0]} kr</option>
-          <option value={viewProduct.size[1]}>{viewProduct.size[1]} kr</option>
-        </select>
-        {showPrice ? <Price price = {price} value = "Kr" /> : ""}
-        <div className={classes.AddandRemove}>
-          <Button
-            disable={showPrice}
-            text="-"
-            click={() => minusItem(viewProduct.name)}
-          />
-          <p>{amount}</p>
-          <Button
-            disable={showPrice}
-            text="+"
-            click={() => addItem(viewProduct.name)}
-          />
-        </div>
-        <Button
-          text="Add to cart"
-          click={() => props.addToCartHandler(chosenItem, amount)}
-          disable={showPrice}
-        />
       </div>
     </div>
   );

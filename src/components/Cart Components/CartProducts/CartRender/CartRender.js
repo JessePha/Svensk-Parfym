@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./CartItem.module.css";
+import classes from "./CartRender.module.css";
 import Price from "../../../UI/Price/Price";
 
 const CartItem = ({ img, name, add, amount, size, price, minus, remove }) => {

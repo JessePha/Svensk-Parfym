@@ -2,10 +2,21 @@
   width: 80%;
   height: 80%;
   transform: rotate(90deg);
+  position: relative;
+  bottom: 52px;
+  margin-bottom: -20%;
 }
 
 .imageDiv {
   display: flex;
   justify-content: center;
   align-items: center;
+ 
+}
+
+
+@media (min-width: 600px) {
+  .HomeImage{
+    bottom: 80px;
+  }
 }
