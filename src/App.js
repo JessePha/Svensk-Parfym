@@ -8,6 +8,7 @@ import productData from "./data/data";
 import { BrowserRouter } from "react-router-dom";
 import ShopView from "./view/Shop View/ShopView";
 import ProductView from "./view/Product View/ProductView";
+import MissingPage from "./view/MissingPage view/MissingPage";
 
 const App = () => {
   const [data, setData] = useState(productData);
@@ -66,13 +67,7 @@ const App = () => {
       <BrowserRouter>
         <View data={data} cartProducts={cart} setCartProducts={setCart}>
           <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <HomeView data={data}/>
-              )}
-            />
+            <Route exact path="/" render={() => <HomeView data={data} />} />
             <Route exact path="/invent" component={AboutUs} />
             <Route
               exact
@@ -86,6 +81,7 @@ const App = () => {
                 <ProductView data={data} addToCartHandler={addToCartHandler} />
               )}
             />
+            <Route path="/" component={MissingPage} />
           </Switch>
         </View>
       </BrowserRouter>
