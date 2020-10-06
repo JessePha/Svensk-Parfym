@@ -9,7 +9,6 @@ const Perfumes = (props) => {
       key={perfume.name}
       img={perfume.img}
       name={perfume.name}
-      description={perfume.description}
       moreInfo={() => props.goTo(perfume.name)}
     />
   ));

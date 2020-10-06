@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./CartRender.module.css";
 import Price from "../../../UI/Price/Price";
 
-const CartItem = ({ img, name, add, amount, size, price, minus, remove }) => {
+const CartItem = ({ img, name, amount, size, price, add, minus, remove }) => {
   return (
     <div className={classes.CartItem}>
       <div className={classes.InnerCartItemContainer}>

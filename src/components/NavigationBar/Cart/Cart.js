@@ -9,39 +9,38 @@ const Cart = (props) => {
   if (props.open) {
     attachedClasses = [classes.Cart, classes.Open];
   }
-  const addItem = (itemName, size) => {
-    const itemInCart = [...Object.values(props.products)];
-    let addItem = itemInCart.filter((item) =>
-      item.name === itemName && item.size === size ? item.count++ : item.count
-    );
-    props.setProducts(addItem);
-  };
+  // const addItem = (itemName, size) => {
+  //   const itemInCart = [...Object.values(props.products)];
+  //   let addItem = itemInCart.filter((item) =>
+  //     item.name === itemName && item.size === size ? item.count++ : item.count
+  //   );
+  //   props.setProducts(addItem);
+  // };
 
-  const subtractItem = (itemName, size) => {
-    const itemInCart = [...Object.values(props.products)];
-    let removeItem = null;
-    if (itemInCart.length > 0) {
-      removeItem = itemInCart.filter((item) =>
-        item.count > 0 && item.name === itemName && item.size === size
-          ? --item.count
-          : item.count
-      );
-    }
-    props.setProducts(removeItem);
-  };
+  // const subtractItem = (itemName, size) => {
+  //   const itemInCart = [...Object.values(props.products)];
+  //   let removeItem = null;
+  //   if (itemInCart.length > 0) {
+  //     removeItem = itemInCart.filter((item) =>
+  //       item.count > 0 && item.name === itemName && item.size === size
+  //         ? --item.count
+  //         : item.count
+  //     );
+  //   }
+  //   props.setProducts(removeItem);
+  // };
 
-  const removeItem = (itemName, price, size) => {
-    console.log(itemName, price, size);
-    const itemInCart = [...Object.values(props.products)];
-    let removeItem = null;
-    if (itemInCart.length > 0) {
-      removeItem = itemInCart.filter(
-        (item) =>
-          item.name !== itemName || item.size !== size || item.price !== price
-      );
-    }
-    props.setProducts(removeItem);
-  };
+  // const removeItem = (itemName, price, size) => {
+  //   const itemInCart = [...Object.values(props.products)];
+  //   let removeItem = null;
+  //   if (itemInCart.length > 0) {
+  //     removeItem = itemInCart.filter(
+  //       (item) =>
+  //         item.name !== itemName || item.size !== size || item.price !== price
+  //     );
+  //   }
+  //   props.setProducts(removeItem);
+  // };
   return (
     <div className={attachedClasses}>
       <Backdrop show={props.open} clicked={props.closed} />
@@ -52,12 +51,7 @@ const Cart = (props) => {
               <div className={classes.CartHeader}>
                 My basket ({props.totalAmount} items)
               </div>
-              <CartProducts
-                itemInCart={props.products}
-                add={addItem}
-                minus={subtractItem}
-                remove={removeItem}
-              />
+              <CartProducts />
             </div>
           ) : (
             <div className={classes.CartHeader}>

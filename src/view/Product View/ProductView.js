@@ -3,14 +3,16 @@ import { useParams } from "react-router";
 import Button from "../../components/UI/Button/Button";
 import classes from "./ProductView.module.css";
 import Price from "../../components/UI/Price/Price";
+import { connect } from "react-redux";
+import * as actionType from "../../store/actionFunc/actionType";
 
 const ProductView = (props) => {
   let { name } = useParams();
   let [price, setPrice] = useState(0);
-  let item = props.data.items.filter((product) => product.name === name);
+  let [amount, setAmount] = useState(0);
+  let item = props.products.filter((product) => product.name === name);
   const [selectSize, setselectSize] = useState();
   const [showPrice, setShowPrice] = useState(false);
-  let [amount, setAmount] = useState(0);
   const [viewProduct] = useState(...item);
   const [chosenItem, setChosenItem] = useState();
 
@@ -89,8 +91,53 @@ const ProductView = (props) => {
         <h3>{viewProduct.name}</h3>
         <p>{viewProduct.description}</p>
       </div>
+      <div>
+        <select value={selectSize} onChange={selectedSize}>
+          <option value="Select size">Select size</option>
+          <option value={viewProduct.size[0]}>{viewProduct.size[0]} kr</option>
+          <option value={viewProduct.size[1]}>{viewProduct.size[1]} kr</option>
+        </select>
+        {showPrice ? <Price price={price} value="Kr" /> : ""}
+        <div className={classes.AddandRemove}>
+          <Button
+            disable={showPrice}
+            text="-"
+            click={() => minusItem(viewProduct.name)}
+          />
+          <p>{amount}</p>
+          <Button
+            disable={showPrice}
+            text="+"
+            click={() => addItem(viewProduct.name)}
+          />
+        </div>
+        <Button
+          text="Add to cart"
+          click={() => props.addToCart(chosenItem, amount)}
+          disable={showPrice}
+        />
+      </div>
     </div>
   );
 };
 
-export default ProductView;
+const mapStateToProps = (state) => {
+  return {
+    products: state.prd.items,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addToCart: (item, amount) =>
+      dispatch({
+        type: actionType.ADD_ITEM_TO_CART,
+        payload: {
+          product: item,
+          amount: amount,
+        },
+      }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductView);
