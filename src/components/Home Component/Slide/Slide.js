@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LeftButton, RightButton } from "./SlideButtons/SlideButtons";
 import classes from "./Slide.module.css";
 import Dots from "./Dots/Dots";
 import SlideRender from "./SlideRender/SlideRender";
-
+import LoadingDots from "../../UI/Loading/LoadingDots";
 let Slide = (props) => {
   const shownData = 3;
   let [currentData, setCurrentData] = useState(
     props.products.slice(0, shownData)
   );
   let [currentPage, setCurrentPage] = useState(3);
+  let [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [currentData, currentPage]);
 
   let totalData = props.products.length;
   let divided = totalData / shownData;
@@ -28,6 +33,7 @@ let Slide = (props) => {
   });
 
   let updatePage = (e) => {
+    setLoading(true);
     e.preventDefault();
     let value = parseInt(e.target.value);
     if (pagesArray.includes(value)) {
@@ -44,6 +50,8 @@ let Slide = (props) => {
       setCurrentData(props.products.slice(totalData - 3, totalData));
     }
   };
+
+  loading = <LoadingDots loading={loading} />;
 
   let render = currentData.map((product, index) => {
     return (
@@ -74,6 +82,7 @@ let Slide = (props) => {
             />
           </div>
           <div className={classes.Dots}>{dots}</div>
+          {loading}
         </form>
       </div>
     );

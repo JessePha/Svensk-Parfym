@@ -7,6 +7,9 @@
   text-align: center;
   padding: 10px 10px 10px 10px;
 }
+.render:hover img {
+  cursor: pointer;
+}
 .render:hover {
   border: solid 6px rgb(56, 56, 56);
 }
