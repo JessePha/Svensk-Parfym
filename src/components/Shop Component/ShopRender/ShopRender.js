@@ -7,9 +7,7 @@ const Perfume = ({ img, name, description, moreInfo }) => {
       <img src={img} alt="perfume" onClick={moreInfo}></img>
       <h3>{name}</h3>
       <p>{description}</p>
-      <button className="toCartButton" onClick={moreInfo}>
-        View detail
-      </button>
+      <button onClick={moreInfo}>View detail</button>
     </div>
   );
 };

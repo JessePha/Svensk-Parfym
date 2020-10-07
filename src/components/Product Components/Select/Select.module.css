@@ -1,0 +1,13 @@
+.Buttons button:hover{
+    cursor: pointer;
+}
+.Buttons button {
+    font-size: 1rem;
+    margin: 5px 5px 5px 5px;
+    outline: none;
+    border: none;
+    background: none;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+  }
+  

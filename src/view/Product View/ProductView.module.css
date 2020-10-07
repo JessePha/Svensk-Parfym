@@ -1,9 +1,9 @@
 .Options {
-  display: inline-flex;
+  list-style: none;
+  display: flex;
   flex-direction: row;
-  justify-content: left;
-  align-items: center;
-  height: 100%;
+  justify-content: center;
+  align-items: initial;
 }
 .ProductView {
   color: white;
@@ -13,22 +13,4 @@
   padding: 10%;
   font-weight: 400;
   font-size: larger;
-}
-.SelectOption {
-  padding: 10%;
-  border: 1px solid white;
-}
-.AddandRemove {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.AddandRemove button {
-  font-size: 1rem;
-  margin: 5px 5px 5px 5px;
-  outline: none;
-  border: none;
-  background: none;
-  color: rgb(255, 255, 255);
-  cursor: pointer;
 }

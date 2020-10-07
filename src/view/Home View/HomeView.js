@@ -1,10 +1,10 @@
 import React from "react";
 import HomeText from "../../components/Home Component/HomeText/HomeText";
 import "./HomeView.css";
-import HomeImage from "../../components/Home Component/Image/HomeImage";
+import HomeImage from "../../components/UI/HomeImage/HomeImage";
 import Slide from "../../components/Home Component/Slide/Slide";
 import { useHistory } from "react-router";
-import {connect} from 'react-redux'
+import { connect } from "react-redux";
 
 let HomeView = (props) => {
   let history = useHistory();
@@ -19,7 +19,7 @@ let HomeView = (props) => {
           <HomeImage />
         </div>
         <HomeText />
-        <Slide products = {props.products} goTo={goTo} />
+        <Slide products={props.products} goTo={goTo} />
       </section>
     </div>
   );
@@ -27,8 +27,8 @@ let HomeView = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    products: state.prd.items
-  }
-}
+    products: state.prd.items,
+  };
+};
 
-export default connect(mapStateToProps,null)(HomeView);
+export default connect(mapStateToProps, null)(HomeView);

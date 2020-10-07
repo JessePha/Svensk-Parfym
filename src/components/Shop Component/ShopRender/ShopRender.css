@@ -1,25 +1,37 @@
 .perfume {
   color: white;
   text-align: center;
-  background-color: rgba(94, 93, 93, 0.699);
   transition-property: border;
   transition-timing-function: ease-in;
   transition-duration: 0.5s;
+  padding: 10px 10px 10px 10px;
 }
 .perfume img {
   width: 100%;
   height: 100%;
 }
 .perfume:hover img {
+  width: 102%;
+  height: 102%;
+  transition: width 0.2s;
   cursor: pointer;
 }
-.toCartButton {
+
+.perfume button {
   font-family: Arial, Helvetica, sans-serif;
-  color: rgb(220, 181, 72);
-  border-color: rgb(36, 40, 41);
+  color: white;
+  border-color: black;
   border-width: 5px;
   border-style: double;
-  background-color: rgb(36, 40, 41);
+  background-color: black;
   font-weight: bold;
   cursor: pointer;
+}
+.perfume button:hover {
+  color: rgb(220, 181, 72);
+}
+@media (max-width: 400px) {
+  .perfume button {
+    color: rgb(220, 181, 72);
+  }
 }

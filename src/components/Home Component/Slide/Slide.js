@@ -3,17 +3,17 @@ import { LeftButton, RightButton } from "./SlideButtons/SlideButtons";
 import classes from "./Slide.module.css";
 import Dots from "./Dots/Dots";
 import SlideRender from "./SlideRender/SlideRender";
-import LoadingDots from "../../UI/Loading/LoadingDots";
+import LoadingDots from "../../UI/Loading/Loading";
 let Slide = (props) => {
   const shownData = 3;
   let [currentData, setCurrentData] = useState(
     props.products.slice(0, shownData)
   );
   let [currentPage, setCurrentPage] = useState(3);
-  let [loading, setLoading] = useState(false);
+  let [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(false);
+    setLoading(true);
   }, [currentData, currentPage]);
 
   let totalData = props.products.length;
@@ -82,7 +82,6 @@ let Slide = (props) => {
             />
           </div>
           <div className={classes.Dots}>{dots}</div>
-          {loading}
         </form>
       </div>
     );
