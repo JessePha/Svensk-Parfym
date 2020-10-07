@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./CheckoutForm.css";
+import Footer from "../Footer/Footer";
 
 const Checkout = () => {
   const [firstName, setFirstName] = useState("");
@@ -382,6 +383,7 @@ const Checkout = () => {
         <input type="text" required value="Card Expiry Date" />
         <input type="text" required value="CVC/CVV/CID" />
       </form>
+      <Footer />
     </div>
   );
 };
