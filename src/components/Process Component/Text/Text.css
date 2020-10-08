@@ -1,0 +1,21 @@
+h1{
+    color: white;
+    font-size: large;
+}
+
+p{
+    color: white;
+}
+
+img{
+    width:   418px;
+    height: 278px;
+}
+
+.process{
+    display: inline-block;
+        background-color: aqua;
+        width: 500px;
+        text-align: center;
+
+}
