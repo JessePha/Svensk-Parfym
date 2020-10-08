@@ -1,11 +1,11 @@
 import React from "react";
 
-import CheckOut from "../../components/Checkout Component/Checkout";
-import Checkout from "../../components/Checkout Component/CheckoutForm";
+import Checkout from "../../components/Checkout Component/Checkout";
+import Styles from "./CheckoutView.module.css";
 
 const CheckoutView = () => {
   return (
-    <div>
+    <div className={Styles.CheckoutView}>
       <Checkout />
     </div>
   );

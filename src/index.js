@@ -1,12 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import {BrowserRouter} from "react-router-dom"
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { createStore, combineReducers } from "redux";
+import { Provider } from "react-redux";
+import cartReducer from "./store/reducers/cartreducer";
+import productReducer from "./store/reducers/productreducer";
 
+const rootReducer = combineReducers({
+  prd: productReducer,
+  crt: cartReducer,
+});
+const store = createStore(rootReducer);
 ReactDOM.render(
-  <BrowserRouter>
+  <Provider store = {store}>
     <App />
-    </BrowserRouter>,
-  document.getElementById('root')
+  </Provider>,
+  document.getElementById("root")
 );

@@ -1,11 +1,12 @@
 import React from "react";
-import CheckoutForm from "./CheckoutForm";
+import CheckoutForm from "./CheckoutForm/CheckoutForm";
+import CheckoutList from "./CheckoutList/CheckoutList";
+import Styles from "../Checkout Component/Checkout.module.css";
 
-const Checkout = (props) => {
+const Checkout = () => {
   return (
-    <div>
-      <CheckoutForm />
-      <button>{props.totalPrice}</button>
+    <div className={Styles.Checkout}>
+      <CheckoutForm /> <CheckoutList />
     </div>
   );
 };

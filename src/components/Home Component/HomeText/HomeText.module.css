@@ -1,0 +1,25 @@
+.HomeText {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  list-style: none;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  height: 100%;
+  color: rgb(220, 181, 72);
+  font-weight: 400;
+  font-size: larger;
+}
+.citation {
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  list-style: none;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  height: 100%;
+  color: rgb(220, 181, 72);
+  font-weight: 50;
+}

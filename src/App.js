@@ -1,21 +1,27 @@
 import React from "react";
-
 import "./App.css";
 import HomeView from "./view/Home View/HomeView";
-import ShopView from "./view/Shop View/ShopView";
 import View from "./view/View";
-import { Route } from "react-router-dom";
 import AboutUs from "./view/AboutUs View/AboutUs";
-
+import { Route, Switch } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+import ShopView from "./view/Shop View/ShopView";
+import ProductView from "./view/Product View/ProductView";
+import CheckoutView from "./view/Checkout View/CheckoutView";
 const App = () => {
-
   return (
-    <div>
-      <View>
-      <ShopView/>
-        <Route path="/home" component={HomeView} />
-        <Route path="/aboutus" component={AboutUs} />
-      </View>
+    <div className="App">
+      <BrowserRouter>
+        <View>
+          <Switch>
+            <Route exact path="/" component={HomeView} />
+            <Route exact path="/invent" component={AboutUs} />
+            <Route exact path="/Fragrance" component={ShopView} />
+            <Route exact path={"/Fragrance/:name"} component={ProductView} />
+            <Route exact path={"/Checkout"} component={CheckoutView} />
+          </Switch>
+        </View>
+      </BrowserRouter>
     </div>
   );
 };

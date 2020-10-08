@@ -1,42 +1,45 @@
-import React from "react";
-import "./Toolbar.css";
-import Burger from "../NavigationItems/Sidebar/DropDownButton/DropDownButton";
+import React, { useState, useEffect } from "react";
+import classes from "./Toolbar.module.css";
+import Burger from "../NavigationItems/Sidebar/Burger/Burger";
 import NavigationItems from "../NavigationItems/NavigationItems";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../Logo/Logo";
 
 const Toolbar = (props) => {
-  let searchBar = null;
+  const [show, setShow] = useState({
+    visible: true,
+    prevScroll: window.pageYOffset,
+  });
 
-  if(props.searchBar === true) {
-    searchBar = <input></input>
-  }
+  useEffect(() => {
+    const handScroll = () => {
+      const { prevScroll } = { ...show };
+      const currentScrollPos = window.pageYOffset;
+      const visible = prevScroll > currentScrollPos;
+      setShow({ visible, prevScroll: currentScrollPos });
+    };
+    window.addEventListener("scroll", handScroll);
+    return () => {
+      window.removeEventListener("scroll", handScroll);
+    };
+  }, [show]);
+
   return (
-    <header className="TToolbar">
-      <Burger clicked={props.drawerToggleClicked} />
-      <div className="TLogo">
-        <Logo />
-      </div>
-      <nav className="DesktopOnly">
+    <header className={show.visible ? classes.Toolbar : classes.Toolbarhidden}>
+      <Logo />
+      <div className={classes.NavigationItems}>
         <NavigationItems />
-      </nav>
-      <div className="TCart-div">
-        <p>{props.amountInCart}</p>
+      </div>
+      <div className={classes.Cartdiv}>
+        {props.amountInCart > 0 ? <span>{props.amountInCart}</span> : null}
         <FontAwesomeIcon
-          icon={faShoppingBag}
-          className="TCart"
+          icon={faShoppingCart}
+          className={classes.Cart}
           onClick={props.cartToggle}
           amount={props.amountInCart}
         />
-      </div>
-      <div className="TSearchBar">
-      {searchBar}
-      <FontAwesomeIcon
-        onClick={props.searchToggle}
-        icon={faSearch}
-        className="TSearchIcon"
-      />
+        <Burger clicked={props.drawerToggleClicked} />
       </div>
     </header>
   );

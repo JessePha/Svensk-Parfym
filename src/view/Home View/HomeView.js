@@ -1,13 +1,32 @@
 import React from "react";
-import Header from "../../components/Home Component/Header/Header";
+import HomeText from "../../components/Home Component/HomeText/HomeText";
 import "./HomeView.css";
+import HomeImage from "../../components/Home Component/Image/HomeImage";
+import Slide from "../../components/Home Component/Slide/Slide";
+import { useHistory } from "react-router";
+import {connect} from 'react-redux'
 
-let HomeView = () => {
+let HomeView = (props) => {
+  let history = useHistory();
+  const goTo = (name) => {
+    history.push("/Fragrance/" + name);
+  };
+
   return (
-    <div className={"HomeView"}>
-    <Header/>
+    <div className="HomeView">
+      <section>
+        <HomeImage />
+        <HomeText />
+        <Slide products = {props.products} goTo={goTo} />
+      </section>
     </div>
   );
 };
 
-export default HomeView;
+const mapStateToProps = (state) => {
+  return {
+    products: state.prd.items
+  }
+}
+
+export default connect(mapStateToProps,null)(HomeView);

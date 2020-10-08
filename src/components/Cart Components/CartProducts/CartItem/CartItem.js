@@ -1,24 +1,25 @@
 import React from "react";
 import classes from "./CartItem.module.css";
+import Price from "../../../UI/Price/Price";
 
-const CartItem = ({ img, name, add, amount, size, price, minus, remove }) => {
+const CartItem = ({ img, name, amount, size, price, add, minus, remove }) => {
   return (
     <div className={classes.CartItem}>
       <div className={classes.InnerCartItemContainer}>
         <img
           src={img}
           alt="product"
-          style={{ height: "70px", width: "70px" }}
+          style={{ height: "50%", width: "50%" }}
         ></img>
         <div className={classes.InnerContainer}>
           <p>{name}</p>
+          <p>size: {size} </p>
+          {<Price price={price} value="Kr" />}
           <div className={classes.InnerItem}>
-            <button onClick={() => add(name)}>+</button>
+            <button onClick={() => add(name, size)}>+</button>
             <p>{amount}</p>
-            <button onClick={() => minus(name)}>-</button>
-            <button onClick={() => remove(name)}>remove</button>
-            <p>{price}</p>
-            <p>kr</p>
+            <button onClick={() => minus(name, size)}>-</button>
+            <button onClick={() => remove(name, price, size)}>remove</button>
           </div>
         </div>
       </div>

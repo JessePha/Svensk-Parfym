@@ -1,0 +1,14 @@
+.listDiv {
+  padding-top: 60px;
+  width: 100%;
+}
+
+.img {
+  width: 20%;
+}
+.mapTitle {
+  text-align: center;
+}
+.mapDiv {
+  border: 2px lightskyblue;
+}

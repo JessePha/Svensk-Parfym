@@ -1,0 +1,17 @@
+.Slide {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-weight: 400;
+  font-size: larger;
+}
+
+.Dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
