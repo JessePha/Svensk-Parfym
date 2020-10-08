@@ -20,7 +20,7 @@
   position: fixed;
   opacity: 0.5;
 }
-.NavigationItems{
+.NavigationItems {
   flex: 1 1 50%;
 }
 .Cartdiv {
@@ -54,12 +54,15 @@
   .Cartdiv {
     margin-right: 5%;
   }
-  .Cart{
+  .Cart {
     margin-right: 15%;
+  }
+  .TextLogo {
+    display: none;
   }
 }
 @media (min-width: 500px) {
-  .Cartdiv{
+  .Cartdiv {
     margin-left: 50%;
   }
 }

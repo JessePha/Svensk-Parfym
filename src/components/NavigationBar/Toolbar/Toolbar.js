@@ -30,7 +30,7 @@ const Toolbar = (props) => {
       <Logo />
       <div className={classes.NavigationItems}>
         <NavigationItems />
-      </div>
+      </div>{" "}
       <div className={classes.Cartdiv}>
         {props.amountInCart > 0 ? <span>{props.amountInCart}</span> : null}
         <FontAwesomeIcon

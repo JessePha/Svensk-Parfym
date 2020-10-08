@@ -15,31 +15,36 @@ let Select = ({
   minusItem,
 }) => {
   return (
-    <div>
+    <div className={classes.SelectOptions}>
       <select value={selectSize} onChange={selectedSize}>
         <option value="Select size">Select size</option>
         <option value={viewProduct.size[0]}>{viewProduct.size[0]} kr</option>
         <option value={viewProduct.size[1]}>{viewProduct.size[1]} kr</option>
       </select>
-      {showPrice ? <Price price={price} value="Kr" /> : ""}
-      <div className={showPrice ? classes.Buttons : ""}>
+      <div
+        className={
+          showPrice ? classes.AvailableButtons : classes.UnavailableButtons
+        }
+      >
         <Button
           disable={showPrice}
           text="-"
           click={() => minusItem(viewProduct.name)}
         />
         <p>{amount}</p>
+
         <Button
           disable={showPrice}
           text="+"
           click={() => addItem(viewProduct.name)}
         />
+        <Button
+          text="Add to cart"
+          click={() => addToCart(chosenItem, amount)}
+          disable={showPrice}
+        />
       </div>
-      <Button
-        text="Add to cart"
-        click={() => addToCart(chosenItem, amount)}
-        disable={showPrice}
-      />
+      {showPrice ? <Price price={price} value="Kr" /> : ""}
     </div>
   );
 };

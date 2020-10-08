@@ -1,14 +1,8 @@
 .Options {
-  list-style: none;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: initial;
 }
 .ProductView {
   color: white;
-  justify-content: space-evenly;
-  align-items: center;
   border: 1px solid white;
   padding: 10%;
   font-weight: 400;

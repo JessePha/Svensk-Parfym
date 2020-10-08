@@ -1,13 +1,31 @@
-.Buttons button:hover{
-    cursor: pointer;
+.SelectOptions {
+  border: 1px solid white;
 }
-.Buttons button {
-    font-size: 1rem;
-    margin: 5px 5px 5px 5px;
-    outline: none;
-    border: none;
-    background: none;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-  }
-  
+.AvailableButtons button:hover {
+  cursor: pointer;
+}
+.AvailableButtons {
+  display: flex;
+}
+.AvailableButtons button {
+  font-size: 1rem;
+  margin: 5px 5px 5px 5px;
+  outline: none;
+  border: none;
+  background: none;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.UnavailableButtons {
+  display: flex;
+  opacity: 0.5;
+}
+.UnavailableButtons button {
+  font-size: 1rem;
+  margin: 5px 5px 5px 5px;
+  outline: none;
+  border: none;
+  background: none;
+  color: rgb(255, 255, 255);
+}

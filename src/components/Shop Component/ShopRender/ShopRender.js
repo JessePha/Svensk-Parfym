@@ -1,13 +1,18 @@
 import React from "react";
-import "./ShopRender.css";
+import classes from "./ShopRender.module.css";
 
-const Perfume = ({ img, name, description, moreInfo }) => {
+const Perfume = ({ img, price, name, description, moreInfo }) => {
   return (
-    <div className="perfume">
+    <div className={classes.container}>
       <img src={img} alt="perfume" onClick={moreInfo}></img>
-      <h3>{name}</h3>
-      <p>{description}</p>
-      <button onClick={moreInfo}>View detail</button>
+      <div className={classes.productInfo}>
+        <h3>{name}</h3>
+        <p>{price[0]} KR</p>
+        <p>{description}</p>
+        <div className={classes.details}>
+          <button style={{border: "none", background: "none"}} onClick={moreInfo}>View detail</button>
+        </div>
+      </div>
     </div>
   );
 };

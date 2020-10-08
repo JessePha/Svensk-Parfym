@@ -1,0 +1,55 @@
+.container {
+  background-color: whitesmoke;
+  border-radius: 2px;
+  text-align: center;
+  padding: 10px 10px 10px 10px;
+  overflow: hidden;
+  width: 100%;
+  transition: all 2s;
+}
+.container:hover {
+  width: 105%;
+}
+.productInfo {
+  position: relative;
+  bottom: 20px;
+  transition: all 2s;
+  color: black;
+}
+
+.container:hover .productInfo {
+  color: white;
+  opacity: 1;
+  margin-top: -10%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 0%;
+  background-color: black;
+}
+
+.details {
+  opacity: 0;
+  transition: all 2s;
+}
+.container:hover .details {
+  opacity: 1;
+
+}
+.details:hover button {
+  color: rgb(220, 181, 72);
+}
+.container img {
+  width: 90%;
+  height: 90%;
+}
+
+.container button {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  border-color: black;
+  border-width: 5px;
+  border-style: double;
+  background-color: black;
+  font-weight: bold;
+  cursor: pointer;
+}

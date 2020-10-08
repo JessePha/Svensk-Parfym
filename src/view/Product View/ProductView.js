@@ -52,7 +52,6 @@ const ProductView = (props) => {
   return (
     <div className={classes.ProductView}>
       <div className={classes.Options}>
-        <ImageSlideShow viewProduct={viewProduct} />
         <Select
           viewProduct={viewProduct}
           selectSize={selectSize}
@@ -65,6 +64,7 @@ const ProductView = (props) => {
           addItem={addItem}
           minusItem={minusItem}
         />
+        <ImageSlideShow viewProduct={viewProduct} />
       </div>
       <Description viewProduct={viewProduct} />
     </div>

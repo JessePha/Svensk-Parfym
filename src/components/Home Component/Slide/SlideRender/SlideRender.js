@@ -1,9 +1,11 @@
 import React from "react";
 import classes from "./SlideRender.module.css";
 
-const Data = (props) => {
+const SlideRender = (props) => {
+  const cssClasses = [!props.switchingPage ? classes.render : classes.switchS];
+  console.log(cssClasses)
   return (
-    <div className={classes.render}>
+    <div className={cssClasses}>
       <div>
         <img src={props.data.img} alt="perfume" onClick={props.moreInfo}></img>
       </div>
@@ -11,10 +13,10 @@ const Data = (props) => {
       <p>{props.data.descripition}</p>
       <p>{props.data.price} Kr</p>
       <button className={classes.toCartButton} onClick={props.moreInfo}>
-        View detail 
+        View detail
       </button>
     </div>
   );
 };
 
-export default Data;
+export default SlideRender;
