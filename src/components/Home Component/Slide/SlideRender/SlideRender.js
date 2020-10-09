@@ -3,7 +3,6 @@ import classes from "./SlideRender.module.css";
 
 const SlideRender = (props) => {
   const cssClasses = [!props.switchingPage ? classes.render : classes.switchS];
-  console.log(cssClasses)
   return (
     <div className={cssClasses}>
       <div>

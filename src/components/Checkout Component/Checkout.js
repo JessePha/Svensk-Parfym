@@ -6,7 +6,8 @@ import Styles from "../Checkout Component/Checkout.module.css";
 const Checkout = () => {
   return (
     <div className={Styles.Checkout}>
-      <CheckoutForm /> <CheckoutList />
+      <CheckoutForm />
+      <CheckoutList />
     </div>
   );
 };

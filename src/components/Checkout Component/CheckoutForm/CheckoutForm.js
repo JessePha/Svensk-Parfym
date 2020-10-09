@@ -17,7 +17,7 @@ const Checkout = () => {
       <form>
         <h3 className={Styles.h3}>Billing Details:</h3>
         <br />
-        <label className={Styles.label} for="firstName">
+        <label className={Styles.label} htmlFor="firstName">
           First name
         </label>
         <span className={Styles.required}>*</span>
@@ -30,7 +30,7 @@ const Checkout = () => {
           placeholder="First Name"
           onChange={(e) => setFirstName(e.target.value)}
         />
-        <label className={Styles.label} for="lastName">
+        <label className={Styles.label} htmlFor="lastName">
           Last Name
         </label>
         <span className={Styles.required}>*</span>
@@ -43,19 +43,19 @@ const Checkout = () => {
           placeholder="Last Name"
           onChange={(e) => setLastName(e.target.value)}
         />
-        <label className={Styles.label} for="adress">
+        <label className={Styles.label} htmlFor="adress">
           Adress
         </label>
         <span className={Styles.required}>*</span>
         <input
           id="adress"
           type="text"
-          required="true"
+          required={true}
           value={adress}
           placeholder="Street name and House number"
           onChange={(e) => setAdress(e.target.value)}
         />
-        <label className={Styles.label} for="zipCode">
+        <label className={Styles.label} htmlFor="zipCode">
           Zip code
         </label>
         <span className={Styles.required}>*</span>
@@ -66,7 +66,7 @@ const Checkout = () => {
           value={zipcode}
           onChange={(e) => setZipcode(e.target.value)}
         />
-        <label className={Styles.label} for="city">
+        <label className={Styles.label} htmlFor="city">
           City
         </label>
         <span className={Styles.required}>*</span>
@@ -78,7 +78,7 @@ const Checkout = () => {
           placeholder="City or Town"
           onChange={(e) => setCity(e.target.value)}
         />
-        <label className={Styles.label} for="phoneNumber">
+        <label className={Styles.label} htmlFor="phoneNumber">
           Phone Number
         </label>
         <span className={Styles.required}>*</span>
@@ -88,7 +88,7 @@ const Checkout = () => {
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
         />
-        <label className={Styles.label} for="emailAdress">
+        <label className={Styles.label} htmlFor="emailAdress">
           Email Adress
         </label>
         <span className={Styles.required}>*</span>
@@ -99,7 +99,7 @@ const Checkout = () => {
           value={emailAdress}
           onChange={(e) => setEmailAdress(e.target.value)}
         />
-        <label className={Styles.label} for="country">
+        <label className={Styles.label} htmlFor="country">
           Country
         </label>
         <span className={Styles.required}>*</span>
@@ -410,10 +410,10 @@ const Checkout = () => {
           <option value="payEx">PayEx</option>
         </select>
         <br />
-        <input type="text" required value="Card Number" />
-        <input type="text" required value="Card Holder Name" />
-        <input type="text" required value="Card Expiry Date" />
-        <input type="text" required value="CVC/CVV/CID" />
+        <input type="text" required defaultValue="Card Number" />
+        <input type="text" required defaultValue="Card Holder Name" />
+        <input type="text" required defaultValue="Card Expiry Date" />
+        <input type="text" required defaultValue="CVC/CVV/CID" />
         <input type="submit" value="Place Order" />
       </form>
     </div>

@@ -10,7 +10,6 @@ let Slide = (props) => {
   );
   let [currentPage, setCurrentPage] = useState(shownData);
   let [switchingPage, setSwitchingPage] = useState(false);
-  console.log(switchingPage);
   let totalData = props.products.length;
   let divided = totalData / shownData;
   let pagesArray = [];

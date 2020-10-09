@@ -40,7 +40,10 @@ let Select = ({
         />
       </div>
       {showPrice ? <Price price={price} value="Kr" /> : ""}
-      <div className={classes.addToCart} style={showPrice ? {display: "block"} : {display:"none"}}>
+      <div
+        className={classes.addToCart}
+        style={showPrice ? { display: "block" } : { display: "none" }}
+      >
         <Button
           text="Add to cart"
           click={() => addToCart(chosenItem, amount)}
