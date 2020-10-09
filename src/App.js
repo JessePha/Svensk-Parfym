@@ -7,6 +7,7 @@ import { Route, Switch } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import ShopView from "./view/Shop View/ShopView";
 import ProductView from "./view/Product View/ProductView";
+import CheckoutView from "./view/Checkout View/CheckoutView";
 const App = () => {
   return (
     <div className="App">
@@ -17,12 +18,12 @@ const App = () => {
             <Route exact path="/invent" component={AboutUs} />
             <Route exact path="/Fragrance" component={ShopView} />
             <Route exact path={"/Fragrance/:name"} component={ProductView} />
+            <Route exact path={"/Checkout"} component={CheckoutView} />
           </Switch>
         </View>
       </BrowserRouter>
     </div>
   );
 };
-
 
 export default App;

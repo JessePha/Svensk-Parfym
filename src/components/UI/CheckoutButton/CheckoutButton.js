@@ -4,7 +4,7 @@ import classes from "../CheckoutButton/CheckoutButton.module.css";
 let CheckoutButton = () => {
   return (
     <div>
-      <Link to={"/checkout"}>
+      <Link to={"/Checkout"}>
         <button className={classes.CheckoutButton}>Checkout</button>
       </Link>
     </div>
