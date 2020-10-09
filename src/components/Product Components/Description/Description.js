@@ -3,7 +3,7 @@ import classes from "./Description.module.css";
 let Description = ({ viewProduct }) => {
   return (
     <div className={classes.Desc}>
-      <h3>{viewProduct.name}</h3>
+      <h3 style={{textAlign: "center"}}>{viewProduct.name}</h3>
       <p>{viewProduct.description}</p>
     </div>
   );

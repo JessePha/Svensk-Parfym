@@ -38,13 +38,15 @@ let Select = ({
           text="+"
           click={() => addItem(viewProduct.name)}
         />
+      </div>
+      {showPrice ? <Price price={price} value="Kr" /> : ""}
+      <div className={classes.addToCart} style={showPrice ? {display: "block"} : {display:"none"}}>
         <Button
           text="Add to cart"
           click={() => addToCart(chosenItem, amount)}
           disable={showPrice}
         />
       </div>
-      {showPrice ? <Price price={price} value="Kr" /> : ""}
     </div>
   );
 };

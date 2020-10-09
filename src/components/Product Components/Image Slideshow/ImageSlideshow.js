@@ -1,14 +1,6 @@
 import React from "react";
-import classes from "./ImageSlideshow.module.css";
-let ImageSlideShow = ({viewProduct}) => {
-  return (
-    <div className={classes.Image}>
-      <img
-        src={viewProduct.img}
-        alt="perfume"
-      />
-    </div>
-  );
+let ImageSlideShow = ({ viewProduct }) => {
+  return <img src={viewProduct.img} alt="perfume" />;
 };
 
 export default ImageSlideShow;

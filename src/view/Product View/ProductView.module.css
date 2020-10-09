@@ -1,10 +1,30 @@
 .Options {
-  display: flex;
+  width: fit-content;
+  margin-left: 10px;
 }
 .ProductView {
-  color: white;
-  border: 1px solid white;
-  padding: 10%;
-  font-weight: 400;
-  font-size: larger;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  margin-top: 100px;
+  margin-left: 10%;
+  width: 80%;
+}
+.ProductView img {
+  width: 40%;
+  height: 40%;
+}
+
+@media (max-width: 500px) {
+  .ProductView {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+  }
+  .ProductView img {
+    width: 50%;
+    height: 50%;
+  }
 }

@@ -1,11 +1,10 @@
-.SelectOptions {
-  border: 1px solid white;
-}
 .AvailableButtons button:hover {
   cursor: pointer;
 }
 .AvailableButtons {
   display: flex;
+  align-items: center;
+  align-content: center;
 }
 .AvailableButtons button {
   font-size: 1rem;
@@ -18,14 +17,21 @@
 }
 
 .UnavailableButtons {
-  display: flex;
-  opacity: 0.5;
+  display: none;
 }
-.UnavailableButtons button {
-  font-size: 1rem;
-  margin: 5px 5px 5px 5px;
-  outline: none;
-  border: none;
-  background: none;
-  color: rgb(255, 255, 255);
+.addToCart {
+  width: fit-content;
+  
+}
+
+.addToCart button{
+  width: 305px;
+  height: 25px;
+  color: rgb(220,181,72);
+  border-color: rgb(36, 40, 41);
+  border-width: 5px;
+  border-style: double;
+  background-color: rgb(36, 40, 41);
+  font-weight: bold;
+  cursor: pointer; 
 }

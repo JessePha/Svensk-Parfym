@@ -1,4 +1,9 @@
 .Desc {
-    padding: 10%;
-    border: 1px solid white;
+  width: 50%;
+}
+@media (max-width: 500px) {
+  .Desc {
+    font-size: 10px;
+    width: 100%;
   }
+}
