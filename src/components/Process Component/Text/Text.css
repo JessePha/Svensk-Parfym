@@ -3,19 +3,25 @@ h1{
     font-size: large;
 }
 
-p{
+.breadText{
     color: white;
 }
 
-img{
+.pic{
     width:   418px;
     height: 278px;
+    margin: 40px;
 }
 
 .process{
-    display: inline-block;
-        background-color: aqua;
+        display: inline-block;
+        background-color: darkslategrey;
         width: 500px;
         text-align: center;
+        margin: 40px;
+        padding: 10px;}
 
+.textdiv{
+    width: 100%;
+    text-align: center;
 }
