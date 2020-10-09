@@ -20,7 +20,7 @@ const Checkout = () => {
         <label className={Styles.label} for="firstName">
           First name
         </label>
-        <span className="required">*</span>
+        <span className={Styles.required}>*</span>
         <input
           className="names"
           id="firstName"
@@ -33,7 +33,7 @@ const Checkout = () => {
         <label className={Styles.label} for="lastName">
           Last Name
         </label>
-        <span className="required">*</span>
+        <span className={Styles.required}>*</span>
         <input
           className="names"
           id="lastName"
@@ -46,7 +46,7 @@ const Checkout = () => {
         <label className={Styles.label} for="adress">
           Adress
         </label>
-        <span className="required">*</span>
+        <span className={Styles.required}>*</span>
         <input
           id="adress"
           type="text"
@@ -58,7 +58,7 @@ const Checkout = () => {
         <label className={Styles.label} for="zipCode">
           Zip code
         </label>
-        <span className="required">*</span>
+        <span className={Styles.required}>*</span>
         <input
           id="zipCode"
           type="text"
@@ -69,7 +69,7 @@ const Checkout = () => {
         <label className={Styles.label} for="city">
           City
         </label>
-        <span className="required">*</span>
+        <span className={Styles.required}>*</span>
         <input
           id="city"
           type="text"
@@ -81,7 +81,7 @@ const Checkout = () => {
         <label className={Styles.label} for="phoneNumber">
           Phone Number
         </label>
-        <span className="required">*</span>
+        <span className={Styles.required}>*</span>
         <input
           id="phoneNumber"
           type="text"
@@ -91,7 +91,7 @@ const Checkout = () => {
         <label className={Styles.label} for="emailAdress">
           Email Adress
         </label>
-        <span className="required">*</span>
+        <span className={Styles.required}>*</span>
         <input
           id="emailAdress"
           type="text"
@@ -102,7 +102,7 @@ const Checkout = () => {
         <label className={Styles.label} for="country">
           Country
         </label>
-        <span className="required">*</span>
+        <span className={Styles.required}>*</span>
         <select
           id="country"
           value={country}

@@ -1,14 +1,18 @@
 .listDiv {
   padding-top: 60px;
-  width: 100%;
+  width: 140%
 }
 
 .img {
   width: 20%;
+  display:inline-block
 }
-.mapTitle {
-  text-align: center;
+.mapText {
+
 }
 .mapDiv {
   border: 2px lightskyblue;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }

@@ -3,6 +3,7 @@ import HomeText from "../../components/Home Component/HomeText/HomeText";
 import "./HomeView.css";
 import HomeImage from "../../components/Home Component/Image/HomeImage";
 import Slide from "../../components/Home Component/Slide/Slide";
+import Footer from "../../components/Footer Component/Footer"
 import { useHistory } from "react-router";
 import {connect} from 'react-redux'
 
@@ -18,6 +19,7 @@ let HomeView = (props) => {
         <HomeImage />
         <HomeText />
         <Slide products = {props.products} goTo={goTo} />
+        <Footer />
       </section>
     </div>
   );
