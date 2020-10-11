@@ -7,7 +7,7 @@ const Perfume = ({ img, price, name, description, moreInfo }) => {
       <img src={img} alt="perfume" onClick={moreInfo}></img>
       <div className={classes.productInfo}>
         <h3>{name}</h3>
-        <p>{price[0]} KR</p>
+  <p>{price[0]} - {price[1]} KR</p>
         <p>{description}</p>
         <div className={classes.details}>
           <button style={{border: "none", background: "none"}} onClick={moreInfo}>View detail</button>

@@ -1,5 +1,4 @@
 .Toolbar {
-  height: 60px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -10,7 +9,6 @@
   z-index: 90;
   transition: 0.5s ease;
 }
-
 .Toolbarhidden {
   top: -100%;
   width: 100%;
@@ -20,8 +18,13 @@
   position: fixed;
   opacity: 0.5;
 }
-.NavigationItems {
-  flex: 1 1 50%;
+.LogoAndNav {
+  display: flex;
+  align-items: center;
+}
+.LogoName {
+  width: 15%;
+  margin-right: 5%;
 }
 .Cartdiv {
   display: flex;
@@ -47,7 +50,7 @@
 .Cart:hover {
   color: rgb(220, 181, 72);
 }
-@media (max-width: 500px) {
+@media (max-width: 768px) {
   .NavigationItems {
     display: none;
   }
@@ -57,12 +60,7 @@
   .Cart {
     margin-right: 15%;
   }
-  .TextLogo {
+  .LogoName {
     display: none;
-  }
-}
-@media (min-width: 500px) {
-  .Cartdiv {
-    margin-left: 50%;
   }
 }

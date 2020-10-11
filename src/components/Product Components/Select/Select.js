@@ -16,30 +16,37 @@ let Select = ({
 }) => {
   return (
     <div className={classes.SelectOptions}>
-      <select value={selectSize} onChange={selectedSize}>
-        <option value="Select size">Select size</option>
-        <option value={viewProduct.size[0]}>{viewProduct.size[0]} kr</option>
-        <option value={viewProduct.size[1]}>{viewProduct.size[1]} kr</option>
-      </select>
+      <div>
+        <select value={selectSize} onChange={selectedSize}>
+          <option value="Select size">Select size</option>
+          <option value={viewProduct.size[0]}>{viewProduct.size[0]} kr</option>
+          <option value={viewProduct.size[1]}>{viewProduct.size[1]} kr</option>
+        </select>
+      </div>
       <div
         className={
           showPrice ? classes.AvailableButtons : classes.UnavailableButtons
         }
       >
-        <Button
-          disable={showPrice}
-          text="-"
-          click={() => minusItem(viewProduct.name)}
-        />
-        <p>{amount}</p>
-
-        <Button
-          disable={showPrice}
-          text="+"
-          click={() => addItem(viewProduct.name)}
-        />
+        <div>
+          <Button
+            disable={showPrice}
+            text="-"
+            click={() => minusItem(viewProduct.name)}
+          />
+        </div>
+        <div className = {classes.amount}>
+          <p>{amount}</p>
+        </div>
+        <div>
+          <Button
+            disable={showPrice}
+            text="+"
+            click={() => addItem(viewProduct.name)}
+          />
+        </div>
       </div>
-      {showPrice ? <Price price={price} value="Kr" /> : ""}
+      <div> {showPrice ? <Price price={price} value="Kr" /> : ""}</div>
       <div
         className={classes.addToCart}
         style={showPrice ? { display: "block" } : { display: "none" }}

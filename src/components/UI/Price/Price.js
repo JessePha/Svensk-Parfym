@@ -4,7 +4,7 @@ import classes from "./Price.module.css";
 const Price = ({ price, value }) => {
   return (
     <div>
-      <p classes={classes.Style}>{`${price} ${value}`}</p>
+      <p classes={classes.Style}>{`Price: ${price} ${value}`}</p>
     </div>
   );
 };

@@ -1,0 +1,9 @@
+.HomeView{
+  
+}
+
+@media (min-width: 600px) {
+    .HomeImageDiv {
+        padding: 5%;
+    }
+}

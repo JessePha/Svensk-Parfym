@@ -1,21 +1,24 @@
+.SelectOptions > div{
+  margin-bottom: 2%;
+}
 .AvailableButtons button:hover {
   cursor: pointer;
 }
 .AvailableButtons {
   display: flex;
   align-items: center;
-  align-content: center;
+}
+.AvailableButtons > div {
+  margin-right: 3%;
 }
 .AvailableButtons button {
-  font-size: 1rem;
-  margin: 5px 5px 5px 5px;
   outline: none;
   border: none;
-  background: none;
-  color: rgb(255, 255, 255);
+  background: white;
+  color: black;
   cursor: pointer;
+  width: 30px;
 }
-
 .UnavailableButtons {
   display: none;
 }
