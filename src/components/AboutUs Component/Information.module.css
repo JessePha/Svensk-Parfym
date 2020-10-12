@@ -6,23 +6,26 @@
     flex-flow: column;
     align-items: center;
     height: 100%;
-    color: black;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: white;
+    width: 100%;
+    color: rgb(251, 252, 244);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: black;
 }
 
 .Title {
-    color: black;
-    font-weight: 800;
+    color: rgb(251, 252, 244);
+    font-weight: 600;
     font-size: 30px;
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 3%;
-    margin-bottom: 1%;
+    margin-bottom: 3%;
+    text-align: center;
 }
 
 .TopText {
-    margin: 4%;
+    margin-top: 3%;
     text-align: center;
+    color: rgb(251, 252, 244);
 }
 
 @media screen and (min-width: 601px) {
@@ -30,7 +33,7 @@
         font-size: 30px;
     }
     div.MainInformation {
-        font-size: 17px;
+        font-size: 13px;
     }
     div.TopText {
         font-size: 20px;
@@ -42,42 +45,32 @@
         font-size: 20px;
     }
     div.MainInformation {
-        font-size: 15px;
+        font-size: 10px;
     }
     div.TopText {
         font-size: 15px;
     }
 }
 
-
-.Photo {
-    display: flex;
-    width: 93%;
-    padding: 2%;
-    padding-left: 10%;
-
-    -webkit-transition: all 1s ease;
-     -moz-transition: all 1s ease;
-       -o-transition: all 1s ease;
-      -ms-transition: all 1s ease;
-          transition: all 1s ease;
+.HeaderPhoto {
+    width: 100%;
 }
 
-.Photo:hover {
-    width: 95%;
-    height: 95%;
+.Photo2 {
+    width: 60%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.Photo4 {
+    width: 90%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    padding-left: 10%;
 }
 
 .MainInformation {
+    margin: 2%;
     width: 85%;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    text-align: justify;
-    line-height: 1.5;
-}
-
-.Signature {
-    align-items: center;
-    margin-top: 3%;
-    width: 200px;
+    line-height: 1.7;
 }
