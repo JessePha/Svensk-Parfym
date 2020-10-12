@@ -1,9 +1,28 @@
-.HomeView{
-  
+.HomeView {
+}
+.Showcase {
+  color: white;
+  width: 100vw;
+}
+.ShowcaseImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+.Section {
+  height: 100vh;
+  color: white;
+}
+.images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image img {
+  width: 100%;
+  padding: 10%;
+  margin-top: 100%;
 }
 
 @media (min-width: 600px) {
-    .HomeImageDiv {
-        padding: 5%;
-    }
 }

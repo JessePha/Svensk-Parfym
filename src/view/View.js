@@ -52,7 +52,6 @@ const View = (props) => {
       />
       {props.children}
       <Footer />
-
     </div>
   );
 };
