@@ -28,9 +28,8 @@
 }
 .Cartdiv {
   display: flex;
-  align-items: center;
   height: 100%;
-  width: 15%;
+  width: 5%;
 }
 .Cartdiv span {
   text-align: center;

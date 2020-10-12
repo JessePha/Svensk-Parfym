@@ -37,3 +37,9 @@
   font-weight: bold;
   cursor: pointer; 
 }
+
+@media (max-width: 500px) {
+  .addToCart button {
+    width: 100%;
+  }
+}
