@@ -1,1 +1,2 @@
 [1009/091439.095:ERROR:directory_reader_win.cc(43)] FindFirstFile: Det går inte att hitta sökvägen. (0x3)
+[1012/151803.570:ERROR:directory_reader_win.cc(43)] FindFirstFile: Det går inte att hitta sökvägen. (0x3)
