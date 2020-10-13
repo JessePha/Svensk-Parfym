@@ -1,16 +1,18 @@
-import React from 'react'
-import './Footer.css'
+import React from "react";
+import "./Footer.css";
 const Footer = () => {
-
-    return (
+  return (
     <div className="Footer">
-    <p className="MainText">Copyright © 2020</p>
-    <li className="FooterList">
-    <p>POLICY</p>
-    <p>CONTACT</p>
-    <p>INSTAGRAM</p>
-    </li>
-    </div>)
-}
+      <div className="CopyRight">
+        <p>Copyright © 2020</p>
+      </div>
+      <ul style={{listStyle:"none"}}>
+        <li>POLICY</li>
+        <li>CONTACT</li>
+        <li>INSTAGRAM</li>
+      </ul>
+    </div>
+  );
+};
 
-export default Footer
+export default Footer;

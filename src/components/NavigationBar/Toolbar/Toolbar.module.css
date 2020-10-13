@@ -28,9 +28,8 @@
 }
 .Cartdiv {
   display: flex;
-  align-items: center;
   height: 100%;
-  width: 15%;
+  width: 5%;
 }
 .Cartdiv span {
   text-align: center;
@@ -50,12 +49,13 @@
 .Cart:hover {
   color: rgb(220, 181, 72);
 }
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .NavigationItems {
     display: none;
   }
   .Cartdiv {
     margin-right: 5%;
+    width: 15%;
   }
   .Cart {
     margin-right: 15%;

@@ -5,6 +5,7 @@ const Button = (props) => {
     <button
       className={props.style}
       disabled={!props.disable}
+      disable={props.max}
       onClick={props.click}
     >
       {props.text}
