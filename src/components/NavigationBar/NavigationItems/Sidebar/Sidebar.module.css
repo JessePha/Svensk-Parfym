@@ -10,7 +10,6 @@
     z-index: 200;
     background-color: black;
     transition: transform 1s ease-out;
-    opacity: 0.9;
 }
 
 @media (min-width: 500px) {

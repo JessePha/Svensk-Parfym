@@ -11,7 +11,7 @@ const SideBar = (props) => {
   }
   return (
     <div>
-      <Backdrop show={props.open} clicked={props.closed} />
+      <Backdrop open={props.open} closed={props.closed} />
       <div className={attachedClasses.join(" ")}>
         <Logo />
         <NavigationItems />

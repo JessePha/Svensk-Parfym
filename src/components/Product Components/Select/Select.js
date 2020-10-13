@@ -12,12 +12,16 @@ let Select = ({
   chosenItem,
   addToCart,
   addItem,
-  minusItem,
+  subtractItem,
 }) => {
   return (
     <div className={classes.SelectOptions}>
       <div>
-        <select value={selectSize} onChange={selectedSize}>
+        <select
+          value={selectSize}
+          onChange={selectedSize}
+          className={classes.SelectForm}
+        >
           <option value="Select size">Select size</option>
           <option value={viewProduct.size[0]}>{viewProduct.size[0]} kr</option>
           <option value={viewProduct.size[1]}>{viewProduct.size[1]} kr</option>
@@ -32,10 +36,10 @@ let Select = ({
           <Button
             disable={showPrice}
             text="-"
-            click={() => minusItem(viewProduct.name)}
+            click={() => subtractItem(viewProduct.name)}
           />
         </div>
-        <div className = {classes.amount}>
+        <div className={classes.amount}>
           <p>{amount}</p>
         </div>
         <div>

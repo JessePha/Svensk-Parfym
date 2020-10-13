@@ -1,5 +1,14 @@
-.SelectOptions > div{
+.SelectOptions > div {
   margin-bottom: 2%;
+}
+.SelectForm {
+  background-color: rgb(36, 40, 41);
+  color: rgb(220, 181, 72);
+  border: none;
+  height: 25px;
+  outline: none;
+  font-weight: bold;
+  cursor: pointer;
 }
 .AvailableButtons button:hover {
   cursor: pointer;
@@ -14,8 +23,8 @@
 .AvailableButtons button {
   outline: none;
   border: none;
-  background: white;
-  color: black;
+  background: none;
+  color: white;
   cursor: pointer;
   width: 30px;
 }
@@ -26,16 +35,16 @@
   width: fit-content;
 }
 
-.addToCart button{
-  width: 305px;
+.addToCart button {
+  width: 405px;
   height: 25px;
-  color: rgb(220,181,72);
+  color: rgb(220, 181, 72);
   border-color: rgb(36, 40, 41);
   border-width: 5px;
   border-style: double;
   background-color: rgb(36, 40, 41);
   font-weight: bold;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 @media (max-width: 500px) {

@@ -1,7 +1,6 @@
 import React from "react";
 import classes from "./Loading.module.css";
 let Loading = ({ loading }) => {
-  console.log(loading);
   return (
     <div>
       {loading ? (

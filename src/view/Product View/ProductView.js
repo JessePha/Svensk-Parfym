@@ -21,7 +21,7 @@ const ProductView = (props) => {
     setAmount(amount + 1);
   };
 
-  const minusItem = () => {
+  const subtractItem = () => {
     if (amount > 0) {
       setAmount(amount - 1);
     } else {
@@ -64,9 +64,9 @@ const ProductView = (props) => {
           chosenItem={chosenItem}
           addToCart={props.addToCart}
           addItem={addItem}
-          minusItem={minusItem}
+          subtractItem={subtractItem}
         />
-        </div>
+      </div>
     </div>
   );
 };
