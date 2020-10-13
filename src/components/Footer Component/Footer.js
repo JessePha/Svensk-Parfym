@@ -1,12 +1,12 @@
 import React from "react";
-import "./Footer.css";
+import classes from "./Footer.module.css";
 const Footer = () => {
   return (
-    <div className="Footer">
-      <div className="CopyRight">
+    <div className={classes.Footer}>
+      <div className={classes.CopyRight}>
         <p>Copyright © 2020</p>
       </div>
-      <ul style={{listStyle:"none"}}>
+      <ul className={classes.FooterInfo} style={{listStyle:"none"}}>
         <li>POLICY</li>
         <li>CONTACT</li>
         <li>INSTAGRAM</li>

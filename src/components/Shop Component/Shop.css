@@ -21,3 +21,9 @@
     padding-top: 20%;
   }
 }
+@media screen and (max-width: 700px) and (min-width: 500px) {
+  .perfumes {
+    padding-bottom: 25%;
+    padding-top: 20%;
+  }
+}

@@ -34,7 +34,6 @@
   border: none;
   background: none;
   color: black;
-  transition: 1s ease-out;
 }
 
 .InnerItem button:hover {
