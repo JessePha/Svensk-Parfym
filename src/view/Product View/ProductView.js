@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import classes from "./ProductView.module.css";
 import { connect } from "react-redux";
@@ -16,16 +16,22 @@ const ProductView = (props) => {
   const [showPrice, setShowPrice] = useState(false);
   const [viewProduct] = useState(...item);
   const [chosenItem, setChosenItem] = useState();
-
+  const [maxItems, setMaxItems] = useState(false);
+  console.log(maxItems);
   const addItem = () => {
-    setAmount(amount + 1);
+    if (amount < chosenItem.stock) {
+      setAmount(amount + 1);
+    } else if (amount >= chosenItem.stock) {
+      setMaxItems(true);
+    }
   };
 
   const subtractItem = () => {
     if (amount > 0) {
       setAmount(amount - 1);
-    } else {
-      return;
+    }
+    if (amount === chosenItem.stock - 1) {
+      setMaxItems(false);
     }
   };
 
@@ -41,11 +47,13 @@ const ProductView = (props) => {
       setPrice(850);
       setShowPrice(true);
       setChosenItem({ ...temp, price: 850, size: e.target.value });
+      setAmount(0);
     }
     if (e.target.value === viewProduct.size[1]) {
       setPrice(175);
       setShowPrice(true);
       setChosenItem({ ...temp, price: 175, size: e.target.value });
+      setAmount(0);
     }
   };
 
@@ -65,6 +73,7 @@ const ProductView = (props) => {
           addToCart={props.addToCart}
           addItem={addItem}
           subtractItem={subtractItem}
+          max={maxItems}
         />
       </div>
     </div>

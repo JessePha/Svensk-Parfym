@@ -14,12 +14,11 @@ let Description = ({ viewProduct }) => {
       )}
     </div>
   );
-  let media = window.matchMedia("min-width: 600px")
   return (
     <div className={classes.Desc}>
       <h3 style={{ textAlign: "center" }}>{viewProduct.name}</h3>
       <div>
-        {showMore || media ? (
+        {showMore || window.matchMedia("(min-width: 500px)").matches ? (
           <p>{viewProduct.description}</p>
         ) : (
           <p>{viewProduct.description.substring(0, 200)}</p>

@@ -8,7 +8,9 @@ import { BrowserRouter } from "react-router-dom";
 import ShopView from "./view/Shop View/ShopView";
 import ProductView from "./view/Product View/ProductView";
 import CheckoutView from "./view/Checkout View/CheckoutView";
+import ErrorMessage from "./components/UI/ErrorMessage/ErrorMessage"
 const App = () => {
+  
   return (
     <div className="App">
       <BrowserRouter>
@@ -22,6 +24,7 @@ const App = () => {
           </Switch>
         </View>
       </BrowserRouter>
+      <ErrorMessage/>
     </div>
   );
 };

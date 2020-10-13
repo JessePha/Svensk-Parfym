@@ -13,7 +13,11 @@ let Select = ({
   addToCart,
   addItem,
   subtractItem,
+  max,
 }) => {
+  let maxItems = max ? (
+    <p style={{ fontSize: "10px" }}>No available items left in stock</p>
+  ) : null;
   return (
     <div className={classes.SelectOptions}>
       <div>
@@ -49,6 +53,7 @@ let Select = ({
             click={() => addItem(viewProduct.name)}
           />
         </div>
+        {maxItems}
       </div>
       <div> {showPrice ? <Price price={price} value="Kr" /> : ""}</div>
       <div

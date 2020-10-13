@@ -9,6 +9,7 @@
   .Desc {
     font-size: 8px;
     width: 100%;
+    text-align: center;
   }
   .viewMoreButton {
     display: block;
