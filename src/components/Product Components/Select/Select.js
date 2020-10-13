@@ -16,7 +16,7 @@ let Select = ({
   max,
 }) => {
   let maxItems = max ? (
-    <p style={{ fontSize: "10px" }}>No available items left in stock</p>
+    <p style={{ fontSize: "1vw" }}>No available items left in stock</p>
   ) : null;
   return (
     <div className={classes.SelectOptions}>
@@ -36,8 +36,9 @@ let Select = ({
           showPrice ? classes.AvailableButtons : classes.UnavailableButtons
         }
       >
-        <div>
+        <div className={classes.Button}>
           <Button
+            style="button"
             disable={showPrice}
             text="-"
             click={() => subtractItem(viewProduct.name)}
@@ -46,7 +47,7 @@ let Select = ({
         <div className={classes.amount}>
           <p>{amount}</p>
         </div>
-        <div>
+        <div className={classes.Button}>
           <Button
             disable={showPrice}
             text="+"

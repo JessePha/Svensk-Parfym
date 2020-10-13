@@ -24,7 +24,6 @@
 }
 .LogoName {
   width: 15%;
-  margin-right: 5%;
 }
 .Cartdiv {
   display: flex;
@@ -49,7 +48,7 @@
 .Cart:hover {
   color: rgb(220, 181, 72);
 }
-@media (max-width: 500px) {
+@media (max-width: 768px) {
   .NavigationItems {
     display: none;
   }

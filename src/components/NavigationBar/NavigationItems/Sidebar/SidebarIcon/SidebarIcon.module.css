@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 40%;
+  width: 5vw;
   height: 20px;
 }
 .Container p {
@@ -25,7 +25,7 @@
   background-color: white;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 769px) {
   .SidebarIcon {
     display: none;
   }

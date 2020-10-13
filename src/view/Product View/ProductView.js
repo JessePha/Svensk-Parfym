@@ -17,7 +17,6 @@ const ProductView = (props) => {
   const [viewProduct] = useState(...item);
   const [chosenItem, setChosenItem] = useState();
   const [maxItems, setMaxItems] = useState(false);
-  console.log(maxItems);
   const addItem = () => {
     if (amount < chosenItem.stock) {
       setAmount(amount + 1);

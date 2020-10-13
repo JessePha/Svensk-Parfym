@@ -1,25 +1,35 @@
-.Showcase {
-  color: white;
+.Homeview {
+  overflow: hidden;
+}
+.showcaseText {
+  text-align: center;
+  position: relative;
+  height: 100vh;
   width: 100vw;
 }
-.ShowcaseImage img {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
+.innerShowcaseText > div:nth-child(1) {
+  font-size: 5vw;
 }
-.Section {
-  height: 100vh;
-  color: white;
-}
-.images {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.image img {
-  width: 100%;
-  padding: 10%;
+.innerShowcaseText > div:nth-child(2),
+.innerShowcaseText > div:nth-child(3),
+.innerShowcaseText > div:nth-child(4) {
+  font-size: 1vw;
 }
 
-@media (min-width: 600px) {
+.innerShowcaseText {
+  right: 30%;
+  left: 30%;
+  bottom: 0;
+  position: absolute;
+  color: white;
+}
+@media (max-width: 500px) {
+  .showcaseText {
+    height: 50vh;
+  }
+}
+@media (max-width: 768px) {
+  .showcaseText {
+    height: 60vh;
+  }
 }
