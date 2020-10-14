@@ -1,14 +1,8 @@
 .SelectOptions > div {
-  margin-bottom: 2%;
+  padding: 0.2vw 0;
 }
 .SelectForm {
-  background-color: rgb(36, 40, 41);
-  color: rgb(220, 181, 72);
-  border: none;
-  height: 25px;
-  outline: none;
-  font-weight: bold;
-  cursor: pointer;
+  font-size: 1vw;
 }
 .AvailableButtons button:hover {
   cursor: pointer;
@@ -16,9 +10,11 @@
 .AvailableButtons {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 .AvailableButtons > div {
-  margin-right: 3%;
+  margin-right: 0.8vw;
+  font-size: 1vw;
 }
 .AvailableButtons button {
   outline: none;
@@ -26,34 +22,36 @@
   background: none;
   color: white;
   cursor: pointer;
-  width: 30px;
 }
 .UnavailableButtons {
   display: none;
 }
-.addToCart {
-  width: fit-content;
+.Button button {
+  font-size: 1.2vw;
 }
 
 .addToCart button {
-  width: 405px;
-  height: 25px;
-  color: rgb(220, 181, 72);
-  border-color: rgb(36, 40, 41);
-  border-width: 5px;
-  border-style: double;
-  background-color: rgb(36, 40, 41);
-  font-weight: bold;
+  height: 100%;
+  width: 100%;
+  font-size: 1vw;
   cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background-color, 0.5s ease-out;
+  padding: 3%;
 }
-
-@media (max-width: 500px) {
-  .addToCart button {
-    width: 200%;
+.addToCart button:hover {
+  background-color: white;
+  color: goldenrod;
+}
+@media (max-width: 769px) {
+  .SelectOptions > div {
+    padding: 0.02vw 0;
   }
-}
-@media screen and (max-width: 700px) and (min-width: 500px) {
-  .addToCart button {
-    width: 200%;
+  .SelectForm {
+    font-size: 1.2vw;
+  }
+  .AvailableButtons {
+    justify-content: center;
   }
 }

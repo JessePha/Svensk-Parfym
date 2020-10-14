@@ -3,7 +3,7 @@
     color: rgb(220, 181, 72);
     font-weight: 100;
   }
-  @media (min-width: 500px) {
+  @media (min-width: 769px) {
     .NavigationItems {
       display: flex;
       flex-direction: row;
