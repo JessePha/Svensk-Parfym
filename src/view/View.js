@@ -1,9 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Toolbar from "../components/NavigationBar/Toolbar/Toolbar";
 import Sidebar from "../components/NavigationBar/NavigationItems/Sidebar/Sidebar";
+import Footer from "../components/Footer Component/Footer";
 import "./View.css";
 import Cart from "../components/NavigationBar/Cart/Cart";
-import {connect} from 'react-redux'
+import { connect } from "react-redux";
 
 const View = (props) => {
   const [sidebar, setSidebar] = useState(false);
@@ -31,7 +32,6 @@ const View = (props) => {
     setSearchBar(!searchBar);
   };
 
-
   return (
     <div className="Content">
       <Toolbar
@@ -49,17 +49,19 @@ const View = (props) => {
         setProducts={props.setCartProducts}
         totalPrice={props.cartItems.totalPrice}
         totalAmount={props.cartItems.totalAmount}
+
       />
       {props.children}
+      <Footer />
     </div>
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     products: state.prd.items,
-    cartItems: state.crt
-  }
-}
+    cartItems: state.crt,
+  };
+};
 
-export default connect(mapStateToProps,null)(View);
+export default connect(mapStateToProps, null)(View);

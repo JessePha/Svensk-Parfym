@@ -1,12 +1,12 @@
 import React from "react";
-import CartItem from "./CartItem/CartItem";
-import classes from './CartProducts.module.css'
-import {connect} from 'react-redux'
+import CartItem from "./CartRender/CartRender";
+import classes from "./CartProducts.module.css";
+import { connect } from "react-redux";
 import * as actionType from "../../../store/actionFunc/actionType";
 
 const CartProducts = (props) => {
   return (
-    <div className = {classes.CartProducts}>
+    <div className={classes.CartProducts}>
       {props.itemInCart.map((item) => (
         <CartItem
           key={item.name + item.size}
@@ -14,22 +14,22 @@ const CartProducts = (props) => {
           name={item.name}
           amount={item.count}
           price={item.price}
-          size = {item.size}
-          add = {props.addItem}
-          minus = {props.minusItem}
-          remove = {props.removeItem}
+          size={item.size}
+          add={props.addItem}
+          minus={props.minusItem}
+          remove={props.removeItem}
         />
       ))}
     </div>
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    itemInCart: state.crt.cartItem
-  }
-}
-const mapDispatchToProps = dispatch => {
+    itemInCart: state.crt.cartItem,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
   return {
     addItem: (name, size) =>
       dispatch({
@@ -59,6 +59,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-
-
-export default connect(mapStateToProps,mapDispatchToProps)(CartProducts);
+export default connect(mapStateToProps, mapDispatchToProps)(CartProducts);

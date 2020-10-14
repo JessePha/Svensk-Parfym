@@ -1,32 +1,40 @@
-import React from "react";
-import HomeText from "../../components/Home Component/HomeText/HomeText";
-import "./HomeView.css";
-import HomeImage from "../../components/Home Component/Image/HomeImage";
-import Slide from "../../components/Home Component/Slide/Slide";
-import { useHistory } from "react-router";
-import {connect} from 'react-redux'
+import React, { useState, useEffect } from "react";
+import classes from "./HomeView.module.css";
+import HomeSections from "../../components/HomeSections/HomeSections";
 
-let HomeView = (props) => {
-  let history = useHistory();
-  const goTo = (name) => {
-    history.push("/Fragrance/" + name);
+let HomeView = () => {
+  const [offSetY, setOffSetY] = useState(0);
+  const handleScroll = () => {
+    setOffSetY(window.pageYOffset);
   };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [offSetY]);
 
   return (
-    <div className="HomeView">
-      <section>
-        <HomeImage />
-        <HomeText />
-        <Slide products = {props.products} goTo={goTo} />
-      </section>
+    <div className={classes.HomeView}>
+      <div className={classes.showcaseText}>
+        <div
+          className={classes.innerShowcaseText}
+          style={{
+            transform: `translateY(${-1.5 * offSetY}px)`,
+            transition: ` 1 ease-out`,
+            opacity: (offSetY * 15) / 100,
+          }}
+        >
+          <div>SVENSK PARFYM</div>
+          <div>MADE IN SWEDEN</div>
+          <div>ARTISTERY</div>
+          <div>INSPIRED BY SWEDEN</div>
+        </div>
+      </div>
+      <HomeSections yCord = {offSetY} />
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    products: state.prd.items
-  }
-}
+export default HomeView;
 
-export default connect(mapStateToProps,null)(HomeView);

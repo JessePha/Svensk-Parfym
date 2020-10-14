@@ -1,0 +1,10 @@
+.Footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: rgb(220, 181, 72);
+}
+.CopyRight {
+  flex: auto;
+  text-align: center;
+}

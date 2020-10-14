@@ -1,0 +1,57 @@
+.SelectOptions > div {
+  padding: 0.2vw 0;
+}
+.SelectForm {
+  font-size: 1vw;
+}
+.AvailableButtons button:hover {
+  cursor: pointer;
+}
+.AvailableButtons {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.AvailableButtons > div {
+  margin-right: 0.8vw;
+  font-size: 1vw;
+}
+.AvailableButtons button {
+  outline: none;
+  border: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+.UnavailableButtons {
+  display: none;
+}
+.Button button {
+  font-size: 1.2vw;
+}
+
+.addToCart button {
+  height: 100%;
+  width: 100%;
+  font-size: 1vw;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background-color, 0.5s ease-out;
+  padding: 3%;
+}
+.addToCart button:hover {
+  background-color: white;
+  color: goldenrod;
+}
+@media (max-width: 769px) {
+  .SelectOptions > div {
+    padding: 0.02vw 0;
+  }
+  .SelectForm {
+    font-size: 1.2vw;
+  }
+  .AvailableButtons {
+    justify-content: center;
+  }
+}
