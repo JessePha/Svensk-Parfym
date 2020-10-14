@@ -20,7 +20,7 @@ const HomeSections = (props) => {
         { pic1: En1, cord: -0.7 },
         { pic2: En2, cord: -1.1 },
         { pic3: Virke, cord: -0.8 },
-        { text: "A tribute to the Swedish juniper", cord: -1.3 },
+        { text: "En a tribute to the Swedish juniper", cord: -1.3 },
       ],
     },
     {
@@ -55,11 +55,11 @@ const HomeSections = (props) => {
     },
   ];
   return (
-    <>
+    <div>
       {sections.map((section, index) => (
         <HomeSection key={index} section={section} yCord={props.yCord} />
       ))}
-    </>
+    </div>
   );
 };
 

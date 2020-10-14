@@ -20,7 +20,7 @@ let Select = ({
   ) : null;
   return (
     <div className={classes.SelectOptions}>
-      <div>
+      <div className={classes.selectForm}>
         <select
           value={selectSize}
           onChange={selectedSize}
@@ -38,7 +38,6 @@ let Select = ({
       >
         <div className={classes.Button}>
           <Button
-            style="button"
             disable={showPrice}
             text="-"
             click={() => subtractItem(viewProduct.name)}

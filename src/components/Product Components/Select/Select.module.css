@@ -40,6 +40,16 @@
   transition: background-color, 0.5s ease-out;
   padding: 3%;
 }
+.selectForm select {
+  color: goldenrod;
+  background-color: black;
+  border: none;
+  outline: none;
+}
+.selectForm option {
+  border: none;
+  outline: none;
+}
 .addToCart button:hover {
   background-color: white;
   color: goldenrod;

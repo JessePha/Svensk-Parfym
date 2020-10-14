@@ -21,7 +21,6 @@ let HomeView = () => {
           className={classes.innerShowcaseText}
           style={{
             transform: `translateY(${-1.5 * offSetY}px)`,
-            transition: " 2 ease-in-out",
             opacity: (offSetY * 15) / 100,
           }}
         >
