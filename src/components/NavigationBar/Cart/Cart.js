@@ -1,6 +1,5 @@
 import React from "react";
 import Backdrop from "../../UI/Backdrop/Backdrop";
-import CheckoutButton from "../../UI/CheckoutButton/CheckoutButton";
 import CartProducts from "../../Cart Component/CartProducts/CartProducts";
 import classes from "./Cart.module.css";
 
@@ -19,7 +18,7 @@ const Cart = (props) => {
               <div className={classes.CartHeader}>
                 My basket ({props.totalAmount} items)
               </div>
-              <CartProducts />
+              <CartProducts totalPrice={props.totalPrice} closed={props.closed}/>
             </div>
           ) : (
             <div className={classes.CartHeader}>
@@ -27,8 +26,6 @@ const Cart = (props) => {
             </div>
           )}
           <div className={classes.result}>
-            <h3>Total Price: {props.totalPrice} Kr</h3>
-            <CheckoutButton />
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import CartItem from "./CartRender/CartRender";
 import classes from "./CartProducts.module.css";
 import { connect } from "react-redux";
 import * as actionType from "../../../store/actionFunc/actionType";
+import CheckoutButton from "../../UI/CheckoutButton/CheckoutButton";
 
 const CartProducts = (props) => {
   return (
@@ -20,6 +21,8 @@ const CartProducts = (props) => {
           remove={props.removeItem}
         />
       ))}
+      <h3>Total Price: {props.totalPrice} Kr</h3>
+      <CheckoutButton closed={props.closed}/>
     </div>
   );
 };
