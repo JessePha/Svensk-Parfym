@@ -1,31 +1,39 @@
 .SideDrawer {
-    text-align: center;
-    position: fixed;
-    width: 80%;
-    max-width: 70%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    padding: 20% 24%;
-    z-index: 200;
-    background-color: black;
-    transition: transform 1s ease-out;
+  text-align: center;
+  position: fixed;
+  width: 80%;
+  max-width: 70%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  padding: 20% 24%;
+  z-index: 200;
+  background-color: black;
+  transition: transform 1s ease-out;
 }
 
 @media (min-width: 769px) {
-    .SideDrawer {
-        display: none;
-    }
+  .SideDrawer {
+    display: none;
+  }
 }
 
 .Open {
-    transform: translateX(0);
+  transform: translateX(0);
 }
 
 .Close {
-    transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+.CloseButton {
+    position: absolute;
+  color: #aaaaaa;
+  right: 5%;
+  top: 5%;  
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .Logo {
-    height: 11%;
+  height: 11%;
 }
