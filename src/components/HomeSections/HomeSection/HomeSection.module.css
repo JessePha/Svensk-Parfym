@@ -38,9 +38,9 @@
   left: 30%;
   right: 30%;
   font-size: 3vw;
-  color: transparent;
+  color: rgb(220, 181, 72);
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-color:  black;
 }
 @media (max-width: 500px) {
   .Section {
