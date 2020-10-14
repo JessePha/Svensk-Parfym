@@ -1,7 +1,7 @@
 .Section {
   text-align: center;
   position: relative;
-  height: 100vh;
+  height: 80vh;
 }
 .images {
   display: flex;
@@ -11,10 +11,15 @@
 .image:nth-child(1) img {
   position: absolute;
   left: 15%;
-  bottom: 0;
+  bottom: -250px;
+}
+.image:nth-child(2) img {
+  position: absolute;
+  left: 40%;
+  bottom: 0%;
 }
 .image img {
-  width: 40%;
+  width: 30%;
 }
 .textContent {
   position: relative;
@@ -22,16 +27,15 @@
 .innerTextContent {
   position: absolute;
   width: 40%;
-  left: 30%;
-  right: 30%;
-  font-size: 3vw;
+  right: 60px;
+  font-size: 2vw;
   color: rgb(220, 181, 72);
-  font-size: 20px;
   font-weight: bolder;
+
 }
 @media (max-width: 500px) {
   .Section {
-    height: 40vh;
+    height: 50vh;
   }
 
   .innerShowcaseText {
@@ -51,11 +55,10 @@
 }
 @media screen and (max-width: 700px) and (min-width: 500px) {
   .Section {
-    height: 50vh;
+    height: 40vh;
   }
   .innerTextContent {
     font-size: 10px;
-    left: 30%;
-    right: 30%;
+    right: 0%;
   }
 }
