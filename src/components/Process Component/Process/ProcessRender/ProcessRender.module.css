@@ -29,9 +29,10 @@
   width: 40%;
   right: 60px;
   font-size: 2vw;
-  color: rgb(220, 181, 72);
   font-weight: bolder;
-
+  -webkit-text-fill-color: rgb(220, 181, 72);
+  -webkit-text-stroke: 0.001px;
+  -webkit-text-stroke-color: rgb(0, 0, 0);
 }
 @media (max-width: 500px) {
   .Section {
@@ -54,11 +55,11 @@
   }
 }
 @media screen and (max-width: 700px) and (min-width: 500px) {
-  .Section {
-    height: 40vh;
-  }
   .innerTextContent {
-    font-size: 10px;
+    font-size: 90%;
     right: 0%;
+  }
+  .image img {
+    width: 50%;
   }
 }

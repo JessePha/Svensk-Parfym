@@ -38,8 +38,10 @@
   left: 30%;
   right: 30%;
   font-size: 3vw;
-  color: rgb(220, 181, 72);
-  -webkit-text-stroke-width: 1px;
+  font-weight: bolder;
+  -webkit-text-fill-color: rgb(220, 181, 72);
+  -webkit-text-stroke: 0.2px;
+  -webkit-text-stroke-color: rgb(0, 0, 0);
 }
 @media (max-width: 500px) {
   .Section {

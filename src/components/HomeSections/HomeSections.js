@@ -18,9 +18,9 @@ const HomeSections = (props) => {
     {
       sect: [
         { pic1: En1, cord: -0.7 },
-        { pic2: En2, cord: -1.1 },
+        { pic2: En2, cord: -1.4 },
         { pic3: Virke, cord: -0.8 },
-        { text: "En a tribute to the Swedish juniper", cord: -1.3 },
+        { text: "En, a tribute to the Swedish juniper", cord: -1.3 },
       ],
     },
     {

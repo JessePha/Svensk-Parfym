@@ -40,7 +40,7 @@ const Text = (props) => {
     {
       sect: [
         { pic1: perfym1, cord: -1.0 },
-        {pic2: perfym1, cord: -1.1},
+        {pic2: perfym1, cord: -1.0},
         {
           text:
             "We love differences. Svensk Parfym fragrances are categorised as gender-free to signalise that anyone anywhere should think and feel by themselves what they want - freely and with all differences preserved.",
@@ -50,7 +50,7 @@ const Text = (props) => {
     },
     {
       sect: [
-        { pic1: perfym1, cord: -1.2},
+        { pic1: perfym1, cord: -1.0},
         {pic2: perfym1, cord: -1.1},
 
         {
