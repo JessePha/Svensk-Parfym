@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Styles from "./CheckoutForm.module.css";
+import PayEx from "../../../shared/Images/payex.png"
+import Visa from "../../../shared/Images/visa.png"
+
 
 const Checkout = () => {
   const [firstName, setFirstName] = useState("");
@@ -11,6 +14,38 @@ const Checkout = () => {
   const [emailAdress, setEmailAdress] = useState("");
   const [country, setCountry] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("");
+  const [cardNumber, setCardnumber] = useState("")
+  const [cardHolder, setCardHolder] = useState("")
+  const [cardExpire, setCardExpire] = useState("")
+  const [cardCVV, setCardCVV] = useState("")
+  const [payexUser, setPayexUser] = useState("")
+  const [payExpass, setPayexPass] = useState("")
+
+  const test = () => {
+      if (paymentMethod === "creditCard") {
+        return (
+          <div>
+        <input type="text" value={cardNumber} required placeholder="Card Number" onChange={(e) => setCardnumber(e.target.value)}/>
+        <input type="text" value={cardHolder} required placeholder="Card Holder Name" onChange={(e) => setCardHolder(e.target.value)}/>
+        <input type="text" value={cardExpire} required placeholder="Expiration Date" onChange={(e) => setCardExpire(e.target.value)}/>
+        <input type="text" value={cardCVV}    required  placeholder="CCV/CID/CSC" onChange={(e) => setCardCVV(e.target.value)}/>
+        <input type="submit" value="Place Order" />
+          </div>
+          )
+      }
+      else if(paymentMethod === "payEx") {
+        return (
+          <div>
+          <input type="text" value={payexUser} required placeholder="Username" onChange={(e) => setPayexUser(e.target.value)}/>
+        <input type="password" value={payExpass} required placeholder="Password" onChange={(e) => setPayexPass(e.target.value)}/>
+        <input type="submit" value="Place Order" />
+          </div>
+        )
+      }
+      else {
+        return null
+      }
+  }
 
   return (
     <div className={Styles.formDiv}>
@@ -401,20 +436,20 @@ const Checkout = () => {
           <option value="Zimbabwe">Zimbabwe</option>
         </select>
         <label className={Styles.label}>Choose your payment method</label>
-        <select
+        {/*<select
           name="paymentMethod"
           value={paymentMethod}
           onChange={(e) => setPaymentMethod(e.target.value)}
         >
+        <option></option>
           <option value="creditCard">Credit Card</option>
           <option value="payEx">PayEx</option>
         </select>
+        */}
         <br />
-        <input type="text" required value="Card Number" />
-        <input type="text" required value="Card Holder Name" />
-        <input type="text" required value="Card Expiry Date" />
-        <input type="text" required value="CVC/CVV/CID" />
-        <input type="submit" value="Place Order" />
+        <img classname={Styles.paymentImg}src={PayEx} alt="PayEx" onClick={() => setPaymentMethod("payEx")} />
+        <img classname={Styles.paymentImg} src={Visa} alt="Visa" onClick={() => setPaymentMethod("creditCard")}/>
+        {test()}
       </form>
     </div>
   );

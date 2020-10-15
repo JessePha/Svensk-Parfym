@@ -20,7 +20,8 @@ form {
   margin-right: 0px;
   width: 60%;
 }
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   width: 100%;
   padding: 10px 2px;
   margin: 5px 0;
@@ -55,4 +56,7 @@ input[type="submit"] {
 }
 input[type="submit"]:hover {
   text-decoration: underline;
+}
+img {
+  width: 100px;
 }
