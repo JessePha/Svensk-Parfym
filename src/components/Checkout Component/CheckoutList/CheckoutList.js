@@ -16,7 +16,10 @@ const CheckoutList = (props) => {
       {props.cartItem.map((items) => (
         <div className={Styles.mapDiv}>
           <img className={Styles.img} src={items.img} alt={items.name} />
-          <p classname={Styles.mapText}>{items.name} {items.size} ⨯ {items.count}: {items.price * items.count}kr </p>
+          <p classname={Styles.mapText}>
+            {items.name} {items.size} ⨯ {items.count}:{" "}
+            {items.price * items.count}kr{" "}
+          </p>
         </div>
       ))}
       <br />

@@ -1,15 +1,18 @@
 .listDiv {
-  padding-top: 60px;
-  width: 140%
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  height: fit-content;
+  width: fit-content;
 }
 
 .img {
   width: 20%;
-  display:inline-block
 }
 .mapDiv {
   border: 2px lightskyblue;
   display: flex;
   flex-direction: row;
+  justify-content: left;
   align-items: center;
 }
