@@ -21,7 +21,7 @@ const Checkout = () => {
   const [payexUser, setPayexUser] = useState("")
   const [payExpass, setPayexPass] = useState("")
 
-  const test = () => {
+  const handlePayment = () => {
       if (paymentMethod === "creditCard") {
         return (
           <div>
@@ -436,20 +436,10 @@ const Checkout = () => {
           <option value="Zimbabwe">Zimbabwe</option>
         </select>
         <label className={Styles.label}>Choose your payment method</label>
-        {/*<select
-          name="paymentMethod"
-          value={paymentMethod}
-          onChange={(e) => setPaymentMethod(e.target.value)}
-        >
-        <option></option>
-          <option value="creditCard">Credit Card</option>
-          <option value="payEx">PayEx</option>
-        </select>
-        */}
         <br />
-        <img classname={Styles.paymentImg}src={PayEx} alt="PayEx" onClick={() => setPaymentMethod("payEx")} />
-        <img classname={Styles.paymentImg} src={Visa} alt="Visa" onClick={() => setPaymentMethod("creditCard")}/>
-        {test()}
+        <img className={Styles.img} src={PayEx} alt="PayEx" onClick={() => setPaymentMethod("payEx")} />
+        <img  className={Styles.img} src={Visa} alt="Visa" onClick={() => setPaymentMethod("creditCard")}/>
+        {handlePayment()}
       </form>
     </div>
   );
