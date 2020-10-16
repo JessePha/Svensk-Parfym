@@ -1,0 +1,35 @@
+.Homeview {
+  overflow: hidden;
+}
+.showcaseText {
+  text-align: center;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+.innerShowcaseText > div:nth-child(1) {
+  font-size: 5vw;
+}
+.innerShowcaseText > div:nth-child(2),
+.innerShowcaseText > div:nth-child(3),
+.innerShowcaseText > div:nth-child(4) {
+  font-size: 1vw;
+}
+
+.innerShowcaseText {
+  right: 30%;
+  left: 30%;
+  bottom: 0;
+  position: absolute;
+  color: white;
+}
+@media (max-width: 500px) {
+  .showcaseText {
+    height: 50vh;
+  }
+}
+@media (max-width: 768px) {
+  .showcaseText {
+    height: 60vh;
+  }
+}

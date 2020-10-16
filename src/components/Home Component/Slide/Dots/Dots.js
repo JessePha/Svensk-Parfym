@@ -9,7 +9,6 @@ const Dots = (props) => {
       className={classes.dots}
       id={classes.soloDot}
       value={props.data * props.shownData}
-      key={props.index}
     >
       <FontAwesomeIcon icon={faCircle} style={{ pointerEvents: "none" }} />
     </button>

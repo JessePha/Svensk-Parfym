@@ -1,20 +1,31 @@
+.Options {
+  width: 60%;
+  padding: 2%;
+}
 .ProductView {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  width: 100%;
+  padding: 10%;
+}
+.ProductView > div {
+  padding: 10%;
+}
+.ProductView img {
+  width: 40%;
+}
+
+@media (max-width: 769px) {
+  .ProductView {
     display: flex;
-    color: white;
-    justify-content: space-evenly;
+    flex-flow: column;
     align-items: center;
-    border: 1px solid white;
-    padding: 10%;
-}
-.SelectOption{
-    padding: 10%;
-    border: 1px solid white;
-}
-.AddandRemove{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.AddandRemove button{
-    
+    text-align: center;
+  }
+  .ProductView img {
+    width: 50%;
+    height: 50%;
+  }
 }

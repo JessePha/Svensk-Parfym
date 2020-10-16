@@ -13,6 +13,6 @@ export const addTotalAmount = (itemsInCart) => {
     .reduce((num, sum) => {
       return num + sum;
     }, 0);
-
+    console.log(amount)
   return amount;
 };

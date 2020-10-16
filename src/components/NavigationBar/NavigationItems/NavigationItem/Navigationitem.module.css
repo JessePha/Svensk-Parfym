@@ -4,25 +4,24 @@
 
 .NavigationItem a {
   color: rgb(220, 181, 72);
+  font-size: 0.8rem;
   text-decoration: none;
 }
 
-@media (max-width: 500px) {
-  .NavigationItem {
-    padding: 10%;
-  }
-}
-
-@media (min-width: 500px) {
+@media (min-width: 769px) {
   .NavigationItem a {
     color: white;
-    padding: 10% 0%;
-    border-bottom: 2px solid transparent;
+    padding: 7% 0%;
+    font-size: 0.8rem;
+    border-bottom: 1px solid transparent;
     transition: 0.5s ease;
+  }
+  .NavigationItem {
+    padding: 5%;
   }
 
   .NavigationItem a:hover {
-    border-bottom: 2px solid rgb(209, 164, 39);
+    border-bottom: 1px solid rgb(209, 164, 39);
     color: white;
   }
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Toolbar from "../components/NavigationBar/Toolbar/Toolbar";
 import Sidebar from "../components/NavigationBar/NavigationItems/Sidebar/Sidebar";
-import Footer from "../components/Footer Component/Footer"
+import Footer from "../components/Footer Component/Footer";
 import "./View.css";
 import Cart from "../components/NavigationBar/Cart/Cart";
 import { connect } from "react-redux";
@@ -49,10 +49,10 @@ const View = (props) => {
         setProducts={props.setCartProducts}
         totalPrice={props.cartItems.totalPrice}
         totalAmount={props.cartItems.totalAmount}
+
       />
       {props.children}
       <Footer />
-
     </div>
   );
 };

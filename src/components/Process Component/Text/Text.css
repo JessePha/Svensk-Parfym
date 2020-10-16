@@ -1,0 +1,32 @@
+h1{
+    color: white;
+    font-size: large;
+}
+
+.breadText{
+    color: whitesmoke;
+}
+
+.pic{
+    width:   418px;
+    height: 278px;
+    margin: 40px;
+}
+
+.process{
+        display: inline-block;
+        background-color:rgb(40,40,40);
+        width: 500px;
+        text-align: center;
+        margin: 40px;
+        padding: 10px;
+        border: 1px solid rgb(161, 136, 54);
+        border-radius: 10px;
+    }
+        
+.textdiv{
+    width: 100%;
+    text-align: center;
+}
+
+/* använd view istället för px */

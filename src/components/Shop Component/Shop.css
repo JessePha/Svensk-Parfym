@@ -1,15 +1,22 @@
-.perfumes{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 2% 2%;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
-    padding: 5%;
+.perfumes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2% 2%;
+  justify-content: center;
+  align-items: center;
+  padding: 10% 5%;
 }
 
 @media (min-width: 600px) {
-    .perfumes {
-        grid-template-columns: 1fr 1fr 1fr ;
-    }
+  .perfumes {
+    grid-template-columns: 1fr 1fr 1fr;
+    
+  }
+}
+
+@media(max-width: 500px) {
+  .perfumes {
+    padding-bottom: 40%;
+    padding-top: 20%;
+  }
 }
