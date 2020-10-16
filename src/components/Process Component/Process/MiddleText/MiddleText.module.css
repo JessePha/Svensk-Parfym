@@ -1,0 +1,27 @@
+.MiddleText {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5em; 
+  grid-auto-rows: minmax(10px, auto);
+  border: 1px solid yellow
+}
+
+.MiddleText p {
+  text-align: center;
+}
+.MiddleText h4 {
+  text-align: center;
+}
+
+.FirstColumn {
+  color: white;
+}
+.SecondColumn {
+  color: white;
+}
+
+@media (max-width: 500px) {
+  .MiddleText p {
+    font-size: 60%;
+  }
+}

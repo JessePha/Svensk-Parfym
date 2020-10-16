@@ -1,0 +1,11 @@
+.UpperImages img {
+  width: 50%;
+  height: auto;
+}
+.UpperImages {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  width: fit-content;
+  border: 1px solid green;
+}

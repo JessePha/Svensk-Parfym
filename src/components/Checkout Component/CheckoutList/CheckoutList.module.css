@@ -10,7 +10,7 @@
   width: 20%;
 }
 .mapDiv {
-  border: 2px lightskyblue;
+  border: 2px rgb(0, 0, 0);
   display: flex;
   flex-direction: row;
   justify-content: left;

@@ -1,0 +1,13 @@
+.BottomImages {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  width: fit-content;
+  border: 1px solid blue;
+}
+
+.BottomImages img {
+  padding: 5px 10px 5px 10px;
+  width: 25%;
+  border-radius: 8px;
+}

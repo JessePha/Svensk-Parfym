@@ -1,0 +1,11 @@
+.showMoreButton {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.showMoreButton button {
+  color: black;
+  border: none;
+  width: 40%;
+  cursor: pointer;
+}

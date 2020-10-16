@@ -1,19 +1,8 @@
-import React, { useEffect, useState } from "react";
-import ProcessRender from "../../components/Process Component/Process/Process.js";
+import React from "react";
+import Process from "../../components/Process Component/Process/Process";
 
 let ProcessView = () => {
-  const [offSetY, setOffSetY] = useState(0);
-  const handleScroll = () => {
-    setOffSetY(window.pageYOffset);
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [offSetY]);
-
-  return <ProcessRender yCord={offSetY} />;
+  return <Process />;
 };
 
 export default ProcessView;

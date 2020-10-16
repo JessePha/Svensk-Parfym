@@ -33,12 +33,12 @@
   margin: 5px 0;
   box-sizing: border-box;
   border: none;
-  border-bottom: 2px solid lightskyblue;
+  border-bottom: 2px solid rgb(0, 0, 0);
   font-size: 15px;
 }
 .formDiv input[type="text"]:focus {
   outline-style: solid 3px;
-  outline-color: lightskyblue;
+  outline-color: rgb(255, 255, 255);
   border: none;
 }
 .formDiv input::placeholder {
@@ -47,10 +47,10 @@
 .formDiv select {
   padding: 4px 10px;
   border: none;
-  background: rgba(135, 207, 235, 0.199);
+  background: rgba(255, 255, 255, 0.199);
 }
 .formDiv input[type="submit"] {
-  background-color: skyblue;
+  background-color: rgb(0, 0, 0);
   border: none;
   color: white;
   padding: 12px 16px;

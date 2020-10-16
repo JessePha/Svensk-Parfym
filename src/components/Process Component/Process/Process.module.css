@@ -1,0 +1,6 @@
+.Process {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 12% 5% 12% 5%;
+  border: 1px solid red;
+}
