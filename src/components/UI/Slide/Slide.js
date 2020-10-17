@@ -19,6 +19,7 @@ let Slide = (props) => {
   let render = currentData.map((product, index) => {
     return (
       <SlideRender
+        className={classes.slideRender}
         data={product}
         key={index}
         moreInfo={() => props.goTo(product.name)}
@@ -40,7 +41,7 @@ let Slide = (props) => {
         setCurrentPage(shownData);
         setCurrentData(props.products.slice(0, shownData));
       }
-    }, 8000);
+    }, 10000);
     return () => clearInterval(interval);
   });
 
@@ -50,11 +51,7 @@ let Slide = (props) => {
 
   let availableItems = null;
   if (props.products.length > 0) {
-    availableItems = (
-      <div>
-        <div className={classes.Slide}>{render}</div>
-      </div>
-    );
+    availableItems = <div className={classes.Slide}>{render}</div>;
   } else {
     availableItems = (
       <div style={{ color: "white" }}>

@@ -1,14 +1,16 @@
 .Slide {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  animation: fade 1s ease-in;
+  animation: fade 10s infinite;
 }
 
 @keyframes fade {
-  from {
+  0% {
     opacity: 0;
+    transform: translateX(-2%);
   }
-  to {
+  20% {
     opacity: 1;
+    transform: translateX(0);
   }
 }
