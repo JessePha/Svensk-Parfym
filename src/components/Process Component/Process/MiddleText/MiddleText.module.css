@@ -1,27 +1,40 @@
 .MiddleText {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 5em; 
+  grid-gap: 5em;
+  color: white;
   grid-auto-rows: minmax(10px, auto);
-  border: 1px solid yellow
+  animation: fade 0.5s ease-in;
 }
-
+.showText {
+  transition: all 0.5s ease-out;
+  transform: translateY(0);
+  opacity: 1;
+  height: auto;
+}
+.hideText {
+  opacity: 0;
+  transform: translateY(-2%);
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+}
 .MiddleText p {
   text-align: center;
 }
+
 .MiddleText h4 {
   text-align: center;
-}
-
-.FirstColumn {
-  color: white;
-}
-.SecondColumn {
-  color: white;
 }
 
 @media (max-width: 500px) {
   .MiddleText p {
     font-size: 60%;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
   }
 }

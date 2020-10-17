@@ -1,16 +1,14 @@
 .Slide {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  font-weight: 400;
-  font-size: larger;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  animation: fade 1s ease-in;
 }
 
-.Dots {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

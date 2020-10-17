@@ -2,10 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  padding: 5px 5px 5px 5px;
+  cursor: pointer;
 }
 .showMoreButton button {
   color: black;
   border: none;
   width: 40%;
-  cursor: pointer;
 }

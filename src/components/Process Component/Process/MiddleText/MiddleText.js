@@ -6,7 +6,7 @@ const MiddleText = () => {
   let [showMoreSecond, setShowMoreSecond] = useState(false);
   return (
     <div className={classes.MiddleText}>
-      <div className={classes.FirstColumn}>
+      <div className={classes.firstColumn}>
         <h4>CONCEPT OF SVENSK PARFYM </h4>
         <p>
           With focus on usability and versatility Svensk Parfym is a fine
@@ -14,7 +14,7 @@ const MiddleText = () => {
           fragrances of Svensk Parfym will continue to grow as inspiration and
           creativity comes along - always unique, generous and progressing.
         </p>
-        <div style={showMoreFirst ? { opacity: "block" } : { display: "none" }}>
+        <div className={showMoreFirst ? classes.showText : classes.hideText}>
           <br />
           <h4>FRAGRANCE</h4>
           <p>
@@ -43,9 +43,7 @@ const MiddleText = () => {
           Niche is the best you can find if there is much dedication and talent
           behind it and consequently niche is very poor if there isn’t.
         </p>
-        <div
-          style={showMoreSecond ? { display: "block" } : { display: "none" }}
-        >
+        <div className={showMoreSecond ? classes.showText : classes.hideText}>
           <br />
           <h4>FRAGRANCE IS GENDER-FREE</h4>
           <p>
@@ -55,6 +53,7 @@ const MiddleText = () => {
             preserved.
           </p>
           <br />
+
           <h4>INVENTION</h4>
           <p>
             It all begins with an idea, a longing to create a composition that
