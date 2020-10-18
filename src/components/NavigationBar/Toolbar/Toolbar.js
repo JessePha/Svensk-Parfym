@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import classes from "./Toolbar.module.css";
 import Burger from "../NavigationItems/Sidebar/SidebarIcon/SidebarIcon";
 import NavigationItems from "../NavigationItems/NavigationItems";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { HiOutlineShoppingBag } from 'react-icons/hi';
 import logoimg from "../../../shared/Images/newLogo.jpg";
 import logoimg1 from "../../../shared/Images/Ny_SP.png";
 import Logo from "../Logo/Logo";
@@ -38,8 +37,7 @@ const Toolbar = (props) => {
       <img src={logoimg1} alt="logo" className={classes.LogoName} />
       <div className={classes.Cartdiv}>
         {props.amountInCart > 0 ? <span>{props.amountInCart}</span> : null}
-        <FontAwesomeIcon
-          icon={faShoppingCart}
+        <HiOutlineShoppingBag
           className={classes.Cart}
           onClick={props.cartToggle}
           amount={props.amountInCart}
