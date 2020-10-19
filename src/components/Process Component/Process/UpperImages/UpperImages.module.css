@@ -1,12 +1,10 @@
 .UpperImages img {
   width: 50%;
-  height: auto;
 }
 .UpperImages {
   display: flex;
   flex-flow: row;
   justify-content: center;
-  width: fit-content;
   animation: fade 0.4s ease-in;
 }
 
