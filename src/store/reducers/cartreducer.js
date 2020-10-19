@@ -1,5 +1,6 @@
 import * as actionType from "../actionFunc/actionType";
-import * as actionFunc from "../actionFunc/actionFunc";
+import * as actionFunc from "../actionFunc/subFunc";
+import { updateObject } from "../utility";
 
 const initialState = {
   cartItem: [],
@@ -13,9 +14,7 @@ const cartReducer = (state = initialState, action) => {
       const itemsInCart = state.cartItem.slice();
       let alreadyInCart = false;
       if (action.payload.amount === 0) {
-        return {
-          ...state,
-        };
+        return updateObject(state, null);
       }
       itemsInCart.forEach((item) => {
         if (
@@ -27,16 +26,18 @@ const cartReducer = (state = initialState, action) => {
         }
       });
       if (!alreadyInCart) {
-        itemsInCart.push({ ...action.payload.product, count: action.payload.amount });
+        itemsInCart.push({
+          ...action.payload.product,
+          count: action.payload.amount,
+        });
       }
       let amount = actionFunc.addTotalAmount(itemsInCart);
       let price = actionFunc.addTotalPrice(itemsInCart);
-      return {
-        ...state,
+      return updateObject(state, {
         cartItem: itemsInCart,
         totalPrice: price,
         totalAmount: amount,
-      };
+      });
     }
     case actionType.ADD_ITEM: {
       const items = state.cartItem.slice();
@@ -48,12 +49,11 @@ const cartReducer = (state = initialState, action) => {
       );
       let price = actionFunc.addTotalPrice(addItem);
       let amount = actionFunc.addTotalAmount(addItem);
-      return {
-        ...state,
+      return updateObject(state, {
         cartItem: addItem,
         totalPrice: price,
         totalAmount: amount,
-      };
+      });
     }
     case actionType.MINUS_ITEM: {
       const items = state.cartItem.slice();
@@ -69,12 +69,11 @@ const cartReducer = (state = initialState, action) => {
       }
       let price = actionFunc.addTotalPrice(minusItem);
       let amount = actionFunc.addTotalAmount(minusItem);
-      return {
-        ...state,
+      return updateObject(state, {
         cartItem: minusItem,
         totalPrice: price,
         totalAmount: amount,
-      };
+      });
     }
     case actionType.REMOVE_ITEM: {
       const items = state.cartItem.slice();
@@ -89,12 +88,11 @@ const cartReducer = (state = initialState, action) => {
       }
       let price = actionFunc.addTotalPrice(removeItem);
       let amount = actionFunc.addTotalAmount(removeItem);
-      return {
-        ...state,
+      return updateObject(state, {
         cartItem: removeItem,
         totalPrice: price,
-        totalAmount: amount
-      };
+        totalAmount: amount,
+      });
     }
     default:
       return state;

@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../../UI/Button/Button";
 import Price from "../../UI/Price/Price";
 import classes from "./Select.module.css";
-let Select = ({
+const Select = ({
   selectSize,
   viewProduct,
   selectedSize,

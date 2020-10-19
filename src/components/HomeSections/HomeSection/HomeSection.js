@@ -1,15 +1,16 @@
 import React from "react";
 import classes from "./HomeSection.module.css";
 const HomeSection = (props) => {
+
   return (
     <div className={classes.Section}>
       <div className={classes.images}>
         <div className={classes.image}>
           <img
-            src={props.section.sect[0].pic1}
+            src={props.section.url[0]}
             style={{
               transform: `translateY(${
-                props.section.sect[0].cord * props.yCord
+                props.cordination[0].cord * props.yCord
               }px)`,
               transition: ` 0.8s ease-out`,
             }}
@@ -18,10 +19,10 @@ const HomeSection = (props) => {
         </div>
         <div className={classes.image}>
           <img
-            src={props.section.sect[1].pic2}
+            src={props.section.url[1]}
             style={{
               transform: `translateY(${
-                props.section.sect[1].cord * props.yCord
+                props.cordination[1].cord * props.yCord
               }px)`,
               transition: ` 0.8s ease-out`,
             }}
@@ -30,10 +31,10 @@ const HomeSection = (props) => {
         </div>
         <div className={classes.image}>
           <img
-            src={props.section.sect[2].pic3}
+            src={props.section.url[2]}
             style={{
               transform: `translateY(${
-                props.section.sect[2].cord * props.yCord
+                props.cordination[2].cord * props.yCord
               }px)`,
               transition: ` 0.8s ease-out`,
             }}
@@ -45,13 +46,13 @@ const HomeSection = (props) => {
         className={classes.textContent}
         style={{
           transform: `translateY(${
-            props.section.sect[3].cord * props.yCord
+            props.cordination[3].cord * props.yCord
           }px)`,
           transition: ` 0.8s ease-out`,
         }}
       >
         <div className={classes.innerTextContent}>
-          {props.section.sect[3].text}
+          {props.section.text}
         </div>
       </div>
     </div>
