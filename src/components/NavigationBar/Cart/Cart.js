@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import CartProducts from "../../Cart Component/CartProducts/CartProducts";
 import classes from "./Cart.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
+import { HiOutlineLockClosed } from 'react-icons/hi';
+
 
 const Cart = (props) => {
   let attachedClasses = [classes.Cart, classes.CloseCart];
@@ -16,10 +16,9 @@ const Cart = (props) => {
       <Backdrop open={props.open} closed={props.closed} />
       <div className={attachedClasses.join(" ")}>
         <span onClick={props.closed}>
-          <FontAwesomeIcon
+          <HiOutlineLockClosed
             className={classes.CloseButton}
-            icon={faWindowClose}
-          ></FontAwesomeIcon>
+          ></HiOutlineLockClosed>
         </span>
         <div className="Cart-Info">
           {props.products.length > 0 ? (

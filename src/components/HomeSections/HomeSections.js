@@ -5,8 +5,10 @@ import Spinner from "../UI/Spinner/Spinner";
 
 const HomeSections = (props) => {
   const [homeContent, setHomeContent] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     function fetchContent() {
+      setLoading(true);
       let items = [];
       projectFirestore
         .collection("homeContent")
@@ -23,7 +25,7 @@ const HomeSections = (props) => {
     }
     fetchContent();
   }, []);
-  let sections = <Spinner />;
+  let sections = <Spinner loading={loading}/>;
 
   if (homeContent.length > 0) {
     let cord = [
@@ -41,7 +43,7 @@ const HomeSections = (props) => {
       />
     ));
   }
-  return <>{sections}</>;
+  return <div>{sections}</div>;
 };
 
 export default HomeSections;

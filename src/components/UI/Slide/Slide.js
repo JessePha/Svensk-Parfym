@@ -14,7 +14,6 @@ let Slide = (props) => {
   for (let i = 1; i <= divided; i++) {
     pagesArray.push(i * shownData);
   }
-  console.log(switchingPage);
 
   let render = currentData.map((product, index) => {
     return (

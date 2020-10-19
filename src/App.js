@@ -9,6 +9,7 @@ import ShopView from "./view/Shop View/ShopView";
 import ProductView from "./view/Product View/ProductView";
 import CheckoutView from "./view/Checkout View/CheckoutView";
 import ErrorMessage from "./components/UI/ErrorMessage/ErrorMessage";
+import ProcessView from "./view/Process View/ProcessView"
 const App = () => {
   return (
     <div className="App">
@@ -24,6 +25,7 @@ const App = () => {
               component={ProductView}
             />
             <Route exact path={"/Checkout"} component={CheckoutView} />
+            <Route exact path={"/process"} component={ProcessView} />
           </Switch>
         </View>
       </BrowserRouter>

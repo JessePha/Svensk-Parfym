@@ -3,8 +3,7 @@ import Logo from "../../Logo/Logo";
 import NavigationItems from "../NavigationItems";
 import Backdrop from "../../../UI/Backdrop/Backdrop";
 import classes from "./Sidebar.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
+import { HiLockClosed } from 'react-icons/hi';
 
 const SideBar = (props) => {
   let attachedClasses = [classes.SideDrawer, classes.Close];
@@ -17,10 +16,9 @@ const SideBar = (props) => {
 
       <div className={attachedClasses.join(" ")}>
         <span onClick={props.closed}>
-          <FontAwesomeIcon
+          <HiLockClosed
             className={classes.CloseButton}
-            icon={faWindowClose}
-          ></FontAwesomeIcon>
+          ></HiLockClosed>
         </span>
         <Logo />
         <NavigationItems />

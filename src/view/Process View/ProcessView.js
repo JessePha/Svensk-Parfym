@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router";
 import Process from "../../components/Process Component/Process/Process";
+import { fetchProduct } from "../../store/actionFunc/indexAction";
 
 let ProcessView = (props) => {
-  return <Process products={props.products}/>;
+  useState(() => {
+    props.fetchData();
+  });
+  return <Process products={props.products} />;
 };
 
 const mapStateToProps = (state) => {
+  console.log(state.prd.products);
   return {
-    products: state.prd.items,
+    products: state.prd.products,
   };
 };
-export default connect(mapStateToProps, null)(ProcessView);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchData: () => dispatch(fetchProduct()),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(ProcessView);

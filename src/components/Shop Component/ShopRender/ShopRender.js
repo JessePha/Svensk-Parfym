@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./ShopRender.module.css";
 
 const Perfume = ({ img, price, name, description, moreInfo }) => {
-
+  
   return (
     <div className={classes.container}>
       <img src={img} alt="perfume" onClick={moreInfo}></img>

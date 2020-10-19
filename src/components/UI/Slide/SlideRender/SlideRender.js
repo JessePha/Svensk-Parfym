@@ -2,11 +2,11 @@ import React from "react";
 import classes from "./SlideRender.module.css";
 
 const SlideRender = (props) => {
-  const cssClasses = [!props.switchingPage ? classes.render : classes.switchS];
+  const cssClasses = [!props.switchingPage ? classes.render : classes.switch];
   return (
     <div className={cssClasses}>
       <div>
-        <img src={props.data.img} alt="perfume"></img>
+        <img src={props.data.url} alt="perfume"></img>
       </div>
     </div>
   );

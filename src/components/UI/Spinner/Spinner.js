@@ -1,15 +1,17 @@
 import React from "react";
 import classes from "./Spinner.module.css";
 
-const Spinner = () => {
+const Spinner = ({ loading }) => {
   return (
-    <div className = {classes.Spinner}>
-      <div className={classes.ldsring}>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+    <div className={classes.Spinner}>
+      {loading ? (
+        <div className={classes.ldsring}>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      ) : null}
     </div>
   );
 };
