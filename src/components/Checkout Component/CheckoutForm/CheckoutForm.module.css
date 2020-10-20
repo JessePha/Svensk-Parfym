@@ -30,7 +30,8 @@
   align-items: left;
 }
 
-.formDiv input[type="text"] {
+.formDiv input[type="text"],
+select {
   text-align: left;
   width: 100%;
   padding: 10px 2px;
@@ -38,7 +39,6 @@
   box-sizing: border-box;
   border: none;
   border-bottom: 2px solid black;
-  border-bottom: 2px solid rgb(0, 0, 0);
   font-size: 15px;
 }
 .formDiv input[type="text"]:focus {
