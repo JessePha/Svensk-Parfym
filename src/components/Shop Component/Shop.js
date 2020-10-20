@@ -38,6 +38,7 @@ const Perfumes = (props) => {
     </div>
   );
   if (!loading && props.products.length !== 0) {
+    console.log(props.products)
     content = (
       <div className="perfumes">
         {props.products.map((perfume, index) => (

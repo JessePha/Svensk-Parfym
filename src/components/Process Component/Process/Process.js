@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import UpperImages from "./UpperImages/UpperImages";
 import classes from "./Process.module.css";
-import MiddleText from "./MiddleText/MiddleText";
-import Slider from "../../UI/Slide/Slide";
+
 import { connect } from "react-redux";
 import { fetchProduct } from "../../../store/actionFunc/indexAction";
 import ErrorMessage from "../../UI/ErrorMessage/ErrorMessage";
 import Spinner from "../../UI/Spinner/Spinner";
+import ProcessBar from "./ProcessBar/ProcessBar";
 
 const Process = (props) => {
   const [loading, setLoading] = useState(false);
@@ -30,9 +29,7 @@ const Process = (props) => {
     render = (
       <div className={classes.Process}>
         {errorMsg}
-        <UpperImages />
-        <MiddleText />
-        <Slider products={props.products} fetchData={props.fetchData} />
+        <ProcessBar />
       </div>
     );
   } else {
