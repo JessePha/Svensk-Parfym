@@ -7,16 +7,17 @@ import Visa from "../../../shared/Images/visa.png"
 const Checkout = () => {
 
   let Customer = {
-    firstName: '',
-    lastName: '',
-    adress: '',
-    phoneNumber:'',
-    zipCode:'',
-    city:'',
-    email:'',
-    country:'',
-    paymentMethod:''
+    FName: '',
+    LName: '',
+    Adress: '',
+    PhoneNumber:'',
+    ZipCode:'',
+    City:'',
+    Email:'',
+    Country:'',
+    PaymentMethod:''
   }
+  
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [adress, setAdress] = useState("");
@@ -41,7 +42,7 @@ const Checkout = () => {
         <input type="text" value={cardHolder} required placeholder="Card Holder Name" onChange={(e) => setCardHolder(e.target.value)}/>
         <input type="text" value={cardExpire} required placeholder="Expiration Date" onChange={(e) => setCardExpire(e.target.value)}/>
         <input type="text" value={cardCVV}    required  placeholder="CCV/CID/CSC" onChange={(e) => setCardCVV(e.target.value)}/>
-        <input type="submit" value="Place Order"  onSubmit={console.log(Customer)}/>
+        <input type="submit" value="Place Order"  onSubmit={handleSubmit}/>
           </div>
           )
       }
@@ -50,7 +51,7 @@ const Checkout = () => {
           <div>
           <input type="text" value={payexUser} required placeholder="Username" onChange={(e) => setPayexUser(e.target.value)}/>
         <input type="password" value={payExpass} required placeholder="Password" onChange={(e) => setPayexPass(e.target.value)}/>
-        <input type="submit" value="Place Order" onSubmit={console.log(Customer)} />
+        <input type="submit" value="Place Order" onSubmit={handleSubmit} />
           </div>
         )
       }
@@ -58,6 +59,19 @@ const Checkout = () => {
         return null
       }
   }
+
+  const handleSubmit = () => {
+    Customer.FName = firstName
+    Customer.LName = lastName
+    Customer.Adress = adress
+    Customer.PhoneNumber = phoneNumber
+    Customer.ZipCode = zipcode
+    Customer.City = city
+    Customer.Country = country
+    Customer.PaymentMethod = paymentMethod
+    console.log(Customer)
+    }
+  
 
   return (
     <div className={Styles.formDiv}>
@@ -73,9 +87,9 @@ const Checkout = () => {
           id="firstName"
           type="text"
           required
-          value={Customer.firstName}
+          value={firstName}
           placeholder="First Name"
-          onChange={(e) => {Customer.firstName = e.target.value}}
+          onChange={(e) => setFirstName(e.target.value)}
         />
         <label className={Styles.label} htmlFor="lastName">
           Last Name
@@ -453,6 +467,7 @@ const Checkout = () => {
         <img  className={Styles.img} src={Visa} alt="Visa" onClick={() => setPaymentMethod("creditCard")}/>
         {handlePayment()}
       </form>
+      <button onClick={handleSubmit}>Hej</button>
     </div>
   );
 };
