@@ -30,7 +30,7 @@ const HomeSections = (props) => {
     }
     fetchContent();
   }, []);
-  if (loading === false) {
+  if (!loading && homeContent.length !== 0) {
     let cord = [
       [{ cord: -0.7 }, { cord: -1.1 }, { cord: -0.8 }, { cord: -1.3 }],
       [{ cord: -0.7 }, { cord: -0.5 }, { cord: -0.8 }, { cord: -0.9 }],

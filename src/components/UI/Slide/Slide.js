@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import { fetchProduct } from "../../../store/actionFunc/indexAction";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Spinner from "../Spinner/Spinner";
 import classes from "./Slide.module.css";
 import SlideRender from "./SlideRender/SlideRender";

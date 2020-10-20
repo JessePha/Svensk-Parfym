@@ -8,14 +8,13 @@ const mapStateToProps = (state) => {
     cartItem: state.crt.cartItem,
   };
 };
-
 const CheckoutList = (props) => {
   return (
     <div className={Styles.listDiv}>
       <h3>Your Order</h3>
       {props.cartItem.map((items) => (
         <div className={Styles.mapDiv}>
-          <img className={Styles.img} src={items.img} alt={items.name} />
+          <img className={Styles.img} src={items.url} alt={items.name} />
           <p classname={Styles.mapText}>
             {items.name} {items.size} ⨯ {items.count}:{" "}
             {items.price * items.count}kr{" "}

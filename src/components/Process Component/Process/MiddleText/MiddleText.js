@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ShowMoreButton from "../ShowMoreButton/ShowMoreButton";
+import ShowMoreButton from "../../../UI/ShowMoreButton/ShowMoreButton";
 import classes from "./MiddleText.module.css";
 const MiddleText = () => {
   let [showMoreFirst, setShowMoreFirst] = useState(false);

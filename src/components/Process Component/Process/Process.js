@@ -24,8 +24,9 @@ const Process = (props) => {
       setLoading(false);
     }
   }, []);
+
   let render = <Spinner />;
-  if (!loading) {
+  if (props.products.length !== 0 && !loading) {
     render = (
       <div className={classes.Process}>
         {errorMsg}
@@ -34,12 +35,13 @@ const Process = (props) => {
         <Slider products={props.products} fetchData={props.fetchData} />
       </div>
     );
+  } else {
+    render = <Spinner />;
   }
   return <div>{render}</div>;
 };
 
 const mapStateToProps = (state) => {
-  console.log(state.prd.products);
   return {
     products: state.prd.products,
   };

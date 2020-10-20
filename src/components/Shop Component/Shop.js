@@ -37,7 +37,7 @@ const Perfumes = (props) => {
       <Spinner />
     </div>
   );
-  if (!loading) {
+  if (!loading && props.products.length !== 0) {
     content = (
       <div className="perfumes">
         {props.products.map((perfume, index) => (
