@@ -1,16 +1,20 @@
 .container {
+  animation: fade 0.2s ease-in;
   background-color: white;
   text-align: center;
   overflow: hidden;
   width: 90%;
-  transition: 0.5s ease-out;
   border-radius: 10px;
 }
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+}
 .container:hover {
-  box-shadow: 0 2.8px 2.2px white,
-    0 2.8px 2.2px white, 0 5px 2px white,
-    0 5px 2px white, 0 5px 2px white,
-    0 5px 2px white;
+  box-shadow: 0 2.8px 2.2px white, 0 2.8px 2.2px white, 0 5px 2px white,
+    0 5px 2px white, 0 5px 2px white, 0 5px 2px white;
 }
 .productInfo {
   position: relative;
@@ -39,7 +43,6 @@
   width: 90%;
   height: 90%;
 }
-
 .container button {
   font-family: Arial, Helvetica, sans-serif;
   color: white;

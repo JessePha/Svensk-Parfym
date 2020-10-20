@@ -22,6 +22,7 @@
   bottom: 0;
   position: absolute;
   color: white;
+  transition: ease-out 0.5s;
 }
 @media (max-width: 500px) {
   .showcaseText {

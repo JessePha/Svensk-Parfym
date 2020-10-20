@@ -2,7 +2,7 @@
   padding: 0.2vw 0;
 }
 .SelectForm {
-  font-size: 1vw;
+  font-size: 1.5vw;
 }
 .AvailableButtons button:hover {
   cursor: pointer;
@@ -39,6 +39,16 @@
   outline: none;
   transition: background-color, 0.5s ease-out;
   padding: 3%;
+}
+.selectForm select {
+  color: goldenrod;
+  background-color: black;
+  border: none;
+  outline: none;
+}
+.selectForm option {
+  border: none;
+  outline: none;
 }
 .addToCart button:hover {
   background-color: white;

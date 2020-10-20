@@ -1,4 +1,12 @@
 .Checkout {
+  padding: 10% 2% 2% 2%;
   display: flex;
+  justify-content: space-evenly; /* horizontal */
+  align-items: top; /* vertical */
+}
 
+@media (max-width: 500px) {
+  .Checkout {
+    padding: 15% 2% 2% 2%;
+  }
 }

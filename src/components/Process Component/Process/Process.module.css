@@ -1,0 +1,11 @@
+.Process {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 5% 2% 5% 2%;
+}
+
+@media (max-width: 500px) {
+  .Process {
+    margin: 10% 2% 10% 2%;
+  }
+}

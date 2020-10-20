@@ -21,7 +21,6 @@ let HomeView = () => {
           className={classes.innerShowcaseText}
           style={{
             transform: `translateY(${-1.5 * offSetY}px)`,
-            transition: ` 1 ease-out`,
             opacity: (offSetY * 15) / 100,
           }}
         >
@@ -31,10 +30,9 @@ let HomeView = () => {
           <div>INSPIRED BY SWEDEN</div>
         </div>
       </div>
-      <HomeSections yCord = {offSetY} />
+      <HomeSections yCord={offSetY} />
     </div>
   );
 };
 
 export default HomeView;
-

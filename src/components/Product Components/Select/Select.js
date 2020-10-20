@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../../UI/Button/Button";
 import Price from "../../UI/Price/Price";
 import classes from "./Select.module.css";
-let Select = ({
+const Select = ({
   selectSize,
   viewProduct,
   selectedSize,
@@ -20,7 +20,7 @@ let Select = ({
   ) : null;
   return (
     <div className={classes.SelectOptions}>
-      <div>
+      <div className={classes.selectForm}>
         <select
           value={selectSize}
           onChange={selectedSize}
@@ -38,7 +38,6 @@ let Select = ({
       >
         <div className={classes.Button}>
           <Button
-            style="button"
             disable={showPrice}
             text="-"
             click={() => subtractItem(viewProduct.name)}

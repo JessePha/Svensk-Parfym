@@ -38,9 +38,10 @@
   left: 30%;
   right: 30%;
   font-size: 3vw;
-  color: transparent;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: white;
+  font-weight: bolder;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke: 0.02px;
+  -webkit-text-stroke-color: rgb(0, 0, 0);
 }
 @media (max-width: 500px) {
   .Section {
@@ -68,7 +69,7 @@
     color: white;
   }
   .innerTextContent {
-    font-size: 12px;
+    font-size: 20px;
     left: 30%;
     right: 20%;
   }
@@ -81,7 +82,7 @@
     height: 50vh;
   }
   .innerTextContent {
-    font-size: 10px;
+    font-size: 25px;
     left: 30%;
     right: 30%;
   }

@@ -1,5 +1,5 @@
 .Desc {
-  font-size: 1.2vw;
+  font-size: 2.0vw;
   margin-bottom: 1vw;
   text-align: left;
 }
@@ -13,9 +13,8 @@
   .viewMoreButton {
     display: block;
     color: rgb(220, 181, 72);
-    background-color: rgb(36, 40, 41);
     cursor: pointer;
     border: none;
-    width: 120%;
+    width: 100%;
   }
 }
