@@ -1,6 +1,6 @@
 .Process {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 2fr;
   margin: 5% 2% 5% 2%;
 }
 

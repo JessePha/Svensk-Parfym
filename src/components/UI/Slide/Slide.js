@@ -1,31 +1,25 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { fetchProduct } from "../../../store/actionFunc/indexAction";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import Spinner from "../Spinner/Spinner";
 import classes from "./Slide.module.css";
 import SlideRender from "./SlideRender/SlideRender";
 let Slide = (props) => {
   const shownData = 4;
+
   let [currentData, setCurrentData] = useState(
     props.products.slice(0, shownData)
   );
-  let [currentPage, setCurrentPage] = useState(shownData);
-  let [switchingPage, setSwitchingPage] = useState(false);
-  let totalData = props.products.length;
-  let divided = totalData / shownData;
-  let pagesArray = [];
+  const [currentPage, setCurrentPage] = useState(shownData);
+  const [switchingPage, setSwitchingPage] = useState(false);
+
+  const totalData = props.products.length;
+  const divided = totalData / shownData;
+  const pagesArray = [];
   for (let i = 1; i <= divided; i++) {
     pagesArray.push(i * shownData);
   }
-
-  let render = currentData.map((product, index) => {
-    return (
-      <SlideRender
-        className={classes.slideRender}
-        data={product}
-        key={index}
-        moreInfo={() => props.goTo(product.name)}
-        switchingPage={switchingPage}
-      />
-    );
-  });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -48,16 +42,20 @@ let Slide = (props) => {
     setSwitchingPage(false);
   }, [switchingPage]);
 
-  let availableItems = null;
-  if (props.products.length > 0) {
-    availableItems = <div className={classes.Slide}>{render}</div>;
-  } else {
-    availableItems = (
-      <div style={{ color: "white" }}>
-        <p>No items found</p>
-      </div>
+  let render = <Spinner />;
+  render = currentData.map((product, index) => {
+    return (
+      <SlideRender
+        className={classes.slideRender}
+        data={product}
+        key={index}
+        moreInfo={() => props.goTo(product.name)}
+        switchingPage={switchingPage}
+      />
     );
-  }
+  });
+  let availableItems = null;
+  availableItems = <div className={classes.Slide}>{render}</div>;
   return availableItems;
 };
 

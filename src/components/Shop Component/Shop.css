@@ -1,7 +1,7 @@
 .perfumes {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 2% 2%;
+  grid-gap: 2em;
   justify-content: center;
   align-items: center;
   padding: 10% 5%;
