@@ -17,7 +17,6 @@ let Slide = (props) => {
   for (let i = 1; i <= divided; i++) {
     pagesArray.push(i * shownData);
   }
-
   useEffect(() => {
     const interval = setInterval(() => {
       if (pagesArray.includes(currentPage + shownData)) {

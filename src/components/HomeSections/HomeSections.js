@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import HomeSection from "./HomeSection/HomeSection";
 import { projectFirestore } from "../../firestore/config";
 import Spinner from "../UI/Spinner/Spinner";

@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Footer.module.css";
 const Footer = () => {
   return (
-    <div className={classes.Footer}>
+    <footer className={classes.Footer}>
       <div className={classes.CopyRight}>
         <p>Copyright © 2020</p>
       </div>
@@ -11,7 +11,7 @@ const Footer = () => {
         <li>CONTACT</li>
         <li>INSTAGRAM</li>
       </ul>
-    </div>
+    </footer>
   );
 };
 
