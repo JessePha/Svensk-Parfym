@@ -1,0 +1,121 @@
+.ProcessWrapper {
+  color: black;
+  margin: auto;
+  max-width: 1080px;
+  padding: 2% 2% 2% 2%;
+}
+#ProgressBarContainer {
+  position: relative;
+  width: 90%;
+  margin: auto;
+  height: 100px;
+  margin-top: 59px;
+}
+
+#ProgressBarContainer ul {
+  padding: 0;
+  margin: 0;
+  padding-top: 15px;
+  position: absolute;
+  width: 100%;
+  margin-top: -40px;
+}
+#ProgressBarContainer li:before {
+  content: "";
+  display: block;
+  margin: auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: solid 2px #aaa;
+  transition: all ease 0.3s;
+}
+
+#ProgressBarContainer li.active:before,
+#ProgressBarContainer li:hover::before {
+  background: white;
+}
+
+#ProgressBarContainer li {
+  list-style: none;
+  float: left;
+  width: 20%;
+  text-align: center;
+  color: #aaa;
+  text-transform: uppercase;
+  font-size: 11px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all ease 0.2s;
+  vertical-align: bottom;
+  height: 59px;
+  position: relative;
+}
+
+#ProgressBarContainer li.StepInner {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  font-size: 14px;
+}
+
+#ProgressBarContainer li.active,
+#ProgressBarContainer li.hover {
+  color: white;
+}
+
+#ProgressBarContainer li:after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 5px;
+  background: #777;
+  margin: auto;
+  border: solid 7px white;
+  border-radius: 50%;
+  margin-top: 40px;
+  box-shadow: 0 2px 13px 1px rgba(0, 0, 0, 0.3);
+  transition: all ease 0.2;
+}
+
+#ProgressBarContainer li:hover:after {
+  background-color: black;
+}
+
+#ProgressBarContainer li:active:after {
+  background-color: black;
+}
+
+#ProgressBarContainer #Line {
+  width: 80%;
+  margin: auto;
+  background-color: #eee;
+  height: 5px;
+  position: absolute;
+  left: 10%;
+  top: 57px;
+  border-radius: 50px;
+  transition: all ease 0.9s;
+}
+
+#ProgressBarContainer .LineProcess {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  background: linear-gradient(to right, #777 0%, #777 100%);
+  position: absolute;
+  border-radius: 50px;
+  transition: all ease 0.9s;
+}
+#ProgressContentSection {
+  width: 90%;
+  margin: auto;
+  background: white;
+  border-radius: 4px;
+  padding: 10px 10px 10px 10px;
+}
+#ProgressContentSection .SectionContent {
+  padding: 30px 40px;
+  text-align: center;
+}
