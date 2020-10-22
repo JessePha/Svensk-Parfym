@@ -2,16 +2,13 @@ import React, { useState, useEffect } from "react";
 import HomeSection from "./HomeSection/HomeSection";
 import { projectFirestore } from "../../firestore/config";
 import Spinner from "../UI/Spinner/Spinner";
-import ErrorMessage from "../UI/ErrorMessage/ErrorMessage";
 
 const HomeSections = (props) => {
   const [homeContent, setHomeContent] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  let sections = <Spinner loading={loading} />;
-  let errorMsg = <ErrorMessage error={error} setError={setError} />;
   useEffect(() => {
     function fetchContent() {
+      setLoading(true);
       let items = [];
       projectFirestore
         .collection("homeContent")
@@ -21,16 +18,16 @@ const HomeSections = (props) => {
             items.push({ ...doc.data(), id: doc.id });
           });
           setHomeContent(items);
-          setLoading(false);
         })
         .catch((error) => {
-          setError(true);
-          setLoading(false);
+          console.log(error);
         });
     }
     fetchContent();
   }, []);
-  if (!loading && homeContent.length !== 0) {
+  let sections = <Spinner loading={loading}/>;
+
+  if (homeContent.length > 0) {
     let cord = [
       [{ cord: -0.7 }, { cord: -1.1 }, { cord: -0.8 }, { cord: -1.3 }],
       [{ cord: -0.7 }, { cord: -0.5 }, { cord: -0.8 }, { cord: -0.9 }],
@@ -46,13 +43,7 @@ const HomeSections = (props) => {
       />
     ));
   }
-
-  return (
-    <div>
-      {errorMsg}
-      {sections}
-    </div>
-  );
+  return <div>{sections}</div>;
 };
 
 export default HomeSections;

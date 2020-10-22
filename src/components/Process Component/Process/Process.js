@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import classes from "./Process.module.css";
-
-import { connect } from "react-redux";
-import { fetchProduct } from "../../../store/actionFunc/indexAction";
-import ErrorMessage from "../../UI/ErrorMessage/ErrorMessage";
-import Spinner from "../../UI/Spinner/Spinner";
-import ProcessBar from "./ProcessBar/ProcessBar";
+import ErrorMessage from "../../UI/ErrorMessage/ErrorMessage"
+import Spinner from "../../UI/Spinner/Spinner"
+import ProcessBar from "./ProcessBar/ProcessBar"
 
 const Process = (props) => {
   const [loading, setLoading] = useState(false);
@@ -67,7 +64,6 @@ const Process = (props) => {
   useEffect(() => {
     setLoading(true);
     try {
-      props.fetchData();
       setLoading(false);
     } catch (error) {
       setError(true);
@@ -89,14 +85,4 @@ const Process = (props) => {
   return <div>{render}</div>;
 };
 
-const mapStateToProps = (state) => {
-  return {
-    products: state.prd.products,
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchData: () => dispatch(fetchProduct()),
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Process);
+export default (Process);

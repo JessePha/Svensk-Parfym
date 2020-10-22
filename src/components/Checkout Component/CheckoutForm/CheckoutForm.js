@@ -465,14 +465,13 @@ const Checkout = () => {
           </select>
         </div>
         <div className={Styles.paymentMethods}>
-        <label className={Styles.label}>Choose your payment method</label>
+        <h3 className={Styles.h3}>Choose your payment method:</h3>
         <br />
         <img className={Styles.img} src={PayEx} alt="PayEx" onClick={() => setPaymentMethod("payEx")} />
         <img  className={Styles.img} src={Visa} alt="Visa" onClick={() => setPaymentMethod("creditCard")}/>
         {handlePayment()}
         </div>
       </form>
-      <button onClick={handleSubmit}>Hej</button>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import CartProducts from "../../Cart Component/CartProducts/CartProducts";
 import classes from "./Cart.module.css";
