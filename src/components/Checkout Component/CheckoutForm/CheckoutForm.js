@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Styles from "./CheckoutForm.module.css";
 import PayEx from "../../../shared/Images/payex.png"
-import Visa from "../../../shared/Images/visa.png"
+import Visa from "../../../shared/Images/visa.jpg"
 
 
 const Checkout = () => {
