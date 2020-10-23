@@ -28,18 +28,22 @@ const HomeSections = (props) => {
   let sections = <Spinner loading={loading}/>;
 
   if (homeContent.length > 0) {
+    let texts = [];
     let cord = [
       [{ cord: -0.7 }, { cord: -1.1 }, { cord: -0.8 }, { cord: -1.3 }],
       [{ cord: -0.7 }, { cord: -0.5 }, { cord: -0.8 }, { cord: -0.9 }],
       [{ cord: -0.4 }, { cord: -0.5 }, { cord: -0.3 }, { cord: -0.6 }],
       [{ cord: -0.1 }, { cord: -0.3 }, { cord: -0.2 }, { cord: -0.2 }],
     ];
+    texts = homeContent.map(section => section.text)
     sections = homeContent.map((section, index) => (
       <HomeSection
         key={index}
         section={section}
         cordination={cord[index]}
         yCord={props.yCord}
+        texts = {texts}
+        showText = {props.pxToVh}
       />
     ));
   }

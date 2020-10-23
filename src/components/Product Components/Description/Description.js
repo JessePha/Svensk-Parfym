@@ -1,30 +1,30 @@
 import React, { useState } from "react";
+import { BsArrowRight } from "react-icons/bs";
 import classes from "./Description.module.css";
 let Description = ({ viewProduct }) => {
   let [showMore, setShowMore] = useState(false);
-  let showMorefun = () => {
-    setShowMore(true);
+  const show = () => {
+    setShowMore(!showMore);
   };
-  let viewMoreButton = (
-    <div>
-      {showMore ? null : (
-        <button className={classes.viewMoreButton} onClick={showMorefun}>
-          View More
-        </button>
-      )}
-    </div>
-  );
   return (
-    <div className={classes.Desc}>
-      <h3 style={{ textAlign: "center" }}>{viewProduct.name}</h3>
-      <div>
-        {showMore || window.matchMedia("(min-width: 500px)").matches ? (
-          <p>{viewProduct.description}</p>
-        ) : (
-          <p>{viewProduct.description.substring(0, 200)}</p>
-        )}
+    <div className={showMore ? classes.DescWithText : classes.Desc}>
+      <div className={classes.viewMoreButton} onClick={() => show()}>
+        <BsArrowRight
+          style={{
+            transition: "0.5s ease-out",
+            transform: showMore ? "rotate(90deg)" : null,
+          }}
+          className = {classes.Arrow}
+        />
+        <div>Description</div>
       </div>
-      {viewMoreButton}
+      {showMore ? (
+        <div className ={classes.DescText}>
+          {viewProduct[0].description}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
