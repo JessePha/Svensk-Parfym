@@ -1,36 +1,149 @@
-.Homeview {
-  overflow: hidden;
+.HomeView{
+  margin-top: 5%;
 }
-.showcaseText {
-  text-align: center;
-  position: relative;
+.HomeOpenUp {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
+  margin-top: 5%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Image {
+  text-align: right;
+  width: 100%;
+}
+.Image:nth-child(1) img {
+  width: 80%;
+  height: 100%;
+  transition: 1s ease-out;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+.dots {
+  left: 2%;
+  bottom: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.dots > div {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1px solid white;
+  margin-bottom: 10px;
+  transition: 0.5s ease-out;
+}
+.dot {
+  background-color: rgb(90, 67, 8);
+  transform: scale(1.7);
+}
+.BlankSpace {
+  height: 100vh;
+}
+.innerShowcaseText {
+  width: 130%;
+  text-align: center;
 }
 .innerShowcaseText > div:nth-child(1) {
-  font-size: 5vw;
+  font-size: 60px;
 }
 .innerShowcaseText > div:nth-child(2),
 .innerShowcaseText > div:nth-child(3),
 .innerShowcaseText > div:nth-child(4) {
-  font-size: 1vw;
+  font-size: 20px;
 }
 
 .innerShowcaseText {
-  right: 30%;
-  left: 30%;
-  bottom: 0;
-  position: absolute;
   color: white;
   transition: ease-out 0.5s;
 }
-@media (max-width: 500px) {
-  .showcaseText {
-    height: 50vh;
+@media screen and (max-width: 1024px) {
+  .Image {
+    text-align: center;
+  }
+  .Image:nth-child(1) img {
+    width: 70%;
+    height: 100%;
+  }
+  .innerShowcaseText > div:nth-child(1) {
+    font-size: 40px;
+  }
+  .innerShowcaseText > div:nth-child(2),
+  .innerShowcaseText > div:nth-child(3),
+  .innerShowcaseText > div:nth-child(4) {
+    font-size: 18px;
   }
 }
-@media (max-width: 768px) {
-  .showcaseText {
-    height: 60vh;
+@media screen and (max-width: 768px) {
+  .HomeView{
+    margin-top: 5%;
+  }
+  .HomeOpenUp {
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .Image:nth-child(1) img {
+    width: 50%;
+    height: 100%;
+  }
+  .innerShowcaseText {
+    width: 100%;
+    text-align: center;
+  }
+  .innerShowcaseText > div:nth-child(1) {
+    font-size: 30px;
+  }
+  .innerShowcaseText > div:nth-child(2),
+  .innerShowcaseText > div:nth-child(3),
+  .innerShowcaseText > div:nth-child(4) {
+    font-size: 16px;
+  }
+  .dots {
+    bottom: 10%;
+  }
+  .dots > div {
+    margin-bottom: 5px;
+  }
+}
+@media (max-width: 500px) {
+  .HomeView{
+    margin-top: 20%;
+  }
+  .Image:nth-child(1) img {
+    height: 100%;
+    width: 80%;
+  }
+  .innerShowcaseText {
+    width: 100%;
+    text-align: center;
+  }
+  .innerShowcaseText > div:nth-child(1) {
+    font-size: 22px;
+  }
+  .innerShowcaseText > div:nth-child(2),
+  .innerShowcaseText > div:nth-child(3),
+  .innerShowcaseText > div:nth-child(4) {
+    font-size: 10px;
   }
 }

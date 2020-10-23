@@ -7,14 +7,11 @@ import { fetchProduct } from "../../store/actionFunc/indexAction";
 import "./Shop.css";
 
 const Perfumes = (props) => {
-  console.log(props.products);
-
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    let active = true;
     props.fetchData();
-    return () => (active = false);
+    return () => props.fetchData();
   }, []);
 
   let history = useHistory();
@@ -45,8 +42,6 @@ const Perfumes = (props) => {
   return <div>{content}</div>;
 };
 const mapStateToProps = (state) => {
-  console.log(state.prd.products);
-
   return {
     products: state.prd.products,
   };
