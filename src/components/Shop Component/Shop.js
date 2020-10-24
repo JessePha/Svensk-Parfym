@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import { fetchProduct } from "../../store/actionFunc/indexAction";
+import { addItemToCart } from "../../store/actionFunc/indexAction";
 import "./Shop.css";
 
 const Perfumes = (props) => {
@@ -34,6 +35,12 @@ const Perfumes = (props) => {
             name={perfume.name}
             price={perfume.price}
             moreInfo={() => goTo(perfume.name, perfume.size[0])}
+            addToCart={() =>
+              props.addToCart(
+                { ...perfume, size: perfume.size[0], price: perfume.price[1] },
+                1
+              )
+            }
           />
         ))}
       </div>
@@ -49,6 +56,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchData: () => dispatch(fetchProduct()),
+    addToCart: (item, amount) => dispatch(addItemToCart(item, amount)),
   };
 };
 
