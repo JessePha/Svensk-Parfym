@@ -23,7 +23,8 @@
   align-items: center;
 }
 .LogoName {
-  width: 15%;
+  margin-right: 15%;
+  width: 12%;
 }
 .Cartdiv {
   display: flex;
@@ -34,33 +35,71 @@
   text-align: center;
   background-color: grey;
   border-radius: 50%;
-  width: 20px;
-  height: 10px;
-  font-size: 7px;
+  width: 12px;
+  height: 12px;
+  font-size: 8px;
   color: white;
 }
 .Cart {
   cursor: pointer;
   color: white;
-  font-size: 3vw;
+  font-size: 24px;
   z-index: 1;
   transition: 0.3s ease-in;
 }
 .Cart:hover {
   color: rgb(220, 181, 72);
 }
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .NavigationItems {
     display: none;
   }
   .Cartdiv {
-    margin-right: 5%;
-    width: 15%;
+    margin-right: 1%;
+    width: 10%;
+  }
+  .Cartdiv span {
+    text-align: center;
+    width: 12px;
+    height: 11px;
+    font-size: 9px;
+    color: white;
   }
   .Cart {
+    font-size: 20px;
     margin-right: 15%;
   }
   .LogoName {
     display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  .Cartdiv {
+    margin-right: 1%;
+    width: 20%;
+  }
+  .Cart {
+    font-size: 20px;
+    margin-right: 15%;
+  }
+  .Cartdiv span {
+    width: 10px;
+    height: 8px;
+    font-size: 6px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .Cartdiv {
+    margin-right: 3%;
+    width: 15%;
+  }
+  .Cart {
+    font-size: 20px;
+    margin-right: 15%;
+  }
+  .Cartdiv span {
+    width: 10px;
+    height: 8px;
+    font-size: 6px;
   }
 }

@@ -1,3 +1,23 @@
 .Style {
-  font-size: 1vw;
+  color: white;
+  font-size: 16px;
+}
+@media screen and (max-width: 1024px){
+  .Style{
+    color: white;
+  }
+}
+@media screen and (max-width: 768px){
+  .Style {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+@media screen and (max-width: 500px){
+  .Style {
+    color: white;
+    font-size: 16px;
+    font-weight: 300;
+  }
 }

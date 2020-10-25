@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import CartProducts from "../../Cart Component/CartProducts/CartProducts";
 import classes from "./Cart.module.css";
-import { HiX } from "react-icons/hi";
+import { AiOutlineClose } from 'react-icons/ai';
+
 
 const Cart = (props) => {
   let attachedClasses = [classes.Cart, classes.CloseCart];
@@ -15,7 +16,9 @@ const Cart = (props) => {
       <Backdrop open={props.open} closed={props.closed} />
       <div className={attachedClasses.join(" ")}>
         <span onClick={props.closed}>
-          <HiX className={classes.CloseButton}></HiX>
+          <AiOutlineClose
+            className={classes.CloseButton}
+          ></AiOutlineClose>
         </span>
         <div className="Cart-Info">
           {props.products.length > 0 ? (
