@@ -3,7 +3,7 @@ import Logo from "../../Logo/Logo";
 import NavigationItems from "../NavigationItems";
 import Backdrop from "../../../UI/Backdrop/Backdrop";
 import classes from "./Sidebar.module.css";
-import { HiLockClosed } from 'react-icons/hi';
+import { HiX } from 'react-icons/hi';
 
 const SideBar = (props) => {
   let attachedClasses = [classes.SideDrawer, classes.Close];
@@ -16,9 +16,9 @@ const SideBar = (props) => {
 
       <div className={attachedClasses.join(" ")}>
         <span onClick={props.closed}>
-          <HiLockClosed
+          <HiX
             className={classes.CloseButton}
-          ></HiLockClosed>
+          ></HiX>
         </span>
         <Logo />
         <NavigationItems />

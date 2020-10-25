@@ -2,14 +2,19 @@ import classes from "./ProcessBar.module.css";
 import React from "react";
 
 let ProcessBar = (props) => {
+  console.log(props.page);
+  console.log(props.lineFill);
+  console.log(props.page === props.lineFill);
   return (
     <div>
       <div className={classes.ProcessWrapper}>
         <div id={classes.ProgressBarContainer}>
+        <div></div>
           <ul>{props.dots}</ul>
+          <div></div>
           <div id={classes.Line}>
             <div
-              className={classes.LineProcess}
+              id={classes.LineProcess}
               style={{ width: props.lineFill + "%"}}
             ></div>
           </div>

@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from "react";
 import classes from "./Process.module.css";
-import ErrorMessage from "../../UI/ErrorMessage/ErrorMessage"
-import Spinner from "../../UI/Spinner/Spinner"
-import ProcessBar from "./ProcessBar/ProcessBar"
+import ErrorMessage from "../../UI/ErrorMessage/ErrorMessage";
+import Spinner from "../../UI/Spinner/Spinner";
+import ProcessBar from "./ProcessBar/ProcessBar";
+import barClasses from "./ProcessBar/ProcessBar.module.css";
 
 const Process = (props) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  let errorMsg = <ErrorMessage error={error} setError={setError} />;
+
+  useEffect(() => {
+    setLoading(true);
+    try {
+      setLoading(false);
+    } catch (error) {
+      setError(true);
+      setLoading(false);
+    }
+  }, []);
 
   let dataArr = [
     {
@@ -36,12 +48,15 @@ const Process = (props) => {
     },
   ];
   const [currentData, setCurrentData] = useState(dataArr.slice(0, 1));
+  const [currentPage, setCurrentPage] = useState(0);
   const [lineFill, setLineFill] = useState(0);
+  const [background, setBackground] = useState(false);
+
   let setPage = (e) => {
     let page = e.target.value;
     setCurrentData(dataArr.slice(page, page + 1));
     setLineFill(page * 25);
-    console.log(lineFill);
+    setCurrentPage(page);
   };
 
   let data = currentData.map((data, index) => {
@@ -53,30 +68,34 @@ const Process = (props) => {
     );
   });
   let dots = dataArr.map((data, index) => {
+    console.log(index === currentPage);
     return (
-      <li onClick={setPage} value={index} key={index}>
-        <div></div>
-      </li>
+      <div>
+        <li
+          className={barClasses.Step}
+          onClick={setPage}
+          value={index}
+          key={index}
+        >
+          <div className={barClasses.StepInner}></div>
+        </li>
+      </div>
     );
   });
-  let errorMsg = <ErrorMessage error={error} setError={setError} />;
-
-  useEffect(() => {
-    setLoading(true);
-    try {
-      setLoading(false);
-    } catch (error) {
-      setError(true);
-      setLoading(false);
-    }
-  }, []);
 
   let render = <Spinner />;
   if (!loading) {
     render = (
       <div className={classes.Process}>
         {errorMsg}
-        <ProcessBar data={data} dots={dots} lineFill={lineFill} />
+        <ProcessBar
+          data={data}
+          dots={dots}
+          lineFill={lineFill}
+          page={currentPage}
+          setBackground={setBackground}
+          background={background}
+        />
       </div>
     );
   } else {
@@ -85,4 +104,4 @@ const Process = (props) => {
   return <div>{render}</div>;
 };
 
-export default (Process);
+export default Process;

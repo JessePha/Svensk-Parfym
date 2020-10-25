@@ -5,29 +5,33 @@ import { connect } from "react-redux";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import { fetchProduct } from "../../store/actionFunc/indexAction";
 import "./Shop.css";
+import ErrorMessage from "../UI/ErrorMessage/ErrorMessage";
 
 const Perfumes = (props) => {
-  console.log(props.products);
-
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   useEffect(() => {
     setLoading(true);
-    let active = true;
-    props.fetchData();
-    return () => (active = false);
+    try {
+      props.fetchData();
+      setLoading(false);
+    } catch (error) {
+      setError(true);
+      setLoading(false);
+    }
   }, []);
 
   let history = useHistory();
   const goTo = (name, size) => {
     history.push("/Fragrance/" + name + "/" + size);
   };
-
+  let errorMsg = <ErrorMessage error={error} setError={setError}/>
   let content = (
     <div>
       <Spinner loading={loading} />
     </div>
   );
-  if (props.products.length > 0) {
+  if (props.products.length > 0 && !loading) {
     content = (
       <div className="perfumes">
         {props.products.map((perfume, index) => (
@@ -42,11 +46,9 @@ const Perfumes = (props) => {
       </div>
     );
   }
-  return <div>{content}</div>;
+  return <div>{errorMsg}{content}</div>;
 };
 const mapStateToProps = (state) => {
-  console.log(state.prd.products);
-
   return {
     products: state.prd.products,
   };
