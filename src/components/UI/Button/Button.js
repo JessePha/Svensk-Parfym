@@ -1,13 +1,12 @@
 import React from "react";
-const Button = (props) => {
+import './Button.css'
+const Button = ({text,style,click}) => {
   return (
     <button
-      className={props.style}
-      disabled={!props.disable}
-      disable={props.max}
-      onClick={props.click}
+      className={style}
+      onClick={click}
     >
-      {props.text}
+      {text}
     </button>
   );
 };

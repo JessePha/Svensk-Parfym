@@ -1,23 +1,17 @@
 import React, { useState } from "react";
 import Styles from "./CheckoutForm.module.css";
-import PayEx from "../../../shared/Images/payex.png"
-import Visa from "../../../shared/Images/visa.jpg"
+import PayEx from "../../../shared/Images/payex.png";
+import Visa from "../../../shared/Images/visa.jpg";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import {
+  validatePayment,
+  makeOrder,
+  updateUserAccount,
+} from "../../../handlepayment/handlePayment";
+import Message from "../../UI/messagePayment/message";
 
-
-const Checkout = () => {
-
-  let Customer = {
-    FName: '',
-    LName: '',
-    Adress: '',
-    PhoneNumber:'',
-    ZipCode:'',
-    City:'',
-    Email:'',
-    Country:'',
-    PaymentMethod:''
-  }
-  
+const Checkout = ({ totalPrice, itemInCart }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [adress, setAdress] = useState("");
@@ -27,57 +21,136 @@ const Checkout = () => {
   const [emailAdress, setEmailAdress] = useState("");
   const [country, setCountry] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("");
-  const [cardNumber, setCardnumber] = useState("")
-  const [cardHolder, setCardHolder] = useState("")
-  const [cardExpire, setCardExpire] = useState("")
-  const [cardCVV, setCardCVV] = useState("")
-  const [payexUser, setPayexUser] = useState("")
-  const [payExpass, setPayexPass] = useState("")
+  const [cardNumber, setCardnumber] = useState("");
+  const [cardHolder, setCardHolder] = useState("");
+  const [cardExpire, setCardExpire] = useState("");
+  const [cardCVV, setCardCVV] = useState("");
+  const [payexUser, setPayexUser] = useState("");
+  const [payExpass, setPayexPass] = useState("");
+  const [access, setAccess] = useState(false);
+  const [enoughMoney, setEnoughMoney] = useState(false);
+  const [clickSubmit, setClickSubmit] = useState(false);
+  let history = useHistory();
 
-  const handlePayment = () => {
-      if (paymentMethod === "creditCard") {
-        return (
-          <div>
-        <input type="text" value={cardNumber} required placeholder="Card Number" onChange={(e) => setCardnumber(e.target.value)}/>
-        <input type="text" value={cardHolder} required placeholder="Card Holder Name" onChange={(e) => setCardHolder(e.target.value)}/>
-        <input type="text" value={cardExpire} required placeholder="Expiration Date" onChange={(e) => setCardExpire(e.target.value)}/>
-        <input type="text" value={cardCVV}    required  placeholder="CCV/CID/CSC" onChange={(e) => setCardCVV(e.target.value)}/>
-        <input type="submit" value="Place Order"  onSubmit={handleSubmit}/>
-          </div>
-          )
-      }
-      else if(paymentMethod === "payEx") {
-        return (
-          <div>
-          <input type="text" value={payexUser} required placeholder="Username" onChange={(e) => setPayexUser(e.target.value)}/>
-        <input type="password" value={payExpass} required placeholder="Password" onChange={(e) => setPayexPass(e.target.value)}/>
-        <input type="submit" value="Place Order" onSubmit={handleSubmit} />
-          </div>
-        )
-      }
-      else {
-        return null
-      }
-  }
+  let Customer = {
+    FName: firstName,
+    LName: lastName,
+    Adress: adress,
+    PhoneNumber: phoneNumber,
+    ZipCode: zipcode,
+    City: city,
+    Email: emailAdress,
+    Country: country,
+    PaymentMethod: paymentMethod,
+  };
 
-  const handleSubmit = () => {
-    Customer.FName = firstName
-    Customer.LName = lastName
-    Customer.Adress = adress
-    Customer.PhoneNumber = phoneNumber
-    Customer.ZipCode = zipcode
-    Customer.City = city
-    Customer.Country = country
-    Customer.PaymentMethod = paymentMethod
+  let orders = {
+    type: "Orders",
+    customer: { ...Customer },
+    product: [...itemInCart],
+  };
 
-    
-    console.log(Customer)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let data = null;
+    if (paymentMethod === "PayEx") {
+      data = {
+        paymentMethod: paymentMethod,
+        payexUser: payexUser,
+        payExpass: payExpass,
+      };
     }
-  
+    if (paymentMethod === "VISA") {
+      data = {
+        paymentMethod: paymentMethod,
+        cardNumber: cardNumber,
+        cardHolder: cardHolder,
+        cardExpire: cardExpire,
+        cardCVV: cardCVV,
+      };
+    }
+    const result = await validatePayment(data);
+    setAccess(result.access);
+    setClickSubmit(true);
+    if (result.access && result.account >= totalPrice) {
+      setEnoughMoney(true);
+      setAccess(result.access);
+      makeOrder(orders);
+      updateUserAccount({
+        type: paymentMethod,
+        account: result.account - totalPrice,
+        id: result.id,
+      });
+    }
+  };
+  const goBackToHomepage = () => {
+    setEnoughMoney(false);
+    setClickSubmit(false);
+    history.push("/");
+  };
+  const handlePayment = () => {
+    if (paymentMethod === "VISA") {
+      return (
+        <div>
+          <input
+            type="text"
+            value={cardNumber}
+            required={true}
+            placeholder="Card Number"
+            onChange={(e) => setCardnumber(e.target.value)}
+          />
+          <input
+            type="text"
+            value={cardHolder}
+            required
+            placeholder="Card Holder Name"
+            onChange={(e) => setCardHolder(e.target.value)}
+          />
+          <input
+            type="text"
+            value={cardExpire}
+            required
+            placeholder="Expiration Date"
+            onChange={(e) => setCardExpire(e.target.value)}
+          />
+          <input
+            type="text"
+            value={cardCVV}
+            required
+            placeholder="CCV/CID/CSC"
+            onChange={(e) => setCardCVV(e.target.value)}
+          />
+          <input type="submit" value="Place Order" />
+        </div>
+      );
+    } else if (paymentMethod === "PayEx") {
+      return (
+        <div>
+          <input
+            type="text"
+            value={payexUser}
+            required
+            placeholder="Username"
+            onChange={(e) => setPayexUser(e.target.value)}
+          />
+          <input
+            type="password"
+            value={payExpass}
+            required
+            placeholder="Password"
+            onChange={(e) => setPayexPass(e.target.value)}
+          />
+          <input type="submit" value="Place Order" />
+        </div>
+      );
+    } else {
+      return null;
+    }
+  };
 
   return (
     <div className={Styles.formDiv}>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className={Styles.userInfo}>
           <h3 className={Styles.h3}>Billing Details:</h3>
           <br />
@@ -465,15 +538,43 @@ const Checkout = () => {
           </select>
         </div>
         <div className={Styles.paymentMethods}>
-        <h3 className={Styles.h3}>Choose your payment method:</h3>
-        <br />
-        <img className={Styles.img} src={PayEx} alt="PayEx" onClick={() => setPaymentMethod("payEx")} />
-        <img  className={Styles.img} src={Visa} alt="Visa" onClick={() => setPaymentMethod("creditCard")}/>
-        {handlePayment()}
+          <h3 className={Styles.h3}>Choose your payment method:</h3>
+          <br />
+          <img
+            className={Styles.img}
+            src={PayEx}
+            alt="PayEx"
+            onClick={() => setPaymentMethod("PayEx")}
+          />
+          <img
+            className={Styles.img}
+            src={Visa}
+            alt="Visa"
+            onClick={() => setPaymentMethod("VISA")}
+          />
+          {handlePayment()}
         </div>
       </form>
+      {
+        <Message
+          text={access ? "Successfully" : "Invalid account"}
+          buttonText={access ? "Continue" : "Try again"}
+          isError={access}
+          isClick={clickSubmit}
+          closeInfo={() =>
+            access ? goBackToHomepage() : setClickSubmit(false)
+          }
+        />
+      }
     </div>
   );
 };
 
-export default Checkout;
+const mapStateToProps = (state) => {
+  return {
+    totalPrice: state.crt.totalPrice,
+    itemInCart: state.crt.cartItem,
+  };
+};
+
+export default connect(mapStateToProps, null)(Checkout);
