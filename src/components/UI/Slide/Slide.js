@@ -1,33 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import classes from "./Slide.module.css";
 import SlideRender from "./SlideRender/SlideRender";
 let Slide = (props) => {
-  const shownData = 4;
-  let [currentData, setCurrentData] = useState(
-    props.products.slice(0, shownData)
-  );
-  let [currentPage, setCurrentPage] = useState(shownData);
-  let [switchingPage, setSwitchingPage] = useState(false);
-  let totalData = props.products.length;
-  let divided = totalData / shownData;
-  let pagesArray = [];
-  for (let i = 1; i <= divided; i++) {
-    pagesArray.push(i * shownData);
-  }
-
-  let render = currentData.map((product, index) => {
-    return (
-      <SlideRender
-        className={classes.slideRender}
-        data={product}
-        key={index}
-        moreInfo={() => props.goTo(product.name)}
-        switchingPage={switchingPage}
-      />
-    );
-  });
-
-  useEffect(() => {
+  /*useEffect(() => {
     const interval = setInterval(() => {
       if (pagesArray.includes(currentPage + shownData)) {
         setSwitchingPage(true);
@@ -42,12 +17,17 @@ let Slide = (props) => {
       }
     }, 10000);
     return () => clearInterval(interval);
-  });
+  });*/
 
-  useEffect(() => {
+  /*useEffect(() => {
     setSwitchingPage(false);
-  }, [switchingPage]);
-
+  }, [switchingPage]);*/
+  console.log(props.currentImages)
+  let render = props.products.map((product, index) => {
+    return (
+      <SlideRender className={classes.slideRender} data={product} key={index} />
+    );
+  });
   let availableItems = null;
   if (props.products.length > 0) {
     availableItems = <div className={classes.Slide}>{render}</div>;

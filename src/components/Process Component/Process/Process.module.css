@@ -3,7 +3,6 @@
   display: grid;
   grid-template-columns: 1fr;
   margin: 10% 5% 5% 5%;
-  padding-bottom: 12%;
 }
 
 @keyframes fade {

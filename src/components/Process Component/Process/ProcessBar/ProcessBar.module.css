@@ -8,12 +8,10 @@
   width: 90%;
   margin: auto;
   height: 100px;
-  margin-top: 59px;
+  margin-top: 60px;
 }
 
 #ProgressBarContainer ul {
-  padding: 0;
-  margin: 0;
   padding-top: 15px;
   z-index: 99;
   position: absolute;

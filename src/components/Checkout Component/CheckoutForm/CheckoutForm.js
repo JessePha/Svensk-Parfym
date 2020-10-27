@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 import Styles from "./CheckoutForm.module.css";
-import PayEx from "../../../shared/Images/payex.png"
-import Visa from "../../../shared/Images/visa.jpg"
-
+import PayEx from "../../../shared/Images/payex.png";
+import Visa from "../../../shared/Images/visa.jpg";
+import PurchaseConfirmed from "../../UI/PurchaseConfirmed/PurchaseConfirmed";
 
 const Checkout = () => {
-
   let Customer = {
-    FName: '',
-    LName: '',
-    Adress: '',
-    PhoneNumber:'',
-    ZipCode:'',
-    City:'',
-    Email:'',
-    Country:'',
-    PaymentMethod:''
-  }
-  
+    FName: "",
+    LName: "",
+    Adress: "",
+    PhoneNumber: "",
+    ZipCode: "",
+    City: "",
+    Email: "",
+    Country: "",
+    PaymentMethod: "",
+  };
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [adress, setAdress] = useState("");
@@ -27,57 +26,96 @@ const Checkout = () => {
   const [emailAdress, setEmailAdress] = useState("");
   const [country, setCountry] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("");
-  const [cardNumber, setCardnumber] = useState("")
-  const [cardHolder, setCardHolder] = useState("")
-  const [cardExpire, setCardExpire] = useState("")
-  const [cardCVV, setCardCVV] = useState("")
-  const [payexUser, setPayexUser] = useState("")
-  const [payExpass, setPayexPass] = useState("")
+  const [cardNumber, setCardnumber] = useState("");
+  const [cardHolder, setCardHolder] = useState("");
+  const [cardExpire, setCardExpire] = useState("");
+  const [cardCVV, setCardCVV] = useState("");
+  const [payexUser, setPayexUser] = useState("");
+  const [payExpass, setPayexPass] = useState("");
+  const [confirmation, setConfirmation] = useState(false);
 
   const handlePayment = () => {
-      if (paymentMethod === "creditCard") {
-        return (
-          <div>
-        <input type="text" value={cardNumber} required placeholder="Card Number" onChange={(e) => setCardnumber(e.target.value)}/>
-        <input type="text" value={cardHolder} required placeholder="Card Holder Name" onChange={(e) => setCardHolder(e.target.value)}/>
-        <input type="text" value={cardExpire} required placeholder="Expiration Date" onChange={(e) => setCardExpire(e.target.value)}/>
-        <input type="text" value={cardCVV}    required  placeholder="CCV/CID/CSC" onChange={(e) => setCardCVV(e.target.value)}/>
-        <input type="submit" value="Place Order"  onSubmit={handleSubmit}/>
-          </div>
-          )
-      }
-      else if(paymentMethod === "payEx") {
-        return (
-          <div>
-          <input type="text" value={payexUser} required placeholder="Username" onChange={(e) => setPayexUser(e.target.value)}/>
-        <input type="password" value={payExpass} required placeholder="Password" onChange={(e) => setPayexPass(e.target.value)}/>
-        <input type="submit" value="Place Order" onSubmit={handleSubmit} />
-          </div>
-        )
-      }
-      else {
-        return null
-      }
-  }
+    if (paymentMethod === "creditCard") {
+      return (
+        <div>
+          <input
+            type="text"
+            value={cardNumber}
+            required
+            placeholder="Card Number"
+            onChange={(e) => setCardnumber(e.target.value)}
+          />
+          <input
+            type="text"
+            value={cardHolder}
+            required
+            placeholder="Card Holder Name"
+            onChange={(e) => setCardHolder(e.target.value)}
+          />
+          <input
+            type="text"
+            value={cardExpire}
+            required
+            placeholder="Expiration Date"
+            onChange={(e) => setCardExpire(e.target.value)}
+          />
+          <input
+            type="text"
+            value={cardCVV}
+            required
+            placeholder="CCV/CID/CSC"
+            onChange={(e) => setCardCVV(e.target.value)}
+          />
+          <input type="submit" value="Place Order" onSubmit={handleSubmit} />
+        </div>
+      );
+    } else if (paymentMethod === "payEx") {
+      console.log("payEx");
+
+      return (
+        <div>
+          <input
+            type="text"
+            value={payexUser}
+            required
+            placeholder="Username"
+            onChange={(e) => setPayexUser(e.target.value)}
+          />
+          <input
+            type="password"
+            value={payExpass}
+            required
+            placeholder="Password"
+            onChange={(e) => setPayexPass(e.target.value)}
+          />
+          <input type="submit" value="Place Order" onSubmit={handleSubmit} />
+        </div>
+      );
+    } else {
+      return null;
+    }
+  };
 
   const handleSubmit = () => {
-    Customer.FName = firstName
-    Customer.LName = lastName
-    Customer.Adress = adress
-    Customer.PhoneNumber = phoneNumber
-    Customer.ZipCode = zipcode
-    Customer.City = city
-    Customer.Country = country
-    Customer.PaymentMethod = paymentMethod
-
-    
-    console.log(Customer)
-    }
-  
+    Customer.FName = firstName;
+    Customer.LName = lastName;
+    Customer.Adress = adress;
+    Customer.PhoneNumber = phoneNumber;
+    Customer.ZipCode = zipcode;
+    Customer.City = city;
+    Customer.Country = country;
+    Customer.PaymentMethod = paymentMethod;
+    setConfirmation(true);
+    console.log(Customer);
+  };
 
   return (
     <div className={Styles.formDiv}>
       <form>
+        <PurchaseConfirmed
+          setConfirmation={setConfirmation}
+          confirmation={confirmation}
+        />
         <div className={Styles.userInfo}>
           <h3 className={Styles.h3}>Billing Details:</h3>
           <br />
@@ -465,11 +503,21 @@ const Checkout = () => {
           </select>
         </div>
         <div className={Styles.paymentMethods}>
-        <h3 className={Styles.h3}>Choose your payment method:</h3>
-        <br />
-        <img className={Styles.img} src={PayEx} alt="PayEx" onClick={() => setPaymentMethod("payEx")} />
-        <img  className={Styles.img} src={Visa} alt="Visa" onClick={() => setPaymentMethod("creditCard")}/>
-        {handlePayment()}
+          <h3 className={Styles.h3}>Choose your payment method:</h3>
+          <br />
+          <img
+            className={Styles.img}
+            src={PayEx}
+            alt="PayEx"
+            onClick={() => setPaymentMethod("payEx")}
+          />
+          <img
+            className={Styles.img}
+            src={Visa}
+            alt="Visa"
+            onClick={() => setPaymentMethod("creditCard")}
+          />
+          {handlePayment()}
         </div>
       </form>
     </div>

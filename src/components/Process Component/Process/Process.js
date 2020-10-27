@@ -4,22 +4,22 @@ import ErrorMessage from "../../UI/ErrorMessage/ErrorMessage";
 import Spinner from "../../UI/Spinner/Spinner";
 import ProcessBar from "./ProcessBar/ProcessBar";
 import barClasses from "./ProcessBar/ProcessBar.module.css";
-
+import Slide from "../../UI/Slide/Slide";
+import { connect } from "react-redux";
+import { fetchProduct } from "../../../store/actionFunc/indexAction";
 const Process = (props) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  let errorMsg = <ErrorMessage error={error} setError={setError} />;
-
   useEffect(() => {
     setLoading(true);
     try {
+      props.fetchData();
       setLoading(false);
     } catch (error) {
       setError(true);
       setLoading(false);
     }
   }, []);
-
   let dataArr = [
     {
       header: "CONCEPT OF SVENSK PARFYM",
@@ -47,19 +47,31 @@ const Process = (props) => {
         "It all begins with an idea, a longing to create a composition that tells a certain story. The idea developes to a search for the best fragrance materials for the purpose - a movement of extrovert creativity, boldness and modesty. The results are finally tested and analysed to finally become accessable perfumes for you.",
     },
   ];
+  const shownImages = 2;
   const [currentData, setCurrentData] = useState(dataArr.slice(0, 1));
-  const [currentPage, setCurrentPage] = useState(0);
   const [lineFill, setLineFill] = useState(0);
-  const [background, setBackground] = useState(false);
+  const [currentImages, setCurrentImages] = useState(props.products);
+
+  
+
+  console.log(props.products);
+  console.log(currentImages);
+  let arr = [];
+  let max = props.products.length;
+  for (let i = 0; i < max / shownImages; i++) {
+    arr.push(i);
+  }
+  console.log(arr);
 
   let setPage = (e) => {
     let page = e.target.value;
     setCurrentData(dataArr.slice(page, page + 1));
     setLineFill(page * 25);
-    setCurrentPage(page);
+    if (arr.includes(page)) {
+      setCurrentImages(props.products.slice(page + shownImages, page));
+    }
   };
-
-  let data = currentData.map((data, index) => {
+  let data = currentData.map((data) => {
     return (
       <div>
         <h2> {data.header} </h2>
@@ -68,7 +80,6 @@ const Process = (props) => {
     );
   });
   let dots = dataArr.map((data, index) => {
-    console.log(index === currentPage);
     return (
       <div>
         <li
@@ -82,26 +93,42 @@ const Process = (props) => {
       </div>
     );
   });
+  let errorMsg = <ErrorMessage error={error} setError={setError} />;
 
+  const screen = window.innerWidth;
+  const breakPoint = 700;
   let render = <Spinner />;
-  if (!loading) {
-    render = (
-      <div className={classes.Process}>
-        {errorMsg}
-        <ProcessBar
-          data={data}
-          dots={dots}
-          lineFill={lineFill}
-          page={currentPage}
-          setBackground={setBackground}
-          background={background}
-        />
-      </div>
-    );
+  if (!loading && props.products.length > 0) {
+    if (screen > breakPoint) {
+      render = (
+        <div className={classes.Process}>
+          {errorMsg}
+          <ProcessBar data={data} dots={dots} lineFill={lineFill} />
+          <Slide products={props.products} currentImages={currentImages} />
+        </div>
+      );
+    } else {
+      render = (
+        <div className={classes.Process}>
+          {errorMsg}
+          <ProcessBar data={data} dots={dots} lineFill={lineFill} />
+        </div>
+      );
+    }
   } else {
     render = <Spinner />;
   }
   return <div>{render}</div>;
 };
+const mapStateToProps = (state) => {
+  return {
+    products: state.prd.products,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchData: () => dispatch(fetchProduct()),
+  };
+};
 
-export default Process;
+export default connect(mapStateToProps, mapDispatchToProps)(Process);
