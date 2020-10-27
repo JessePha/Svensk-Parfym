@@ -10,6 +10,7 @@ import {
   updateUserAccount,
 } from "../../../handlepayment/handlePayment";
 import Message from "../../UI/messagePayment/message";
+import PurchaseConfirmed from "../../UI/PurchaseConfirmed/PurchaseConfirmed";
 
 const Checkout = ({ totalPrice, itemInCart }) => {
   const [firstName, setFirstName] = useState("");
@@ -30,6 +31,7 @@ const Checkout = ({ totalPrice, itemInCart }) => {
   const [access, setAccess] = useState(false);
   const [enoughMoney, setEnoughMoney] = useState(false);
   const [clickSubmit, setClickSubmit] = useState(false);
+  const [confirmMessage, setConfirmMessage] = useState(false);
   let history = useHistory();
 
   let Customer = {
@@ -81,6 +83,7 @@ const Checkout = ({ totalPrice, itemInCart }) => {
         account: result.account - totalPrice,
         id: result.id,
       });
+      setConfirmMessage(true);
     }
   };
   const goBackToHomepage = () => {
@@ -150,6 +153,10 @@ const Checkout = ({ totalPrice, itemInCart }) => {
 
   return (
     <div className={Styles.formDiv}>
+      <PurchaseConfirmed
+        confirmation={confirmMessage}
+        setConfirmation={setConfirmMessage}
+      />
       <form onSubmit={handleSubmit}>
         <div className={Styles.userInfo}>
           <h3 className={Styles.h3}>Billing Details:</h3>

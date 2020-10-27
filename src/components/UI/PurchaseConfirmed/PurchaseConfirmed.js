@@ -17,7 +17,7 @@ const PurchaseConfirmed = (props) => {
       >
         <HiX className={classes.Close} onClick={closeMessage}></HiX>
         <div className={classes.Message}>
-          <p>Purchase Confirmed</p>
+          <p>Purchase Confirmed!</p>
           <p>You will get a confirmation through your email shortly</p>
         </div>
       </div>

@@ -33,6 +33,7 @@ const App = () => {
         </View>
       </BrowserRouter>
       <ErrorMessage />
+      <PurchaseConfirmed/>
     </div>
   );
 };

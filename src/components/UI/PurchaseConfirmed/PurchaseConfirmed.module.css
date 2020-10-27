@@ -8,8 +8,9 @@
   overflow: auto; /* Enable scroll if needed */
   background-color: white; /* Black w/ opacity */
   color: black;
-  border-radius: 2px;
   z-index: 100;
+  border-radius: 10px;
+  box-shadow: 10px 10px 8px 8px #888888;
 }
 
 .Message {
