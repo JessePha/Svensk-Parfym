@@ -2,21 +2,16 @@ import React, { useState } from "react";
 import Styles from "./CheckoutForm.module.css";
 import PayEx from "../../../shared/Images/payex.png";
 import Visa from "../../../shared/Images/visa.jpg";
-import PurchaseConfirmed from "../../UI/PurchaseConfirmed/PurchaseConfirmed";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import {
+  validatePayment,
+  makeOrder,
+  updateUserAccount,
+} from "../../../handlepayment/handlePayment";
+import Message from "../../UI/messagePayment/message";
 
-const Checkout = () => {
-  let Customer = {
-    FName: "",
-    LName: "",
-    Adress: "",
-    PhoneNumber: "",
-    ZipCode: "",
-    City: "",
-    Email: "",
-    Country: "",
-    PaymentMethod: "",
-  };
-
+const Checkout = ({ totalPrice, itemInCart }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [adress, setAdress] = useState("");
@@ -32,16 +27,75 @@ const Checkout = () => {
   const [cardCVV, setCardCVV] = useState("");
   const [payexUser, setPayexUser] = useState("");
   const [payExpass, setPayexPass] = useState("");
-  const [confirmation, setConfirmation] = useState(false);
+  const [access, setAccess] = useState(false);
+  const [enoughMoney, setEnoughMoney] = useState(false);
+  const [clickSubmit, setClickSubmit] = useState(false);
+  let history = useHistory();
 
+  let Customer = {
+    FName: firstName,
+    LName: lastName,
+    Adress: adress,
+    PhoneNumber: phoneNumber,
+    ZipCode: zipcode,
+    City: city,
+    Email: emailAdress,
+    Country: country,
+    PaymentMethod: paymentMethod,
+  };
+
+  let orders = {
+    type: "Orders",
+    customer: { ...Customer },
+    product: [...itemInCart],
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let data = null;
+    if (paymentMethod === "PayEx") {
+      data = {
+        paymentMethod: paymentMethod,
+        payexUser: payexUser,
+        payExpass: payExpass,
+      };
+    }
+    if (paymentMethod === "VISA") {
+      data = {
+        paymentMethod: paymentMethod,
+        cardNumber: cardNumber,
+        cardHolder: cardHolder,
+        cardExpire: cardExpire,
+        cardCVV: cardCVV,
+      };
+    }
+    const result = await validatePayment(data);
+    setAccess(result.access);
+    setClickSubmit(true);
+    if (result.access && result.account >= totalPrice) {
+      setEnoughMoney(true);
+      setAccess(result.access);
+      makeOrder(orders);
+      updateUserAccount({
+        type: paymentMethod,
+        account: result.account - totalPrice,
+        id: result.id,
+      });
+    }
+  };
+  const goBackToHomepage = () => {
+    setEnoughMoney(false);
+    setClickSubmit(false);
+    history.push("/");
+  };
   const handlePayment = () => {
-    if (paymentMethod === "creditCard") {
+    if (paymentMethod === "VISA") {
       return (
         <div>
           <input
             type="text"
             value={cardNumber}
-            required
+            required={true}
             placeholder="Card Number"
             onChange={(e) => setCardnumber(e.target.value)}
           />
@@ -66,12 +120,10 @@ const Checkout = () => {
             placeholder="CCV/CID/CSC"
             onChange={(e) => setCardCVV(e.target.value)}
           />
-          <input type="submit" value="Place Order" onSubmit={handleSubmit} />
+          <input type="submit" value="Place Order" />
         </div>
       );
-    } else if (paymentMethod === "payEx") {
-      console.log("payEx");
-
+    } else if (paymentMethod === "PayEx") {
       return (
         <div>
           <input
@@ -88,7 +140,7 @@ const Checkout = () => {
             placeholder="Password"
             onChange={(e) => setPayexPass(e.target.value)}
           />
-          <input type="submit" value="Place Order" onSubmit={handleSubmit} />
+          <input type="submit" value="Place Order" />
         </div>
       );
     } else {
@@ -96,26 +148,9 @@ const Checkout = () => {
     }
   };
 
-  const handleSubmit = () => {
-    Customer.FName = firstName;
-    Customer.LName = lastName;
-    Customer.Adress = adress;
-    Customer.PhoneNumber = phoneNumber;
-    Customer.ZipCode = zipcode;
-    Customer.City = city;
-    Customer.Country = country;
-    Customer.PaymentMethod = paymentMethod;
-    setConfirmation(true);
-    console.log(Customer);
-  };
-
   return (
     <div className={Styles.formDiv}>
-      <form>
-        <PurchaseConfirmed
-          setConfirmation={setConfirmation}
-          confirmation={confirmation}
-        />
+      <form onSubmit={handleSubmit}>
         <div className={Styles.userInfo}>
           <h3 className={Styles.h3}>Billing Details:</h3>
           <br />
@@ -509,19 +544,37 @@ const Checkout = () => {
             className={Styles.img}
             src={PayEx}
             alt="PayEx"
-            onClick={() => setPaymentMethod("payEx")}
+            onClick={() => setPaymentMethod("PayEx")}
           />
           <img
             className={Styles.img}
             src={Visa}
             alt="Visa"
-            onClick={() => setPaymentMethod("creditCard")}
+            onClick={() => setPaymentMethod("VISA")}
           />
           {handlePayment()}
         </div>
       </form>
+      {
+        <Message
+          text={access ? "Successfully" : "Invalid account"}
+          buttonText={access ? "Continue" : "Try again"}
+          isError={access}
+          isClick={clickSubmit}
+          closeInfo={() =>
+            access ? goBackToHomepage() : setClickSubmit(false)
+          }
+        />
+      }
     </div>
   );
 };
 
-export default Checkout;
+const mapStateToProps = (state) => {
+  return {
+    totalPrice: state.crt.totalPrice,
+    itemInCart: state.crt.cartItem,
+  };
+};
+
+export default connect(mapStateToProps, null)(Checkout);

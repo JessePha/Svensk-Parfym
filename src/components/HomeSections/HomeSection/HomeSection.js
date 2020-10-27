@@ -1,16 +1,6 @@
 import React from "react";
 import classes from "./HomeSection.module.css";
 const HomeSection = (props) => {
-  let currentText = "";
-  if (props.showText > 1 && props.showText < 1.5) {
-    currentText = props.texts[0];
-  } else if (props.showText > 1.7 && props.showText < 2.3) {
-    currentText = props.texts[1];
-  } else if (props.showText > 2.5 && props.showText < 3.5) {
-    currentText = props.texts[2];
-  } else if (props.showText > 3.8 && props.showText < 5) {
-    currentText = props.texts[3];
-  }
   return (
     <div className={classes.Section}>
       <div className={classes.images}>
@@ -52,10 +42,27 @@ const HomeSection = (props) => {
         </div>
       </div>
       <div className={classes.textContent}>
-        <div
-          className={classes.innerTextContent}
-        >
-          {props.showText > 1 ? currentText : ""}
+        <div className={classes.innerTextContent}>
+          {props.showText > 1 && props.showText < 1.3 ? (
+            <p>{props.texts[0]}</p>
+          ) : (
+            ""
+          )}
+          {props.showText > 1.6 && props.showText < 2 ? (
+            <p>{props.texts[1]}</p>
+          ) : (
+            ""
+          )}
+          {props.showText > 2.5 && props.showText < 2.9 ? (
+            <p>{props.texts[2]}</p>
+          ) : (
+            ""
+          )}
+          {props.showText > 3.8 && props.showText < 4.2 ? (
+            <p>{props.texts[3]}</p>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>

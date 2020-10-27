@@ -1,0 +1,35 @@
+.Message {
+  top: 30%;
+  left: 30%;
+  width: 40%;
+  height: 40%;
+  background-color: rgb(102, 101, 101);
+  color: white;
+  position: absolute;
+  text-align: center;
+  z-index: 5;
+  box-shadow: 0 3px 10px 2px black;
+  border-radius: 10px;
+  transition: 0.5 ease-out;
+}
+.HideMessage {
+  top: -100%;
+  left: 30%;
+  width: 40%;
+  height: 40%;
+  background-color: rgb(102, 101, 101);
+  color: white;
+  position: absolute;
+  text-align: center;
+  z-index: 5;
+  box-shadow: 0 3px 10px 2px black;
+  border-radius: 10px;
+}
+.Icon {
+  margin-top: 8%;
+  font-size: 50px;
+}
+
+.Message p, .Message div{
+  padding: 5px;
+}
