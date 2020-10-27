@@ -25,36 +25,66 @@ class Information extends Component {
       <div className={classes.Information}>
         <div className={classes.Title}>ABOUT</div>
 
+        <div className={classes.PhotoDiv}>
+        <AboutUsPhoto image={photo1} />
+        <AboutUsPhoto image={photo1} />
+        <AboutUsPhoto image={photo1} />
+        </div>
+
+        <div  className={classes.PhotoUnderline}/>
+
         <div className={classes.TopText}>
           Perfumer Henrik Lestréus and the fine fragrances brand Svensk Parfym
         </div>
 
-        <AboutUsPhoto image={photo1} />
+        <div  className={classes.PhotoUnderline}/>
+
 
         <div className={classes.MainInformation}>
+      <div className={classes.textRow}>
+        <div className={classes.textColumn}>
           <p>{text}</p>
-          <br />
+        </div>
+        <div className={classes.textColumn}>
           <p>{text2}</p>
-          <br />
+        </div>
+        <div className={classes.textColumn}>
           <p>{text3}</p>
-          <br />
+        </div>
+      </div>
+        <div className={classes.textRow}>
+        <div className={classes.textColumn}>
           <p>{text4}</p>
-          <br />
+        </div>
+        <div className={classes.textColumn}>
           <p>{text5}</p>
-          <br />
+        </div>
+          <div className={classes.textColumn}>
           <p>{text6}</p>
-          <br />
+          </div>
+        </div>
+        <div className={classes.textRow}>
+          <div className={classes.textColumn}>
           <p>{text7}</p>
-          <br />
+          </div>
+          <div className={classes.textColumn}>
           <p>{text8}</p>
-          <br />
+          </div>
+          <div className={classes.textColumn}>          
           <p>{text9}</p>
-          <br />
+          </div>
+          </div>
+          <div className={classes.textRow}>
+          <div className={classes.textColumn}>
           <p>{text10}</p>
-          <br />
+          </div>
+          <div className={classes.textColumn}>
           <p>{text11}</p>
-          <br />
+          </div>
+          <div className={classes.textColumn}>          
           <p>{text12}</p>
+          </div>
+          </div>
         </div>
 
         <div>

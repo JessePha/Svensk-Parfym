@@ -26,7 +26,7 @@
 }
 
 .TopText {
-  margin: 4%;
+  margin: 3vh;
   text-align: center;
 }
 
@@ -54,22 +54,60 @@
   }
 }
 
-.Photo {
-  display: flex;
-  width: 93%;
-  padding: 2%;
-  padding-left: 10%;
+/*
+vw	Relative to 1% of the width of the viewport*	
+vh	Relative to 1% of the height of the viewport*
+*/
+.PhotoDiv {
+ width: 95vw;
+ display: flex;
+ text-align: center;
+}
 
+.Photo {
+
+  width: 27vw;
+  border-radius: 50%;
+  margin: 2vw;
+  /*
+  border-radius: 100%;
+  border-radius: 30vw;
+  border-radius: 5vw;
+  */
+
+  /*
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   -o-transition: all 1s ease;
   -ms-transition: all 1s ease;
   transition: all 1s ease;
+  */
 }
 
 .Photo:hover {
+  /*
   width: 95%;
   height: 95%;
+  */
+}
+
+.PhotoUnderline {
+  background-color: gold;
+  height: 2px;
+  width: 90vw;
+  margin: 5vh;
+  opacity: 60%;
+}
+
+.textRow{
+  width: 90vw;
+  display: flex;
+  text-align: center;
+}
+
+.textColumn{
+  width: 27vw;
+  margin: 2vh;
 }
 
 .MainInformation {
