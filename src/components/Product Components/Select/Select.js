@@ -50,7 +50,7 @@ const Select = (props) => {
       <div className={classes.AddToCartButtonContain2}>
         <div
           className={classes.AddToCartButton}
-          onClick={() => props.addToCart(props.chosenItem, 1)}
+          onClick={() => props.addToCart({data: props.chosenItem, amount: 1})}
         >
           <BiShoppingBag className={classes.ShoppingBag} />
           <p>Buy</p>
