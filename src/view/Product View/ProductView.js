@@ -20,6 +20,8 @@ const ProductView = (props) => {
   let [price, setPrice] = useState(850);
   const [chosenItem, setChosenItem] = useState(null);
   const [showItemAdded, setShowItemAdded] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [disableButton, setDisableButton] = useState(false);
   useEffect(() => {
     function fetchItem() {
       projectFirestore
@@ -37,10 +39,11 @@ const ProductView = (props) => {
         });
     }
     fetchItem();
+    setLoading(true);
   }, [name]);
 
   const addAndShowItem = (data) => {
-    props.addToCart(data.data,data.amount);
+    props.addToCart(data.data, data.amount);
     setShowItemAdded(
       <ShowAddedItem
         url={data.data.url}
@@ -49,7 +52,9 @@ const ProductView = (props) => {
         price={data.data.price}
       />
     );
+    setDisableButton(true);
     setTimeout(() => {
+      setDisableButton(false);
       setShowItemAdded(null);
     }, 3000);
   };
@@ -57,7 +62,7 @@ const ProductView = (props) => {
   if (viewProduct) {
     content = (
       <>
-        <Spinner />
+        <Spinner loading = {loading} />
       </>
     );
   }
@@ -112,6 +117,7 @@ const ProductView = (props) => {
             setChosenItem={setChosenItem}
             addToCart={addAndShowItem}
             setDefault={defaultChosen}
+            disableButton={disableButton}
           />
           <Description viewProduct={viewProduct} />
         </div>
@@ -124,7 +130,9 @@ const ProductView = (props) => {
               <div className={classes.AddToCartButtonContain}>
                 <div
                   className={classes.AddToCartButton}
-                  onClick={() => addAndShowItem({data: chosenItem, amount: 1})}
+                  onClick={() =>
+                    addAndShowItem({ data: chosenItem, amount: 1 })
+                  }
                 >
                   <BiShoppingBag className={classes.ShoppingBag} />
                   <p>Buy</p>

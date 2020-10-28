@@ -11,10 +11,11 @@ import "./Shop.css";
 const Perfumes = (props) => {
   let history = useHistory();
   const [loading, setLoading] = useState(false);
+  const [disableButton, setDisableButton] = useState(false);
   const [showItemAdded, setShowItemAdded] = useState(null);
   useEffect(() => {
-    setLoading(true);
     props.fetchData();
+    setLoading(true);
     return () => props.fetchData();
   }, []);
 
@@ -28,7 +29,9 @@ const Perfumes = (props) => {
         price={data.price}
       />
     );
+    setDisableButton(true)
     setTimeout(() => {
+      setDisableButton(false)
       setShowItemAdded(null);
     }, 3000);
   };
@@ -59,6 +62,7 @@ const Perfumes = (props) => {
                 price: perfume.price[1],
               })
             }
+            disableButton = {disableButton}
           />
         ))}
       </div>

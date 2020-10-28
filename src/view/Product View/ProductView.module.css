@@ -108,10 +108,6 @@
 @media only screen and (max-width: 500px) {
   .ProductView {
     margin-top: 20%;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    text-align: center;
   }
   .ProductView > div:nth-child(1) {
     margin-left: 0.5%;
