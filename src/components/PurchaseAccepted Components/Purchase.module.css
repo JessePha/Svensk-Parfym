@@ -4,7 +4,7 @@
   z-index: 100;
   border-radius: 10vw;
   margin-bottom: 10vw;
-  margin-top: 10vw;
+  margin-top: 12vw;
 
 }
 
@@ -16,6 +16,6 @@
 @media(max-width: 500px) {
   .PurchaseConfirmed{
   margin-top: 20vw;
-
+  border-radius: 0vw;
   }
 }

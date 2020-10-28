@@ -1,21 +1,22 @@
 import React from "react";
-import Button from "../Button/Button";
 import { BiErrorCircle } from "react-icons/bi";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import classes from "./message.module.css";
+import { Link } from "react-router-dom";
 
-const message = ({ text, isClick, isError, buttonText, closeInfo }) => {
-
+const message = (props) => {
   return (
-    <div className={isClick ? classes.Message : classes.HideMessage}>
-      {isError ? (
+    <div className={props.isClick ? classes.Message : classes.HideMessage}>
+      {props.isError ? (
         <AiOutlineCheckCircle className={classes.Icon} />
       ) : (
         <BiErrorCircle className={classes.Icon} />
       )}
-      <p>{text}</p>
+      <p>{props.text}</p>
       <div>
-        <Button text={buttonText} click ={closeInfo} style = "messageButton" />
+        <Link to="/purchase">
+          Continue
+        </Link>
       </div>
     </div>
   );

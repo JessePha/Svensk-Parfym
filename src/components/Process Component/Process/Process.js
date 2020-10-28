@@ -13,7 +13,7 @@ const Process = (props) => {
     setLoading(true);
     try {
       props.fetchData();
-        setLoading(false);
+      setLoading(false);
       return () => props.fetchData();
     } catch (error) {
       setError(true);
@@ -48,9 +48,8 @@ const Process = (props) => {
     },
   ];
 
-
-  let images = props.products.map((data) => data.url)
-  console.log(images)
+  let images = props.products.map((data) => data.url);
+  console.log(images);
   const shownImages = 5;
   const [currentData, setCurrentData] = useState(dataArr.slice(0, 1));
   const [lineFill, setLineFill] = useState(0);
@@ -69,8 +68,8 @@ const Process = (props) => {
 
   let setPage = null;
   if (props.products.length > 0) {
-    let images = props.products.map((data) => data.url)
-    console.log(images)
+    let images = props.products.map((data) => data.url);
+    console.log(images);
     setPage = (e) => {
       let page = e.target.value;
       setCurrentData(dataArr.slice(page, page + 1));

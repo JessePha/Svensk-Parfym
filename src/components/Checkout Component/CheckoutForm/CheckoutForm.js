@@ -3,7 +3,7 @@ import Styles from "./CheckoutForm.module.css";
 import PayEx from "../../../shared/Images/payex.png";
 import Visa from "../../../shared/Images/visa.jpg";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import {useHistory } from "react-router-dom";
 import {
   validatePayment,
   makeOrder,
@@ -11,7 +11,8 @@ import {
 } from "../../../handlepayment/handlePayment";
 import Message from "../../UI/messagePayment/message";
 
-const Checkout = ({ totalPrice, itemInCart }) => {
+const CheckoutForm = ({ totalPrice, itemInCart }) => {
+  console.log(itemInCart);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [adress, setAdress] = useState("");
@@ -88,7 +89,6 @@ const Checkout = ({ totalPrice, itemInCart }) => {
   const goBackToHomepage = () => {
     setEnoughMoney(false);
     setClickSubmit(false);
-    history.push("/");
   };
   const handlePayment = () => {
     if (paymentMethod === "VISA") {
@@ -152,7 +152,6 @@ const Checkout = ({ totalPrice, itemInCart }) => {
 
   return (
     <div className={Styles.formDiv}>
-
       <form onSubmit={handleSubmit}>
         <div className={Styles.userInfo}>
           <h3 className={Styles.h3}>Billing Details:</h3>
@@ -580,4 +579,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(Checkout);
+export default connect(mapStateToProps, null)(CheckoutForm);
