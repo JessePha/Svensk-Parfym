@@ -20,6 +20,7 @@ const CheckoutList = (props) => {
             {items.name} {items.size} ⨯ {items.count}:{" "}
             {items.price * items.count}kr{" "}
           </p>
+          <br/>
         </div>
       ))}
       <br />
