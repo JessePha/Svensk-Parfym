@@ -3,7 +3,6 @@ import classes from "./Process.module.css";
 import ErrorMessage from "../../UI/ErrorMessage/ErrorMessage";
 import Spinner from "../../UI/Spinner/Spinner";
 import ProcessBar from "./ProcessBar/ProcessBar";
-import barClasses from "./ProcessBar/ProcessBar.module.css";
 import Slide from "../../UI/Slide/Slide";
 import { connect } from "react-redux";
 import { fetchProduct } from "../../../store/actionFunc/indexAction";
@@ -14,7 +13,8 @@ const Process = (props) => {
     setLoading(true);
     try {
       props.fetchData();
-      setLoading(false);
+        setLoading(false);
+      return () => props.fetchData();
     } catch (error) {
       setError(true);
       setLoading(false);
@@ -47,30 +47,41 @@ const Process = (props) => {
         "It all begins with an idea, a longing to create a composition that tells a certain story. The idea developes to a search for the best fragrance materials for the purpose - a movement of extrovert creativity, boldness and modesty. The results are finally tested and analysed to finally become accessable perfumes for you.",
     },
   ];
-  const shownImages = 2;
+
+
+  let images = props.products.map((data) => data.url)
+  console.log(images)
+  const shownImages = 5;
   const [currentData, setCurrentData] = useState(dataArr.slice(0, 1));
   const [lineFill, setLineFill] = useState(0);
-  const [currentImages, setCurrentImages] = useState(props.products);
-
-  
+  const [currentPage, setCurrentPage] = useState(0);
+  const [currentImages, setCurrentImages] = useState(images);
 
   console.log(props.products);
   console.log(currentImages);
-  let arr = [];
+
+  let imageArr = [];
   let max = props.products.length;
   for (let i = 0; i < max / shownImages; i++) {
-    arr.push(i);
+    imageArr.push(i);
   }
-  console.log(arr);
+  console.log(imageArr);
 
-  let setPage = (e) => {
-    let page = e.target.value;
-    setCurrentData(dataArr.slice(page, page + 1));
-    setLineFill(page * 25);
-    if (arr.includes(page)) {
-      setCurrentImages(props.products.slice(page + shownImages, page));
-    }
-  };
+  let setPage = null;
+  if (props.products.length > 0) {
+    let images = props.products.map((data) => data.url)
+    console.log(images)
+    setPage = (e) => {
+      let page = e.target.value;
+      setCurrentData(dataArr.slice(page, page + 1));
+      setLineFill(page * 25);
+      setCurrentPage(page);
+      if (imageArr.includes(page) && props.products.length > 0) {
+        setCurrentImages(images.slice(page - shownImages, page));
+      }
+    };
+  }
+
   let data = currentData.map((data) => {
     return (
       <div>
@@ -80,24 +91,14 @@ const Process = (props) => {
     );
   });
   let dots = dataArr.map((data, index) => {
-    return (
-      <div>
-        <li
-          className={barClasses.Step}
-          onClick={setPage}
-          value={index}
-          key={index}
-        >
-          <div className={barClasses.StepInner}></div>
-        </li>
-      </div>
-    );
+    return <li onClick={setPage} value={index} key={index}></li>;
   });
   let errorMsg = <ErrorMessage error={error} setError={setError} />;
 
   const screen = window.innerWidth;
   const breakPoint = 700;
   let render = <Spinner />;
+
   if (!loading && props.products.length > 0) {
     if (screen > breakPoint) {
       render = (

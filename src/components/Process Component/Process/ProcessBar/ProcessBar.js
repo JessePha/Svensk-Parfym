@@ -7,7 +7,6 @@ let ProcessBar = (props) => {
       <div className={classes.ProcessWrapper}>
         <div id={classes.ProgressBarContainer}>
           <ul>{props.dots}</ul>
-          <div></div>
           <div id={classes.Line}>
             <div
               id={classes.LineProcess}

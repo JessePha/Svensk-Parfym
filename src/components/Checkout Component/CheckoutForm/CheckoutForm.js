@@ -10,7 +10,6 @@ import {
   updateUserAccount,
 } from "../../../handlepayment/handlePayment";
 import Message from "../../UI/messagePayment/message";
-import PurchaseConfirmed from "../../UI/PurchaseConfirmed/PurchaseConfirmed";
 
 const Checkout = ({ totalPrice, itemInCart }) => {
   const [firstName, setFirstName] = useState("");
@@ -153,10 +152,7 @@ const Checkout = ({ totalPrice, itemInCart }) => {
 
   return (
     <div className={Styles.formDiv}>
-      <PurchaseConfirmed
-        confirmation={confirmMessage}
-        setConfirmation={setConfirmMessage}
-      />
+
       <form onSubmit={handleSubmit}>
         <div className={Styles.userInfo}>
           <h3 className={Styles.h3}>Billing Details:</h3>

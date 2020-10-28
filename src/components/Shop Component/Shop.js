@@ -27,7 +27,7 @@ const Perfumes = (props) => {
   const goTo = (name, size) => {
     history.push("/Fragrance/" + name + "/" + size);
   };
-  let errorMsg = <ErrorMessage error={error} setError={setError}/>
+  let errorMsg = <ErrorMessage error={error} setError={setError} />;
   let content = (
     <div>
       <Spinner loading={loading} />
@@ -54,7 +54,12 @@ const Perfumes = (props) => {
       </div>
     );
   }
-  return <div>{errorMsg}{content}</div>;
+  return (
+    <div>
+      {errorMsg}
+      {content}
+    </div>
+  );
 };
 const mapStateToProps = (state) => {
   return {

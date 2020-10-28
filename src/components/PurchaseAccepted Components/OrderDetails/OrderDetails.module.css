@@ -1,0 +1,12 @@
+.OrderDetails {
+  text-align: left;
+  margin-top: 10%;
+  margin-left: 10%;
+}
+
+.Order {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 4em;
+}
+

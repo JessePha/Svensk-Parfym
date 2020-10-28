@@ -11,7 +11,7 @@ import CheckoutView from "./view/Checkout View/CheckoutView";
 import ErrorMessage from "./components/UI/ErrorMessage/ErrorMessage";
 import ProcessView from "./view/Process View/ProcessView";
 import MissingPage from "./view/MissingPage view/MissingPageView";
-import PurchaseConfirmed from "./components/UI/PurchaseConfirmed/PurchaseConfirmed";
+import PurchaseView from "./view/Purchase view/PurchaseView"
 const App = () => {
   return (
     <div className="App">
@@ -28,12 +28,12 @@ const App = () => {
             />
             <Route exact path={"/Checkout"} component={CheckoutView} />
             <Route exact path={"/process"} component={ProcessView} />
+            <Route exact path={"/purchase"} component={PurchaseView}/>
             <Route path="" component={MissingPage} />
           </Switch>
         </View>
       </BrowserRouter>
       <ErrorMessage />
-      <PurchaseConfirmed/>
     </div>
   );
 };
