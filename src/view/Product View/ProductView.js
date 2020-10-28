@@ -9,6 +9,7 @@ import ImageSlideShow from "../../components/Product Components/Image Slideshow/
 import Select from "../../components/Product Components/Select/Select";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import { BiShoppingBag } from "react-icons/bi";
+import ShowAddedItem from "../../components/UI/ShowAddedItem/ShowAddedItem";
 import Price from "../../components/UI/Price/Price";
 
 const ProductView = (props) => {
@@ -18,6 +19,7 @@ const ProductView = (props) => {
   let { name, size } = useParams();
   let [price, setPrice] = useState(850);
   const [chosenItem, setChosenItem] = useState(null);
+  const [showItemAdded, setShowItemAdded] = useState(null);
   useEffect(() => {
     function fetchItem() {
       projectFirestore
@@ -36,6 +38,21 @@ const ProductView = (props) => {
     }
     fetchItem();
   }, [name]);
+
+  const addAndShowItem = (data) => {
+    props.addToCart(data.data,data.amount);
+    setShowItemAdded(
+      <ShowAddedItem
+        url={data.data.url}
+        name={data.data.name}
+        size={data.data.size}
+        price={data.data.price}
+      />
+    );
+    setTimeout(() => {
+      setShowItemAdded(null);
+    }, 3000);
+  };
 
   if (viewProduct) {
     content = (
@@ -93,8 +110,8 @@ const ProductView = (props) => {
             chosenItem={chosenItem}
             setPrice={setPrice}
             setChosenItem={setChosenItem}
-            addToCart={props.addToCart}
-            setDefault = {defaultChosen}
+            addToCart={addAndShowItem}
+            setDefault={defaultChosen}
           />
           <Description viewProduct={viewProduct} />
         </div>
@@ -107,7 +124,7 @@ const ProductView = (props) => {
               <div className={classes.AddToCartButtonContain}>
                 <div
                   className={classes.AddToCartButton}
-                  onClick={() => props.addToCart(chosenItem, 1)}
+                  onClick={() => addAndShowItem({data: chosenItem, amount: 1})}
                 >
                   <BiShoppingBag className={classes.ShoppingBag} />
                   <p>Buy</p>
@@ -120,7 +137,12 @@ const ProductView = (props) => {
     );
   }
 
-  return <div className={classes.ProductView}>{content}</div>;
+  return (
+    <div className={classes.ProductView}>
+      {content}
+      {showItemAdded}
+    </div>
+  );
 };
 
 const mapStateToProps = (state) => {

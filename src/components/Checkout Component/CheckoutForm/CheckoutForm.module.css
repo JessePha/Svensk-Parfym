@@ -14,6 +14,7 @@
   color: #282828;
   padding: 5px 0px 0px;
   margin-right: 3px;
+  margin-left: 5px;
 }
 .img {
   padding-top: 5px;
@@ -22,19 +23,16 @@
   cursor: pointer;
 }
 
-.formDiv {
-  width: fit-content;
-}
 .formDiv form {
   display: flex;
   flex-flow: row;
   align-items: left;
-  width: 1200px;
+  width: 100%;
 }
 
 .formDiv input[type="text"],
-select {
-  text-align: left;
+select,
+input[type="password"] {
   width: 100%;
   padding: 10px 2px;
   margin: 5px 0;
@@ -42,8 +40,10 @@ select {
   border: none;
   border-bottom: 2px solid black;
   font-size: 15px;
+  margin-left: 5px;
 }
-.formDiv input[type="text"]:focus {
+.formDiv input[type="text"]:focus,
+input[type="password"]:focus {
   outline-style: solid 3px;
   outline-color: rgb(255, 255, 255);
   border: none;
@@ -73,4 +73,61 @@ select {
   padding-right: 0px;
   max-width: 400px;
   padding-left: 100px;
+}
+@media (max-width: 1024px) {
+  .formDiv {
+    width: 130%;
+  }
+  .paymentMethods {
+    padding-right: 5px;
+    max-width: 300px;
+  }
+  .img {
+    width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  .paymentMethods {
+    padding-left: 100px;
+    width: 100%;
+  }
+  .userInfo {
+    width: 110%;
+  }
+}
+@media (max-width: 425px) {
+  .formDiv form {
+    display: initial;
+    width: 100%;
+  }
+  .userInfo {
+    padding-top: 7%;
+    width: 80%;
+  }
+  .img {
+    width: 50%;
+  }
+  .paymentMethods {
+    padding-left: 0px;
+    padding-top: 5px;
+    margin: 0px;
+    width: 100%;
+    margin-left: 10%;
+  }
+}
+@media (max-width: 375px) {
+  .paymentMethods {
+    padding-top: 15px;
+  }
+  .img {
+    width: 50%;
+  }
+}
+@media (max-width: 320px) {
+  .img {
+    width: 50%;
+  }
+  .paymentMethods {
+    margin-left: 3%;
+  }
 }

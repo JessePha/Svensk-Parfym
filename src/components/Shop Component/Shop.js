@@ -5,12 +5,15 @@ import { connect } from "react-redux";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import { fetchProduct } from "../../store/actionFunc/indexAction";
 import { addItemToCart } from "../../store/actionFunc/indexAction";
+import ShowAddedItem from "../UI/ShowAddedItem/ShowAddedItem";
 import "./Shop.css";
 import ErrorMessage from "../UI/ErrorMessage/ErrorMessage";
 
 const Perfumes = (props) => {
+  let history = useHistory();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [showItemAdded, setShowItemAdded] = useState(null);
   useEffect(() => {
     setLoading(true);
     try {
@@ -23,7 +26,21 @@ const Perfumes = (props) => {
     }
   }, []);
 
-  let history = useHistory();
+  const addAndShowItem = (data) => {
+    props.addToCart(data, 1);
+    setShowItemAdded(
+      <ShowAddedItem
+        url={data.url}
+        name={data.name}
+        size={data.size}
+        price={data.price}
+      />
+    );
+    setTimeout(() => {
+      setShowItemAdded(null);
+    }, 3000);
+  };
+
   const goTo = (name, size) => {
     history.push("/Fragrance/" + name + "/" + size);
   };
@@ -44,10 +61,11 @@ const Perfumes = (props) => {
             price={perfume.price}
             moreInfo={() => goTo(perfume.name, perfume.size[0])}
             addToCart={() =>
-              props.addToCart(
-                { ...perfume, size: perfume.size[0], price: perfume.price[1] },
-                1
-              )
+              addAndShowItem({
+                ...perfume,
+                size: perfume.size[0],
+                price: perfume.price[1],
+              })
             }
           />
         ))}
@@ -57,6 +75,7 @@ const Perfumes = (props) => {
   return (
     <div>
       {errorMsg}
+      {showItemAdded}
       {content}
     </div>
   );
