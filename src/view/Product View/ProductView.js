@@ -1,97 +1,148 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import classes from "./ProductView.module.css";
 import { connect } from "react-redux";
+import { projectFirestore } from "../../firestore/config";
 import { addItemToCart } from "../../store/actionFunc/indexAction";
 import Description from "../../components/Product Components/Description/Description";
 import ImageSlideShow from "../../components/Product Components/Image Slideshow/ImageSlideshow";
 import Select from "../../components/Product Components/Select/Select";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import { BiShoppingBag } from "react-icons/bi";
+import ShowAddedItem from "../../components/UI/ShowAddedItem/ShowAddedItem";
+import Price from "../../components/UI/Price/Price";
 
 const ProductView = (props) => {
-  let { name } = useParams();
-  let item = [];
-  if (props.products) {
-    item = props.products.filter((product) => product.name === name);
-  }
-  let [price, setPrice] = useState(0);
-  let [amount, setAmount] = useState(0);
-  const [selectSize, setselectSize] = useState();
-  const [showPrice, setShowPrice] = useState(false);
-  const [viewProduct] = useState(...item.slice());
+  let content = null;
+  let viewProduct = [];
+  let [itm, setItm] = useState([]);
+  let { name, size } = useParams();
+  let [price, setPrice] = useState(850);
   const [chosenItem, setChosenItem] = useState(null);
-  const [maxItems, setMaxItems] = useState(false);
-  const addItem = () => {
-    if (amount < chosenItem.stock) {
-      setAmount(amount + 1);
-    } else if (amount >= chosenItem.stock) {
-      setMaxItems(true);
+  const [showItemAdded, setShowItemAdded] = useState(null);
+  useEffect(() => {
+    function fetchItem() {
+      projectFirestore
+        .collection("products")
+        .get()
+        .then((querySnapShot) => {
+          querySnapShot.forEach((doc) => {
+            if (doc.data().name === name) {
+              setItm([doc.data()]);
+            }
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
+    fetchItem();
+  }, [name]);
+
+  const addAndShowItem = (data) => {
+    props.addToCart(data.data,data.amount);
+    setShowItemAdded(
+      <ShowAddedItem
+        url={data.data.url}
+        name={data.data.name}
+        size={data.data.size}
+        price={data.data.price}
+      />
+    );
+    setTimeout(() => {
+      setShowItemAdded(null);
+    }, 3000);
   };
-  const subtractItem = () => {
-    if (amount > 0) {
-      setAmount(amount - 1);
-    }
-    if (amount === chosenItem.stock - 1) {
-      setMaxItems(false);
-    }
-  };
-  const selectedSize = (e) => {
-    setselectSize(e.target.value);
-    if (e.target.value === "Select size") {
-      setPrice();
-      setShowPrice(false);
-    }
-    if (e.target.value === viewProduct.size[0]) {
-      setPrice(viewProduct.price[1]);
-      setShowPrice(true);
-      setChosenItem({
-        ...viewProduct,
-        price: viewProduct.price[1],
-        size: e.target.value,
-      });
-      setAmount(0);
-    }
-    if (e.target.value === viewProduct.size[1]) {
-      setPrice(viewProduct.price[0]);
-      setShowPrice(true);
-      setChosenItem({
-        ...viewProduct,
-        price: viewProduct.price[0],
-        size: e.target.value,
-      });
-      setAmount(0);
-    }
-  };
-  let content = (
-    <>
-      <Spinner />
-    </>
-  );
-  if (item) {
+
+  if (viewProduct) {
     content = (
       <>
-        <ImageSlideShow viewProduct={viewProduct} />
+        <Spinner />
+      </>
+    );
+  }
+
+  if (props.products) {
+    viewProduct = props.products.filter(
+      (product) => product.name === name && product.size[0] === size
+    );
+  }
+
+  if (itm.length > 0) {
+    viewProduct = itm.slice();
+    const selectedSize = (e) => {
+      if (e.target.value === viewProduct[0].size[0]) {
+        setPrice(viewProduct[0].price[1]);
+        setChosenItem({
+          ...viewProduct[0],
+          price: viewProduct[0].price[1],
+          size: e.target.value,
+        });
+      }
+      if (e.target.value === viewProduct[0].size[1]) {
+        setPrice(viewProduct[0].price[0]);
+        setChosenItem({
+          ...viewProduct[0],
+          price: viewProduct[0].price[0],
+          size: e.target.value,
+        });
+      }
+    };
+
+    const defaultChosen = () => {
+      setPrice(viewProduct[0].price[1]);
+      setChosenItem({
+        ...viewProduct[0],
+        price: viewProduct[0].price[1],
+        size: viewProduct[0].size[0],
+      });
+    };
+
+    content = (
+      <>
+        <ImageSlideShow viewProduct={viewProduct[0]} />
         <div className={classes.Options}>
-          <Description viewProduct={viewProduct} />
+          <h1>{viewProduct[0].name}</h1>
           <Select
-            viewProduct={viewProduct}
-            selectSize={selectSize}
+            viewProduct={viewProduct[0]}
             selectedSize={selectedSize}
-            showPrice={showPrice}
             price={price}
-            amount={amount}
             chosenItem={chosenItem}
-            addToCart={props.addToCart}
-            addItem={addItem}
-            subtractItem={subtractItem}
-            max={maxItems}
+            setPrice={setPrice}
+            setChosenItem={setChosenItem}
+            addToCart={addAndShowItem}
+            setDefault={defaultChosen}
           />
+          <Description viewProduct={viewProduct} />
+        </div>
+        <div className={classes.PriceAndBuyButtonContainer}>
+          <div className={classes.PriceAndBuyButton}>
+            <div>
+              <Price price={price} value="Kr" />
+            </div>
+            <div className={classes.addToCart}>
+              <div className={classes.AddToCartButtonContain}>
+                <div
+                  className={classes.AddToCartButton}
+                  onClick={() => addAndShowItem({data: chosenItem, amount: 1})}
+                >
+                  <BiShoppingBag className={classes.ShoppingBag} />
+                  <p>Buy</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </>
     );
   }
-  return <div className={classes.ProductView}>{content}</div>;
+
+  return (
+    <div className={classes.ProductView}>
+      {content}
+      {showItemAdded}
+    </div>
+  );
 };
 
 const mapStateToProps = (state) => {

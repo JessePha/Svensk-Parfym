@@ -1,6 +1,14 @@
 import React from "react";
+import classes from "./productImage.module.css";
 let ImageSlideShow = ({ viewProduct }) => {
-  return <img src={viewProduct.url} alt="perfume" style={{borderRadius:"10px"}} />;
+  return (
+    <div className={classes.productImage}>
+      <img
+        src={viewProduct.url}
+        alt="perfume"
+      />
+    </div>
+  );
 };
 
 export default ImageSlideShow;

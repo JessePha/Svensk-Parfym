@@ -1,70 +1,60 @@
-import React from "react";
-import Button from "../../UI/Button/Button";
+import React, { useState, useEffect } from "react";
 import Price from "../../UI/Price/Price";
 import classes from "./Select.module.css";
-const Select = ({
-  selectSize,
-  viewProduct,
-  selectedSize,
-  showPrice,
-  price,
-  amount,
-  chosenItem,
-  addToCart,
-  addItem,
-  subtractItem,
-  max,
-}) => {
-  let maxItems = max ? (
-    <p style={{ fontSize: "1vw" }}>No available items left in stock</p>
-  ) : null;
+import { BiShoppingBag } from "react-icons/bi";
+const Select = (props) => {
+  const [activea, setActiveA] = useState(true);
+  const [activeb, setActiveB] = useState(false);
+  const changeActiveA = () => {
+    setActiveA(!activea)
+    setActiveB(false)
+  };
+  const changeActiveB = () => {
+    setActiveB(!activeb)
+    setActiveA(false)
+  };
+  useEffect(() => {
+    props.setDefault();
+  }, []);
   return (
     <div className={classes.SelectOptions}>
-      <div className={classes.selectForm}>
-        <select
-          value={selectSize}
-          onChange={selectedSize}
-          className={classes.SelectForm}
+      <div className={classes.SelectForm}>
+        <div>
+          <label>
+            <input
+              onChange={props.selectedSize}
+              onClick={() => changeActiveA()}
+              value={props.viewProduct.size[0]}
+              type="checkbox"
+              checked={activea}
+            ></input>
+            <span>{props.viewProduct.size[0]}</span>
+          </label>
+        </div>
+        <div>
+          <label>
+            <input
+              onChange={props.selectedSize}
+              onClick={() => changeActiveB()}
+              value={props.viewProduct.size[1]}
+              type="checkbox"
+              checked={activeb}
+            ></input>
+            <span>{props.viewProduct.size[1]}</span>
+          </label>
+        </div>
+      </div>
+      <div className={classes.price}>
+        <Price price={props.price} value="Kr" />
+      </div>
+      <div className={classes.AddToCartButtonContain2}>
+        <div
+          className={classes.AddToCartButton}
+          onClick={() => props.addToCart({data: props.chosenItem, amount: 1})}
         >
-          <option value="Select size">Select size</option>
-          <option value={viewProduct.size[0]}>{viewProduct.size[0]} kr</option>
-          <option value={viewProduct.size[1]}>{viewProduct.size[1]} kr</option>
-        </select>
-      </div>
-      <div
-        className={
-          showPrice ? classes.AvailableButtons : classes.UnavailableButtons
-        }
-      >
-        <div className={classes.Button}>
-          <Button
-            disable={showPrice}
-            text="-"
-            click={() => subtractItem(viewProduct.name)}
-          />
+          <BiShoppingBag className={classes.ShoppingBag} />
+          <p>Buy</p>
         </div>
-        <div className={classes.amount}>
-          <p>{amount}</p>
-        </div>
-        <div className={classes.Button}>
-          <Button
-            disable={showPrice}
-            text="+"
-            click={() => addItem(viewProduct.name)}
-          />
-        </div>
-        {maxItems}
-      </div>
-      <div> {showPrice ? <Price price={price} value="Kr" /> : ""}</div>
-      <div
-        className={classes.addToCart}
-        style={showPrice ? { display: "block" } : { display: "none" }}
-      >
-        <Button
-          text="Add to cart"
-          click={() => addToCart(chosenItem, amount)}
-          disable={showPrice}
-        />
       </div>
     </div>
   );

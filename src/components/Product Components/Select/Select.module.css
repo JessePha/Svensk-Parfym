@@ -1,67 +1,133 @@
+.SelectOptions{
+  width: 100%;
+  height: 100px;
+}
 .SelectOptions > div {
-  padding: 0.2vw 0;
+  padding: 0.2yvw 0;
+  margin-bottom: 3%;
+}
+.SelectOptions > div:nth-child(1) {
+  margin-top: 5%;
 }
 .SelectForm {
-  font-size: 1.5vw;
-}
-.AvailableButtons button:hover {
-  cursor: pointer;
-}
-.AvailableButtons {
+  width: 100%;
   display: flex;
   align-items: center;
-  width: 100%;
 }
-.AvailableButtons > div {
-  margin-right: 0.8vw;
-  font-size: 1vw;
+.SelectForm > div {
+  margin-right: 5%;
 }
-.AvailableButtons button {
-  outline: none;
-  border: none;
-  background: none;
-  color: white;
+.SelectForm div label {
   cursor: pointer;
 }
-.UnavailableButtons {
+.SelectForm div label input[type="checkbox"] {
   display: none;
 }
-.Button button {
-  font-size: 1.2vw;
-}
-
-.addToCart button {
-  height: 100%;
-  width: 100%;
-  font-size: 1vw;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  transition: background-color, 0.5s ease-out;
-  padding: 3%;
-}
-.selectForm select {
-  color: goldenrod;
+.SelectForm div label span {
+  position: relative;
+  display: inline-block;
   background-color: black;
-  border: none;
-  outline: none;
+  padding: 5px 10px;
+  color: white;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 5);
+  font-size: 10px;
+  transition: 0.5s;
+  user-select: none;
+  overflow: hidden;
 }
-.selectForm option {
-  border: none;
-  outline: none;
+.SelectForm div label span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
 }
-.addToCart button:hover {
-  background-color: white;
-  color: goldenrod;
+.SelectForm div label input[type="checkbox"]:checked ~ span {
+  background: #393b44;
+  color: white;
 }
-@media (max-width: 769px) {
+.AddToCartButtonContain2 {
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+}
+.AddToCartButton {
+  position: absolute;
+  width: 15%;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  padding: 1%;
+  background-color: darkgray;
+  margin: 0 auto;
+}
+.AddToCartButton p {
+  font-size: 12px;
+}
+.ShoppingBag {
+  font-size: 14px;
+}
+.amount {
+  color: white;
+}
+.Close {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .SelectOptions{
+    height: 100%
+  }
   .SelectOptions > div {
     padding: 0.02vw 0;
   }
-  .SelectForm {
-    font-size: 1.2vw;
+  .SelectForm > div:nth-child(2) {
+    margin-right: 3%;
   }
-  .AvailableButtons {
+  .SelectForm {
     justify-content: center;
+  }  
+  .SelectForm div {
+    margin: 10px;
+  }
+  .SelectForm div label {
+    cursor: pointer;
+  }
+  .SelectForm div label input[type="checkbox"] {
+    display: none;
+  }
+  .SelectForm div label span {
+    position: relative;
+    display: inline-block;
+    background-color: black;
+    padding: 5px 10px;
+    color: white;
+    font-size: 10px;
+    transition: 0.5s;
+    user-select: none;
+    overflow: hidden;
+  }
+  .SelectForm div label span::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+  }
+  .SelectForm div label input[type="checkbox"]:checked ~ span {
+    background: #393b44;
+    color: white;
+  }
+  .AddToCartButtonContain2,
+  .price {
+    display: none;
+  }
+}
+@media screen and (max-width: 500px){
+  .SelectForm > div:nth-child(2) {
+    margin-right: 5%;
   }
 }
