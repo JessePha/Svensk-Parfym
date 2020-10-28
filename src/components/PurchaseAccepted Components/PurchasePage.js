@@ -8,7 +8,7 @@ const PurchasePage = (props) => {
   return (
     <div className={classes.PurchaseConfirmed}>
       <Message />
-      <OrderDetails />
+      <OrderDetails personalData={props.personalData} />
       <OrderSummary
         itemInCart={props.itemInCart}
         totalPrice={props.totalPrice}

@@ -28,7 +28,7 @@ const OrderSummary = (props) => {
       );
     });
   } else {
-    Sum = <p className={classes.OrderSummary}>Missing data</p>;
+    Sum = <p className={classes.OrderSummary}>Product-data missing</p>;
   }
   return <div>{Sum}</div>;
 };
