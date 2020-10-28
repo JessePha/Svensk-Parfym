@@ -4,25 +4,14 @@ import AboutUsPhoto from "../AboutUsPhoto/AboutUsPhoto";
 import photo1 from "../../../shared/Images/perfumer.jpg";
 import signature from "../../../shared/Images/signature.jpg";
 
-import {
-  text,
-  text2,
-  text3,
-  text4,
-  text5,
-  text6,
-  text7,
-  text8,
-  text9,
-  text10,
-  text11,
-  text12,
-} from "../../../shared/AboutUs.json";
+import TextBundle from "./TextBundles.js"
 
 class Information extends Component {
   render() {
     return (
+
       <div className={classes.Information}>
+
         <div className={classes.Title}>ABOUT</div>
 
         <div className={classes.PhotoDiv}>
@@ -40,10 +29,18 @@ class Information extends Component {
         <div  className={classes.PhotoUnderline}/>
 
 
+        {
+          //test
+        }
+        <div>
+        <TextBundle/>
+        </div>
+        {/*
+
         <div className={classes.MainInformation}>
       <div className={classes.textRow}>
         <div className={classes.textColumn}>
-          <p>{text}</p>
+          <p>{text1}</p>
         </div>
         <div className={classes.textColumn}>
           <p>{text2}</p>
@@ -86,6 +83,8 @@ class Information extends Component {
           </div>
           </div>
         </div>
+
+        */}
 
         <div>
           <img src={signature} alt="signature" className={classes.Signature} />
