@@ -11,7 +11,6 @@ let ProcessView = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state.prd.products);
   return {
     products: state.prd.products,
   };

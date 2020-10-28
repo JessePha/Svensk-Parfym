@@ -1,7 +1,6 @@
 import React from "react";
 import classes from "./HomeSection.module.css";
 const HomeSection = (props) => {
-
   return (
     <div className={classes.Section}>
       <div className={classes.images}>
@@ -42,17 +41,28 @@ const HomeSection = (props) => {
           />
         </div>
       </div>
-      <div
-        className={classes.textContent}
-        style={{
-          transform: `translateY(${
-            props.cordination[3].cord * props.yCord
-          }px)`,
-          transition: ` 0.8s ease-out`,
-        }}
-      >
+      <div className={classes.textContent}>
         <div className={classes.innerTextContent}>
-          {props.section.text}
+          {props.showText > 1 && props.showText < 1.3 ? (
+            <p>{props.texts[0]}</p>
+          ) : (
+            ""
+          )}
+          {props.showText > 1.6 && props.showText < 2 ? (
+            <p>{props.texts[1]}</p>
+          ) : (
+            ""
+          )}
+          {props.showText > 2.5 && props.showText < 2.9 ? (
+            <p>{props.texts[2]}</p>
+          ) : (
+            ""
+          )}
+          {props.showText > 3.8 && props.showText < 4.2 ? (
+            <p>{props.texts[3]}</p>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>
