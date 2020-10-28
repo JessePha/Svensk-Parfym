@@ -5,6 +5,7 @@ import photo1 from "../../../shared/Images/perfumer.jpg";
 import signature from "../../../shared/Images/signature.jpg";
 
 import TextBundle from "./TextBundles.js"
+import text from "../../../shared/AboutUs.json";
 
 class Information extends Component {
   render() {
@@ -32,9 +33,39 @@ class Information extends Component {
         {
           //test
         }
-        <div>
+        <div className={classes.TextBundleDiv}>
         <TextBundle/>
         </div>
+
+        <div className={classes.name}>
+        <p>{text[10]}</p>
+        <p>{text[11]}</p>
+        </div>
+
+        <div>
+          <img src={signature} alt="signature" className={classes.Signature} />
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Information;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         {/*
 
         <div className={classes.MainInformation}>
@@ -85,13 +116,3 @@ class Information extends Component {
         </div>
 
         */}
-
-        <div>
-          <img src={signature} alt="signature" className={classes.Signature} />
-        </div>
-      </div>
-    );
-  }
-}
-
-export default Information;
