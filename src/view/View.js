@@ -5,6 +5,7 @@ import Footer from "../components/Footer Component/Footer";
 import "./View.css";
 import Cart from "../components/NavigationBar/Cart/Cart";
 import { connect } from "react-redux";
+import Spinner from "../components/UI/Spinner/Spinner";
 
 const View = (props) => {
   const [sidebar, setSidebar] = useState(false);
@@ -12,7 +13,11 @@ const View = (props) => {
   const [showOrderInfo, setShowOrderInfo] = useState(false);
 
   const [searchBar, setSearchBar] = useState(false);
+  const [loading, setLoading] = useState(false);
 
+  const loadingHandler = () => {
+    setLoading(true);
+  };
   const sidebarClosedHandler = () => {
     setSidebar(false);
   };
@@ -34,25 +39,25 @@ const View = (props) => {
 
   return (
     <div className="Content">
-    <div id="Container">
-      <Toolbar
-        amountInCart={props.cartItems.totalAmount}
-        drawerToggleClicked={sidebarToggleHandler}
-        cartToggle={cartSideBarHandler}
-        searchToggle={searchBarToggle}
-        searchBar={searchBar}
-      />
-      <Sidebar open={sidebar} closed={sidebarClosedHandler} />
-      <Cart
-        open={showOrderInfo}
-        closed={cartSideBarClose}
-        products={props.cartItems.cartItem}
-        setProducts={props.setCartProducts}
-        totalPrice={props.cartItems.totalPrice}
-        totalAmount={props.cartItems.totalAmount}
-
-      />
-      {props.children}
+      <Spinner loading={loading} />
+      <div id="Container">
+        <Toolbar
+          amountInCart={props.cartItems.totalAmount}
+          drawerToggleClicked={sidebarToggleHandler}
+          cartToggle={cartSideBarHandler}
+          searchToggle={searchBarToggle}
+          searchBar={searchBar}
+        />
+        <Sidebar open={sidebar} closed={sidebarClosedHandler} />
+        <Cart
+          open={showOrderInfo}
+          closed={cartSideBarClose}
+          products={props.cartItems.cartItem}
+          setProducts={props.setCartProducts}
+          totalPrice={props.cartItems.totalPrice}
+          totalAmount={props.cartItems.totalAmount}
+        />
+        {props.children}
       </div>
       <Footer />
     </div>
