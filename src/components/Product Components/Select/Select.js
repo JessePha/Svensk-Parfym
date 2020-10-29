@@ -6,12 +6,12 @@ const Select = (props) => {
   const [activea, setActiveA] = useState(true);
   const [activeb, setActiveB] = useState(false);
   const changeActiveA = () => {
-    setActiveA(!activea)
-    setActiveB(false)
+    setActiveA(!activea);
+    setActiveB(false);
   };
   const changeActiveB = () => {
-    setActiveB(!activeb)
-    setActiveA(false)
+    setActiveB(!activeb);
+    setActiveA(false);
   };
   useEffect(() => {
     props.setDefault();
@@ -48,13 +48,14 @@ const Select = (props) => {
         <Price price={props.price} value="Kr" />
       </div>
       <div className={classes.AddToCartButtonContain2}>
-        <div
+        <button
+          disabled={props.disableButton}
           className={classes.AddToCartButton}
-          onClick={() => props.addToCart({data: props.chosenItem, amount: 1})}
+          onClick={() => props.addToCart({ data: props.chosenItem, amount: 1 })}
         >
           <BiShoppingBag className={classes.ShoppingBag} />
           <p>Buy</p>
-        </div>
+        </button>
       </div>
     </div>
   );

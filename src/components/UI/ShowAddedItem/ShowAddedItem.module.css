@@ -7,7 +7,7 @@
   color: black;
   position: fixed;
   text-align: center;
-  z-index: 5;
+  z-index: 2;
   box-shadow: 0 3px 10px 2px black;
   transition: 0.5 ease-out;
   animation: showUp 1s ease-out;
@@ -30,9 +30,15 @@
     transform: scale(1);
   }
 }
-
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1024px) {
   .ShowAddedItem {
+    margin-top: 2%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ShowAddedItem {
+    margin-top: 5%;
     top: 10%;
     right: 3%;
     width: 150px;
@@ -47,5 +53,10 @@
   }
   .ShowAddedItem p{
     font-size: 12px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ShowAddedItem {
+    margin-top: 10%;
   }
 }

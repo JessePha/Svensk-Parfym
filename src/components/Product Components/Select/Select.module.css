@@ -64,6 +64,7 @@
   background-color: darkgray;
   margin: 0 auto;
 }
+
 .AddToCartButton p {
   font-size: 12px;
 }
@@ -83,14 +84,11 @@
   .SelectOptions > div {
     padding: 0.02vw 0;
   }
-  .SelectForm > div:nth-child(2) {
-    margin-right: 3%;
-  }
   .SelectForm {
     justify-content: center;
   }  
-  .SelectForm div {
-    margin: 10px;
+  .SelectForm > div:nth-child(1) {
+    margin-left: 5%;
   }
   .SelectForm div label {
     cursor: pointer;
@@ -127,7 +125,7 @@
   }
 }
 @media screen and (max-width: 500px){
-  .SelectForm > div:nth-child(2) {
-    margin-right: 5%;
+  .SelectForm > div:nth-child(1) {
+    margin-left: 7%;
   }
 }

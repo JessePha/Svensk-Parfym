@@ -12,18 +12,12 @@ import ErrorMessage from "../UI/ErrorMessage/ErrorMessage";
 const Perfumes = (props) => {
   let history = useHistory();
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [disableButton, setDisableButton] = useState(false);
   const [showItemAdded, setShowItemAdded] = useState(null);
   useEffect(() => {
+    props.fetchData();
     setLoading(true);
-    try {
-      props.fetchData();
-      setLoading(false);
-      return () => props.fetchData();
-    } catch (error) {
-      setError(true);
-      setLoading(false);
-    }
+    return () => props.fetchData();
   }, []);
 
   const addAndShowItem = (data) => {
@@ -36,7 +30,9 @@ const Perfumes = (props) => {
         price={data.price}
       />
     );
+    setDisableButton(true)
     setTimeout(() => {
+      setDisableButton(false)
       setShowItemAdded(null);
     }, 3000);
   };
@@ -67,6 +63,7 @@ const Perfumes = (props) => {
                 price: perfume.price[1],
               })
             }
+            disableButton = {disableButton}
           />
         ))}
       </div>

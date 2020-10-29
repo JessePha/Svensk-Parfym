@@ -1,9 +1,32 @@
 import React, { useState, useEffect } from "react";
 import classes from "./HomeView.module.css";
 import HomeSections from "../../components/HomeSections/HomeSections";
-import HomeImage from "../../shared/Images/HomeImage.jpg";
+import { projectFirestore } from "../../firestore/config";
+import Spinner from "../../components/UI/Spinner/Spinner";
+import Dots from "../../components/UI/Dots/Dots";
 
 let HomeView = () => {
+  const [homeContent, setHomeContent] = useState([]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    function fetchContent() {
+      setLoading(true);
+      let items = [];
+      projectFirestore
+        .collection("homeContent")
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            items.push({ ...doc.data(), id: doc.id });
+          });
+          setHomeContent(items);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    fetchContent();
+  }, []);
   const [offSetY, setOffSetY] = useState(0);
   const handleScroll = () => {
     setOffSetY(window.pageYOffset);
@@ -15,38 +38,39 @@ let HomeView = () => {
     };
   }, [offSetY]);
   let pxToVh = offSetY / (window.innerHeight - 10);
-
-  let showCase = (
-    <div className={classes.HomeView}>
-      <div className={classes.HomeOpenUp}>
-        <div className={classes.ImagesContainer}>
-          <div className={classes.Image}>
-            <img src={HomeImage} alt="perfume" style={{}} />
+  let showCase = <Spinner loading={loading} />;
+  if (homeContent.length > 0) {
+    let openUpShowcase = homeContent.slice(4, 5)[0];
+    let homeSections = homeContent.slice(0, -1);
+    showCase = (
+      <div className={classes.HomeView}>
+        <div className={classes.HomeOpenUp}>
+          <div className={classes.ImagesContainer}>
+            <div className={classes.Image}>
+              <img src={openUpShowcase.url} alt="perfume" />
+            </div>
+          </div>
+          <div
+            className={classes.innerShowcaseText}
+            style={{
+              transform: `translateY(${-1.2 * offSetY}px)`,
+            }}
+          >
+            {openUpShowcase.text.map((text) => (
+              <div>{text}</div>
+            ))}
           </div>
         </div>
-        <div
-          className={classes.innerShowcaseText}
-          style={{
-            transform: `translateY(${-1.2 * offSetY}px)`,
-          }}
-        >
-          <div>SVENSK PARFYM</div>
-          <div>MADE IN SWEDEN</div>
-          <div>ARTISTERY</div>
-          <div>INSPIRED BY SWEDEN</div>
-        </div>
+        <div className={classes.BlankSpace}></div>
+        <HomeSections
+          yCord={offSetY}
+          pxToVh={pxToVh}
+          homeContent={homeSections}
+        />
+        <Dots pxToVh={pxToVh} />
       </div>
-      <div className={classes.BlankSpace}></div>
-      <HomeSections yCord={offSetY} pxToVh={pxToVh} />
-      <div className={classes.dots}>
-        <div className={pxToVh >= 0 && pxToVh < 1 ? classes.dot : ""}></div>
-        <div className={pxToVh > 1 && pxToVh < 1.7 ? classes.dot : ""}></div>
-        <div className={pxToVh > 1.8 && pxToVh < 2.5 ? classes.dot : ""}></div>
-        <div className={pxToVh > 2.6 && pxToVh < 3.7 ? classes.dot : ""}></div>
-        <div className={pxToVh > 3.8 ? classes.dot : ""}></div>
-      </div>
-    </div>
-  );
+    );
+  }
 
   return <>{showCase}</>;
 };

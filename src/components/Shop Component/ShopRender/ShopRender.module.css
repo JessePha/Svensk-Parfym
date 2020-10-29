@@ -4,7 +4,7 @@
   background-color: white;
   text-align: center;
   overflow: hidden;
-  width: 90%;
+  width: 100%;
   border-radius: 10px;
 }
 
@@ -18,17 +18,24 @@
     0 5px 2px white, 0 5px 2px white, 0 5px 2px white;
 }
 .DirectBuy {
+  text-align: center;
   padding: 2px;
   color: white;
   font-size: 18px;
-  width: 25px;
-  height: 25px;
+  width: 28px;
+  height: 28px;
   position: absolute;
   background-color: black;
   border-radius: 50%;
   right: 2%;
   top: 2%;
+  outline: none;
   cursor: pointer;
+}
+.Bag{
+  position: absolute;
+  right: 0%;
+  bottom: 0%;
 }
 .productInfo {
   position: relative;
@@ -66,4 +73,7 @@
   background-color: black;
   font-weight: bold;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px){
 }

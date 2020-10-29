@@ -6,7 +6,7 @@ const Footer = () => {
       <div className={classes.CopyRight}>
         <p>Copyright © 2020</p>
       </div>
-      <ul className={classes.FooterInfo} style={{listStyle:"none"}}>
+      <ul className={classes.FooterInfo}>
         <li>POLICY</li>
         <li>CONTACT</li>
         <li>INSTAGRAM</li>
