@@ -1,18 +1,8 @@
 .Slide {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 10px;
-  animation: fade 10s;
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-    transform: translateX(-2%);
-  }
-  20% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 2em;
+  align-items: center;
+  justify-content: center;
 }
 

@@ -1,25 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import classes from "./Process.module.css";
 import ErrorMessage from "../../UI/ErrorMessage/ErrorMessage";
 import Spinner from "../../UI/Spinner/Spinner";
 import ProcessBar from "./ProcessBar/ProcessBar";
 import Slide from "../../UI/Slide/Slide";
-import { connect } from "react-redux";
-import { fetchProduct } from "../../../store/actionFunc/indexAction";
+
 const Process = (props) => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  useEffect(() => {
-    setLoading(true);
-    try {
-      props.fetchData();
-      setLoading(false);
-      return () => props.fetchData();
-    } catch (error) {
-      setError(true);
-      setLoading(false);
-    }
-  }, []);
+  const [error, setError] = useState(props.error);
   let dataArr = [
     {
       header: "CONCEPT OF SVENSK PARFYM",
@@ -50,36 +37,32 @@ const Process = (props) => {
 
   let images = props.products.map((data) => data.url);
   console.log(images);
-  const shownImages = 5;
+  const shownImages = 1;
   const [currentData, setCurrentData] = useState(dataArr.slice(0, 1));
   const [lineFill, setLineFill] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
-  const [currentImages, setCurrentImages] = useState(images);
-
-  console.log(props.products);
+  const [currentImages, setCurrentImages] = useState(
+    images.slice(0, shownImages)
+  );
   console.log(currentImages);
-
   let imageArr = [];
   let max = props.products.length;
-  for (let i = 0; i < max / shownImages; i++) {
-    imageArr.push(i);
+  for (let i = 0; i < max; i++) {
+    imageArr.push(i * shownImages);
   }
   console.log(imageArr);
-
-  let setPage = null;
-  if (props.products.length > 0) {
-    let images = props.products.map((data) => data.url);
-    console.log(images);
-    setPage = (e) => {
-      let page = e.target.value;
-      setCurrentData(dataArr.slice(page, page + 1));
-      setLineFill(page * 25);
-      setCurrentPage(page);
-      if (imageArr.includes(page) && props.products.length > 0) {
-        setCurrentImages(images.slice(page - shownImages, page));
-      }
-    };
-  }
+  const setPage = (e) => {
+    const page = e.target.value;
+    console.log(page);
+    setCurrentData(dataArr.slice(page, page + 1));
+    setLineFill(page * 25);
+    setCurrentPage(page);
+    console.log(page + shownImages);
+    console.log(imageArr.includes(page + shownImages));
+    if (imageArr.includes(page + shownImages)) {
+      setCurrentImages(images.slice(page, page + shownImages));
+    }
+  };
 
   let data = currentData.map((data) => {
     return (
@@ -98,37 +81,23 @@ const Process = (props) => {
   const breakPoint = 700;
   let render = <Spinner />;
 
-  if (!loading && props.products.length > 0) {
-    if (screen > breakPoint) {
-      render = (
-        <div className={classes.Process}>
-          {errorMsg}
-          <ProcessBar data={data} dots={dots} lineFill={lineFill} />
-          <Slide products={props.products} currentImages={currentImages} />
-        </div>
-      );
-    } else {
-      render = (
-        <div className={classes.Process}>
-          {errorMsg}
-          <ProcessBar data={data} dots={dots} lineFill={lineFill} />
-        </div>
-      );
-    }
+  if (screen > breakPoint) {
+    render = (
+      <div className={classes.Process}>
+        {errorMsg}
+        <ProcessBar data={data} dots={dots} lineFill={lineFill} />
+        <Slide products={props.products} currentImages={currentImages} />
+      </div>
+    );
   } else {
-    render = <Spinner />;
+    render = (
+      <div className={classes.Process}>
+        {errorMsg}
+        <ProcessBar data={data} dots={dots} lineFill={lineFill} />
+      </div>
+    );
   }
   return <div>{render}</div>;
 };
-const mapStateToProps = (state) => {
-  return {
-    products: state.prd.products,
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchData: () => dispatch(fetchProduct()),
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Process);
+export default Process;

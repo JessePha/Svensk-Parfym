@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import classes from "./Slide.module.css";
 import SlideRender from "./SlideRender/SlideRender";
 let Slide = (props) => {
-
-  const [currentImages, setCurrentImages] = useState(props.products.slice(0,5))
-
 
   /*useEffect(() => {
     const interval = setInterval(() => {
@@ -26,8 +23,7 @@ let Slide = (props) => {
   /*useEffect(() => {
     setSwitchingPage(false);
   }, [switchingPage]);*/
-  console.log(props.currentImages)
-  console.log(currentImages)
+
   let render = props.currentImages.map((product, index) => {
     return (
       <SlideRender className={classes.slideRender} data={product} key={index} />

@@ -1,13 +1,14 @@
 .Footer {
-  position: absolute;
-  bottom: auto;
-  top: auto;
+  position: relative;
   width: 100%;
+  margin-top: -70px;
   text-align: center;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   color: rgb(220, 181, 72);
+  background-color: red;
+  clear: both;
 }
 .CopyRight {
   flex: auto;

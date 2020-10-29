@@ -34,6 +34,7 @@ const View = (props) => {
 
   return (
     <div className="Content">
+    <div id="Container">
       <Toolbar
         amountInCart={props.cartItems.totalAmount}
         drawerToggleClicked={sidebarToggleHandler}
@@ -52,6 +53,7 @@ const View = (props) => {
 
       />
       {props.children}
+      </div>
       <Footer />
     </div>
   );

@@ -5,7 +5,7 @@ const SlideRender = (props) => {
   return (
     <div className={classes.render}>
       <div>
-        <img src={props.data.url} alt="perfume"></img>
+        <img src={props.data} alt="perfume"></img>
       </div>
     </div>
   );
