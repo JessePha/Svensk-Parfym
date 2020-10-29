@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import ShopRender from "./ShopRender/ShopRender";
 import { useHistory } from "react-router-dom";
-import { connect } from "react-redux";
-import Spinner from "../../components/UI/Spinner/Spinner";
-import { fetchProduct } from "../../store/actionFunc/indexAction";
-import { addItemToCart } from "../../store/actionFunc/indexAction";
 import ShowAddedItem from "../UI/ShowAddedItem/ShowAddedItem";
 import "./Shop.css";
 

@@ -2,15 +2,16 @@
   position: relative;
   width: 100%;
   height: fit-content;
-  margin-top: -90px;
   text-align: center;
+  align-items: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: rgb(220, 181, 72);
   padding: 2%;
   clear: both;
-  z-index: 0;
+  margin-top: auto;
+
 }
 .FooterInfo{
   list-style: none;

@@ -1,9 +1,3 @@
 .Content {
   background: black;
-  height: 100%;
-}
-
-#Container {
-  min-height: 100%;
-  padding-bottom: 100px;
 }
