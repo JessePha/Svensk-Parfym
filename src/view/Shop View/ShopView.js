@@ -18,6 +18,7 @@ const ShopView = (props) => {
       setLoading(true);
       try {
         props.fetchData();
+        setLoading(false)
         return () => props.fetchData();
       } catch (error) {
         setError(true);

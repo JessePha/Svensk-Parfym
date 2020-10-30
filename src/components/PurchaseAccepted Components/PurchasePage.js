@@ -5,17 +5,17 @@ import OrderDetails from "./OrderDetails/OrderDetails";
 import OrderSummary from "./OrderSummary/OrderSummary";
 import { connect } from "react-redux";
 const PurchasePage = (props) => {
-  return (
-    <div className={classes.PurchaseConfirmed}>
-      <Message />
-      <OrderDetails personalData={props.personalData} />
-      <OrderSummary
-        itemInCart={props.itemInCart}
-        totalPrice={props.totalPrice}
-      />
-    </div>
-  );
-};
+    return (
+      <div className={classes.PurchaseConfirmed}>
+        <Message />
+        <OrderDetails personalData={props.personalData} />
+        <OrderSummary
+          itemInCart={props.itemInCart}
+          totalPrice={props.totalPrice}
+        />
+      </div>
+    );
+  }
 
 const mapStateToProps = (state) => {
   return {
