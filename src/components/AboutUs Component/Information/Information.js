@@ -33,13 +33,14 @@ class Information extends Component {
         {
           //test
         }
-        <div className={classes.TextBundleDiv}>
+        <div>
         <TextBundle/>
         </div>
 
-        <div className={classes.name}>
-        <p>{text[10]}</p>
-        <p>{text[11]}</p>
+        <div className={classes.NameDiv}>
+        <p className={classes.MVH}>{text[9]}</p>
+        <p className={classes.MVH}>{text[10]}</p>
+        <p className={classes.MVH}>{text[11]}</p>
         </div>
 
         <div>
