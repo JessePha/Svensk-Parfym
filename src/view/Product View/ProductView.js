@@ -11,6 +11,7 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 import { BiShoppingBag } from "react-icons/bi";
 import ShowAddedItem from "../../components/UI/ShowAddedItem/ShowAddedItem";
 import Price from "../../components/UI/Price/Price";
+import ShowOutOfStock from "../../components/UI/ShowOutOfStock/ShowOutOfStock";
 
 const ProductView = (props) => {
   let content = null;
@@ -22,6 +23,8 @@ const ProductView = (props) => {
   const [showItemAdded, setShowItemAdded] = useState(null);
   const [loading, setLoading] = useState(false);
   const [disableButton, setDisableButton] = useState(false);
+  const [showOutOfStock, setShowOutOfStock] = useState(null);
+
   useEffect(() => {
     function fetchItem() {
       projectFirestore
@@ -43,15 +46,31 @@ const ProductView = (props) => {
   }, [name]);
 
   const addAndShowItem = (data) => {
-    props.addToCart(data.data, data.amount);
-    setShowItemAdded(
-      <ShowAddedItem
-        url={data.data.url}
-        name={data.data.name}
-        size={data.data.size}
-        price={data.data.price}
-      />
-    );
+    const idFilter = props.itemInCart.filter((val) => {
+      return val.id === data.data.id;
+    });
+    let productInCartCount = null;
+    if (idFilter[0] !== undefined) {
+      console.log(idFilter[0].count);
+      productInCartCount = idFilter[0].count;
+    }
+    console.log(productInCartCount);
+    console.log(data.data.stock);
+    console.log(productInCartCount !== data.data.stock);
+    if (productInCartCount >= data.data.stock) {
+      props.addToCart(data.data, data.amount);
+      setShowItemAdded(
+        <ShowAddedItem
+          url={data.data.url}
+          name={data.data.name}
+          size={data.data.size}
+          price={data.data.price}
+        />
+      );
+    } else {
+      setShowOutOfStock(<ShowOutOfStock />);
+    }
+
     setDisableButton(true);
     setTimeout(() => {
       setDisableButton(false);
@@ -61,9 +80,9 @@ const ProductView = (props) => {
 
   if (viewProduct) {
     content = (
-      <>
-        <Spinner loading = {loading} />
-      </>
+      <div>
+        <Spinner loading={loading} />
+      </div>
     );
   }
 
@@ -76,20 +95,21 @@ const ProductView = (props) => {
   if (itm.length > 0) {
     viewProduct = itm.slice();
     const selectedSize = (e) => {
-      if (e.target.value === viewProduct[0].size[0]) {
+      let target = e.target.value;
+      if (target === viewProduct[0].size[0]) {
         setPrice(viewProduct[0].price[1]);
         setChosenItem({
           ...viewProduct[0],
           price: viewProduct[0].price[1],
-          size: e.target.value,
+          size: target,
         });
       }
-      if (e.target.value === viewProduct[0].size[1]) {
+      if (target === viewProduct[0].size[1]) {
         setPrice(viewProduct[0].price[0]);
         setChosenItem({
           ...viewProduct[0],
           price: viewProduct[0].price[0],
-          size: e.target.value,
+          size: target,
         });
       }
     };
@@ -104,7 +124,7 @@ const ProductView = (props) => {
     };
 
     content = (
-      <>
+      <div>
         <ImageSlideShow viewProduct={viewProduct[0]} />
         <div className={classes.Options}>
           <h1>{viewProduct[0].name}</h1>
@@ -141,14 +161,15 @@ const ProductView = (props) => {
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 
   return (
     <div className={classes.ProductView}>
-      {content}
+      {showOutOfStock}
       {showItemAdded}
+      {content}
     </div>
   );
 };
@@ -156,6 +177,7 @@ const ProductView = (props) => {
 const mapStateToProps = (state) => {
   return {
     products: state.prd.products,
+    itemInCart: state.crt.cartItem,
   };
 };
 

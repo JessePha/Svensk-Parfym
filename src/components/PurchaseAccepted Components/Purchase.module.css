@@ -5,17 +5,23 @@
   border-radius: 10vw;
   margin-bottom: 10vw;
   margin-top: 12vw;
-
+  margin-left: 8vw;
+  margin-right: 8vw;
 }
 
 .Message {
   text-align: center;
   margin-top: 10vw;
 }
-
-@media(max-width: 500px) {
-  .PurchaseConfirmed{
-  margin-top: 20vw;
-  border-radius: 0vw;
+.Price {
+  text-align: right;
+  margin-left: 8vw;
+  margin-right: 8vw;
+  padding-bottom: 5vw;
+}
+@media (max-width: 500px) {
+  .PurchaseConfirmed {
+    margin-top: 20vw;
+    border-radius: 0vw;
   }
 }

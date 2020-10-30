@@ -4,8 +4,6 @@ const OrderDetails = (props) => {
   let details = null;
   if (props > 0) {
     details = (
-      <div className={classes.OrderDetails}>
-        <h1>ORDER DETAILS</h1>
         <div className={classes.Order}>
           <div className={classes.UserInfo}>
             <p>EMAIL</p>
@@ -22,14 +20,23 @@ const OrderDetails = (props) => {
             <p>{props.deliveryAdress}</p>
             <p>CONTACT NUMBER</p>
             <p>{props.contactInfo}</p>
+            <hr />
           </div>
         </div>
-      </div>
     );
   } else {
-    details = <p className={classes.OrderDetails}>Personal information missing</p>;
+    details = (
+      <div className={classes.OrderDetails}>
+        <p>Personal information missing</p>
+      </div>
+    );
   }
-  return <div>{details}</div>;
+  return (
+    <div className={classes.OrderDetails}>
+      <h1>ORDER DETAILS</h1>
+      {details}
+    </div>
+  );
 };
 
 export default OrderDetails;
