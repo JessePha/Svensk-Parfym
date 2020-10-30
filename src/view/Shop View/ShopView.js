@@ -32,7 +32,7 @@ const ShopView = (props) => {
       <Spinner loading={loading} />
     </div>
   );
-  if (props.products.length > 0 && !loading) {
+  if (props.products.length > 0) {
     content = (
       <div className="ShopView">
         <section>
