@@ -12,18 +12,16 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 const ShopView = (props) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(true);
-      try {
-        props.fetchData();
-        return () => props.fetchData();
-      } catch (error) {
-        setError(true);
-        setLoading(false);
-      }
-    }, 500);
+    setLoading(true);
+    try {
+      props.fetchData();
+      setLoading(false);
+      return () => props.fetchData();
+    } catch (error) {
+      setError(true);
+      setLoading(false);
+    }
   }, []);
 
   let errorMsg = <ErrorMessage error={error} setError={setError} />;
@@ -36,7 +34,11 @@ const ShopView = (props) => {
     content = (
       <div className="ShopView">
         <section>
-          <Shop products={props.products} addToCart={props.addToCart} />
+          <Shop
+            products={props.products}
+            addToCart={props.addToCart}
+            itemInCart={props.itemInCart}
+          />
         </section>
       </div>
     );
@@ -51,6 +53,7 @@ const ShopView = (props) => {
 const mapStateToProps = (state) => {
   return {
     products: state.prd.products,
+    itemInCart: state.crt.cartItem,
   };
 };
 const mapDispatchToProps = (dispatch) => {

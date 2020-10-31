@@ -1,15 +1,13 @@
 .OrderSummary {
     text-align: left;
-    margin-top: 10vw;
-    margin-left: 10vw;
-    padding-bottom: 10vw;
+    margin-top: 8vw;
+    margin-left: 8vw;
+    padding-bottom: 8vw;
   }
   
-  .Summary {
+ 
+  
+  .ProductInformation {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 4em;
   }
-  
-  
-  

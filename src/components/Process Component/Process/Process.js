@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import classes from "./Process.module.css";
 import ErrorMessage from "../../UI/ErrorMessage/ErrorMessage";
 import Spinner from "../../UI/Spinner/Spinner";
@@ -37,14 +37,14 @@ const Process = (props) => {
 
   let images = props.products.map((data) => data.url);
   console.log(images);
-  const shownImages = 1;
+  const shownImages = 3;
   const [currentData, setCurrentData] = useState(dataArr.slice(0, 1));
   const [lineFill, setLineFill] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
+  const [switchingImage, setSwitchingImage] = useState(false);
   const [currentImages, setCurrentImages] = useState(
     images.slice(0, shownImages)
   );
-  console.log(currentImages);
   let imageArr = [];
   let max = props.products.length;
   for (let i = 0; i < max; i++) {
@@ -54,16 +54,20 @@ const Process = (props) => {
   const setPage = (e) => {
     const page = e.target.value;
     console.log(page);
+    console.log(switchingImage);
     setCurrentData(dataArr.slice(page, page + 1));
     setLineFill(page * 25);
     setCurrentPage(page);
-    console.log(page + shownImages);
-    console.log(imageArr.includes(page + shownImages));
+
     if (imageArr.includes(page + shownImages)) {
       setCurrentImages(images.slice(page, page + shownImages));
+      imageSwitchHandler();
+      console.log(switchingImage);
     }
   };
-
+  let imageSwitchHandler = () => {
+    setSwitchingImage(!switchingImage);
+  };
   let data = currentData.map((data) => {
     return (
       <div>
@@ -73,7 +77,13 @@ const Process = (props) => {
     );
   });
   let dots = dataArr.map((data, index) => {
-    return <li onClick={setPage} value={index} key={index}></li>;
+    return (
+      <li
+        onClick={setPage}
+        value={index}
+        key={index}
+      ></li>
+    );
   });
   let errorMsg = <ErrorMessage error={error} setError={setError} />;
 
@@ -86,7 +96,12 @@ const Process = (props) => {
       <div className={classes.Process}>
         {errorMsg}
         <ProcessBar data={data} dots={dots} lineFill={lineFill} />
-        <Slide products={props.products} currentImages={currentImages} />
+        <Slide
+          switchingImage={switchingImage}
+          products={props.products}
+          currentImages={currentImages}
+          shownImages={shownImages}
+        />
       </div>
     );
   } else {
