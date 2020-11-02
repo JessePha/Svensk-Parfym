@@ -1,30 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import classes from "./ProductView.module.css";
 import { connect } from "react-redux";
 import { projectFirestore } from "../../firestore/config";
-import { addItemToCart } from "../../store/actionFunc/indexAction";
-import Description from "../../components/Product Components/Description/Description";
-import ImageSlideShow from "../../components/Product Components/Image Slideshow/ImageSlideshow";
-import Select from "../../components/Product Components/Select/Select";
+import {
+  addItemToCart,
+  fetchProduct,
+} from "../../store/actionFunc/indexAction";
+import ProductDetails from "../../components/Product Components/ProductDetails";
+import ErrorMessage from "../../components/UI/ErrorMessage/ErrorMessage";
 import Spinner from "../../components/UI/Spinner/Spinner";
-import { BiShoppingBag } from "react-icons/bi";
-import ShowAddedItem from "../../components/UI/ShowAddedItem/ShowAddedItem";
-import Price from "../../components/UI/Price/Price";
-import ShowOutOfStock from "../../components/UI/ShowOutOfStock/ShowOutOfStock";
 
 const ProductView = (props) => {
-  let content = null;
-  let viewProduct = [];
-  let [itm, setItm] = useState([]);
+  let [item, setItem] = useState([]);
   let { name, size } = useParams();
-  let [price, setPrice] = useState(850);
-  const [chosenItem, setChosenItem] = useState(null);
-  const [showItemAdded, setShowItemAdded] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [disableButton, setDisableButton] = useState(false);
-  const [showOutOfStock, setShowOutOfStock] = useState(null);
-
+  const [error, setError] = useState(false);
   useEffect(() => {
     function fetchItem() {
       projectFirestore
@@ -33,156 +23,48 @@ const ProductView = (props) => {
         .then((querySnapShot) => {
           querySnapShot.forEach((doc) => {
             if (doc.data().name === name) {
-              setItm([doc.data()]);
+              setItem([doc.data()]);
             }
           });
         })
         .catch((error) => {
-          console.log(error);
+          setError(true);
+          setLoading(false);
         });
     }
     fetchItem();
     setLoading(true);
   }, [name]);
-
-  const addAndShowItem = (data) => {
-    const idFilter = props.itemInCart.filter((val) => {
-      return val.id === data.data.id;
-    });
-    let productInCartCount = null;
-    if (idFilter[0] !== undefined) {
-      console.log(idFilter[0].count);
-      productInCartCount = idFilter[0].count;
-    }
-    console.log(productInCartCount);
-    console.log(data.data.stock);
-    console.log(productInCartCount !== data.data.stock);
-    if (productInCartCount >= data.data.stock) {
-      props.addToCart(data.data, data.amount);
-      setShowItemAdded(
-        <ShowAddedItem
-          url={data.data.url}
-          name={data.data.name}
-          size={data.data.size}
-          price={data.data.price}
-        />
-      );
-    } else {
-      setShowOutOfStock(<ShowOutOfStock />);
-    }
-
-    setDisableButton(true);
-    setTimeout(() => {
-      setDisableButton(false);
-      setShowItemAdded(null);
-    }, 3000);
-  };
-
-  if (viewProduct) {
-    content = (
-      <div>
-        <Spinner loading={loading} />
-      </div>
-    );
-  }
-
-  if (props.products) {
-    viewProduct = props.products.filter(
-      (product) => product.name === name && product.size[0] === size
-    );
-  }
-
-  if (itm.length > 0) {
-    viewProduct = itm.slice();
-    const selectedSize = (e) => {
-      let target = e.target.value;
-      if (target === viewProduct[0].size[0]) {
-        setPrice(viewProduct[0].price[1]);
-        setChosenItem({
-          ...viewProduct[0],
-          price: viewProduct[0].price[1],
-          size: target,
-        });
-      }
-      if (target === viewProduct[0].size[1]) {
-        setPrice(viewProduct[0].price[0]);
-        setChosenItem({
-          ...viewProduct[0],
-          price: viewProduct[0].price[0],
-          size: target,
-        });
-      }
-    };
-
-    const defaultChosen = () => {
-      setPrice(viewProduct[0].price[1]);
-      setChosenItem({
-        ...viewProduct[0],
-        price: viewProduct[0].price[1],
-        size: viewProduct[0].size[0],
-      });
-    };
-
-    content = (
-      <div>
-        <ImageSlideShow viewProduct={viewProduct[0]} />
-        <div className={classes.Options}>
-          <h1>{viewProduct[0].name}</h1>
-          <Select
-            viewProduct={viewProduct[0]}
-            selectedSize={selectedSize}
-            price={price}
-            chosenItem={chosenItem}
-            setPrice={setPrice}
-            setChosenItem={setChosenItem}
-            addToCart={addAndShowItem}
-            setDefault={defaultChosen}
-            disableButton={disableButton}
-          />
-          <Description viewProduct={viewProduct} />
-        </div>
-        <div className={classes.PriceAndBuyButtonContainer}>
-          <div className={classes.PriceAndBuyButton}>
-            <div>
-              <Price price={price} value="Kr" />
-            </div>
-            <div className={classes.addToCart}>
-              <div className={classes.AddToCartButtonContain}>
-                <div
-                  className={classes.AddToCartButton}
-                  onClick={() =>
-                    addAndShowItem({ data: chosenItem, amount: 1 })
-                  }
-                >
-                  <BiShoppingBag className={classes.ShoppingBag} />
-                  <p>Buy</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className={classes.ProductView}>
-      {showOutOfStock}
-      {showItemAdded}
-      {content}
+  let content = (
+    <div>
+      <Spinner loading={loading} />
     </div>
   );
+  if (item.length > 0) {
+    content = (
+      <div>
+        <ErrorMessage setError={setError} error={error} />
+        <ProductDetails
+          itemInCart={props.itemInCart}
+          addToCart={props.addToCart}
+          item={item}
+          loading={loading}
+        />
+      </div>
+    );
+  }
+  return <div> {content} </div>;
 };
 
 const mapStateToProps = (state) => {
   return {
-    products: state.prd.products,
     itemInCart: state.crt.cartItem,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchItem: () => dispatch(fetchProduct()),
     addToCart: (item, amount) => dispatch(addItemToCart(item, amount)),
   };
 };

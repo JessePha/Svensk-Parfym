@@ -1,8 +1,5 @@
-.productImage{
-    width: 80%;
-}
 .productImage img{
-    width: 100%;
+    width: 60%;
     border-radius: 20px;
 }
 @media (max-width: 768px) {
