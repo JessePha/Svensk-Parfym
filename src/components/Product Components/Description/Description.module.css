@@ -112,14 +112,4 @@
     font-size: 14px;
     margin-left: 2%;
   }
-  @keyframes slidedown {
-    0% {
-      top: 0%;
-      opacity: 0;
-    }
-    100% {
-      top: 8%;
-      opacity: 1;
-    }
-  }
 }

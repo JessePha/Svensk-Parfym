@@ -13,6 +13,11 @@ const Toolbar = (props) => {
     prevScroll: window.pageYOffset,
   });
 
+  const closeSideAndOpenCartBar = () =>{
+    props.cartToggle()
+    props.closeSidebar()
+  }
+
   useEffect(() => {
     const handScroll = () => {
       const { prevScroll } = { ...show };
@@ -31,7 +36,7 @@ const Toolbar = (props) => {
       <div className = {classes.LogoAndNav}>
         <Logo logo={logoimg} />
         <div className={classes.NavigationItems}>
-          <NavigationItems />
+          <NavigationItems/>
         </div>
       </div>
       <img src={logoimg1} alt="logo" className={classes.LogoName} />
@@ -39,10 +44,10 @@ const Toolbar = (props) => {
         {props.amountInCart > 0 ? <span>{props.amountInCart}</span> : null}
         <HiOutlineShoppingBag
           className={classes.Cart}
-          onClick={props.cartToggle}
+          onClick={() => closeSideAndOpenCartBar()}
           amount={props.amountInCart}
         />
-        <Burger clicked={props.drawerToggleClicked} />
+        <Burger clicked={props.toggleSidebar} isOpened = {props.sideBar}/>
       </div>
     </header>
   );

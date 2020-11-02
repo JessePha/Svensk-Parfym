@@ -30,7 +30,6 @@ const Checkout = ({ totalPrice, itemInCart, countries }) => {
   const [access, setAccess] = useState(false);
   const [enoughMoney, setEnoughMoney] = useState(false);
   const [clickSubmit, setClickSubmit] = useState(false);
-  const [size, setSize] = useState(false);
   let history = useHistory();
   let Customer = {
     FName: firstName,
@@ -235,10 +234,8 @@ const Checkout = ({ totalPrice, itemInCart, countries }) => {
           </label>
           <div className={classes.selectContainer}>
             <select
-              size = {size && "5"}
               id="country"
               value={country}
-              onClick = {() => setSize(!size)}
               onChange={(e) => setCountry(e.target.value)}
             >
               <option value="">Select country</option>

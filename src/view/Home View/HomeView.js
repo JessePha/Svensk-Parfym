@@ -11,7 +11,7 @@ let HomeView = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   useEffect(() => {
-    function fetchContent() {
+    const fetchContent = () => {
       setLoading(true);
       let items = [];
       projectFirestore
@@ -54,12 +54,9 @@ let HomeView = () => {
           </div>
           <div
             className={classes.innerShowcaseText}
-            style={{
-              transform: `translateY(${-1.2 * offSetY}px)`,
-            }}
           >
             {openUpShowcase.text.map((text) => (
-              <div>{text}</div>
+              <div key = {text} >{text}</div>
             ))}
           </div>
         </div>

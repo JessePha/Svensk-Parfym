@@ -13,22 +13,22 @@
 }
 .image:nth-child(1) img {
   position: absolute;
-  left: 15%;
+  left: 13%;
   bottom: 0;
   z-index: 0.5;
 }
 .image:nth-child(2) img {
   position: absolute;
-  right: 30%;
+  right: 35%;
   bottom: 0;
 }
 .image:nth-child(3) img {
   position: absolute;
-  right: 20%;
+  right: 10%;
   bottom: 0;
 }
 .image img {
-  width: 30%;
+  width: 35%;
 }
 
 .textContent {
@@ -49,8 +49,8 @@
   color: #ffd57e;
 }
 .innerTextContent p{
-  transition: 1s ease-out;
-  animation: showSlow 1s ease-out;
+  transition: 0.5s ease-out;
+  animation: showSlow 0.5s ease-out;
 }
 @keyframes showSlow{ 
   0%{
@@ -64,22 +64,7 @@
 }
 @media screen and (max-width: 1024px) {
   .image img {
-    width: 40%;
-  }
-}
-@media screen and (max-width: 768px) {
-  .innerTextContent {
-    font-size: 25px;
-    left: 10%;
-    top: 50%;
-  }
-  .image img {
-    width: 40%;
-  }
-}
-@media (max-width: 500px) {
-  .image img {
-    width: 75%;
+    width: 50%;
   }
   .image:nth-child(1) img {
     position: absolute;
@@ -88,18 +73,68 @@
   }
   .image:nth-child(2) img {
     position: absolute;
-    right: 30%;
+    right: 20%;
     bottom: 0;
   }
   .image:nth-child(3) img {
     position: absolute;
-    right: 0;
+    right: 5%;
+    bottom: 0;
+  }
+  .innerTextContent {
+    width: 30%;
+    color: #ffd57e;
+    font-weight: 300;
+    font-size: 26px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .image img {
+    width: 50%;
+  }
+  .image:nth-child(1) img {
+    position: absolute;
+    left: 5%;
+    bottom: 0;
+  }
+  .image:nth-child(2) img {
+    position: absolute;
+    right: 20%;
+    bottom: 0;
+  }
+  .image:nth-child(3) img {
+    position: absolute;
+    right: 5%;
+    bottom: 0;
+  }
+  .innerTextContent {
+    width: 40%;
+    color: #ffd57e;
+    font-weight: 100;
+    font-size: 18px;
+  }
+}
+@media (max-width: 500px) {
+  .image img {
+    width: 70%;
+  }
+  .image:nth-child(1) img {
+    position: absolute;
+    left: 5%;
+    bottom: 0;
+  }
+  .image:nth-child(2) img {
+    position: absolute;
+    right: 20%;
+    bottom: 0;
+  }
+  .image:nth-child(3) img {
+    position: absolute;
+    right: 5%;
     bottom: 0;
   }
   .innerTextContent {
     width: 50%;
-    color: #ffd57e;
-    font-weight: 100;
     font-size: 16px;
   }
 }
