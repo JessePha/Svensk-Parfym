@@ -1,8 +1,8 @@
 .ShowAddedItem {
   top: 6vw;
   right: 3vw;
-  width: 20vw;
-  height: 20vw;
+  width: 200px;
+  height: 200px;
   background-color: white;
   color: black;
   position: fixed;
@@ -41,8 +41,8 @@
     margin-top: 5%;
     top: 10%;
     right: 3%;
-    width: 150vw;
-    height: 150vw;
+    width: 150px;
+    height: 150px;
   }
   .ShowAddedItem h4{
     font-size: 14px;

@@ -1,34 +1,17 @@
-.SlideCurrent {
+.render {
   color: white;
   text-align: center;
   padding: 2px 5px 2px 5px;
   animation: fade 2s ease-in-out;
 }
-.SlideCurrent img {
-  width: 120%;
-  height: 120%;
-  max-width: 200px;
-}
-.SlideSwitch {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 2px 5px 2px 5px;
-  animation: fade2 2s ease-in-out;
-}
-.SlideSwitch img {
+
+.render img {
   width: 120%;
   height: 120%;
   max-width: 200px;
 }
 
 @keyframes fade {
-  0% {
-    opacity: 0;
-  }
-}
-
-@keyframes fade2 {
   0% {
     opacity: 0;
   }

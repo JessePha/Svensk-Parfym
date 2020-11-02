@@ -13,9 +13,6 @@ const PurchasePage = (props) => {
         itemInCart={props.itemInCart}
         totalPrice={props.totalPrice}
       />
-      <div className={classes.Price}>
-        <h1>Total: {props.totalPrice}</h1>
-      </div>
     </div>
   );
 };

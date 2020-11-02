@@ -1,8 +1,8 @@
-import { auth } from "firebase";
 import React from "react";
 import classes from "./Slide.module.css";
 import SlideRender from "./SlideRender/SlideRender";
 let Slide = (props) => {
+
   /*useEffect(() => {
     const interval = setInterval(() => {
       if (pagesArray.includes(currentPage + shownData)) {
@@ -26,26 +26,12 @@ let Slide = (props) => {
 
   let render = props.currentImages.map((product, index) => {
     return (
-      <SlideRender
-        switchingImage={props.switchingImage}
-        className={classes.slideRender}
-        data={product}
-        key={index}
-      />
+      <SlideRender className={classes.slideRender} data={product} key={index} />
     );
   });
   let availableItems = null;
   if (props.products.length > 0) {
-    availableItems = (
-      <div
-        style={{
-          gridTemplateColumns: "repeat: " + props.shownImages + ", " + 1 + "fr",
-        }}
-        className={classes.Slide}
-      >
-        {render}
-      </div>
-    );
+    availableItems = <div className={classes.Slide}>{render}</div>;
   } else {
     availableItems = (
       <div style={{ color: "white" }}>

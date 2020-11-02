@@ -1,52 +1,29 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import ShopRender from "./ShopRender/ShopRender";
 import { useHistory } from "react-router-dom";
 import ShowAddedItem from "../UI/ShowAddedItem/ShowAddedItem";
 import "./Shop.css";
-import ShowOutOfStock from "../UI/ShowOutOfStock/ShowOutOfStock";
 
 const Shop = (props) => {
   let history = useHistory();
   const [disableButton, setDisableButton] = useState(false);
   const [showItemAdded, setShowItemAdded] = useState(null);
-  const [showOutOfStock, setShowOutOfStock] = useState(null);
+
   const addAndShowItem = (data) => {
-    const idFilter = props.itemInCart.filter((val) => {
-      return val.id === data.id;
-    });
-    let productInCartCount = null;
-    if (idFilter[0] !== undefined) {
-      productInCartCount = idFilter[0].count;
-    }
-
-    if (productInCartCount < data.stock) {
-      props.addToCart(data, 1);
-      setShowItemAdded(
-        <ShowAddedItem
-          url={data.url}
-          name={data.name}
-          size={data.size}
-          price={data.price}
-        />
-      );
-    } else {
-      console.log("test");
-      setShowOutOfStock(
-        <ShowOutOfStock
-          url={data.url}
-          name={data.name}
-          size={data.size}
-          price={data.price}
-        />
-      );
-    }
-
+    props.addToCart(data, 1);
+    setShowItemAdded(
+      <ShowAddedItem
+        url={data.url}
+        name={data.name}
+        size={data.size}
+        price={data.price}
+      />
+    );
     setDisableButton(true);
     setTimeout(() => {
       setDisableButton(false);
       setShowItemAdded(null);
-      setShowOutOfStock(null);
-    }, 2000);
+    }, 3000);
   };
 
   const goTo = (name, size) => {
@@ -75,7 +52,6 @@ const Shop = (props) => {
   );
   return (
     <div>
-      {showOutOfStock}
       {showItemAdded}
       {content}
     </div>

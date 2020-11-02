@@ -10,6 +10,7 @@ export const addItemToCart = (item, amount) => {
   };
 };
 
+
 export const addItem = (name, size) => {
   return {
     type: actionTypes.ADD_ITEM,
