@@ -12,7 +12,6 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 const ShopView = (props) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
   useEffect(() => {
     setTimeout(() => {
       setLoading(true);
@@ -23,7 +22,7 @@ const ShopView = (props) => {
         setError(true);
         setLoading(false);
       }
-    }, 500);
+    }, 2000);
   }, []);
 
   let errorMsg = <ErrorMessage error={error} setError={setError} />;
@@ -36,7 +35,7 @@ const ShopView = (props) => {
     content = (
       <div className="ShopView">
         <section>
-          <Shop products={props.products} addToCart={props.addToCart} />
+          <Shop products={props.products} addToCart={props.addToCart}/>
         </section>
       </div>
     );
@@ -56,7 +55,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchData: () => dispatch(fetchProduct()),
-    addToCart: (item, amount) => dispatch(addItemToCart(item, amount)),
+    addToCart: (item, amount, setOutOfStock) =>
+      dispatch(addItemToCart(item, amount, setOutOfStock)),
   };
 };
 
