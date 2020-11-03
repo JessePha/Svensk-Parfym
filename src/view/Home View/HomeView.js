@@ -4,12 +4,14 @@ import HomeSections from "../../components/HomeSections/HomeSections";
 import { projectFirestore } from "../../firestore/config";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import Dots from "../../components/UI/Dots/Dots";
+import ErrorMessage from "../../components/UI/ErrorMessage/ErrorMessage";
 
 let HomeView = () => {
   const [homeContent, setHomeContent] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   useEffect(() => {
-    function fetchContent() {
+    const fetchContent = () => {
       setLoading(true);
       let items = [];
       projectFirestore
@@ -21,8 +23,8 @@ let HomeView = () => {
           });
           setHomeContent(items);
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
+          setError(true);
         });
     }
     fetchContent();
@@ -52,12 +54,9 @@ let HomeView = () => {
           </div>
           <div
             className={classes.innerShowcaseText}
-            style={{
-              transform: `translateY(${-1.2 * offSetY}px)`,
-            }}
           >
             {openUpShowcase.text.map((text) => (
-              <div>{text}</div>
+              <div key = {text} >{text}</div>
             ))}
           </div>
         </div>
@@ -72,7 +71,12 @@ let HomeView = () => {
     );
   }
 
-  return <>{showCase}</>;
+  return (
+    <div>
+      <ErrorMessage error={error} setError={setError}/>
+      {showCase}
+    </div>
+  );
 };
 
 export default HomeView;

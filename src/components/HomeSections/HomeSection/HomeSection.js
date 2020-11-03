@@ -43,7 +43,7 @@ const HomeSection = (props) => {
       </div>
       <div className={classes.textContent}>
         <div className={classes.innerTextContent}>
-          {props.showText > 1 && props.showText < 1.3 ? (
+          {props.showText > 0.8 && props.showText < 1.2 ? (
             <p>{props.texts[0]}</p>
           ) : (
             ""
@@ -58,7 +58,7 @@ const HomeSection = (props) => {
           ) : (
             ""
           )}
-          {props.showText > 3.8 && props.showText < 4.2 ? (
+          {props.showText > 3.6 && props.showText < 4 ? (
             <p>{props.texts[3]}</p>
           ) : (
             ""

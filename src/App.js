@@ -8,9 +8,9 @@ import { BrowserRouter } from "react-router-dom";
 import ShopView from "./view/Shop View/ShopView";
 import ProductView from "./view/Product View/ProductView";
 import CheckoutView from "./view/Checkout View/CheckoutView";
-import ErrorMessage from "./components/UI/ErrorMessage/ErrorMessage";
-import ProcessView from "./view/Process View/ProcessView"
-import PolicyView from "./view/Policy View/PolicyView"
+import ProcessView from "./view/Process View/ProcessView";
+import MissingPage from "./view/MissingPage view/MissingPageView";
+import PurchaseView from "./view/Purchase view/PurchaseView"
 const App = () => {
   return (
     <div className="App">
@@ -27,11 +27,11 @@ const App = () => {
             />
             <Route exact path={"/Checkout"} component={CheckoutView} />
             <Route exact path={"/process"} component={ProcessView} />
-            <Route exact path={"/policy"} component={PolicyView} />
+            <Route exact path={"/purchase"} component={PurchaseView}/>
+            <Route path="" component={MissingPage} />
           </Switch>
         </View>
       </BrowserRouter>
-      <ErrorMessage />
     </div>
   );
 };

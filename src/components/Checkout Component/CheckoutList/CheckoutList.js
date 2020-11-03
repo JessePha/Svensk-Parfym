@@ -14,16 +14,14 @@ const CheckoutList = (props) => {
     <div className={Styles.listDiv}>
       <h3>Your Order</h3>
       {props.cartItem.map((items) => (
-        <div className={Styles.mapDiv}>
+        <div className={Styles.mapDiv} key = {items.id}>
           <img className={Styles.img} src={items.url} alt={items.name} />
           <p className={Styles.mapText}>
             {items.name} {items.size} ⨯ {items.count}:{" "}
             {items.price * items.count}kr{" "}
           </p>
-          <br/>
         </div>
       ))}
-      <br />
       <h4>Your total price is: {props.totalPrice}kr</h4>
     </div>
   );

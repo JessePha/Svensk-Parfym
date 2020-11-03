@@ -1,12 +1,19 @@
 .Process {
+  animation: fade 0.2s ease-in;
   display: grid;
   grid-template-columns: 1fr;
-  margin: 10% 5% 5% 5%;
-  padding-bottom: 12%;
+  height: fit-content;
+  margin: 10% 5% 10% 5%;
 }
 
-@media (max-width: 500px) {
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 700px) {
   .Process {
-    margin: 30% 2% 10% 2%;
+    margin: 30% 2% 30% 2%;
   }
 }

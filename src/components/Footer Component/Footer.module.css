@@ -1,11 +1,17 @@
 .Footer {
+  position: relative;
   width: 100%;
+  height: fit-content;
   text-align: center;
+  align-items: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: rgb(220, 181, 72);
   padding: 2%;
+  clear: both;
+  margin-top: auto;
+
 }
 .FooterInfo{
   list-style: none;

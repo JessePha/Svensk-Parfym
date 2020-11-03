@@ -1,6 +1,6 @@
 .ShowAddedItem {
-  top: 12%;
-  right: 3%;
+  top: 6vw;
+  right: 3vw;
   width: 200px;
   height: 200px;
   background-color: white;
@@ -53,10 +53,5 @@
   }
   .ShowAddedItem p{
     font-size: 12px;
-  }
-}
-@media screen and (max-width: 768px) {
-  .ShowAddedItem {
-    margin-top: 10%;
   }
 }

@@ -62,7 +62,7 @@ const ProductView = (props) => {
   if (viewProduct) {
     content = (
       <>
-        <Spinner loading = {loading} />
+        <Spinner loading={loading} />
       </>
     );
   }
@@ -148,7 +148,7 @@ const ProductView = (props) => {
   return (
     <div className={classes.ProductView}>
       {content}
-      {showItemAdded}
+      {itm.length > 0 ? <div>{showItemAdded}</div> : null}
     </div>
   );
 };

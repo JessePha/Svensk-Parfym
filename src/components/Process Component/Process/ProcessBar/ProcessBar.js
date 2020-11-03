@@ -9,7 +9,7 @@ let ProcessBar = (props) => {
           <ul>{props.dots}</ul>
           <div id={classes.Line}>
             <div
-              className={classes.LineProcess}
+              id={classes.LineProcess}
               style={{ width: props.lineFill + "%"}}
             ></div>
           </div>
