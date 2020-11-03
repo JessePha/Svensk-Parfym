@@ -11,6 +11,7 @@ import CheckoutView from "./view/Checkout View/CheckoutView";
 import ProcessView from "./view/Process View/ProcessView";
 import MissingPage from "./view/MissingPage view/MissingPageView";
 import PurchaseView from "./view/Purchase view/PurchaseView"
+import Policy from "./components/Policy Component/Policy";
 const App = () => {
   return (
     <div className="App">
@@ -28,6 +29,7 @@ const App = () => {
             <Route exact path={"/Checkout"} component={CheckoutView} />
             <Route exact path={"/process"} component={ProcessView} />
             <Route exact path={"/purchase"} component={PurchaseView}/>
+            <Route path={"/policy"} component={Policy} />
             <Route path="" component={MissingPage} />
           </Switch>
         </View>
