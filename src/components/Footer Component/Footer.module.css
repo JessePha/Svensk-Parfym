@@ -11,9 +11,8 @@
   padding: 2%;
   clear: both;
   margin-top: auto;
-
 }
-.FooterInfo{
+.FooterInfo {
   list-style: none;
 }
 .CopyRight {
@@ -22,18 +21,22 @@
   margin-left: 10%;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
   .CopyRight {
     margin-left: 15%;
   }
-  .FooterInfo li, .CopyRight p{
+  .FooterInfo li,
+  .CopyRight p {
     font-size: 16px;
   }
 }
 
-@media screen and (max-width: 500px){
-  .FooterInfo li, .CopyRight p{
+@media screen and (max-width: 500px) {
+  .FooterInfo li,
+  .CopyRight p {
     font-size: 10px;
   }
 }
-
+.Link {
+  color: rgb(220, 181, 72);
+}
