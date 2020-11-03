@@ -6,11 +6,10 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   color: rgb(220, 181, 72);
   padding: 2%;
-  clear: both;
   margin-top: auto;
+  z-index: 1;
 }
 .FooterInfo {
   list-style: none;
