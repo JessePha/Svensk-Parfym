@@ -10,6 +10,7 @@ import ProductView from "./view/Product View/ProductView";
 import CheckoutView from "./view/Checkout View/CheckoutView";
 import ErrorMessage from "./components/UI/ErrorMessage/ErrorMessage";
 import ProcessView from "./view/Process View/ProcessView"
+import PolicyView from "./view/Policy View/PolicyView"
 const App = () => {
   return (
     <div className="App">
@@ -26,6 +27,7 @@ const App = () => {
             />
             <Route exact path={"/Checkout"} component={CheckoutView} />
             <Route exact path={"/process"} component={ProcessView} />
+            <Route exact path={"/policy"} component={PolicyView} />
           </Switch>
         </View>
       </BrowserRouter>
