@@ -85,7 +85,7 @@ const Checkout = ({ totalPrice, itemInCart, countries }) => {
   const goBackToHomepage = () => {
     setEnoughMoney(false);
     setClickSubmit(false);
-    history.push("/");
+    history.push("/purchase");
   };
   const handlePayment = () => {
     if (paymentMethod === "VISA") {
