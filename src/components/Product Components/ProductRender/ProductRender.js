@@ -16,6 +16,7 @@ const ProductRender = (props) => {
   useEffect(() => {
     props.setDefault();
   }, []);
+  console.log(props.disableButton)
   return (
     <div className={classes.SelectOptions}>
       <div className={classes.SelectForm}>

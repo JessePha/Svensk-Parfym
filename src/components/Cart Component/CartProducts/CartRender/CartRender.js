@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./CartRender.module.css";
 import Price from "../../../UI/Price/Price";
 
@@ -13,7 +13,7 @@ const CartRender = ({
   minus,
   remove,
 }) => {
-  console.log(add);
+
   return (
     <div className={classes.CartItem}>
       <div className={classes.InnerCartItemContainer}>
@@ -27,7 +27,11 @@ const CartRender = ({
           <p>size: {size} </p>
           {<Price price={price} value="Kr" />}
           <div className={classes.InnerItem}>
-            <button onClick={() => add(name, size, stock)}>+</button>
+            <button
+              onClick={() => add(name, size, stock)}
+            >
+              +
+            </button>
             <p>{amount}</p>
             <button onClick={() => minus(name, size)}>-</button>
             <button onClick={() => remove(name, price, size)}>remove</button>
