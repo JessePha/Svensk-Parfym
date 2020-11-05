@@ -7,3 +7,7 @@
 [1102/131108.834:ERROR:process_reader_win.cc(123)] NtOpenThread: {Åtkomst nekad} En process har begärt åtkomst till ett objekt, men har inte de rättigheter som krävs. (0xc0000022)
 [1102/131108.834:ERROR:exception_snapshot_win.cc(99)] thread ID 9764 not found in process
 [1102/132732.893:ERROR:directory_reader_win.cc(43)] FindFirstFile: Det går inte att hitta sökvägen. (0x3)
+[1104/214031.911:ERROR:directory_reader_win.cc(43)] FindFirstFile: Det går inte att hitta sökvägen. (0x3)
+[1105/104555.735:ERROR:process_reader_win.cc(123)] NtOpenThread: {Åtkomst nekad} En process har begärt åtkomst till ett objekt, men har inte de rättigheter som krävs. (0xc0000022)
+[1105/104555.737:ERROR:exception_snapshot_win.cc(99)] thread ID 8988 not found in process
+[1105/152808.372:ERROR:directory_reader_win.cc(43)] FindFirstFile: Det går inte att hitta sökvägen. (0x3)
