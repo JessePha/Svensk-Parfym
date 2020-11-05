@@ -3,25 +3,19 @@ import classes from "./Purchase.module.css";
 import Message from "./Message/Message";
 import OrderDetails from "./OrderDetails/OrderDetails";
 import OrderSummary from "./OrderSummary/OrderSummary";
-import { connect } from "react-redux";
-const PurchasePage = (props) => {
+const PurchasePage = ({ orderData }) => {
   return (
     <div className={classes.PurchaseConfirmed}>
       <Message />
-      <OrderDetails personalData={props.personalData} />
-      <OrderSummary
-        itemInCart={props.itemInCart}
-        totalPrice={props.totalPrice}
-      />
+      <div className = {classes.OrdAndSumContainer}>
+        <OrderDetails customerData={orderData.customer} />
+        <OrderSummary
+          orderedProduct={orderData.product}
+          totalPrice={orderData.totalPrice}
+        />   
+      </div>
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    totalPrice: state.crt.totalPrice,
-    itemInCart: state.crt.cartItem,
-  };
-};
-
-export default connect(mapStateToProps, null)(PurchasePage);
+export default PurchasePage;

@@ -1,21 +1,28 @@
 .PurchaseConfirmed {
+  height: 100vh;
   background-color: white; /* Black w/ opacity */
   color: black;
-  z-index: 100;
-  border-radius: 10vw;
-  margin-bottom: 10vw;
-  margin-top: 12vw;
-
+  overflow-y: scroll;
 }
 
 .Message {
+  margin-top: 7%;
   text-align: center;
-  margin-top: 10vw;
+}
+
+.OrdAndSumContainer{
+  display: flex;
+  align-items: top;
+  padding: 5%;
+}
+.OrdAndSumContainer > div {
+  flex: 1 1 50%;
+}
+.OrdAndSumContainer >div:nth-child(2){
+  margin-top: 3%;
 }
 
 @media(max-width: 500px) {
   .PurchaseConfirmed{
-  margin-top: 20vw;
-  border-radius: 0vw;
   }
 }
