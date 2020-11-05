@@ -42,15 +42,17 @@ export const validatePayment = async (data) => {
 };
 
 export const makeOrder = async (data) => {
+  let orderId = ""
   await projectFirestore
     .collection(data.type)
     .add(data)
-    .then(() => {
-      console.log("Document successfully written!");
+    .then((docRef) => {
+      orderId = docRef.id
     })
     .catch(function (error) {
       console.error("Error writing document: ", error);
     });
+    return orderId
 };
 
 export const updateUserAccount = async (data) => {

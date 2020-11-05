@@ -36,6 +36,7 @@ const Checkout = ({
   const [access, setAccess] = useState(false);
   const [enoughMoney, setEnoughMoney] = useState(false);
   const [clickSubmit, setClickSubmit] = useState(false);
+  const [orderId, setOrderId] = useState("") 
   let history = useHistory();
   let Customer = {
     FName: firstName,
@@ -53,6 +54,7 @@ const Checkout = ({
     type: "Orders",
     customer: { ...Customer },
     product: [...itemInCart],
+    totalPrice: totalPrice
   };
 
   const handleSubmit = async (e) => {
@@ -80,7 +82,8 @@ const Checkout = ({
     if (result.access && result.account >= totalPrice) {
       setEnoughMoney(true);
       setAccess(result.access);
-      makeOrder(orders);
+      let id = await makeOrder(orders);
+      setOrderId(id);
       updateUserAccount({
         type: paymentMethod,
         account: result.account - totalPrice,
@@ -91,8 +94,7 @@ const Checkout = ({
   const goBackToHomepage = () => {
     setEnoughMoney(false);
     setClickSubmit(false);
-    history.push("/purchase");
-    removeItemsFromCart();
+    history.push(`/purchase/${orderId}`);
   };
   const handlePayment = () => {
     if (paymentMethod === "VISA") {

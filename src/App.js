@@ -28,7 +28,7 @@ const App = () => {
             />
             <Route exact path={"/Checkout"} component={CheckoutView} />
             <Route exact path={"/process"} component={ProcessView} />
-            <Route exact path={"/purchase"} component={PurchaseView}/>
+            <Route exact path={"/purchase/:orderid"} component={PurchaseView}/>
             <Route path={"/policy"} component={Policy} />
             <Route path="" component={MissingPage} />
           </Switch>

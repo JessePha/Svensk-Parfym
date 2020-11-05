@@ -10,6 +10,7 @@ const mapStateToProps = (state) => {
 };
 
 const CheckoutList = (props) => {
+  console.log(props.cartItem)
   return (
     <div className={Styles.listDiv}>
       <h3>Your Order</h3>
