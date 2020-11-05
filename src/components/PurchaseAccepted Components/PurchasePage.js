@@ -3,7 +3,6 @@ import classes from "./Purchase.module.css";
 import Message from "./Message/Message";
 import OrderDetails from "./OrderDetails/OrderDetails";
 import OrderSummary from "./OrderSummary/OrderSummary";
-import { connect } from "react-redux";
 import PriceInformation from "./PriceInformation/PriceInformation";
 const PurchasePage = ({ orderData }) => {
   return (

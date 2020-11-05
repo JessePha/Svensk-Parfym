@@ -1,9 +1,9 @@
 import React from "react";
 import classes from "./OrderSummary.module.css";
 const OrderSummary = ({ orderedProduct, totalPrice }) => {
-  let sum = null;
+  let Sum = null;
   if (orderedProduct) {
-    sum = orderedProduct.map((data) => (
+    Sum = orderedProduct.map((data) => (
       <div key={data.id} className={classes.Summary}>
         <div className={classes.ProductInformation}>
           <div>
@@ -25,9 +25,8 @@ const OrderSummary = ({ orderedProduct, totalPrice }) => {
     <div className={classes.OrderSummary}>
       <h1>ORDER SUMMARY</h1>
       {Sum}
-    sum = <p className={classes.OrderSummary}>Product-data missing</p>;
     </div>
-  } 
+  );
 };
 
 export default OrderSummary;

@@ -16,9 +16,8 @@
 }
 
 .OrdAndSumContainer{
-  display: flex;
-  align-items: top;
-  padding: 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 .OrdAndSumContainer > div {
   flex: 1 1 50%;
@@ -28,6 +27,5 @@
 }
 
 @media(max-width: 500px) {
-  .PurchaseConfirmed{
-  }
+
 }
