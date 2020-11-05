@@ -4,15 +4,14 @@ import Message from "./Message/Message";
 import OrderDetails from "./OrderDetails/OrderDetails";
 import OrderSummary from "./OrderSummary/OrderSummary";
 import { connect } from "react-redux";
+import PriceInformation from "./PriceInformation/PriceInformation";
 const PurchasePage = (props) => {
   return (
     <div className={classes.PurchaseConfirmed}>
       <Message />
       <OrderDetails personalData={props.personalData} />
-      <OrderSummary
-        itemInCart={props.itemInCart}
-        totalPrice={props.totalPrice}
-      />
+      <OrderSummary itemInCart={props.itemInCart} />
+      <PriceInformation totalPrice={props.totalPrice} />
     </div>
   );
 };

@@ -24,7 +24,6 @@ const cartReducer = (state = initialState, action) => {
         ) {
           item.count += action.payload.amount;
           alreadyInCart = true;
-          action.payload.setOutOfStock(false);
         } else if (item.count === action.payload.product.stock) {
           alreadyInCart = true;
           action.payload.setOutOfStock(true);
@@ -48,6 +47,7 @@ const cartReducer = (state = initialState, action) => {
       const items = state.cartItem.slice();
       const itemInCart = [...Object.values(items)];
       let addItem = null;
+      console.log(action.payload);
       addItem = itemInCart.filter((item) =>
         item.name === action.payload.name &&
         item.size === action.payload.size &&
@@ -100,6 +100,14 @@ const cartReducer = (state = initialState, action) => {
         cartItem: removeItem,
         totalPrice: price,
         totalAmount: amount,
+      });
+    }
+    case actionType.REMOVE_ALL_ITEMS: {
+      console.log("test");
+      return updateObject(state, {
+        cartItem: [],
+        totalPrice: 0,
+        totalAmount: 0,
       });
     }
     default:

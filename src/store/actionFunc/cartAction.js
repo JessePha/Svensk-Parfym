@@ -40,3 +40,9 @@ export const removeItem = (name, price, size) => {
     },
   };
 };
+
+export const removeAllItemsFromCart = () => {
+  return {
+    type: actionTypes.REMOVE_ALL_ITEMS,
+  }
+}

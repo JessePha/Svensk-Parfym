@@ -1,2 +1,2 @@
-export { addItemToCart, addItem, minusItem, removeItem, } from "./cartAction";
+export { addItemToCart, addItem, minusItem, removeItem, removeAllItemsFromCart} from "./cartAction";
 export {fetchProduct} from './productAction';

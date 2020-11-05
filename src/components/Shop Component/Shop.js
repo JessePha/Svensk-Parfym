@@ -14,6 +14,7 @@ const Shop = (props) => {
 
   const addAndShowItem = (data) => {
     props.addToCart(data, 1, setOutOfStock);
+    console.log(outOfStock)
     !outOfStock
       ? setShowItemAdded(
           <ShowAddedItem

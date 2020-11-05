@@ -5,9 +5,9 @@
   border-radius: 10vw;
   margin-bottom: 10vw;
   margin-top: 12vw;
-
+  margin-left: 2vw;
+  padding: 2vw 2vw 2vw 2vw;
 }
-
 .Message {
   text-align: center;
   margin-top: 10vw;

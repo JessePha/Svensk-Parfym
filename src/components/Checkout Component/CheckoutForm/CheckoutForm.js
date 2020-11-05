@@ -10,8 +10,14 @@ import {
 } from "../../../handlepayment/handlePayment";
 import Message from "../../UI/messagePayment/message";
 import classes from "./CheckoutForm.module.css";
+import { AiFillPropertySafety } from "react-icons/ai";
 
-const Checkout = ({ totalPrice, itemInCart, countries }) => {
+const Checkout = ({
+  totalPrice,
+  itemInCart,
+  countries,
+  removeItemsFromCart,
+}) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [adress, setAdress] = useState("");
@@ -86,6 +92,7 @@ const Checkout = ({ totalPrice, itemInCart, countries }) => {
     setEnoughMoney(false);
     setClickSubmit(false);
     history.push("/purchase");
+    removeItemsFromCart();
   };
   const handlePayment = () => {
     if (paymentMethod === "VISA") {

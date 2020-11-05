@@ -2,7 +2,7 @@
     text-align: left;
     margin-top: 10vw;
     margin-left: 10vw;
-    padding-bottom: 10vw;
+    padding-bottom: 2vw;
   }
   
   .Summary {
@@ -11,5 +11,12 @@
     grid-gap: 4em;
   }
   
+  .ProductInformation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
   
+  .ProductInformation img {
+    width: 15vw;
+  }
   

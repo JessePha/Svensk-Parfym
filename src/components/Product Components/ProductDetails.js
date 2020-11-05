@@ -97,6 +97,7 @@ const ProductView = (props) => {
             addToCart={addAndShowItem}
             setDefault={defaultChosen}
             disableButton={disableButton}
+            addAndShowItem={addAndShowItem}
           />
           <Description viewProduct={viewProduct} />
         </div>
