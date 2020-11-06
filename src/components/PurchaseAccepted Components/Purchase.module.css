@@ -1,8 +1,7 @@
 .PurchaseConfirmed {
-  height: 100vh;
+  height: 110vh;
   background-color: white; /* Black w/ opacity */
   color: black;
-  overflow-y: scroll;
 }
 .Message {
   margin-top: 7%;

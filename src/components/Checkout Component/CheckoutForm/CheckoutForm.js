@@ -93,7 +93,6 @@ const Checkout = ({
   const goBackToHomepage = () => {
     setEnoughMoney(false);
     setClickSubmit(false);
-    console.log(orderId)
     history.push(`/purchase/${orderId}`);
   };
   const handlePayment = () => {

@@ -14,10 +14,10 @@ const Process = (props) => {
   const shownImages = 1;
   const [currentData, setCurrentData] = useState([]);
   const [lineFill, setLineFill] = useState(0);
-  const [currentPage, setCurrentPage] = useState(0);
   const [currentImages, setCurrentImages] = useState(
     images.slice(0, shownImages)
   );
+  const [switchImage, setSwitchImage] = useState();
   useEffect(() => {
     let contents = [];
     const fetchItem = () => {
@@ -29,7 +29,7 @@ const Process = (props) => {
             contents.push({ ...doc.data() });
           });
           setProcessContent(contents);
-          setCurrentData(contents.slice(0,1))
+          setCurrentData(contents.slice(0, 1));
         })
         .catch((error) => {
           console.log(error);
@@ -37,6 +37,7 @@ const Process = (props) => {
     };
     fetchItem();
   }, []);
+
   let imageArr = [];
   let max = props.products.length;
   for (let i = 0; i < max; i++) {
@@ -44,19 +45,18 @@ const Process = (props) => {
   }
   const setPage = (e) => {
     const page = e.target.value;
+    setSwitchImage(!switchImage)
     setCurrentData(processContent.slice(page, page + 1));
     setLineFill(page * 25);
-    setCurrentPage(page);
     if (imageArr.includes(page + shownImages)) {
       setCurrentImages(images.slice(page, page + shownImages));
     }
   };
-
   let dots = processContent.map((data, index) => {
     return <li onClick={setPage} value={index} key={index}></li>;
   });
   let render = <Spinner loading={true} />;
-
+  let screen = window.matchMedia("(min-width: 500px)").matches;
   if (processContent.length > 0) {
     let data = currentData.map((data) => {
       return (
@@ -66,11 +66,18 @@ const Process = (props) => {
         </div>
       );
     });
+
     render = (
       <div className={classes.Process}>
         {errorMsg}
         <ProcessBar data={data} dots={dots} lineFill={lineFill} />
-        <Slide products={props.products} currentImages={currentImages} />
+        <Slide
+          shownImages={shownImages}
+          products={props.products}
+          currentImages={currentImages}
+          screen={screen}
+          switchImage={switchImage}
+        />
       </div>
     );
   }
