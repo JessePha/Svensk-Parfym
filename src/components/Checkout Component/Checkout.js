@@ -20,15 +20,15 @@ const Checkout = ({ data, itemInCart, totalPrice, removeItemsFromCart }) => {
   );
   if (itemInCart.length > 0) {
     checkOut = (
-      <>
+      <div>
         <CheckoutForm
           countries={data}
           totalPrice={totalPrice}
           itemInCart={itemInCart}
           removeItemsFromCart={removeItemsFromCart}
         />
-        <CheckoutList />
-      </>
+        <CheckoutList/>
+      </div>
     );
   }
   return <div className={Styles.Checkout}>{checkOut}</div>;

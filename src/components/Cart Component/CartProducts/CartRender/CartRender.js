@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import classes from "./CartRender.module.css";
 import Price from "../../../UI/Price/Price";
 

@@ -35,7 +35,7 @@ const Checkout = ({
   const [access, setAccess] = useState(false);
   const [enoughMoney, setEnoughMoney] = useState(false);
   const [clickSubmit, setClickSubmit] = useState(false);
-  const [orderId, setOrderId] = useState("") 
+  const [orderId, setOrderId] = useState("");
   let history = useHistory();
   let Customer = {
     FName: firstName,
@@ -53,7 +53,7 @@ const Checkout = ({
     type: "Orders",
     customer: { ...Customer },
     product: [...itemInCart],
-    totalPrice: totalPrice
+    totalPrice: totalPrice,
   };
 
   const handleSubmit = async (e) => {
@@ -93,6 +93,7 @@ const Checkout = ({
   const goBackToHomepage = () => {
     setEnoughMoney(false);
     setClickSubmit(false);
+    console.log(orderId)
     history.push(`/purchase/${orderId}`);
   };
   const handlePayment = () => {

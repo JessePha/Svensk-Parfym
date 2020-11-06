@@ -1,7 +1,13 @@
 .OrderSummary {
   display: flex;
   flex-direction: column;
-  width: 100%;
+
+}
+
+.OrderList {
+  height: 20vw;
+  width: 50vw;
+  overflow: auto;
 }
 .OrderSummary > div {
   margin-bottom: 5%;

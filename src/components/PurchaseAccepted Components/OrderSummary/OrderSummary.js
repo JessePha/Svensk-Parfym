@@ -23,8 +23,10 @@ const OrderSummary = ({ orderedProduct, totalPrice }) => {
   }
   return (
     <div className={classes.OrderSummary}>
-      <h1>ORDER SUMMARY</h1>
+    <h1>ORDER SUMMARY</h1>
+    <div className={classes.OrderList}>
       {Sum}
+      </div>
     </div>
   );
 };
