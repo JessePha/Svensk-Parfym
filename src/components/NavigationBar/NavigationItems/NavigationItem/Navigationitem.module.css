@@ -1,12 +1,16 @@
 .NavigationItem {
-  padding: 5%;
+  padding: 2%;
 }
 
 .NavigationItem a {
-  color: rgb(220, 181, 72);
+  color: #ffffff;
+  padding: 1% 0%;
   font-size: 0.8rem;
+  border-bottom: 1px solid transparent;
   text-decoration: none;
+  transition: 0.5s ease;
 }
+
 
 @media (min-width: 769px) {
   .NavigationItem a {

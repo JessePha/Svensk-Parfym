@@ -1,0 +1,38 @@
+.MissingPage {
+  display: grid;
+  align-items: right;
+  justify-content: right;
+  margin: 5% 2% auto 5%;
+  padding: 2% 10% 2% 10%;
+  color: white;
+  display: grid;
+  text-align: right;
+}
+
+.Header {
+  display: grid;
+  border-width: fit-content;
+}
+.Header h1 {
+  font-size: 600%;
+}
+.Header h4 {
+  font-size: 200%;
+}
+.Options {
+  display: grid;
+  grid-gap: 1em;
+  color: white;
+  background-color: white;
+  background: none;
+  float: right;
+  padding: 5% 5% 5% 5%;
+}
+.Options a {
+  text-decoration: none;
+  color: white;
+}
+.Options a:hover {
+  color: black;
+  background-color: white;
+}

@@ -1,51 +1,80 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./Process.module.css";
-
-import { connect } from "react-redux";
-import { fetchProduct } from "../../../store/actionFunc/indexAction";
 import ErrorMessage from "../../UI/ErrorMessage/ErrorMessage";
 import Spinner from "../../UI/Spinner/Spinner";
 import ProcessBar from "./ProcessBar/ProcessBar";
+import Slide from "../../UI/Slide/Slide";
+import { projectFirestore } from "../../../firestore/config";
 
 const Process = (props) => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-
+  const [error, setError] = useState(props.error);
+  const [processContent, setProcessContent] = useState([]);
   let errorMsg = <ErrorMessage error={error} setError={setError} />;
-
+  let images = props.products.map((data) => data.url);
+  const shownImages = 1;
+  const [currentData, setCurrentData] = useState([]);
+  const [lineFill, setLineFill] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [currentImages, setCurrentImages] = useState(
+    images.slice(0, shownImages)
+  );
   useEffect(() => {
-    setLoading(true);
-    try {
-      props.fetchData();
-      setLoading(false);
-    } catch (error) {
-      setError(true);
-      setLoading(false);
-    }
+    let contents = [];
+    const fetchItem = () => {
+      projectFirestore
+        .collection("process")
+        .get()
+        .then((querySnapShot) => {
+          querySnapShot.forEach((doc) => {
+            contents.push({ ...doc.data() });
+          });
+          setProcessContent(contents);
+          setCurrentData(contents.slice(0,1))
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+    fetchItem();
   }, []);
+  let imageArr = [];
+  let max = props.products.length;
+  for (let i = 0; i < max; i++) {
+    imageArr.push(i * shownImages);
+  }
+  const setPage = (e) => {
+    const page = e.target.value;
+    setCurrentData(processContent.slice(page, page + 1));
+    setLineFill(page * 25);
+    setCurrentPage(page);
+    if (imageArr.includes(page + shownImages)) {
+      setCurrentImages(images.slice(page, page + shownImages));
+    }
+  };
 
-  let render = <Spinner />;
-  if (props.products.length !== 0 && !loading) {
+  let dots = processContent.map((data, index) => {
+    return <li onClick={setPage} value={index} key={index}></li>;
+  });
+  let render = <Spinner loading={true} />;
+
+  if (processContent.length > 0) {
+    let data = currentData.map((data) => {
+      return (
+        <div>
+          <h2> {data.title} </h2>
+          <p> {data.content}</p>
+        </div>
+      );
+    });
     render = (
       <div className={classes.Process}>
         {errorMsg}
-        <ProcessBar />
+        <ProcessBar data={data} dots={dots} lineFill={lineFill} />
+        <Slide products={props.products} currentImages={currentImages} />
       </div>
     );
-  } else {
-    render = <Spinner />;
   }
   return <div>{render}</div>;
 };
 
-const mapStateToProps = (state) => {
-  return {
-    products: state.prd.products,
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchData: () => dispatch(fetchProduct()),
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Process);
+export default Process;

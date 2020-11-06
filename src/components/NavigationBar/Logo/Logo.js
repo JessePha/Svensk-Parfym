@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import "./Logo.module.css";
 import classes from "./Logo.module.css";
 
-const logo = () => {
+const logo = ({toggleSidebar}) => {
   return (
     <div className={classes.Logo}>
       <Link to="/">
-        <img src={Logo} alt="Logo" />
+        <img src={Logo} alt="Logo" onClick = {toggleSidebar} />
       </Link>
     </div>
   );

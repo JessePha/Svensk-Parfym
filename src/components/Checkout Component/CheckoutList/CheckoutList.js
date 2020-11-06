@@ -8,12 +8,14 @@ const mapStateToProps = (state) => {
     cartItem: state.crt.cartItem,
   };
 };
+
 const CheckoutList = (props) => {
+  console.log(props.cartItem)
   return (
     <div className={Styles.listDiv}>
       <h3>Your Order</h3>
-      {props.cartItem.map((items, index) => (
-        <div className={Styles.mapDiv} key={index}>
+      {props.cartItem.map((items) => (
+        <div className={Styles.mapDiv} key = {items.id}>
           <img className={Styles.img} src={items.url} alt={items.name} />
           <p className={Styles.mapText}>
             {items.name} {items.size} ⨯ {items.count}:{" "}
@@ -21,9 +23,7 @@ const CheckoutList = (props) => {
           </p>
         </div>
       ))}
-      <br />
-      <h4>Your total price is: {props.totalPrice}</h4>
-      {console.log(props)}
+      <h4>Your total price is: {props.totalPrice}kr</h4>
     </div>
   );
 };

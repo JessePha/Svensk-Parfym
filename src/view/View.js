@@ -11,25 +11,18 @@ const View = (props) => {
 
   const [showOrderInfo, setShowOrderInfo] = useState(false);
 
-  const [searchBar, setSearchBar] = useState(false);
-
-  const sidebarClosedHandler = () => {
-    setSidebar(false);
-  };
 
   const sidebarToggleHandler = () => {
-    setSidebar({ sidebar: !sidebar });
+    setSidebar(!sidebar);
   };
 
-  const cartSideBarClose = () => {
-    setShowOrderInfo(false);
-  };
+  const closeSidebar = () => {
+    setSidebar(false)
+  }
+
 
   const cartSideBarHandler = () => {
-    setShowOrderInfo({ showOrderInfo: !showOrderInfo });
-  };
-  const searchBarToggle = () => {
-    setSearchBar(!searchBar);
+    setShowOrderInfo(!showOrderInfo);
   };
 
   return (
@@ -38,18 +31,18 @@ const View = (props) => {
         amountInCart={props.cartItems.totalAmount}
         drawerToggleClicked={sidebarToggleHandler}
         cartToggle={cartSideBarHandler}
-        searchToggle={searchBarToggle}
-        searchBar={searchBar}
+        sideBar = {sidebar}
+        toggleSidebar={sidebarToggleHandler}
+        closeSidebar = {closeSidebar}
       />
-      <Sidebar open={sidebar} closed={sidebarClosedHandler} />
+      <Sidebar open={sidebar} toggleSidebar={sidebarToggleHandler} />
       <Cart
         open={showOrderInfo}
-        closed={cartSideBarClose}
+        closed={cartSideBarHandler}
         products={props.cartItems.cartItem}
         setProducts={props.setCartProducts}
         totalPrice={props.cartItems.totalPrice}
         totalAmount={props.cartItems.totalAmount}
-
       />
       {props.children}
       <Footer />

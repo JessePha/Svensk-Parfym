@@ -2,10 +2,17 @@
   color: white;
   text-align: center;
   padding: 2px 5px 2px 5px;
+  animation: fade 2s ease-in-out;
 }
 
 .render img {
   width: 120%;
   height: 120%;
   max-width: 200px;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
 }

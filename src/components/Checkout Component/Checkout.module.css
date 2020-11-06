@@ -1,12 +1,55 @@
 .Checkout {
-  padding: 10% 2% 2% 2%;
   display: flex;
-  justify-content: space-evenly; /* horizontal */
-  align-items: top; /* vertical */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
 }
-
-@media (max-width: 500px) {
+.EmptyCart {
+  margin-top: 10%;
+  height: 100vh;
+  text-align: center;
+  display: block;
+}
+.EmptyCart h3 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.EmptyCart button {
+  outline: none;
+  background: #222;
+  border: none;
+  border-radius: 5px;
+  color: #eee;
+  transition: 1s;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  padding: 10px;
+}
+@media screen and (max-width: 768px){
   .Checkout {
-    padding: 15% 2% 2% 2%;
+    margin-top: 10%;
+  }
+  .EmptyCart h3 {
+    font-size: 32px;
+    margin-bottom: 18px;
+  }
+  .EmptyCart button {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 500px){
+  .Checkout {
+    margin-top: 20%;
+  }
+  .EmptyCart {
+    margin-top: 25%;
+  }
+  .EmptyCart h3 {
+    font-size: 26px;
+    margin-bottom: 14px;
+  }
+  .EmptyCart button {
+    font-size: 10px;
   }
 }

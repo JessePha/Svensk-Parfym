@@ -1,21 +1,22 @@
 import React from "react";
-import CartItem from "./CartRender/CartRender";
 import classes from "./CartProducts.module.css";
 import { connect } from "react-redux";
 import * as actionCreator from "../../../store/actionFunc/indexAction";
 import CheckoutButton from "../../UI/CheckoutButton/CheckoutButton"
+import CartRender from "./CartRender/CartRender";
 
 const CartProducts = (props) => {
   return (
     <div className={classes.CartProducts}>
-      {props.itemInCart.map((item) => (
-        <CartItem
-          key={item.name + item.size}
+      {props.itemInCart.map((item, index) => (
+        <CartRender
+          key={index}
           img={item.url}
           name={item.name}
           amount={item.count}
           price={item.price}
           size={item.size}
+          stock={item.stock}
           add={props.addItem}
           minus={props.minusItem}
           remove={props.removeItem}
@@ -35,7 +36,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    addItem: (name, size) => dispatch(actionCreator.addItem(name, size)),
+    addItem: (name, size, stock) => dispatch(actionCreator.addItem(name, size, stock)),
     minusItem: (name, size) => dispatch(actionCreator.minusItem(name, size)),
     removeItem: (name, price, size) => dispatch(actionCreator.removeItem(name, price, size)),
   };

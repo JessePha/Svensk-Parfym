@@ -19,10 +19,14 @@ const cartReducer = (state = initialState, action) => {
       itemsInCart.forEach((item) => {
         if (
           item.name === action.payload.product.name &&
-          item.size === action.payload.product.size
+          item.size === action.payload.product.size &&
+          item.count < action.payload.product.stock
         ) {
           item.count += action.payload.amount;
           alreadyInCart = true;
+        } else if (item.count === action.payload.product.stock) {
+          alreadyInCart = true;
+          action.payload.setOutOfStock(true);
         }
       });
       if (!alreadyInCart) {
@@ -42,8 +46,12 @@ const cartReducer = (state = initialState, action) => {
     case actionType.ADD_ITEM: {
       const items = state.cartItem.slice();
       const itemInCart = [...Object.values(items)];
-      let addItem = itemInCart.filter((item) =>
-        item.name === action.payload.name && item.size === action.payload.size
+      let addItem = null;
+      console.log(action.payload);
+      addItem = itemInCart.filter((item) =>
+        item.name === action.payload.name &&
+        item.size === action.payload.size &&
+        item.count < action.payload.stock
           ? item.count++
           : item.count
       );
@@ -92,6 +100,14 @@ const cartReducer = (state = initialState, action) => {
         cartItem: removeItem,
         totalPrice: price,
         totalAmount: amount,
+      });
+    }
+    case actionType.REMOVE_ALL_ITEMS: {
+      console.log("test");
+      return updateObject(state, {
+        cartItem: [],
+        totalPrice: 0,
+        totalAmount: 0,
       });
     }
     default:

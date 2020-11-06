@@ -1,15 +1,23 @@
 import React from "react";
 import classes from "./Spinner.module.css";
 
-const Spinner = () => {
+const Spinner = ({ loading, style }) => {
+  let spinner = null;
+  if (style === "black") {
+    spinner = classes.black;
+  } else {
+    spinner = classes.white;
+  }
   return (
     <div className={classes.Spinner}>
-        <div className={classes.ldsring}>
+      {loading ? (
+        <div className={`${classes.ldsring} ${spinner}`}>
           <div></div>
           <div></div>
           <div></div>
           <div></div>
         </div>
+      ) : null}
     </div>
   );
 };

@@ -1,31 +1,139 @@
-.Options {
-  width: 60%;
-  padding: 2%;
-}
 .ProductView {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
+  margin-top: 5%;
   width: 100%;
-  padding: 10%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.ProductView > div {
-  padding: 10%;
+.ProductView > div:nth-child(1) {
+  margin-left: 5%;
+  width: 80%;
+  padding: 5%;
 }
-.ProductView img {
-  width: 40%;
+.ProductView > div:nth-child(2) {
+  height: 400px;
+  width: 100%;
+  padding: 0% 0% 0% 5%;
+}
+.ProductView h1 {
+  color: white;
+}
+.AddToCartButton {
+  display: flex;
 }
 
-@media (max-width: 769px) {
+@media only screen and (min-width: 769px) {
+  .PriceAndBuyButtonContainer {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .ProductView h1 {
+    font-size: 28px;
+    color: white;
+  }
+  .ProductView > div:nth-child(1) {
+    margin-left: 5%;
+    width: 70%;
+    padding: 5%;
+  }
+  .ProductView > div:nth-child(2) {
+    height: 350px;
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
   .ProductView {
+    margin-top: 15%;
     display: flex;
     flex-flow: column;
     align-items: center;
     text-align: center;
   }
-  .ProductView img {
+  .ProductView > div:nth-child(1) {
+    margin-left: 0.5%;
+  }
+  .ProductView > div {
+    width: 100%;
+    padding: 0% 10%;
+  }
+  .ProductView > div:nth-child(2) {
+    height: 100%;
+    width: 100%;
+  }
+  .ProductView h1 {
+    margin-right: 5%;
+  }
+  .PriceAndBuyButtonContainer {
+    bottom: 0;
+    position: sticky;
+    width: 100%;
+    height: 50px;
+    background-color: darkgoldenrod;
+    z-index: 5;
+  }
+  .PriceAndBuyButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+  }
+  .PriceAndBuyButton > div {
     width: 50%;
-    height: 50%;
+  }
+  .AddToCartButtonContain {
+    cursor: pointer;
+    display: relative;
+    text-align: center;
+  }
+  .AddToCartButton {
+    width: 40%;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+    padding: 2%;
+    background-color: darkgray;
+    margin: 0 auto;
+  }
+  .AddToCartButton p {
+    font-size: 18px;
+  }
+  .ShoppingBag {
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .ProductView {
+    margin-top: 20%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+  }
+  .ProductView > div:nth-child(1) {
+    margin-left: 0.5%;
+  }
+  .ProductView > div:nth-child(2) {
+    overflow-y: auto;
+  }
+  .ProductView h1 {
+    font-size: 22px;
+    margin-right: 5%;
+  }
+  .PriceAndBuyButtonContainer {
+    height: 50px;
+  }
+  .AddToCartButton {
+    width: 50%;
+    padding: 3%;
+  }
+  .AddToCartButton p {
+    font-size: 14px;
+  }
+  .ShoppingBag {
+    font-size: 14px;
   }
 }

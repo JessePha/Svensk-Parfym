@@ -1,36 +1,165 @@
-.Homeview {
-  overflow: hidden;
+.HomeView {
+  padding: 2%;
 }
-.showcaseText {
-  text-align: center;
-  position: relative;
+.HomeOpenUp {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Image {
+  text-align: center;
+  width: 100%;
+}
+.Image:nth-child(1) img {
+  width: 70%;
+  height: 100%;
+  transition: 1s ease-out;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.BlankSpace {
+  height: 100vh;
+}
+.innerShowcaseText {
+  width: 100%;
+  text-align: center;
 }
 .innerShowcaseText > div:nth-child(1) {
-  font-size: 5vw;
+  font-size: 50px;
 }
 .innerShowcaseText > div:nth-child(2),
 .innerShowcaseText > div:nth-child(3),
 .innerShowcaseText > div:nth-child(4) {
-  font-size: 1vw;
+  font-size: 20px;
 }
 
 .innerShowcaseText {
-  right: 30%;
-  left: 30%;
-  bottom: 0;
-  position: absolute;
   color: white;
   transition: ease-out 0.5s;
 }
-@media (max-width: 500px) {
-  .showcaseText {
-    height: 50vh;
+@media (max-width: 1024px) {
+  .Image {
+    text-align: center;
+  }
+  .Image:nth-child(1) img {
+    width: 80%;
+    height: 100%;
+  }
+    .innerShowcaseText > div:nth-child(1) {
+    font-size: 36px;
+  }
+  .innerShowcaseText > div:nth-child(2),
+  .innerShowcaseText > div:nth-child(3),
+  .innerShowcaseText > div:nth-child(4) {
+    font-size: 20px;
+  }
+}
+@media (max-width: 840px) {
+  .Image:nth-child(1) img {
+    width: 60%;
+  }
+  .innerShowcaseText > div:nth-child(1) {
+    font-size: 32px;
+  }
+  .innerShowcaseText > div:nth-child(2),
+  .innerShowcaseText > div:nth-child(3),
+  .innerShowcaseText > div:nth-child(4) {
+    font-size: 16px;
   }
 }
 @media (max-width: 768px) {
-  .showcaseText {
-    height: 60vh;
+  .HomeOpenUp {
+    flex-direction: column;
+  }
+  .Image:nth-child(1) img {
+    width: 40%;
+    height: 100%;
+  }
+  .innerShowcaseText > div:nth-child(1) {
+    font-size: 26px;
+  }
+  .innerShowcaseText > div:nth-child(2),
+  .innerShowcaseText > div:nth-child(3),
+  .innerShowcaseText > div:nth-child(4) {
+    font-size: 12px;
+  }
+}
+@media (max-width: 600px) {
+  .HomeOpenUp {
+    margin-top: 5%;
+    flex-direction: column;
+  }
+  .Image:nth-child(1) img {
+    width: 50%;
+    height: 100%;
+  }
+  .innerShowcaseText {
+    width: 100%;
+    text-align: center;
+  }
+  .innerShowcaseText > div:nth-child(1) {
+    font-size: 20px;
+  }
+  .innerShowcaseText > div:nth-child(2),
+  .innerShowcaseText > div:nth-child(3),
+  .innerShowcaseText > div:nth-child(4) {
+    font-size: 10px;
+  }
+}
+@media (max-width: 500px) {
+  .HomeOpenUp {
+  }
+  .Image:nth-child(1) img {
+    height: 100%;
+    width: 60%;
+  }
+  .innerShowcaseText > div:nth-child(1) {
+    font-size: 20px;
+  }
+  .innerShowcaseText > div:nth-child(2),
+  .innerShowcaseText > div:nth-child(3),
+  .innerShowcaseText > div:nth-child(4) {
+    font-size: 10px;
+  }
+}
+@media (max-width: 430px) {
+  .HomeOpenUp {
+    margin-top: 5%;
+  }
+  .Image:nth-child(1) img {
+    margin-bottom: 1%;
+    height: 100%;
+    width: 70%;
+  }
+  .innerShowcaseText {
+    width: 100%;
+    text-align: center;
+  }
+  .innerShowcaseText > div:nth-child(1) {
+    font-size: 20px;
+  }
+  .innerShowcaseText > div:nth-child(2),
+  .innerShowcaseText > div:nth-child(3),
+  .innerShowcaseText > div:nth-child(4) {
+    font-size: 10px;
   }
 }
