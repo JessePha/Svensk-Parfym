@@ -7,7 +7,6 @@ import { BiShoppingBag } from "react-icons/bi";
 import ShowAddedItem from "../../components/UI/ShowAddedItem/ShowAddedItem";
 import Price from "../../components/UI/Price/Price";
 import ProductRender from "../../components/Product Components/ProductRender/ProductRender";
-import ShowOutOfStock from "../UI/ShowOutOfStock/ShowOutOfStock";
 
 const ProductView = (props) => {
   let content = null;
@@ -15,34 +14,18 @@ const ProductView = (props) => {
   let { name, size } = useParams();
   let [price, setPrice] = useState(850);
   const [chosenItem, setChosenItem] = useState(null);
-
-  const [disableButton, setDisableButton] = useState(false);
-  const [outOfStock, setOutOfStock] = useState(false);
   const addAndShowItem = (data) => {
-    props.addToCart(data.data, data.amount, setOutOfStock);
-    !outOfStock
-      ? props.setShowItemAdded(
-          <ShowAddedItem
-            url={data.data.url}
-            name={data.data.name}
-            size={data.data.size}
-            price={data.data.price}
-          />
-        )
-      : props.setShowOutOfStock(
-          <ShowOutOfStock
-            url={data.data.url}
-            name={data.data.name}
-            size={data.data.size}
-            price={data.data.price}
-          />
-        );
-    setDisableButton(true);
+    props.addToCart(data.data, data.amount);
+    props.setShowItemAdded(
+      <ShowAddedItem
+        url={data.data.url}
+        name={data.data.name}
+        size={data.data.size}
+        price={data.data.price}
+      />
+    );
     setTimeout(() => {
       props.setShowItemAdded(null);
-      props.setShowOutOfStock(null);
-            setDisableButton(false);
-
     }, 3000);
   };
 
@@ -96,7 +79,6 @@ const ProductView = (props) => {
             setChosenItem={setChosenItem}
             addToCart={addAndShowItem}
             setDefault={defaultChosen}
-            disableButton={disableButton}
             addAndShowItem={addAndShowItem}
           />
           <Description viewProduct={viewProduct} />
@@ -109,7 +91,6 @@ const ProductView = (props) => {
             <div className={classes.addToCart}>
               <div className={classes.AddToCartButtonContain}>
                 <div
-                
                   className={classes.AddToCartButton}
                   onClick={() =>
                     addAndShowItem({ data: chosenItem, amount: 1 })
@@ -126,11 +107,7 @@ const ProductView = (props) => {
     );
   }
 
-  return (
-    <div className={classes.ProductView}>
-      {content}
-    </div>
-  );
+  return <div className={classes.ProductView}>{content}</div>;
 };
 
 export default ProductView;

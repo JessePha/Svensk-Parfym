@@ -67,3 +67,18 @@ export const updateUserAccount = async (data) => {
       console.error("Error writing document: ", error);
     });
 };
+
+export const updateProduct = async (data) => {
+  await projectFirestore
+    .collection(data.type)
+    .doc(data.id)
+    .update({ stock: data.stock })
+    .then(() => {
+      console.log("Document successfully written!");
+    })
+    .catch(function (error) {
+      console.error("Error writing document: ", error);
+    });
+};
+
+

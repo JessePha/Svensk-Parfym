@@ -8,6 +8,16 @@ import { Provider } from "react-redux";
 import cartReducer from "./store/reducers/cartreducer";
 import productReducer from "./store/reducers/productreducer";
 
+function saveToLocalStorage(state) {
+  try {
+    const serialisedState = JSON.stringify(state.crt);
+    localStorage.setItem("itemCart", serialisedState);
+  } catch (e) {
+    console.warn(e);
+  }
+}
+
+
 const rootReducer = combineReducers({
   prd: productReducer,
   crt: cartReducer,
@@ -17,6 +27,7 @@ const store = createStore(
   rootReducer,
   composeEnhancers(applyMiddleware(thunk))
 );
+store.subscribe(() => saveToLocalStorage(store.getState()));
 ReactDOM.render(
   <Provider store={store}>
     <App />

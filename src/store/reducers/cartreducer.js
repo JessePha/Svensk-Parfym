@@ -9,6 +9,10 @@ const initialState = {
 };
 
 const cartReducer = (state = initialState, action) => {
+  let localData = localStorage.getItem("itemCart");
+  if (localData) {
+    localData = JSON.parse(localData);
+  }
   switch (action.type) {
     case actionType.ADD_ITEM_TO_CART: {
       const itemsInCart = state.cartItem.slice();
@@ -103,7 +107,6 @@ const cartReducer = (state = initialState, action) => {
       });
     }
     case actionType.REMOVE_ALL_ITEMS: {
-      console.log("test");
       return updateObject(state, {
         cartItem: [],
         totalPrice: 0,
@@ -111,7 +114,7 @@ const cartReducer = (state = initialState, action) => {
       });
     }
     default:
-      return state;
+      return localData ? updateObject(state, { ...localData }) : state;
   }
 };
 
