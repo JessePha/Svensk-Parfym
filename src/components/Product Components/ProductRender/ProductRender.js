@@ -16,7 +16,6 @@ const ProductRender = (props) => {
   useEffect(() => {
     props.setDefault();
   }, []);
-  console.log(props.disableButton)
   return (
     <div className={classes.SelectOptions}>
       <div className={classes.SelectForm}>
@@ -50,7 +49,6 @@ const ProductRender = (props) => {
       </div>
       <div className={classes.AddToCartButtonContain2}>
         <button
-          disabled={props.disableButton}
           className={classes.AddToCartButton}
           onClick={() => props.addToCart({ data: props.chosenItem, amount: 1 })}
         >

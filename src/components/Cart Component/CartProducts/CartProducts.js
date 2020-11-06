@@ -5,10 +5,10 @@ import * as actionCreator from "../../../store/actionFunc/indexAction";
 import CheckoutButton from "../../UI/CheckoutButton/CheckoutButton"
 import CartRender from "./CartRender/CartRender";
 
-const CartProducts = (props) => {
+const CartProducts = ({itemInCart,totalPrice,addItem,minusItem,removeItem, closed}) => {
   return (
     <div className={classes.CartProducts}>
-      {props.itemInCart.map((item, index) => (
+      {itemInCart.map((item, index) => (
         <CartRender
           key={index}
           img={item.url}
@@ -17,13 +17,13 @@ const CartProducts = (props) => {
           price={item.price}
           size={item.size}
           stock={item.stock}
-          add={props.addItem}
-          minus={props.minusItem}
-          remove={props.removeItem}
+          add={addItem}
+          minus={minusItem}
+          remove={removeItem}
         />
       ))}
-      <h3>Total Price: {props.totalPrice} Kr</h3>
-      <CheckoutButton closed={props.closed}/>
+      <h3>Total Price: {totalPrice} Kr</h3>
+      <CheckoutButton closed={closed}/>
     </div>
   );
 };

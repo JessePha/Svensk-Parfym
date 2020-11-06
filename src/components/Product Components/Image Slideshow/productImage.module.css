@@ -1,12 +1,17 @@
-.productImage{
-    width: 80%;
+.productImage {
+  width: 80%;
 }
-.productImage img{
-    width: 100%;
-    border-radius: 20px;
+.productImage img {
+  width: 100%;
+  border-radius: 20px;
 }
 @media (max-width: 768px) {
-    .productImage img{
-        width: 100%;
+  .productImage img {
+    width: 70%;
+  }
+}
+@media (max-width: 500px) {
+    .productImage img {
+      width: 100%;
     }
   }

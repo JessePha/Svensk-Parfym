@@ -43,22 +43,22 @@ const HomeSection = (props) => {
       </div>
       <div className={classes.textContent}>
         <div className={classes.innerTextContent}>
-          {props.showText > 0.8 && props.showText < 1.2 ? (
+          {props.showText > 1.1 && props.showText < 1.5 ? (
             <p>{props.texts[0]}</p>
           ) : (
             ""
           )}
-          {props.showText > 1.6 && props.showText < 2 ? (
+          {props.showText > 2 && props.showText < 2.5 ? (
             <p>{props.texts[1]}</p>
           ) : (
             ""
           )}
-          {props.showText > 2.5 && props.showText < 2.9 ? (
+          {props.showText > 3.3 && props.showText < 3.8 ? (
             <p>{props.texts[2]}</p>
           ) : (
             ""
           )}
-          {props.showText > 3.6 && props.showText < 4 ? (
+          {props.showText > 5 && props.showText < 5.6 ? (
             <p>{props.texts[3]}</p>
           ) : (
             ""

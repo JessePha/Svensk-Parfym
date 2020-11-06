@@ -13,18 +13,15 @@ const ShopView = (props) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(true);
-      try {
-        props.fetchData();
-        return () => props.fetchData();
-      } catch (error) {
-        setError(true);
-        setLoading(false);
-      }
-    }, 2000);
+    setLoading(true);
+    try {
+      props.fetchData();
+    } catch (error) {
+      setError(true);
+      setLoading(false);
+    }
   }, []);
-
+  
   let errorMsg = <ErrorMessage error={error} setError={setError} />;
   let content = (
     <div>
@@ -35,7 +32,7 @@ const ShopView = (props) => {
     content = (
       <div className="ShopView">
         <section>
-          <Shop products={props.products} addToCart={props.addToCart}/>
+          <Shop products={props.products} addToCart={props.addToCart} />
         </section>
       </div>
     );
@@ -55,8 +52,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchData: () => dispatch(fetchProduct()),
-    addToCart: (item, amount, setOutOfStock) =>
-      dispatch(addItemToCart(item, amount, setOutOfStock)),
+    addToCart: (item, amount) => dispatch(addItemToCart(item, amount)),
   };
 };
 

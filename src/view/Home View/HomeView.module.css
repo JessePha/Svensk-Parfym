@@ -1,6 +1,3 @@
-.HomeView {
-  padding: 2%;
-}
 .HomeOpenUp {
   height: 100vh;
   width: 100%;
@@ -56,6 +53,7 @@
   color: white;
   transition: ease-out 0.5s;
 }
+
 @media (max-width: 1024px) {
   .Image {
     text-align: center;
@@ -126,8 +124,6 @@
   }
 }
 @media (max-width: 500px) {
-  .HomeOpenUp {
-  }
   .Image:nth-child(1) img {
     height: 100%;
     width: 60%;

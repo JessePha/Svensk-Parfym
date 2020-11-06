@@ -1,23 +1,21 @@
 import * as actionTypes from "./actionType";
 
-export const addItemToCart = (item, amount, setOutOfStock) => {
+export const addItemToCart = (item, amount) => {
   return {
     type: actionTypes.ADD_ITEM_TO_CART,
     payload: {
       product: item,
       amount: amount,
-      setOutOfStock: setOutOfStock,
     },
   };
 };
 
-export const addItem = (name, size, stock) => {
+export const addItem = (name, size) => {
   return {
     type: actionTypes.ADD_ITEM,
     payload: {
       name: name,
       size: size,
-      stock: stock,
     },
   };
 };
