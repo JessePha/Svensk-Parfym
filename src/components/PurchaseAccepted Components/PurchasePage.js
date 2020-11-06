@@ -14,8 +14,9 @@ const PurchasePage = ({ orderData }) => {
           orderedProduct={orderData.product}
           totalPrice={orderData.totalPrice}
         />   
+        </div>
+
         <PriceInformation totalPrice={orderData.totalPrice} />
-      </div>
     </div>
   );
 };

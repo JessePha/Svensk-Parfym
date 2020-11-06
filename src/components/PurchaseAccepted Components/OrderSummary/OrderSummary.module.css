@@ -1,22 +1,27 @@
 .OrderSummary {
-    text-align: left;
-    margin-top: 10vw;
-    margin-left: 10vw;
-    padding-bottom: 2vw;
-  }
-  
-  .Summary {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 4em;
-  }
-  
-  .ProductInformation {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  
-  .ProductInformation img {
-    width: 15vw;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.OrderSummary > div {
+  margin-bottom: 5%;
+}
+
+.ProductInformation {
+  display: flex;
+  align-items: center;
+}
+.ProductInformation > div {
+  flex: 1 0 50%;
+}
+.ProductInformation > div p {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+.ProductInformation img {
+  margin-left: 10%;
+  width: 80%;
+}
+.totalPrice {
+  padding: 5%;
+}

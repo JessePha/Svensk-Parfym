@@ -10,7 +10,6 @@ import {
 } from "../../../handlepayment/handlePayment";
 import Message from "../../UI/messagePayment/message";
 import classes from "./CheckoutForm.module.css";
-import { AiFillPropertySafety } from "react-icons/ai";
 
 const Checkout = ({
   totalPrice,
