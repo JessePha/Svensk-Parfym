@@ -51,22 +51,26 @@
   }
 }
 
-/*
-vw	Relative to 1% of the width of the viewport*	
-vh	Relative to 1% of the height of the viewport*
-*/
 .PhotoDiv {
   margin-top: 5vh;
- width: 95vw;
- display: flex;
- text-align: center;
+  width: 98vw;
+  display: flex;
+  text-align: center;
+}
+
+.PhotoDivInDiv{
+  margin-left: 10vw;
+  margin-right: 10vw;
+  display: flex;
 }
 
 .Photo {
-
-  width: 27vw;
+  width: 20vw;
+  height: 20vw;  
   border-radius: 50%;
-  margin: 2vw;
+  margin: 3vw;
+  object-fit: cover;
+  object-position: 70% 0%;
 
   /*
   -webkit-transition: all 1s ease;
@@ -86,18 +90,21 @@ vh	Relative to 1% of the height of the viewport*
 
 .PhotoUnderline {
   background-color: gold;
-  height: 2px;
+  height: 1px;
   width: 90vw;
-  margin: 5vh;
+  margin: 4vh;
   opacity: 60%;
 }
 
 .Buttons{
   text-align: center;
-  width: 40px;
-  height: 40px;
+  width: 3vw;
+  height: 3vw;
+  min-width: 20px;
+  min-height: 20px;
   border-radius: 50%;
-  margin: 2vw;
+  margin: 4vw;
+  outline: none;
 }
 
 .Buttons:hover{
@@ -106,13 +113,19 @@ vh	Relative to 1% of the height of the viewport*
 }
 
 .ButtonDiv{
-  width: 100vw;
+  width: 95vw;
   text-align: center;
 }
 
+.BundleTitle{
+  margin-top: 3vh;
+  font-size: 200%;
+}
+
 .textColumn{
-margin: 10px;
+margin: 1vh;
 border-bottom: 5px;
+margin-bottom: 7vh;
 }
 
 .MainInformation {
@@ -124,16 +137,17 @@ border-bottom: 5px;
 }
 
 .TextBundleDiv{
-  width: 90vw;
+  width: 50vw;
   margin-top: 2vh;
   margin-bottom: 2vh;
-  margin-left: 5vw;
-  margin-right: 5vw;
+  /* margin-left: 13vw; */
+  margin-left: 24vw;
+  margin-right: 24vw;
   font-size: 1vw + 1px;
-  text-align: center;
+  /* text-align: center; */
   display: inline-block;
-  color: black;
-  background-color: white;
+  color: white;
+  /* background-color: white; */
   border-radius: 1vh;
 }
 

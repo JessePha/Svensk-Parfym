@@ -2,7 +2,7 @@ import classes from "../Information.module.css";
 import React, { Component } from "react";
 import AboutUsPhoto from "../AboutUsPhoto/AboutUsPhoto";
 import photo1 from "../../../shared/Images/perfumer.jpg";
-import signature from "../../../shared/Images/signature.jpg";
+import signature from "../../../shared/Images/SignHL.png";
 
 import TextBundle from "./TextBundles.js"
 import text from "../../../shared/AboutUs.json";
@@ -16,9 +16,11 @@ class Information extends Component {
         <div className={classes.Title}>ABOUT</div>
 
         <div className={classes.PhotoDiv}>
+        <div className={classes.PhotoDivInDiv}>
         <AboutUsPhoto image={photo1} />
         <AboutUsPhoto image={photo1} />
         <AboutUsPhoto image={photo1} />
+        </div>
         </div>
 
         <div  className={classes.PhotoUnderline}/>
@@ -52,68 +54,3 @@ class Information extends Component {
 }
 
 export default Information;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {/*
-
-        <div className={classes.MainInformation}>
-      <div className={classes.textRow}>
-        <div className={classes.textColumn}>
-          <p>{text1}</p>
-        </div>
-        <div className={classes.textColumn}>
-          <p>{text2}</p>
-        </div>
-        <div className={classes.textColumn}>
-          <p>{text3}</p>
-        </div>
-      </div>
-        <div className={classes.textRow}>
-        <div className={classes.textColumn}>
-          <p>{text4}</p>
-        </div>
-        <div className={classes.textColumn}>
-          <p>{text5}</p>
-        </div>
-          <div className={classes.textColumn}>
-          <p>{text6}</p>
-          </div>
-        </div>
-        <div className={classes.textRow}>
-          <div className={classes.textColumn}>
-          <p>{text7}</p>
-          </div>
-          <div className={classes.textColumn}>
-          <p>{text8}</p>
-          </div>
-          <div className={classes.textColumn}>          
-          <p>{text9}</p>
-          </div>
-          </div>
-          <div className={classes.textRow}>
-          <div className={classes.textColumn}>
-          <p>{text10}</p>
-          </div>
-          <div className={classes.textColumn}>
-          <p>{text11}</p>
-          </div>
-          <div className={classes.textColumn}>          
-          <p>{text12}</p>
-          </div>
-          </div>
-        </div>
-
-        */}
