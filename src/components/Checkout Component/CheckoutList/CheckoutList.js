@@ -8,7 +8,7 @@ const CheckoutList = (props) => {
       <h3>Your Order</h3>
       <div className={Styles.listDiv}>
         {props.cartItem.map((items) => (
-          <div className={Styles.mapDiv} key={items.id}>
+          <div className={Styles.mapDiv} key={`${items.id}${items.size}`}>
             <img className={Styles.img} src={items.url} alt={items.name} />
             <p className={Styles.mapText}>
               {items.name} {items.size} ⨯ {items.count}:{" "}

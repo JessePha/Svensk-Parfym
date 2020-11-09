@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Price from "../../UI/Price/Price";
 import classes from "./ProductRender.module.css";
 import { BiShoppingBag } from "react-icons/bi";
@@ -13,9 +13,6 @@ const ProductRender = (props) => {
     setActiveB(!activeb);
     setActiveA(false);
   };
-  useEffect(() => {
-    props.setDefault();
-  }, []);
   return (
     <div className={classes.SelectOptions}>
       <div className={classes.SelectForm}>

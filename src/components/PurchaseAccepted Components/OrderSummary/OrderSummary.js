@@ -4,7 +4,7 @@ const OrderSummary = ({ orderedProduct, totalPrice }) => {
   let Sum = null;
   if (orderedProduct) {
     Sum = orderedProduct.map((data) => (
-      <div key={data.id} className={classes.Summary}>
+      <div key={`${data.id}${data.size}`} className={classes.Summary}>
         <div className={classes.ProductInformation}>
           <div>
             <img src={data.url} alt={"productImg"} />

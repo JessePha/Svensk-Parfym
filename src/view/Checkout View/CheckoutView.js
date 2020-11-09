@@ -26,7 +26,6 @@ const CheckoutView = () => {
         });
     };
     fetchContent();
-    return () => fetchContent();
   }, []);
   let checkOut = <Spinner style={{ color: "black" }} loading={loading} />;
   if (checkoutContent.length > 0) {

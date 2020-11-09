@@ -1,0 +1,171 @@
+.Information {
+  animation: fade 0.2s ease-in;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  height: 100%;
+  color: rgb(255, 255, 255);
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 5%;
+  padding: 0% 20% 0% 20%;
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+}
+.Title {
+  color: black;
+  font-weight: 800;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 3%;
+  margin-bottom: 1%;
+}
+div.TopText {
+  text-align: center;
+  font-size: 10px;
+}
+
+.PhotoUnderline {
+  background-color: gold;
+  height: 1px;
+  width: 90vw;
+  margin: 4vh;
+  opacity: 60%;
+}
+
+.Buttons {
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  margin-right: 1%;
+  margin-left: 1%;
+}
+
+.Buttons:hover {
+  border: 1px solid gold;
+}
+
+.ButtonDiv {
+  margin-top: 5%;
+  padding: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MainInformation {
+  width: 85%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  text-align: justify;
+  line-height: 1.5;
+}
+
+.TextBundleDiv {
+  width: 100%;
+  padding: 0% 10% 0% 10%;
+  height: 450px;
+  display: inline-block;
+  color: white;
+}
+
+.defaultText {
+  padding: 5%;
+  width: 100%;
+}
+.textContent h2 {
+  margin-top: 5%;
+  padding: 1% 0% 1% 0%;
+  font-weight: 400;
+}
+
+.NameDiv {
+  margin: 3vh;
+  text-align: center;
+  color: white;
+}
+
+.Signature {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 3%;
+}
+.Signature img {
+  width: 200px;
+}
+.Active {
+  background-color: gray;
+}
+
+@media (max-width: 768px) {
+  .TextBundleDiv {
+    height: 400px;
+  }
+  div.TopText {
+    font-size: 8px;
+  }
+  .textContent h2 {
+    margin-top: 10%;
+    font-size: 18px;
+    font-weight: 350;
+  }
+  .defaultText {
+    font-size: 12px;
+  }
+  .textContent p {
+    font-size: 12px;
+  }
+  .MVH {
+    font-size: 12px;
+    padding: 2%;
+  }
+  .Signature img {
+    width: 150px;
+  }
+}
+
+@media (max-width: 500px) {
+  .TextBundleDiv {
+    height: 350px;
+  }
+  div.Title {
+    font-size: 20px;
+  }
+  div.MainInformation {
+    font-size: 15px;
+  }
+  .Buttons {
+    width: 15px;
+    height: 15px;
+    margin-right: 2%;
+    margin-left: 2%;
+  }
+  .TextBundleDiv {
+    padding: 0%;
+  }
+  .textContent h2 {
+    font-size: 14px;
+    margin-top: 10%;
+    padding: 2% 0% 2% 0%;
+    font-weight: 350;
+  }
+  .defaultText {
+    font-size: 10px;
+  }
+  .textContent p {
+    font-size: 10px;
+  }
+  .MVH {
+    font-size: 10px;
+  }
+  .Signature img {
+    width: 100px;
+  }
+}

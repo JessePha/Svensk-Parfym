@@ -17,8 +17,9 @@ const ProductView = (props) => {
   const [showItemAdded, setShowItemAdded] = useState(null);
   const [showOutOfStock, setShowOutOfStock] = useState(null);
   const [error, setError] = useState(false);
+
   useEffect(() => {
-    function fetchItem() {
+    const fetchItem =() => {
       projectFirestore
         .collection("products")
         .get()

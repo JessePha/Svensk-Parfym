@@ -2,7 +2,6 @@ import React from "react";
 import classes from "./Slide.module.css";
 import SlideRender from "./SlideRender/SlideRender";
 let Slide = (props) => {
-  console.log(props.switchImage);
   let render = props.currentImages.map((product, index) => {
     return <SlideRender switchImage={props.switchImage} data={product} key={index} />;
   });

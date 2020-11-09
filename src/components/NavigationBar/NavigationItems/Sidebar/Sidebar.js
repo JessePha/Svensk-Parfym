@@ -1,7 +1,6 @@
 import React from "react";
 import Logo from "../../Logo/Logo";
 import NavigationItems from "../NavigationItems";
-import Backdrop from "../../../UI/Backdrop/Backdrop";
 import classes from "./Sidebar.module.css";
 const SideBar = (props) => {
   let attachedClasses = [classes.SideDrawer, classes.Close];

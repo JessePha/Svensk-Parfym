@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import classes from "./ProductDetails.module.css";
 import Description from "../../components/Product Components/Description/Description";
@@ -28,6 +28,14 @@ const ProductView = (props) => {
       props.setShowItemAdded(null);
     }, 3000);
   };
+  useEffect(() => {
+    setPrice(viewProduct[0].price[1]);
+    setChosenItem({
+      ...viewProduct[0],
+      price: viewProduct[0].price[1],
+      size: viewProduct[0].size[0],
+    });
+  }, []);
 
   if (props.products) {
     viewProduct = props.products.filter(
@@ -55,16 +63,6 @@ const ProductView = (props) => {
         });
       }
     };
-
-    const defaultChosen = () => {
-      setPrice(viewProduct[0].price[1]);
-      setChosenItem({
-        ...viewProduct[0],
-        price: viewProduct[0].price[1],
-        size: viewProduct[0].size[0],
-      });
-    };
-
     content = (
       <>
         <ImageSlideShow viewProduct={viewProduct[0]} />
@@ -78,7 +76,6 @@ const ProductView = (props) => {
             setPrice={setPrice}
             setChosenItem={setChosenItem}
             addToCart={addAndShowItem}
-            setDefault={defaultChosen}
             addAndShowItem={addAndShowItem}
           />
           <Description viewProduct={viewProduct} />

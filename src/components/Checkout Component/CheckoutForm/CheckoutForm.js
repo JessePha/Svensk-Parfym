@@ -93,6 +93,8 @@ const Checkout = ({
   const goBackToHomepage = () => {
     setEnoughMoney(false);
     setClickSubmit(false);
+    removeItemsFromCart();
+    localStorage.clear("itemCart");
     history.push(`/purchase/${orderId}`);
   };
   const handlePayment = () => {
@@ -274,12 +276,12 @@ const Checkout = ({
       </form>
       {
         <Message
-          text={access ? "Successfully" : "Invalid account"}
-          buttonText={access ? "Continue" : "Try again"}
+          text={access && enoughMoney ? "Successfully" : "Invalid account"}
+          buttonText={access && enoughMoney ? "Continue" : "Try again"}
           isError={access}
           isClick={clickSubmit}
           closeInfo={() =>
-            access ? goBackToHomepage() : setClickSubmit(false)
+            access && enoughMoney ? goBackToHomepage() : setClickSubmit(false)
           }
         />
       }

@@ -1,4 +1,4 @@
-import classes from '../Information.module.css';
+import classes from './AboutUsPhoto.module.css';
 import React, { Component } from 'react';
 
 class AboutUsPhoto extends Component {
@@ -6,7 +6,7 @@ class AboutUsPhoto extends Component {
     render() {
         const {image} = this.props;
         return (
-            <div>
+            <div className = {classes.PhotoDiv}>
                 <img src={image} alt="photoAboutUs" className={classes.Photo} />
             </div>
         )

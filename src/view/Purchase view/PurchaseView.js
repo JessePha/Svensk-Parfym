@@ -24,7 +24,7 @@ const PurchaseView = () => {
         });
     };
     fetchOrder();
-  }, []);
+  }, [orderid]);
   let content = (<Spinner loading = {true}/>)
   if(orderInfo !== null){
     content = (<PurchaseConfirmed orderData = {orderInfo} />)
