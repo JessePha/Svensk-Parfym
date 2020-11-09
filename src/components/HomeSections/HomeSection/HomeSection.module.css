@@ -1,7 +1,7 @@
 .Section {
   text-align: center;
   position: relative;
-  height: 150vh;
+  height: 100vh;
   z-index: 1;
 }
 .images {
@@ -19,7 +19,7 @@
 }
 .image:nth-child(2) img {
   position: absolute;
-  right: 35%;
+  right: 30%;
   bottom: 0;
 }
 .image:nth-child(3) img {
@@ -125,12 +125,12 @@
   }
   .image:nth-child(2) img {
     position: absolute;
-    left: 2%;
+    left: 5%;
     bottom: 0;
   }
   .image:nth-child(3) img {
     position: absolute;
-    right: 1%;
+    right: 5%;
     bottom: 0;
   }
   .innerTextContent {

@@ -103,7 +103,9 @@ div.TopText {
 .Active {
   background-color: gray;
 }
-
+.MVH{
+  margin-top: 4%;
+}
 @media (max-width: 768px) {
   .TextBundleDiv {
     height: 400px;
@@ -124,7 +126,7 @@ div.TopText {
   }
   .MVH {
     font-size: 12px;
-    padding: 2%;
+    margin-top: 3%;
   }
   .Signature img {
     width: 150px;

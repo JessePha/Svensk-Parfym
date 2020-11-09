@@ -26,7 +26,7 @@ let HomeView = () => {
         .catch(() => {
           setError(true);
         });
-    }
+    };
     fetchContent();
   }, []);
   const [offSetY, setOffSetY] = useState(0);
@@ -47,16 +47,26 @@ let HomeView = () => {
     showCase = (
       <div className={classes.HomeView}>
         <div className={classes.HomeOpenUp}>
-          <div className={classes.ImagesContainer}>
+          <div
+            className={classes.ImagesContainer}
+            style={{
+              transform: `translateY(${-1.1 * offSetY}px)`,
+              transition: ` 0.8s ease-out`,
+            }}
+          >
             <div className={classes.Image}>
               <img src={openUpShowcase.url} alt="perfume" />
             </div>
           </div>
           <div
             className={classes.innerShowcaseText}
+            style={{
+              transform: `translateY(${-0.6 * offSetY}px)`,
+              transition: ` 0.8s ease-out`,
+            }}
           >
             {openUpShowcase.text.map((text) => (
-              <div key = {text} >{text}</div>
+              <div key={text}>{text}</div>
             ))}
           </div>
         </div>
@@ -73,7 +83,7 @@ let HomeView = () => {
 
   return (
     <div>
-      <ErrorMessage error={error} setError={setError}/>
+      <ErrorMessage error={error} setError={setError} />
       {showCase}
     </div>
   );
