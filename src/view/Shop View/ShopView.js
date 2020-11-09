@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./ShopView.css";
+import classes from "./ShopView.module.css";
 import Shop from "../../components/Shop Component/Shop";
 import { connect } from "react-redux";
 import {
@@ -21,7 +21,7 @@ const ShopView = (props) => {
       setLoading(false);
     }
   }, []);
-  
+
   let errorMsg = <ErrorMessage error={error} setError={setError} />;
   let content = (
     <div>
@@ -30,10 +30,8 @@ const ShopView = (props) => {
   );
   if (props.products.length > 0) {
     content = (
-      <div className="ShopView">
-        <section>
-          <Shop products={props.products} addToCart={props.addToCart} />
-        </section>
+      <div className={classes.ShopView}>
+        <Shop products={props.products} addToCart={props.addToCart} />
       </div>
     );
   }

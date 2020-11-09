@@ -64,7 +64,7 @@ const ProductView = (props) => {
       }
     };
     content = (
-      <>
+      <div>
         <ImageSlideShow viewProduct={viewProduct[0]} />
         <div className={classes.Options}>
           <h1>{viewProduct[0].name}</h1>
@@ -100,7 +100,7 @@ const ProductView = (props) => {
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 

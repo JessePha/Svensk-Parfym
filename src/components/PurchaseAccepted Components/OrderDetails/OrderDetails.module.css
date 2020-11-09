@@ -2,9 +2,17 @@
   text-align: left;
 }
 .OrderDetails h1{
-  margin-bottom: 3%;
+  margin-bottom: 3vw;
 }
 .UserInfo p{
-  margin-bottom: 1%;
+  margin-bottom: 2vw;
 }
 
+@media (max-width: 500px) {
+  .OrderDetails h1{
+    font-size: small;
+  }
+  .UserInfo {
+    font-size: 5vw;
+  }
+}

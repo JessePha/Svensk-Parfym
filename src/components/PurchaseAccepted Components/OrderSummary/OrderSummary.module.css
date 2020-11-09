@@ -1,7 +1,6 @@
 .OrderSummary {
   display: flex;
   flex-direction: column;
-
 }
 
 .OrderList {
@@ -10,7 +9,7 @@
   overflow: auto;
 }
 .OrderSummary > div {
-  margin-bottom: 5%;
+  margin-bottom: 5vw;
 }
 
 .ProductInformation {
@@ -18,16 +17,39 @@
   align-items: center;
 }
 .ProductInformation > div {
-  flex: 1 0 50%;
+  flex: 1 0 5vw;
 }
 .ProductInformation > div p {
-  margin-bottom: 5px;
-  font-size: 14px;
+  margin-bottom: 2vw;
+  font-size: 80%;
 }
 .ProductInformation img {
-  margin-left: 10%;
-  width: 80%;
+  margin-left: 2vw;
+  width: 20vw;
 }
 .totalPrice {
-  padding: 5%;
+  padding: 5vw;
+}
+
+@media (max-width: 500px) {
+  .ProductInformation {
+    display: block;
+    align-items: left;
+  }
+  .OrderList {
+    margin: 5vw 0vw 5vw 0vw;
+
+    height: 50vw;
+    width: 80vw;
+  }
+  .OrderList img {
+    width: 50vw;
+    align-items: left;
+  }
+  .OrderSummary {
+    padding: 10vw 0vw 5vw 0vw;
+  }
+  .OrderSummary h1 {
+    font-size: small;
+  }
 }

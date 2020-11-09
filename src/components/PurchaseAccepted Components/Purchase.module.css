@@ -1,20 +1,30 @@
 .PurchaseConfirmed {
-  height: 110vh;
+  margin-top: 20vw;
   background-color: white; /* Black w/ opacity */
   color: black;
 }
 .Message {
-  margin-top: 7%;
+  margin-top: 7vw;
   text-align: center;
 }
 
 .OrdAndSumContainer{
   display: flex;
   align-items: top;
-  padding: 5%;
+  padding: 5vw;
 }
 .OrdAndSumContainer > div {
-  flex: 1 1 50%;
+  flex: 1 1 50vw;
 }
+@media (max-width: 500px) {
+  .PurchaseConfirmed {
+    margin-top: 30vw;
 
-
+  }
+  .OrdAndSumContainer {
+    display: block;
+  }
+  .Message {
+    font-size: 5vw;
+  }
+}
