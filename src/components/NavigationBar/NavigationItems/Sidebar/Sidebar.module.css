@@ -11,6 +11,9 @@
 }
 
 @media (min-width: 769px) {
+  .sidebarDiv {
+    
+  }
   .SideDrawer {
     display: none;
   }
