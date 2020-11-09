@@ -1,4 +1,5 @@
 .MainDiv {
+  margin-top: 5vw;
   color: white;
   padding-top: 7%;
   text-align: center;
@@ -7,4 +8,11 @@
 }
 .Paragraph {
   text-align: left;
+}
+
+@media (max-width: 768px) {
+  .TextBundleDiv {
+    height: fit-content;
+    
+  }
 }

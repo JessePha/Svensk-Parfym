@@ -31,22 +31,27 @@ const Policy = () => {
     let tempContent = Object.values(policy[0]).slice();
     const index = tempContent.indexOf("TERMS & CONDITON");
     tempContent.splice(index, 1);
+    console.log(tempContent)
     policyContent = (
-      <>
+      <div>
         <h1>{policy[0].title}</h1>
         <br />
-        {tempContent.map((content) => (
-          <div className={Styles.Paragraph}>
+        {tempContent.map((content, index) => (
+          <div className={Styles.Paragraph} key={index}>
             <h4>{content[0]}</h4>
             <p>{content[1]}</p>
             <br />
           </div>
         ))}
-      </>
+      </div>
     );
   }
 
-  return <div className={Styles.MainDiv}>{errorMsg} {policyContent}</div>;
+  return (
+    <div className={Styles.MainDiv}>
+      {errorMsg} {policyContent}
+    </div>
+  );
 };
 
 export default Policy;

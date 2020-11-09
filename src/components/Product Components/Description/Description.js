@@ -14,14 +14,12 @@ let Description = ({ viewProduct }) => {
             transition: "0.5s ease-out",
             transform: showMore ? "rotate(90deg)" : null,
           }}
-          className = {classes.Arrow}
+          className={classes.Arrow}
         />
         <div>Description</div>
       </div>
       {showMore ? (
-        <div className ={classes.DescText}>
-          {viewProduct[0].description}
-        </div>
+        <div className={classes.DescText}>{viewProduct[0].description}</div>
       ) : (
         ""
       )}
