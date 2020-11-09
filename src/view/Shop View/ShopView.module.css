@@ -1,3 +1,6 @@
-.ShopView {
-    padding-top: 10vw;
-}
+
+@media (max-width: 500px) {
+    .ShopView {
+        margin-top: 20vw;
+    }
+  }
