@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Styles from "./CheckoutForm.module.css";
-import PayEx from "../../../shared/Images/payex.png";
-import Visa from "../../../shared/Images/visa.jpg";
 import { useHistory } from "react-router-dom";
 import {
   validatePayment,
@@ -16,6 +14,7 @@ const Checkout = ({
   itemInCart,
   countries,
   removeItemsFromCart,
+  pictures,
 }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -261,13 +260,13 @@ const Checkout = ({
           <h3 className={Styles.h3}>Payment method:</h3>
           <img
             className={Styles.img}
-            src={PayEx}
+            src={pictures[0]}
             alt="PayEx"
             onClick={() => setPaymentMethod("PayEx")}
           />
           <img
             className={Styles.img}
-            src={Visa}
+            src={pictures[1]}
             alt="Visa"
             onClick={() => setPaymentMethod("VISA")}
           />

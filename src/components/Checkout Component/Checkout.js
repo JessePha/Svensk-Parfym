@@ -7,7 +7,7 @@ import classes from "../Checkout Component/Checkout.module.css";
 import { useHistory } from "react-router-dom";
 import { removeAllItemsFromCart } from "../../store/actionFunc/cartAction";
 
-const Checkout = ({ data, itemInCart, totalPrice, removeItemsFromCart }) => {
+const Checkout = ({ data, itemInCart, totalPrice, removeItemsFromCart,url }) => {
   let history = useHistory();
   const goTo = () => {
     history.push("/Fragrance");
@@ -25,6 +25,7 @@ const Checkout = ({ data, itemInCart, totalPrice, removeItemsFromCart }) => {
           countries={data}
           totalPrice={totalPrice}
           itemInCart={itemInCart}
+          pictures = {url}
           removeItemsFromCart={removeItemsFromCart}
         />
         <CheckoutList/>
