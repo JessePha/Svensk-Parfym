@@ -16,6 +16,9 @@ const Display = ({ textContent, defaultContent }) => {
       );
       setContent(text);
       setActive1(true);
+      setActive4(false);
+      setActive2(false);
+      setActive3(false);
       setActive2(active2 ? false : active2);
       setDefaultActive(false);
     } else if (e.target.value === "2") {
@@ -24,7 +27,9 @@ const Display = ({ textContent, defaultContent }) => {
       );
       setContent(text);
       setActive2(true);
-      setActive1(active1 ? false : active1);
+      setActive4(false);
+      setActive1(false);
+      setActive3(false);
       setDefaultActive(false);
     } else if (e.target.value === "3") {
       text = textContent.filter(
@@ -32,8 +37,9 @@ const Display = ({ textContent, defaultContent }) => {
       );
       setContent(text);
       setActive3(true);
-      setActive1(active1 ? false : active1);
-      setActive2(active2 ? false : active2);
+      setActive4(false);
+      setActive1(false);
+      setActive2(false);
       setDefaultActive(false);
     } else if (e.target.value === "4") {
       text = textContent.filter(
@@ -41,9 +47,10 @@ const Display = ({ textContent, defaultContent }) => {
       );
       setContent(text);
       setActive4(true);
-      setActive1(active1 ? false : active1);
-      setActive2(active2 ? false : active2);
-      setActive3(active3 ? false : active3);
+      setActive1(false);
+      setActive2(false);
+      setActive3(false);
+      setDefaultActive(false)
     }
     else{
       setContent(null)

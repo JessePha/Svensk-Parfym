@@ -3,19 +3,17 @@ import classes from "./Toolbar.module.css";
 import Burger from "../NavigationItems/Sidebar/SidebarIcon/SidebarIcon";
 import NavigationItems from "../NavigationItems/NavigationItems";
 import { HiOutlineShoppingBag } from "react-icons/hi";
-import { projectFirestore } from "../../../firestore/config";
 import Logo from "../Logo/Logo";
 
-const Toolbar = (props) => {
-  const [navPic, setNavPic] = useState([]);
+const Toolbar = ({cartToggle, closeSidebar,amountInCart,toggleSidebar,sideBar, navPic}) => {
   const [show, setShow] = useState({
     visible: true,
     prevScroll: window.pageYOffset,
   });
 
   const closeSideAndOpenCartBar = () => {
-    props.cartToggle();
-    props.closeSidebar();
+    cartToggle();
+    closeSidebar();
   };
 
   useEffect(() => {
@@ -31,22 +29,6 @@ const Toolbar = (props) => {
     };
   }, [show]);
 
-  useEffect(() => {
-    const fetchItem = () => {
-      projectFirestore
-        .collection("navigation")
-        .get()
-        .then((querySnapShot) => {
-          querySnapShot.forEach((doc) => {
-            setNavPic(doc.data());
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-    fetchItem();
-  }, []);
   let header = null;
   if (navPic.url) {
     header = (
@@ -61,13 +43,13 @@ const Toolbar = (props) => {
         </div>
         <img src={navPic.url[1]} alt="logo" className={classes.LogoName} />
         <div className={classes.Cartdiv}>
-          {props.amountInCart > 0 ? <span>{props.amountInCart}</span> : null}
+          {amountInCart > 0 ? <span>{amountInCart}</span> : null}
           <HiOutlineShoppingBag
             className={classes.Cart}
             onClick={() => closeSideAndOpenCartBar()}
-            amount={props.amountInCart}
+            amount={amountInCart}
           />
-          <Burger clicked={props.toggleSidebar} isOpened={props.sideBar} />
+          <Burger clicked={toggleSidebar} isOpened={sideBar} />
         </div>
       </header>
     );
