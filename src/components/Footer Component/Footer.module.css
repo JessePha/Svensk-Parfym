@@ -19,24 +19,24 @@
   text-align: center;
   margin-left: 10%;
 }
+.Link {
+  color: rgb(220, 181, 72);
+  text-decoration: none;
+}
 
 @media screen and (max-width: 768px) {
   .CopyRight {
     margin-left: 15%;
   }
   .FooterInfo li,
-  .CopyRight p {
+  .CopyRight p,.Link {
     font-size: 16px;
   }
 }
 
 @media screen and (max-width: 500px) {
   .FooterInfo li,
-  .CopyRight p {
+  .CopyRight p, .Link {
     font-size: 10px;
   }
-}
-.Link {
-  color: rgb(220, 181, 72);
-  text-decoration: none;
 }

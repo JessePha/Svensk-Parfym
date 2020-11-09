@@ -11,8 +11,8 @@
   width: 100%;
 }
 .Image:nth-child(1) img {
-  margin-top: 5%;
-  width: 70%;
+  margin-top: 10%;
+  width: 65%;
   height: 100%;
   transition: 1s ease-out;
   animation: fadeIn 1s ease-in-out forwards;
@@ -109,12 +109,12 @@
 }
 @media (max-width: 600px) {
   .HomeOpenUp {
-    margin-top: 5%;
     flex-direction: column;
   }
   .Image:nth-child(1) img {
     width: 50%;
     height: 100%;
+    margin-bottom: 3%;
   }
   .innerShowcaseText {
     width: 100%;
@@ -132,36 +132,24 @@
 @media (max-width: 500px) {
   .Image:nth-child(1) img {
     height: 100%;
-    width: 60%;
-  }
-  .innerShowcaseText > div:nth-child(1) {
-    font-size: 20px;
-  }
-  .innerShowcaseText > div:nth-child(2),
-  .innerShowcaseText > div:nth-child(3),
-  .innerShowcaseText > div:nth-child(4) {
-    font-size: 10px;
+    width: 55%;
   }
 }
-@media (max-width: 430px) {
-  .HomeOpenUp {
-    margin-top: 5%;
-  }
+@media (max-width: 426px) {
   .Image:nth-child(1) img {
-    margin-bottom: 1%;
     height: 100%;
-    width: 70%;
+    width: 60%;
   }
-  .innerShowcaseText {
-    width: 100%;
-    text-align: center;
+}
+@media (max-width: 376px) {
+  .Image:nth-child(1) img {
+    height: 100%;
+    width: 65%;
   }
-  .innerShowcaseText > div:nth-child(1) {
-    font-size: 20px;
-  }
-  .innerShowcaseText > div:nth-child(2),
-  .innerShowcaseText > div:nth-child(3),
-  .innerShowcaseText > div:nth-child(4) {
-    font-size: 10px;
+}
+@media (max-width: 320px) {
+  .Image:nth-child(1) img {
+    height: 100%;
+    width: 75%;
   }
 }
