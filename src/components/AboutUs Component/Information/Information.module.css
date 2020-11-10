@@ -40,8 +40,8 @@ div.TopText {
   background-color: white;
   transition: background 0.5s ease-out;
 }
-.Active{
-  background-color: white;
+.Buttons:hover{
+  background-color: #686d76;
 }
 
 
