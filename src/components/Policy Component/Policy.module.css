@@ -10,11 +10,17 @@
   text-align: left;
 }
 
-@media (max-width: 768px) {
-  .TextBundleDiv {
-    height: fit-content;
-  }
+@media (max-width: 550px) {
   .MainDiv {
-    margin-top: 10vh;
+    padding-top: 20%;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 10px;
+  }
+}
+@media (max-width: 1024px) {
+  .MainDiv {
+    padding-left: 15%;
+    padding-right: 15%;
   }
 }
