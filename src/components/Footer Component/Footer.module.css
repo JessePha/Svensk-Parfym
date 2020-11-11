@@ -20,6 +20,9 @@
   text-align: center;
   margin-left: 10%;
 }
+.Link:hover {
+  text-decoration: underline;
+}
 
 @media screen and (max-width: 768px) {
   .CopyRight {
