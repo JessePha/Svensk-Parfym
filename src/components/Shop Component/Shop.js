@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import ShopRender from "./ShopRender/ShopRender";
 import { useHistory } from "react-router-dom";
 import ShowAddedItem from "../UI/ShowAddedItem/ShowAddedItem";
@@ -6,11 +6,10 @@ import "./Shop.css";
 
 const Shop = (props) => {
   let history = useHistory();
-  const [disableButton, setDisableButton] = useState(false);
   const [showItemAdded, setShowItemAdded] = useState(null);
 
   const addAndShowItem = (data) => {
-    props.addToCart(data, 1);
+    props.addToCart({...data}, 1);
     setShowItemAdded(
       <ShowAddedItem
         url={data.url}
@@ -19,9 +18,8 @@ const Shop = (props) => {
         price={data.price}
       />
     );
-    setDisableButton(true);
+
     setTimeout(() => {
-      setDisableButton(false);
       setShowItemAdded(null);
     }, 3000);
   };
@@ -45,7 +43,6 @@ const Shop = (props) => {
               price: perfume.price[1],
             })
           }
-          disableButton={disableButton}
         />
       ))}
     </div>

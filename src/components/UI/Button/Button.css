@@ -1,8 +1,19 @@
 .messageButton{
     outline: none;
+    border: none;
     background-color: white;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 18px;
-    padding: 5px;
+    padding: 3px;
     color: black;
+}
+@media (max-width: 768px){
+    .messageButton{
+        font-size: 14px;
+    }
+}
+@media (max-width: 500px){
+    .messageButton{
+        font-size: 12px;
+    }
 }

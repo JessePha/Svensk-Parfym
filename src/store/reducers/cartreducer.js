@@ -9,6 +9,10 @@ const initialState = {
 };
 
 const cartReducer = (state = initialState, action) => {
+  let localData = localStorage.getItem("itemCart");
+  if (localData) {
+    localData = JSON.parse(localData);
+  }
   switch (action.type) {
     case actionType.ADD_ITEM_TO_CART: {
       const itemsInCart = state.cartItem.slice();
@@ -19,10 +23,14 @@ const cartReducer = (state = initialState, action) => {
       itemsInCart.forEach((item) => {
         if (
           item.name === action.payload.product.name &&
-          item.size === action.payload.product.size
+          item.size === action.payload.product.size &&
+          item.count < action.payload.product.stock
         ) {
           item.count += action.payload.amount;
           alreadyInCart = true;
+        } else if (item.count === action.payload.product.stock) {
+          alreadyInCart = true;
+          action.payload.setOutOfStock(true);
         }
       });
       if (!alreadyInCart) {
@@ -42,8 +50,12 @@ const cartReducer = (state = initialState, action) => {
     case actionType.ADD_ITEM: {
       const items = state.cartItem.slice();
       const itemInCart = [...Object.values(items)];
-      let addItem = itemInCart.filter((item) =>
-        item.name === action.payload.name && item.size === action.payload.size
+      let addItem = null;
+      console.log(action.payload);
+      addItem = itemInCart.filter((item) =>
+        item.name === action.payload.name &&
+        item.size === action.payload.size &&
+        item.count < action.payload.stock
           ? item.count++
           : item.count
       );
@@ -94,8 +106,15 @@ const cartReducer = (state = initialState, action) => {
         totalAmount: amount,
       });
     }
+    case actionType.REMOVE_ALL_ITEMS: {
+      return updateObject(state, {
+        cartItem: [],
+        totalPrice: 0,
+        totalAmount: 0,
+      });
+    }
     default:
-      return state;
+      return localData ? updateObject(state, { ...localData }) : state;
   }
 };
 

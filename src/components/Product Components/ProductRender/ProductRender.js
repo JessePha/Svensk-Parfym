@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Price from "../../UI/Price/Price";
-import classes from "./Select.module.css";
+import classes from "./ProductRender.module.css";
 import { BiShoppingBag } from "react-icons/bi";
-const Select = (props) => {
+const ProductRender = (props) => {
   const [activea, setActiveA] = useState(true);
   const [activeb, setActiveB] = useState(false);
   const changeActiveA = () => {
@@ -13,9 +13,6 @@ const Select = (props) => {
     setActiveB(!activeb);
     setActiveA(false);
   };
-  useEffect(() => {
-    props.setDefault();
-  }, []);
   return (
     <div className={classes.SelectOptions}>
       <div className={classes.SelectForm}>
@@ -49,7 +46,6 @@ const Select = (props) => {
       </div>
       <div className={classes.AddToCartButtonContain2}>
         <button
-          disabled={props.disableButton}
           className={classes.AddToCartButton}
           onClick={() => props.addToCart({ data: props.chosenItem, amount: 1 })}
         >
@@ -61,4 +57,4 @@ const Select = (props) => {
   );
 };
 
-export default Select;
+export default ProductRender;

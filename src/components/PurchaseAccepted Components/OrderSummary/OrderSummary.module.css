@@ -1,15 +1,55 @@
 .OrderSummary {
-    text-align: left;
-    margin-top: 10vw;
-    margin-left: 10vw;
-    padding-bottom: 10vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.OrderList {
+  height: 20vw;
+  width: 50vw;
+  overflow: auto;
+}
+.OrderSummary > div {
+  margin-bottom: 5vw;
+}
+
+.ProductInformation {
+  display: flex;
+  align-items: center;
+}
+.ProductInformation > div {
+  flex: 1 0 5vw;
+}
+.ProductInformation > div p {
+  margin-bottom: 2vw;
+  font-size: 80%;
+}
+.ProductInformation img {
+  margin-left: 2vw;
+  width: 20vw;
+}
+.totalPrice {
+  padding: 5vw;
+}
+
+@media (max-width: 500px) {
+  .ProductInformation {
+    display: block;
+    align-items: left;
   }
-  
-  .Summary {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 4em;
+  .OrderList {
+    margin: 5vw 0vw 5vw 0vw;
+
+    height: 50vw;
+    width: 80vw;
   }
-  
-  
-  
+  .OrderList img {
+    width: 50vw;
+    align-items: left;
+  }
+  .OrderSummary {
+    padding: 10vw 0vw 5vw 0vw;
+  }
+  .OrderSummary h1 {
+    font-size: small;
+  }
+}

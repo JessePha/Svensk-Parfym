@@ -10,7 +10,6 @@ export const addItemToCart = (item, amount) => {
   };
 };
 
-
 export const addItem = (name, size) => {
   return {
     type: actionTypes.ADD_ITEM,
@@ -39,3 +38,9 @@ export const removeItem = (name, price, size) => {
     },
   };
 };
+
+export const removeAllItemsFromCart = () => {
+  return {
+    type: actionTypes.REMOVE_ALL_ITEMS,
+  }
+}

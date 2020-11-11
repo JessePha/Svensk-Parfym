@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./ShopView.css";
+import classes from "./ShopView.module.css";
 import Shop from "../../components/Shop Component/Shop";
 import { connect } from "react-redux";
 import {
@@ -12,18 +12,14 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 const ShopView = (props) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(true);
-      try {
-        props.fetchData();
-        return () => props.fetchData();
-      } catch (error) {
-        setError(true);
-        setLoading(false);
-      }
-    }, 500);
+    setLoading(true);
+    try {
+      props.fetchData();
+    } catch (error) {
+      setError(true);
+      setLoading(false);
+    }
   }, []);
 
   let errorMsg = <ErrorMessage error={error} setError={setError} />;
@@ -34,10 +30,8 @@ const ShopView = (props) => {
   );
   if (props.products.length > 0) {
     content = (
-      <div className="ShopView">
-        <section>
-          <Shop products={props.products} addToCart={props.addToCart} />
-        </section>
+      <div className={classes.ShopView}>
+        <Shop products={props.products} addToCart={props.addToCart} />
       </div>
     );
   }

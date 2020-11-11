@@ -2,7 +2,18 @@ import React from "react";
 import classes from "./CartRender.module.css";
 import Price from "../../../UI/Price/Price";
 
-const CartItem = ({ img, name, amount, size, price, add, minus, remove, totalPrice }) => {
+const CartRender = ({
+  img,
+  name,
+  amount,
+  size,
+  price,
+  stock,
+  add,
+  minus,
+  remove,
+}) => {
+
   return (
     <div className={classes.CartItem}>
       <div className={classes.InnerCartItemContainer}>
@@ -16,11 +27,14 @@ const CartItem = ({ img, name, amount, size, price, add, minus, remove, totalPri
           <p>size: {size} </p>
           {<Price price={price} value="Kr" />}
           <div className={classes.InnerItem}>
-            <button onClick={() => add(name, size)}>+</button>
+            <button
+              onClick={() => add(name, size, stock)}
+            >
+              +
+            </button>
             <p>{amount}</p>
             <button onClick={() => minus(name, size)}>-</button>
             <button onClick={() => remove(name, price, size)}>remove</button>
-            
           </div>
         </div>
       </div>
@@ -28,4 +42,4 @@ const CartItem = ({ img, name, amount, size, price, add, minus, remove, totalPri
   );
 };
 
-export default CartItem;
+export default CartRender;

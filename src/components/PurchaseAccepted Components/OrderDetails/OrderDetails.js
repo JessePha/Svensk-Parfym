@@ -1,35 +1,34 @@
 import React from "react";
 import classes from "./OrderDetails.module.css";
-const OrderDetails = (props) => {
+const OrderDetails = ({ customerData }) => {
   let details = null;
-  if (props > 0) {
+  if (customerData) {
     details = (
-      <div className={classes.OrderDetails}>
-        <h1>ORDER DETAILS</h1>
+      <div>
         <div className={classes.Order}>
           <div className={classes.UserInfo}>
-            <p>EMAIL</p>
-            <p>{props.email}</p>
-            <p>PAYMENT METHOD</p>
-            <p>{props.paymentMethod}</p>
-            <p>ORDER DATE</p>
-            <p>{props.orderDate}</p>
-          </div>
-          <div className={classes.DeliveryInfo}>
-            <p>DELIVERY OPTIONS</p>
-            <p>{props.deliveryOptions}</p>
-            <p>DELIVERY ADDRESS</p>
-            <p>{props.deliveryAdress}</p>
-            <p>CONTACT NUMBER</p>
-            <p>{props.contactInfo}</p>
+            <p>{`Firstname: ${customerData.FName}`}</p>
+            <p>{`Lastname: ${customerData.LName}`}</p>
+            <p>{`Country: ${customerData.Country}`}</p>
+            <p>{`City: ${customerData.City}`}</p>
+            <p>{`Adress: ${customerData.Adress}`}</p>
+            <p>{`Zip code: ${customerData.ZipCode}`}</p>
+            <p>{`Email: ${customerData.Email}`}</p>
+            <p>{`Phone number: ${customerData.PhoneNumber}`}</p>
+            <p>{`Payment method: ${customerData.PaymentMethod}`}</p>
           </div>
         </div>
       </div>
     );
   } else {
-    details = <p className={classes.OrderDetails}>Personal information missing</p>;
+    details = <p>Personal information missing</p>;
   }
-  return <div>{details}</div>;
+  return (
+    <div className={classes.OrderDetails}>
+      <h1>ORDER DETAILS</h1>
+      {details}
+    </div>
+  );
 };
 
 export default OrderDetails;

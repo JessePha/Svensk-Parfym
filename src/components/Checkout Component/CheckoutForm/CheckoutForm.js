@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Styles from "./CheckoutForm.module.css";
-import PayEx from "../../../shared/Images/payex.png";
-import Visa from "../../../shared/Images/visa.jpg";
 import { useHistory } from "react-router-dom";
 import {
   validatePayment,
@@ -11,7 +9,13 @@ import {
 import Message from "../../UI/messagePayment/message";
 import classes from "./CheckoutForm.module.css";
 
-const Checkout = ({ totalPrice, itemInCart, countries }) => {
+const Checkout = ({
+  totalPrice,
+  itemInCart,
+  countries,
+  removeItemsFromCart,
+  pictures,
+}) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [adress, setAdress] = useState("");
@@ -30,6 +34,7 @@ const Checkout = ({ totalPrice, itemInCart, countries }) => {
   const [access, setAccess] = useState(false);
   const [enoughMoney, setEnoughMoney] = useState(false);
   const [clickSubmit, setClickSubmit] = useState(false);
+  const [orderId, setOrderId] = useState("");
   let history = useHistory();
   let Customer = {
     FName: firstName,
@@ -47,6 +52,7 @@ const Checkout = ({ totalPrice, itemInCart, countries }) => {
     type: "Orders",
     customer: { ...Customer },
     product: [...itemInCart],
+    totalPrice: totalPrice,
   };
 
   const handleSubmit = async (e) => {
@@ -74,7 +80,8 @@ const Checkout = ({ totalPrice, itemInCart, countries }) => {
     if (result.access && result.account >= totalPrice) {
       setEnoughMoney(true);
       setAccess(result.access);
-      makeOrder(orders);
+      let id = await makeOrder(orders);
+      setOrderId(id);
       updateUserAccount({
         type: paymentMethod,
         account: result.account - totalPrice,
@@ -85,7 +92,9 @@ const Checkout = ({ totalPrice, itemInCart, countries }) => {
   const goBackToHomepage = () => {
     setEnoughMoney(false);
     setClickSubmit(false);
-    history.push("/");
+    removeItemsFromCart();
+    localStorage.clear("itemCart");
+    history.push(`/purchase/${orderId}`);
   };
   const handlePayment = () => {
     if (paymentMethod === "VISA") {
@@ -251,13 +260,13 @@ const Checkout = ({ totalPrice, itemInCart, countries }) => {
           <h3 className={Styles.h3}>Payment method:</h3>
           <img
             className={Styles.img}
-            src={PayEx}
+            src={pictures[0]}
             alt="PayEx"
             onClick={() => setPaymentMethod("PayEx")}
           />
           <img
             className={Styles.img}
-            src={Visa}
+            src={pictures[1]}
             alt="Visa"
             onClick={() => setPaymentMethod("VISA")}
           />
@@ -266,12 +275,12 @@ const Checkout = ({ totalPrice, itemInCart, countries }) => {
       </form>
       {
         <Message
-          text={access ? "Successfully" : "Invalid account"}
-          buttonText={access ? "Continue" : "Try again"}
+          text={access && enoughMoney ? "Successfully" : "Invalid account"}
+          buttonText={access && enoughMoney ? "Continue" : "Try again"}
           isError={access}
           isClick={clickSubmit}
           closeInfo={() =>
-            access ? goBackToHomepage() : setClickSubmit(false)
+            access && enoughMoney ? goBackToHomepage() : setClickSubmit(false)
           }
         />
       }

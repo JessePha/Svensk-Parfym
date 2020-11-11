@@ -1,70 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import classes from "./ProductDetails.module.css";
 import Description from "../../components/Product Components/Description/Description";
 import ImageSlideShow from "../../components/Product Components/Image Slideshow/ImageSlideshow";
-import Select from "../../components/Product Components/Select/Select";
-import Spinner from "../../components/UI/Spinner/Spinner";
 import { BiShoppingBag } from "react-icons/bi";
 import ShowAddedItem from "../../components/UI/ShowAddedItem/ShowAddedItem";
 import Price from "../../components/UI/Price/Price";
-import ShowOutOfStock from "../../components/UI/ShowOutOfStock/ShowOutOfStock";
+import ProductRender from "../../components/Product Components/ProductRender/ProductRender";
 
-const ProductDetails = (props) => {
+const ProductView = (props) => {
   let content = null;
   let viewProduct = [];
   let { name, size } = useParams();
   let [price, setPrice] = useState(850);
   const [chosenItem, setChosenItem] = useState(null);
-  const [showItemAdded, setShowItemAdded] = useState(null);
-  const [disableButton, setDisableButton] = useState(false);
-  const [showOutOfStock, setShowOutOfStock] = useState(null);
-
   const addAndShowItem = (data) => {
-    const idFilter = props.itemInCart.filter((val) => {
-      return val.id === data.data.id;
-    });
-    let productInCartCount = null;
-    if (idFilter[0] !== undefined) {
-      console.log(idFilter[0].count);
-      productInCartCount = idFilter[0].count;
-    }
-    if (productInCartCount < data.data.stock) {
-      props.addToCart(data.data, data.amount);
-      setShowItemAdded(
-        <ShowAddedItem
-          url={data.data.url}
-          name={data.data.name}
-          size={data.data.size}
-          price={data.data.price}
-        />
-      );
-    } else {
-      setShowOutOfStock(
-        <ShowOutOfStock
-          url={data.data.url}
-          name={data.data.name}
-          size={data.data.size}
-          price={data.data.price}
-        />
-      );
-    }
-
-    setDisableButton(true);
+    props.addToCart(data.data, data.amount);
+    props.setShowItemAdded(
+      <ShowAddedItem
+        url={data.data.url}
+        name={data.data.name}
+        size={data.data.size}
+        price={data.data.price}
+      />
+    );
     setTimeout(() => {
-      setDisableButton(false);
-      setShowItemAdded(null);
-      setShowOutOfStock(null);
+      props.setShowItemAdded(null);
     }, 3000);
   };
-
-  if (viewProduct) {
-    content = (
-      <div>
-        <Spinner loading={props.loading} />
-      </div>
-    );
-  }
+  useEffect(() => {
+    setPrice(viewProduct[0].price[1]);
+    setChosenItem({
+      ...viewProduct[0],
+      price: viewProduct[0].price[1],
+      size: viewProduct[0].size[0],
+    });
+  }, []);
 
   if (props.products) {
     viewProduct = props.products.filter(
@@ -75,40 +46,29 @@ const ProductDetails = (props) => {
   if (props.item.length > 0) {
     viewProduct = props.item.slice();
     const selectedSize = (e) => {
-      let target = e.target.value;
-      if (target === viewProduct[0].size[0]) {
+      if (e.target.value === viewProduct[0].size[0]) {
         setPrice(viewProduct[0].price[1]);
         setChosenItem({
           ...viewProduct[0],
           price: viewProduct[0].price[1],
-          size: target,
+          size: e.target.value,
         });
       }
-      if (target === viewProduct[0].size[1]) {
+      if (e.target.value === viewProduct[0].size[1]) {
         setPrice(viewProduct[0].price[0]);
         setChosenItem({
           ...viewProduct[0],
           price: viewProduct[0].price[0],
-          size: target,
+          size: e.target.value,
         });
       }
     };
-
-    const defaultChosen = () => {
-      setPrice(viewProduct[0].price[1]);
-      setChosenItem({
-        ...viewProduct[0],
-        price: viewProduct[0].price[1],
-        size: viewProduct[0].size[0],
-      });
-    };
-
     content = (
-      <div>
+      <>
         <ImageSlideShow viewProduct={viewProduct[0]} />
         <div className={classes.Options}>
           <h1>{viewProduct[0].name}</h1>
-          <Select
+          <ProductRender
             viewProduct={viewProduct[0]}
             selectedSize={selectedSize}
             price={price}
@@ -116,8 +76,7 @@ const ProductDetails = (props) => {
             setPrice={setPrice}
             setChosenItem={setChosenItem}
             addToCart={addAndShowItem}
-            setDefault={defaultChosen}
-            disableButton={disableButton}
+            addAndShowItem={addAndShowItem}
           />
           <Description viewProduct={viewProduct} />
         </div>
@@ -141,17 +100,11 @@ const ProductDetails = (props) => {
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 
-  return (
-    <div className={classes.ProductView}>
-      {showOutOfStock}
-      {showItemAdded}
-      {content}
-    </div>
-  );
+  return <div className={classes.ProductView}>{content}</div>;
 };
 
-export default ProductDetails;
+export default ProductView;

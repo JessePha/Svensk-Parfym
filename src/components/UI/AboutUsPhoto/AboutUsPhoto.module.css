@@ -1,0 +1,30 @@
+.PhotoDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10%;
+  margin-top: 5%;
+}
+
+.Photo {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: right;
+}
+
+@media (max-width: 500px){
+  .PhotoDiv{
+    margin-top: 25%;
+  }
+  .Photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: right;
+  }
+}

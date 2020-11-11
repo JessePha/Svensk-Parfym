@@ -2,7 +2,7 @@ import React from "react";
 import { BiErrorCircle } from "react-icons/bi";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import classes from "./message.module.css";
-import { Link } from "react-router-dom";
+import Button from "../Button/Button";
 
 const message = (props) => {
   return (
@@ -13,11 +13,10 @@ const message = (props) => {
         <BiErrorCircle className={classes.Icon} />
       )}
       <p>{props.text}</p>
-      <div>
-        <Link to="/purchase">
-          Continue
-        </Link>
-      </div>
+      <Button
+        text={props.buttonText}
+        click={props.closeInfo}
+      />
     </div>
   );
 };

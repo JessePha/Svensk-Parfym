@@ -1,12 +1,18 @@
 .OrderDetails {
   text-align: left;
-  margin-top: 10%;
-  margin-left: 10%;
+}
+.OrderDetails h1{
+  margin-bottom: 3vw;
+}
+.UserInfo p{
+  margin-bottom: 2vw;
 }
 
-.Order {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 4em;
+@media (max-width: 500px) {
+  .OrderDetails h1{
+    font-size: small;
+  }
+  .UserInfo {
+    font-size: 5vw;
+  }
 }
-

@@ -1,21 +1,22 @@
 import React from "react";
 import Logo from "../../Logo/Logo";
 import NavigationItems from "../NavigationItems";
-import Backdrop from "../../../UI/Backdrop/Backdrop";
 import classes from "./Sidebar.module.css";
-const SideBar = (props) => {
+const SideBar = ({ open, toggleSidebar, navPic }) => {
   let attachedClasses = [classes.SideDrawer, classes.Close];
-  if (props.open) {
+  if (open) {
     attachedClasses = [classes.SideDrawer, classes.Open];
   }
-  return (
-    <div className={classes.sidebarDiv}>
+  let content = null;
+  if (navPic.url !== undefined) {
+    content = (
       <div className={attachedClasses.join(" ")}>
-        <Logo toggleSidebar = {props.toggleSidebar}/>
-        <NavigationItems isOpen={props.open} toggleSidebar = {props.toggleSidebar}/>
+        <Logo logo = {navPic.url[0]} toggleSidebar={toggleSidebar} />
+        <NavigationItems isOpen={open} toggleSidebar={toggleSidebar} />
       </div>
-    </div>
-  );
+    );
+  }
+  return <div className={classes.sidebarDiv}>{content}</div>;
 };
 
 export default SideBar;

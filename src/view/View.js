@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Toolbar from "../components/NavigationBar/Toolbar/Toolbar";
 import Sidebar from "../components/NavigationBar/NavigationItems/Sidebar/Sidebar";
 import Footer from "../components/Footer Component/Footer";
 import "./View.css";
 import Cart from "../components/NavigationBar/Cart/Cart";
 import { connect } from "react-redux";
+import { projectFirestore } from "../firestore/config";
 
 const View = (props) => {
+  const [navPic, setNavPic] = useState([]);
+
   const [sidebar, setSidebar] = useState(false);
 
   const [showOrderInfo, setShowOrderInfo] = useState(false);
@@ -25,6 +28,23 @@ const View = (props) => {
     setShowOrderInfo(!showOrderInfo);
   };
 
+  useEffect(() => {
+    const fetchItem = () => {
+      projectFirestore
+        .collection("navigation")
+        .get()
+        .then((querySnapShot) => {
+          querySnapShot.forEach((doc) => {
+            setNavPic(doc.data());
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+    fetchItem();
+  }, []);
+
   return (
     <div className="Content">
       <Toolbar
@@ -34,8 +54,9 @@ const View = (props) => {
         sideBar = {sidebar}
         toggleSidebar={sidebarToggleHandler}
         closeSidebar = {closeSidebar}
+        navPic = {navPic}
       />
-      <Sidebar open={sidebar} toggleSidebar={sidebarToggleHandler} />
+      <Sidebar open={sidebar} toggleSidebar={sidebarToggleHandler} navPic = {navPic} />
       <Cart
         open={showOrderInfo}
         closed={cartSideBarHandler}

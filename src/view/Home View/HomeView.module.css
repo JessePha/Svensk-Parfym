@@ -1,6 +1,3 @@
-.HomeView {
-  padding: 2%;
-}
 .HomeOpenUp {
   height: 100vh;
   width: 100%;
@@ -10,14 +7,15 @@
   justify-content: center;
 }
 .Image {
-  text-align: center;
+  text-align: right;
   width: 100%;
 }
 .Image:nth-child(1) img {
-  width: 70%;
+  margin-top: 10%;
+  width: 65%;
   height: 100%;
   transition: 1s ease-out;
-  animation: fadeIn 2s ease-in-out forwards;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 @keyframes fadeIn {
   0% {
@@ -42,6 +40,8 @@
 .innerShowcaseText {
   width: 100%;
   text-align: center;
+  margin-right: 10%;
+  animation: fadeIn 2s ease-in-out forwards;
 }
 .innerShowcaseText > div:nth-child(1) {
   font-size: 50px;
@@ -56,6 +56,7 @@
   color: white;
   transition: ease-out 0.5s;
 }
+
 @media (max-width: 1024px) {
   .Image {
     text-align: center;
@@ -90,6 +91,9 @@
   .HomeOpenUp {
     flex-direction: column;
   }
+  .innerShowcaseText {
+    margin-right: 0%;
+  }
   .Image:nth-child(1) img {
     width: 40%;
     height: 100%;
@@ -105,12 +109,12 @@
 }
 @media (max-width: 600px) {
   .HomeOpenUp {
-    margin-top: 5%;
     flex-direction: column;
   }
   .Image:nth-child(1) img {
     width: 50%;
     height: 100%;
+    margin-bottom: 3%;
   }
   .innerShowcaseText {
     width: 100%;
@@ -126,40 +130,26 @@
   }
 }
 @media (max-width: 500px) {
-  .HomeOpenUp {
+  .Image:nth-child(1) img {
+    height: 100%;
+    width: 55%;
   }
+}
+@media (max-width: 426px) {
   .Image:nth-child(1) img {
     height: 100%;
     width: 60%;
   }
-  .innerShowcaseText > div:nth-child(1) {
-    font-size: 20px;
-  }
-  .innerShowcaseText > div:nth-child(2),
-  .innerShowcaseText > div:nth-child(3),
-  .innerShowcaseText > div:nth-child(4) {
-    font-size: 10px;
+}
+@media (max-width: 376px) {
+  .Image:nth-child(1) img {
+    height: 100%;
+    width: 65%;
   }
 }
-@media (max-width: 430px) {
-  .HomeOpenUp {
-    margin-top: 5%;
-  }
+@media (max-width: 320px) {
   .Image:nth-child(1) img {
-    margin-bottom: 1%;
     height: 100%;
-    width: 70%;
-  }
-  .innerShowcaseText {
-    width: 100%;
-    text-align: center;
-  }
-  .innerShowcaseText > div:nth-child(1) {
-    font-size: 20px;
-  }
-  .innerShowcaseText > div:nth-child(2),
-  .innerShowcaseText > div:nth-child(3),
-  .innerShowcaseText > div:nth-child(4) {
-    font-size: 10px;
+    width: 75%;
   }
 }
