@@ -10,7 +10,6 @@
   text-align: left;
 }
 
-<<<<<<< HEAD
 @media (max-width: 550px) {
   .MainDiv {
     padding-top: 20%;
@@ -25,11 +24,3 @@
     padding-right: 15%;
   }
 }
-=======
-@media (max-width: 768px) {
-  .TextBundleDiv {
-    height: fit-content;
-    
-  }
-}
->>>>>>> ac12078217ab94b92ef20c775bb13678f131e258

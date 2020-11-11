@@ -19,14 +19,9 @@
   text-align: center;
   margin-left: 10%;
 }
-<<<<<<< HEAD
-.Link:hover {
-  text-decoration: underline;
-=======
 .Link {
   color: rgb(220, 181, 72);
   text-decoration: none;
->>>>>>> ac12078217ab94b92ef20c775bb13678f131e258
 }
 
 @media screen and (max-width: 768px) {
@@ -34,14 +29,16 @@
     margin-left: 15%;
   }
   .FooterInfo li,
-  .CopyRight p,.Link {
+  .CopyRight p,
+  .Link {
     font-size: 16px;
   }
 }
 
 @media screen and (max-width: 500px) {
   .FooterInfo li,
-  .CopyRight p, .Link {
+  .CopyRight p,
+  .Link {
     font-size: 10px;
   }
 }
