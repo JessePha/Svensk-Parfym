@@ -1,26 +1,46 @@
 .MainDiv {
   margin-top: 5vw;
   color: white;
-  padding-top: 7%;
   text-align: center;
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: 20vw;
+  padding-right: 20vw;
 }
 .Paragraph {
   text-align: left;
 }
+.Header {
+  color: goldenrod;
+}
+.ArrowDiv {
+  display: flex;
+  align-items: left;
+  text-align: left;
+  color: goldenrod;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  margin-bottom: 2%;
+}
+.ArrowDiv > div{
+  margin-left: 2%;
+}
 
-@media (max-width: 550px) {
+
+@media (max-width: 700px) {
   .MainDiv {
-    padding-top: 20%;
-    padding-left: 5%;
-    padding-right: 5%;
-    font-size: 10px;
+    padding-top: 8vh;
+    padding-left: 15vw;
+    padding-right: 15vw;
+    font-size: 90%;
   }
 }
-@media (max-width: 1024px) {
+@media (max-width: 500px) {
   .MainDiv {
-    padding-left: 15%;
-    padding-right: 15%;
+    padding-left: 15vw;
+    padding-right: 15vw;
+    font-size: 80%;
+  }
+  .Paragraph {
+    text-align: center;
   }
 }

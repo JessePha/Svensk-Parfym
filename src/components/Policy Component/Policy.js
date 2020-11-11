@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { BsArrowRight } from "react-icons/bs";
 import Styles from "./Policy.module.css";
 
 const Policy = (props) => {
@@ -15,13 +16,13 @@ const Policy = (props) => {
       temp.push(showData);
     });
     setBoolArr(temp);
-  },[]);
+  }, []);
   const show = (event, id) => {
-    let temp = [...boolArr]
+    let temp = [...boolArr];
     let index = tempContent.findIndex((content) => {
       return content === id;
     });
-    temp[index] =  !temp[index]
+    temp[index] = !temp[index];
     setBoolArr(temp);
   };
   let policyContent = (
@@ -30,8 +31,23 @@ const Policy = (props) => {
       <br />
       {tempContent.map((content, index) => (
         <div className={Styles.Paragraph} key={index}>
-          <h4 onClick={(event) => show(event, content)}>{content[0]}</h4>
-          {boolArr[index] ? <p>{content[1]}</p> : null}
+          <div className={Styles.ArrowDiv}>
+            <BsArrowRight
+              style={{
+                transition: "0.5s ease-out",
+                transform: boolArr[index] ? "rotate(90deg)" : null,
+              }}
+            />
+            <div
+              className={Styles.Header}
+              onClick={(event) => show(event, content)}
+            >
+              {content[0]}
+            </div>
+          </div>
+          {boolArr[index] ? (
+            <p onClick={(event) => show(event, content)}>{content[1]}</p>
+          ) : null}
           <br />
         </div>
       ))}
