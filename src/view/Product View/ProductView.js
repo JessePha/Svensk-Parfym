@@ -19,7 +19,7 @@ const ProductView = (props) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const fetchItem =() => {
+    const fetchItem = () => {
       projectFirestore
         .collection("products")
         .get()
@@ -33,9 +33,9 @@ const ProductView = (props) => {
         .catch((error) => {
           console.log(error);
         });
-    }
-    fetchItem();
+    };
     setLoading(true);
+    fetchItem();
   }, [name]);
 
   content = <Spinner loading={loading} />;

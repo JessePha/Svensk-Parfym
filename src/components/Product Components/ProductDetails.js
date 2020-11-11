@@ -14,6 +14,7 @@ const ProductView = (props) => {
   let { name, size } = useParams();
   let [price, setPrice] = useState(850);
   const [chosenItem, setChosenItem] = useState(null);
+  
   const addAndShowItem = (data) => {
     props.addToCart(data.data, data.amount);
     props.setShowItemAdded(

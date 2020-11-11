@@ -13,6 +13,8 @@
 @media (max-width: 768px) {
   .TextBundleDiv {
     height: fit-content;
-    
+  }
+  .MainDiv {
+    margin-top: 10vh;
   }
 }
