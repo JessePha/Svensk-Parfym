@@ -5,14 +5,14 @@ import { connect } from "react-redux";
 import { addItemToCart, setProduct } from "../../store/actionFunc/indexAction";
 import ErrorMessage from "../../components/UI/ErrorMessage/ErrorMessage";
 import Spinner from "../../components/UI/Spinner/Spinner";
-import { getProducts } from "../../handlepayment/handleProduct";
+import { getAllProducts } from "../../handlepayment/handleProduct";
 
 const ShopView = (props) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   useEffect(() => {
     setLoading(true);
-    getProducts(props.fetchData, setError)
+    getAllProducts(props.fetchData, setError)
   }, []);
   let errorMsg = <ErrorMessage error={error} setError={setError} />;
   let content = (
@@ -23,7 +23,7 @@ const ShopView = (props) => {
   if (props.products.length > 0) {
     content = (
       <div className={classes.ShopView}>
-        <Shop products={props.products} addToCart={props.addToCart} />
+        <Shop cartItem = {props.itm} products={props.products} addToCart={props.addToCart} />
       </div>
     );
   }
@@ -37,6 +37,7 @@ const ShopView = (props) => {
 const mapStateToProps = (state) => {
   return {
     products: state.prd.products,
+    itm: state.crt.cartItem
   };
 };
 const mapDispatchToProps = (dispatch) => {

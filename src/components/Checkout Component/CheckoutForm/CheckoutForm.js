@@ -6,7 +6,7 @@ import {
   makeOrder,
   updateUserAccount,
 } from "../../../handlepayment/handlePayment";
-import { updateProduct } from "../../../handlepayment/handleProduct";
+import { updateProduct, prepareUpdateStock } from "../../../handlepayment/handleProduct";
 import Message from "../../UI/messagePayment/message";
 import classes from "./CheckoutForm.module.css";
 
@@ -112,8 +112,8 @@ const Checkout = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
     let data = null;
-    const updateProduct = prepareUpdateStock(itemInCart);
-    console.log(updateProduct);
+
+    const updateProducts = prepareUpdateStock(itemInCart);
     if (paymentMethod === "PayEx") {
       data = {
         paymentMethod: paymentMethod,
@@ -143,7 +143,7 @@ const Checkout = ({
         account: result.account - totalPrice,
         id: result.id,
       });
-      updateProduct.map((temp) =>
+      updateProducts.map((temp) =>
         updateProduct({ updateProduct: temp.stock, id: temp.id })
       );
     }

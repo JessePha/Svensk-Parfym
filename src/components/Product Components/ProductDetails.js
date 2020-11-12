@@ -8,15 +8,22 @@ import ShowAddedItem from "../../components/UI/ShowAddedItem/ShowAddedItem";
 import Price from "../../components/UI/Price/Price";
 import ProductRender from "../../components/Product Components/ProductRender/ProductRender";
 
-const ProductView = ({ addToCart, setShowItemAdded, products, item }) => {
+const ProductDetails = ({
+  addToCart,
+  setShowItemAdded,
+  products,
+  item,
+  cartItems,
+}) => {
   let content = null;
+  let disable1 = false;
+  let disable2 = false;
   let viewProduct = [];
   let { name, size } = useParams();
   let [price, setPrice] = useState(850);
   const [chosenItem, setChosenItem] = useState(null);
   const [disableButton, setDisableButton] = useState(false);
   const addAndShowItem = (data) => {
-    console.log(data)
     addToCart(data.data, data.amount);
     setShowItemAdded(
       <ShowAddedItem
@@ -30,7 +37,7 @@ const ProductView = ({ addToCart, setShowItemAdded, products, item }) => {
     setTimeout(() => {
       setDisableButton(false);
       setShowItemAdded(null);
-    }, 2000);
+    }, 3000);
   };
   useEffect(() => {
     setPrice(viewProduct.price[1]);
@@ -46,6 +53,17 @@ const ProductView = ({ addToCart, setShowItemAdded, products, item }) => {
       (product) => product.name === name && product.size[0] === size
     );
   }
+
+  if (cartItems !== undefined) {
+    disable1 = cartItems.some(
+      (item) => item.name === name && item.count >= item.stock[0]
+    );
+    disable2 = cartItems.some(
+      (item) => item.name === name && item.count >= item.stock[1]
+    );
+  }
+
+
   if (item !== null) {
     viewProduct = { ...item };
     const selectedSize = (e) => {
@@ -80,7 +98,9 @@ const ProductView = ({ addToCart, setShowItemAdded, products, item }) => {
             setChosenItem={setChosenItem}
             addToCart={addAndShowItem}
             addAndShowItem={addAndShowItem}
-            disable={disableButton}
+            disableButton={disableButton}
+            disable1={disable1}
+            disable2={disable2}
           />
           <Description viewProduct={viewProduct} />
         </div>
@@ -96,7 +116,9 @@ const ProductView = ({ addToCart, setShowItemAdded, products, item }) => {
                   onClick={() =>
                     addAndShowItem({ data: chosenItem, amount: 1 })
                   }
-                  disabled = {disableButton}
+                  disabled={
+                   disableButton || disable1 && disable2
+                  }
                 >
                   <BiShoppingBag className={classes.ShoppingBag} />
                   <p>Buy</p>
@@ -112,4 +134,4 @@ const ProductView = ({ addToCart, setShowItemAdded, products, item }) => {
   return <div className={classes.ProductView}>{content}</div>;
 };
 
-export default ProductView;
+export default ProductDetails;
