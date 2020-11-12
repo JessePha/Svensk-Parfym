@@ -9,10 +9,10 @@ const MissingPage = () => {
         <h4>Page not found</h4>
       </div>
       <div className={classes.Options}>
-        <NavLink to="/">HomePage</NavLink>
-        <NavLink to="Fragrance">Fragrance</NavLink>
-        <NavLink to="Invent">Invent</NavLink>
-        <NavLink to="Process">Process</NavLink>
+        <NavLink to="/">HOMEPAGE</NavLink>
+        <NavLink to="Fragrance">FRAGRANCE</NavLink>
+        <NavLink to="Invent">INVENT</NavLink>
+        <NavLink to="Process">PROCESS</NavLink>
       </div>
     </div>
   );
