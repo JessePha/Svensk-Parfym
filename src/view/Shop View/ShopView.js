@@ -23,7 +23,7 @@ const ShopView = (props) => {
   if (props.products.length > 0) {
     content = (
       <div className={classes.ShopView}>
-        <Shop products={props.products} addToCart={props.addToCart} />
+        <Shop cartItem = {props.itm} products={props.products} addToCart={props.addToCart} />
       </div>
     );
   }
@@ -37,6 +37,7 @@ const ShopView = (props) => {
 const mapStateToProps = (state) => {
   return {
     products: state.prd.products,
+    itm: state.crt.cartItem
   };
 };
 const mapDispatchToProps = (dispatch) => {

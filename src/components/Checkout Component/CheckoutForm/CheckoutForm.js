@@ -6,7 +6,7 @@ import {
   makeOrder,
   updateUserAccount,
 } from "../../../handlepayment/handlePayment";
-import { updateProduct } from "../../../handlepayment/handleProduct";
+import { updateProduct, prepareUpdateStock } from "../../../handlepayment/handleProduct";
 import Message from "../../UI/messagePayment/message";
 import classes from "./CheckoutForm.module.css";
 
@@ -55,64 +55,12 @@ const Checkout = ({
     product: [...itemInCart],
     totalPrice: totalPrice,
   };
-  const prepareUpdateStock = (itemInCart) => {
-    let temp = itemInCart.map((item) => {
-      if (item.size === "30ml bottle") {
-        item.stock = [item.stock[0] - item.count, item.stock[1]];
-      } else if (item.size === "5ml Deluxe sample") {
-        item.stock = [item.stock[0], item.stock[1] - item.count];
-      }
-      return item;
-    });
-
-    const seen = new Set();
-    const filteredArr = temp.filter((item) => {
-      const duplicate = seen.has(item.id);
-      seen.add(item.id);
-      return !duplicate;
-    });
-    let temp2 = filteredArr.map((item) => {
-      let arr = [];
-      let hello = temp.map((hello1) => {
-        if (hello1.id === item.id && hello1.size === "30ml bottle") {
-          arr.push(hello1.stock[0]);
-          return arr;
-        } else if (
-          hello1.id === item.id &&
-          hello1.size === "5ml Deluxe sample"
-        ) {
-          arr.push(hello1.stock[1]);
-          return arr;
-        } else {
-          arr = [];
-        }
-      });
-      if (arr.length < 2 && item.size === "30ml bottle") {
-        arr.push(item.stock[1]);
-      } else if (arr.length < 2 && item.size === "5ml Deluxe sample") {
-        arr.push(item.stock[0]);
-      }
-
-      const seen1 = new Set();
-      const filteredArr = hello.filter((item) => {
-        const duplicate = seen1.has(item);
-        seen1.add(item);
-        return !duplicate;
-      });
-      filteredArr.map((itm) => {
-        if (itm !== undefined) {
-          item.stock = itm;
-        }
-      });
-      return item;
-    });
-    return temp2
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     let data = null;
-    const updateProduct = prepareUpdateStock(itemInCart);
+
+    const updateProducts = prepareUpdateStock(itemInCart);
     if (paymentMethod === "PayEx") {
       data = {
         paymentMethod: paymentMethod,
@@ -142,7 +90,7 @@ const Checkout = ({
         account: result.account - totalPrice,
         id: result.id,
       });
-      updateProduct.map((temp) =>
+      updateProducts.map((temp) =>
         updateProduct({ updateProduct: temp.stock, id: temp.id })
       );
     }

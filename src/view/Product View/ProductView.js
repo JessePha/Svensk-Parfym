@@ -28,6 +28,7 @@ const ProductView = (props) => {
       <>
         <ProductDetails
           products={props.products}
+          cartItems = {props.itemInCart}
           addToCart={props.addToCart}
           item={item}
           setShowItemAdded={setShowItemAdded}
@@ -47,6 +48,7 @@ const ProductView = (props) => {
 
 const mapStateToProps = (state) => {
   return {
+    itemInCart: state.crt.cartItem,
     products: state.prd.products,
   };
 };

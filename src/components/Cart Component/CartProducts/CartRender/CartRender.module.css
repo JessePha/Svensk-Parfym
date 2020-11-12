@@ -1,5 +1,5 @@
 .CartItem {
-  padding: 5%;
+  padding: 2%;
   border-bottom: 1px solid rgb(85, 64, 10);
   width: 100%;
 }
@@ -22,6 +22,7 @@
   display: flex;
   flex-direction: row;
   text-align: left;
+  width: 100%;
 }
 .InnerItem p {
   font-size: 1rem;
@@ -41,13 +42,24 @@
   border-bottom: 0.5px solid goldenrod;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 768px) {
   .InnerContainer p{
-    font-size: 0.6rem;
+    font-size: 1rem;
     padding: 2% 0px;
   }
   .InnerItem button, .InnerItem p{
-    font-size: 0.6rem;
+    font-size: 1rem;
+    margin: 0px 5% 0px 0px;
+  }
+}
+
+@media (max-width: 500px) {
+  .InnerContainer p{
+    font-size: 0.7rem;
+    padding: 2% 0px;
+  }
+  .InnerItem button, .InnerItem p{
+    font-size: 0.7rem;
     margin: 0px 5% 0px 0px;
   }
 }
