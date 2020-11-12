@@ -8,11 +8,11 @@ const initialState = {
 
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionType.FETCH_PRODUCT:
-      let temp = action.products.slice();
+    case actionType.SET_PRODUCT:
+      let data = action.products.slice();
       return updateObject(state, {
         ...state,
-        products: temp,
+        products: data,
         error: false,
       });
     case actionType.FETCH_PRODUCT_FAIL:

@@ -4,12 +4,14 @@ import { useHistory } from "react-router-dom";
 import ShowAddedItem from "../UI/ShowAddedItem/ShowAddedItem";
 import "./Shop.css";
 
-const Shop = (props) => {
+const Shop = ({ addToCart, products }) => {
   let history = useHistory();
   const [showItemAdded, setShowItemAdded] = useState(null);
+  const [disableButton, setDisableButton] = useState(false);
 
   const addAndShowItem = (data) => {
-    props.addToCart({...data}, 1);
+    console.log(data)
+    addToCart(data, 1);
     setShowItemAdded(
       <ShowAddedItem
         url={data.url}
@@ -18,10 +20,11 @@ const Shop = (props) => {
         price={data.price}
       />
     );
-
+    setDisableButton(true);
     setTimeout(() => {
+      setDisableButton(false);
       setShowItemAdded(null);
-    }, 3000);
+    }, 2000);
   };
 
   const goTo = (name, size) => {
@@ -29,7 +32,7 @@ const Shop = (props) => {
   };
   let content = (
     <div className="perfumes">
-      {props.products.map((perfume, index) => (
+      {products.map((perfume, index) => (
         <ShopRender
           key={index}
           img={perfume.url}
@@ -43,6 +46,7 @@ const Shop = (props) => {
               price: perfume.price[1],
             })
           }
+          disable={disableButton}
         />
       ))}
     </div>

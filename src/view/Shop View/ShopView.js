@@ -2,26 +2,18 @@ import React, { useEffect, useState } from "react";
 import classes from "./ShopView.module.css";
 import Shop from "../../components/Shop Component/Shop";
 import { connect } from "react-redux";
-import {
-  addItemToCart,
-  fetchProduct,
-} from "../../store/actionFunc/indexAction";
+import { addItemToCart, setProduct } from "../../store/actionFunc/indexAction";
 import ErrorMessage from "../../components/UI/ErrorMessage/ErrorMessage";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import { getProducts } from "../../handlepayment/handleProduct";
 
 const ShopView = (props) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   useEffect(() => {
     setLoading(true);
-    try {
-      props.fetchData();
-    } catch (error) {
-      setError(true);
-      setLoading(false);
-    }
+    getProducts(props.fetchData, setError)
   }, []);
-
   let errorMsg = <ErrorMessage error={error} setError={setError} />;
   let content = (
     <div>
@@ -49,7 +41,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchData: () => dispatch(fetchProduct()),
+    fetchData: (products) => dispatch(setProduct(products)),
     addToCart: (item, amount) => dispatch(addItemToCart(item, amount)),
   };
 };

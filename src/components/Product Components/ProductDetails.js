@@ -8,15 +8,17 @@ import ShowAddedItem from "../../components/UI/ShowAddedItem/ShowAddedItem";
 import Price from "../../components/UI/Price/Price";
 import ProductRender from "../../components/Product Components/ProductRender/ProductRender";
 
-const ProductView = (props) => {
+const ProductView = ({ addToCart, setShowItemAdded, products, item }) => {
   let content = null;
   let viewProduct = [];
   let { name, size } = useParams();
   let [price, setPrice] = useState(850);
   const [chosenItem, setChosenItem] = useState(null);
+  const [disableButton, setDisableButton] = useState(false);
   const addAndShowItem = (data) => {
-    props.addToCart(data.data, data.amount);
-    props.setShowItemAdded(
+    console.log(data)
+    addToCart(data.data, data.amount);
+    setShowItemAdded(
       <ShowAddedItem
         url={data.data.url}
         name={data.data.name}
@@ -24,52 +26,53 @@ const ProductView = (props) => {
         price={data.data.price}
       />
     );
+    setDisableButton(true);
     setTimeout(() => {
-      props.setShowItemAdded(null);
-    }, 3000);
+      setDisableButton(false);
+      setShowItemAdded(null);
+    }, 2000);
   };
   useEffect(() => {
-    setPrice(viewProduct[0].price[1]);
+    setPrice(viewProduct.price[1]);
     setChosenItem({
-      ...viewProduct[0],
-      price: viewProduct[0].price[1],
-      size: viewProduct[0].size[0],
+      ...viewProduct,
+      price: viewProduct.price[1],
+      size: viewProduct.size[0],
     });
   }, []);
 
-  if (props.products) {
-    viewProduct = props.products.filter(
+  if (products) {
+    viewProduct = products.filter(
       (product) => product.name === name && product.size[0] === size
     );
   }
-
-  if (props.item.length > 0) {
-    viewProduct = props.item.slice();
+  if (item !== null) {
+    viewProduct = { ...item };
     const selectedSize = (e) => {
-      if (e.target.value === viewProduct[0].size[0]) {
-        setPrice(viewProduct[0].price[1]);
+      if (e.target.value === viewProduct.size[0]) {
+        setPrice(viewProduct.price[1]);
         setChosenItem({
-          ...viewProduct[0],
-          price: viewProduct[0].price[1],
+          ...viewProduct,
+          price: viewProduct.price[1],
           size: e.target.value,
         });
       }
-      if (e.target.value === viewProduct[0].size[1]) {
-        setPrice(viewProduct[0].price[0]);
+      if (e.target.value === viewProduct.size[1]) {
+        setPrice(viewProduct.price[0]);
         setChosenItem({
-          ...viewProduct[0],
-          price: viewProduct[0].price[0],
+          ...viewProduct,
+          price: viewProduct.price[0],
           size: e.target.value,
         });
       }
     };
     content = (
       <>
-        <ImageSlideShow viewProduct={viewProduct[0]} />
+        <ImageSlideShow viewProduct={viewProduct} />
         <div className={classes.Options}>
-          <h1>{viewProduct[0].name}</h1>
+          <h1>{viewProduct.name}</h1>
           <ProductRender
-            viewProduct={viewProduct[0]}
+            viewProduct={viewProduct}
             selectedSize={selectedSize}
             price={price}
             chosenItem={chosenItem}
@@ -77,6 +80,7 @@ const ProductView = (props) => {
             setChosenItem={setChosenItem}
             addToCart={addAndShowItem}
             addAndShowItem={addAndShowItem}
+            disable={disableButton}
           />
           <Description viewProduct={viewProduct} />
         </div>
@@ -87,15 +91,16 @@ const ProductView = (props) => {
             </div>
             <div className={classes.addToCart}>
               <div className={classes.AddToCartButtonContain}>
-                <div
+                <button
                   className={classes.AddToCartButton}
                   onClick={() =>
                     addAndShowItem({ data: chosenItem, amount: 1 })
                   }
+                  disabled = {disableButton}
                 >
                   <BiShoppingBag className={classes.ShoppingBag} />
                   <p>Buy</p>
-                </div>
+                </button>
               </div>
             </div>
           </div>

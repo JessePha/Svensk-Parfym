@@ -11,11 +11,10 @@ import { useEffect } from "react";
 
 const ProductView = (props) => {
   let content = null;
-  let [item, setItem] = useState([]);
+  let [item, setItem] = useState(null);
   let { name } = useParams();
   const [loading, setLoading] = useState(false);
   const [showItemAdded, setShowItemAdded] = useState(null);
-  const [showOutOfStock, setShowOutOfStock] = useState(null);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -26,7 +25,7 @@ const ProductView = (props) => {
         .then((querySnapShot) => {
           querySnapShot.forEach((doc) => {
             if (doc.data().name === name) {
-              setItem([doc.data()]);
+              setItem({...doc.data(), id: doc.id});
             }
           });
         })
@@ -39,7 +38,7 @@ const ProductView = (props) => {
   }, [name]);
 
   content = <Spinner loading={loading} />;
-  if (item.length > 0) {
+  if (item !== null) {
     content = (
       <>
         <ProductDetails
@@ -47,7 +46,6 @@ const ProductView = (props) => {
           addToCart={props.addToCart}
           item={item}
           setShowItemAdded={setShowItemAdded}
-          setShowOutOfStock={setShowOutOfStock}
         />
       </>
     );
@@ -58,7 +56,6 @@ const ProductView = (props) => {
       <ErrorMessage setError={setError} error={error} />
       {content}
       {showItemAdded}
-      {showOutOfStock}
     </div>
   );
 };
@@ -70,8 +67,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToCart: (item, amount, setOutOfStock) =>
-      dispatch(addItemToCart(item, amount, setOutOfStock)),
+    addToCart: (item, amount) =>
+      dispatch(addItemToCart(item, amount)),
   };
 };
 

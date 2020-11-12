@@ -23,14 +23,10 @@ const cartReducer = (state = initialState, action) => {
       itemsInCart.forEach((item) => {
         if (
           item.name === action.payload.product.name &&
-          item.size === action.payload.product.size &&
-          item.count < action.payload.product.stock
+          item.size === action.payload.product.size 
         ) {
           item.count += action.payload.amount;
           alreadyInCart = true;
-        } else if (item.count === action.payload.product.stock) {
-          alreadyInCart = true;
-          action.payload.setOutOfStock(true);
         }
       });
       if (!alreadyInCart) {
@@ -51,11 +47,8 @@ const cartReducer = (state = initialState, action) => {
       const items = state.cartItem.slice();
       const itemInCart = [...Object.values(items)];
       let addItem = null;
-      console.log(action.payload);
       addItem = itemInCart.filter((item) =>
-        item.name === action.payload.name &&
-        item.size === action.payload.size &&
-        item.count < action.payload.stock
+        item.name === action.payload.name && item.size === action.payload.size
           ? item.count++
           : item.count
       );

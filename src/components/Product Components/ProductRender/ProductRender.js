@@ -48,6 +48,7 @@ const ProductRender = (props) => {
         <button
           className={classes.AddToCartButton}
           onClick={() => props.addToCart({ data: props.chosenItem, amount: 1 })}
+          disabled = {props.disable}
         >
           <BiShoppingBag className={classes.ShoppingBag} />
           <p>Buy</p>

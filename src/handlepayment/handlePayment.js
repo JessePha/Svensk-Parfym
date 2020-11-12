@@ -68,17 +68,5 @@ export const updateUserAccount = async (data) => {
     });
 };
 
-export const updateProduct = async (data) => {
-  await projectFirestore
-    .collection(data.type)
-    .doc(data.id)
-    .update({ stock: data.stock })
-    .then(() => {
-      
-    })
-    .catch(function (error) {
-      
-    });
-};
 
 
