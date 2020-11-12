@@ -16,7 +16,6 @@ const CartProducts = ({itemInCart,totalPrice,addItem,minusItem,removeItem, close
           amount={item.count}
           price={item.price}
           size={item.size}
-          stock={item.stock}
           add={addItem}
           minus={minusItem}
           remove={removeItem}
@@ -36,7 +35,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    addItem: (name, size, stock) => dispatch(actionCreator.addItem(name, size, stock)),
+    addItem: (name, size) => dispatch(actionCreator.addItem(name, size)),
     minusItem: (name, size) => dispatch(actionCreator.minusItem(name, size)),
     removeItem: (name, price, size) => dispatch(actionCreator.removeItem(name, price, size)),
   };

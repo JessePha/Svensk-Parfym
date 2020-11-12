@@ -2,11 +2,23 @@ import React from "react";
 import classes from "./ShopRender.module.css";
 import { BiShoppingBag } from "react-icons/bi";
 
-const Perfume = ({ img, price, name, description, moreInfo, addToCart }) => {
+const Perfume = ({
+  img,
+  price,
+  name,
+  description,
+  moreInfo,
+  addToCart,
+  disable,
+}) => {
   return (
     <div className={classes.container}>
-      <button className = {classes.DirectBuy} onClick = {addToCart}>
-        <BiShoppingBag  className = {classes.Bag}/>
+      <button
+        className={classes.DirectBuy}
+        onClick={addToCart}
+        disabled={disable}
+      >
+        <BiShoppingBag className={classes.Bag} />
       </button>
       <img src={img} alt="perfume" onClick={moreInfo}></img>
       <div className={classes.productInfo}>
@@ -19,6 +31,7 @@ const Perfume = ({ img, price, name, description, moreInfo, addToCart }) => {
           <button
             style={{ border: "none", background: "none" }}
             onClick={moreInfo}
+            disabled={disable}
           >
             View detail
           </button>
@@ -27,6 +40,5 @@ const Perfume = ({ img, price, name, description, moreInfo, addToCart }) => {
     </div>
   );
 };
-
 
 export default Perfume;
