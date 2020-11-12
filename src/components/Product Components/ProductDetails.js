@@ -16,7 +16,6 @@ const ProductView = ({ addToCart, setShowItemAdded, products, item }) => {
   const [chosenItem, setChosenItem] = useState(null);
   const [disableButton, setDisableButton] = useState(false);
   const addAndShowItem = (data) => {
-    console.log(data)
     addToCart(data.data, data.amount);
     setShowItemAdded(
       <ShowAddedItem

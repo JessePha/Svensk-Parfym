@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Process from "../../components/Process Component/Process/Process";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import { setProduct } from "../../store/actionFunc/indexAction";
-import { getProducts } from "../../handlepayment/handleProduct";
+import { getAllProducts } from "../../handlepayment/handleProduct";
 
 let ProcessView = (props) => {
   const [loading, setLoading] = useState(false);
@@ -11,7 +11,7 @@ let ProcessView = (props) => {
 
   useEffect(() => {
     setLoading(true);
-    getProducts(props.fetchData,setError);
+    getAllProducts(props.fetchData,setError);
     setLoading(false)
   }, []);
   let render = null;

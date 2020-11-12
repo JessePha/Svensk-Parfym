@@ -1,29 +1,32 @@
 import { projectFirestore } from "../firestore/config";
 
-export const getProducts = (action, errorMessage) => {
+export const getAllProducts = async (action, errorMessage) => {
   let items = [];
-  projectFirestore
-    .collection("products")
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        items.push({ ...doc.data(), id: doc.id });
-      });
-      action(items);
-    })
-    .catch((error) => {
-      errorMessage(true);
-    });
+  let querySnapShot = await projectFirestore.collection("products").get();
+  querySnapShot.forEach((doc) => {
+    items.push({ ...doc.data(), id: doc.id });
+  });
+  action(items);
 };
 
-export const updateProduct = async (data) => {
-  await projectFirestore
+export const getSingleProduct = async (action, name, errorMessage) => {
+  let querySnapShot = await projectFirestore.collection("products").get();
+  try {
+    querySnapShot.forEach((doc) => {
+      if (doc.data().name === name) {
+        action({ ...doc.data(), id: doc.id });
+      }
+    });
+  } catch {
+    errorMessage(true);
+  }
+};
+
+export const updateProduct = (data) => {
+  projectFirestore
     .collection("products")
     .doc(data.id)
     .update({ stock: data.updateProduct })
-    .then(() => {
-      
-    })
-    .catch(function (error) {
-    });
+    .then(() => {})
+    .catch(function (error) {});
 };

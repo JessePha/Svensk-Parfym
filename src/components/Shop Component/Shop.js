@@ -10,7 +10,6 @@ const Shop = ({ addToCart, products }) => {
   const [disableButton, setDisableButton] = useState(false);
 
   const addAndShowItem = (data) => {
-    console.log(data)
     addToCart(data, 1);
     setShowItemAdded(
       <ShowAddedItem

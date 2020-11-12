@@ -113,7 +113,6 @@ const Checkout = ({
     e.preventDefault();
     let data = null;
     const updateProduct = prepareUpdateStock(itemInCart);
-    console.log(updateProduct);
     if (paymentMethod === "PayEx") {
       data = {
         paymentMethod: paymentMethod,
