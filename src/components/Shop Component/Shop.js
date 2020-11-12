@@ -36,7 +36,7 @@ const Shop = ({ addToCart, products, cartItem }) => {
     setTimeout(() => {
       setDisableButton(false);
       setShowItemAdded(null);
-    }, 3000);
+    }, 2000);
   };
 
   const goTo = (name, size) => {

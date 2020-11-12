@@ -35,6 +35,7 @@ const Perfume = ({
           <button
             style={{ border: "none", background: "none" }}
             onClick={moreInfo}
+            disabled={disable}
           >
             View detail
           </button>
