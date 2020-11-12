@@ -7,7 +7,13 @@ import classes from "../Checkout Component/Checkout.module.css";
 import { useHistory } from "react-router-dom";
 import { removeAllItemsFromCart } from "../../store/actionFunc/cartAction";
 
-const Checkout = ({ data, itemInCart, totalPrice, removeItemsFromCart,url }) => {
+const Checkout = ({
+  data,
+  itemInCart,
+  totalPrice,
+  removeItemsFromCart,
+  url,
+}) => {
   let history = useHistory();
   const goTo = () => {
     history.push("/Fragrance");
@@ -25,10 +31,10 @@ const Checkout = ({ data, itemInCart, totalPrice, removeItemsFromCart,url }) => 
           countries={data}
           totalPrice={totalPrice}
           itemInCart={itemInCart}
-          pictures = {url}
+          pictures={url}
           removeItemsFromCart={removeItemsFromCart}
         />
-        <CheckoutList/>
+        <CheckoutList />
       </div>
     );
   }
@@ -39,13 +45,11 @@ const mapStateToProps = (state) => {
   return {
     totalPrice: state.crt.totalPrice,
     itemInCart: state.crt.cartItem,
-
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    removeItemsFromCart: () => 
-    dispatch(removeAllItemsFromCart()),
+    removeItemsFromCart: () => dispatch(removeAllItemsFromCart()),
   };
 };
 

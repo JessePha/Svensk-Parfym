@@ -1,6 +1,6 @@
 import React from "react";
-import AboutUsPhoto from "../../UI/AboutUsPhoto/AboutUsPhoto";
-import TextBundle from "./TextBundles.js";
+import InventPhoto from "../InventPhoto/InventPhotos";
+import TextBundle from "../TextBundles.js";
 import classes from "./Information.module.css";
 
 const Information = ({ aboutContent }) => {
@@ -10,7 +10,7 @@ const Information = ({ aboutContent }) => {
     <div className={classes.Information}>
       <div className={classes.PhotoDiv}>
         <div className={classes.PhotoDivInDiv}>
-          <AboutUsPhoto image={aboutContent.url[0]} />
+          <InventPhoto image={aboutContent.url[0]} />
         </div>
       </div>
       <div className={classes.TopText}>{aboutContent.intro}</div>
