@@ -20,7 +20,7 @@ const ProductView = (props) => {
   useEffect(() => {
     getSingleProduct(setItem, name, setError)
     setLoading(true);
-  }, [name]);
+  }, []);
 
   content = <Spinner loading={loading} />;
   if (item !== null) {
