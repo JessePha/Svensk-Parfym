@@ -70,7 +70,7 @@ const Display = ({ textContent, defaultContent }) => {
 
   return (
     <div>
-      <div className={classes.Test}>{buttonDiv}</div>
+      <div className={classes.ButtonContainer}>{buttonDiv}</div>
       {textBundleDiv}
     </div>
   );
