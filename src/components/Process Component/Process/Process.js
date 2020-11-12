@@ -38,7 +38,6 @@ const Process = (props) => {
     fetchItem();
   }, []);
 
-  console.log(currentData)
 
   let imageArr = [];
   let max = props.products.length;

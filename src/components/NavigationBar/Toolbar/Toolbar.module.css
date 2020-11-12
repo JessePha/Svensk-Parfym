@@ -54,6 +54,7 @@
 .Cart:hover {
   color: rgb(220, 181, 72);
 }
+
 @media screen and (max-width: 1024px) {
   .LogoName {
     margin-right: 15%;

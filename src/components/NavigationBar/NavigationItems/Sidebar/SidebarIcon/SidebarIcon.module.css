@@ -19,8 +19,12 @@
 .SidebarIcon div {
   width: 100%;
   height: 0.8px;
+  cursor: pointer;
   background-color: white;
   transition: 0.2s ease;
+}
+.SidebarIcon:hover div {
+  background-color: rgb(220, 181, 72);
 }
 
 @media (min-width: 769px) {

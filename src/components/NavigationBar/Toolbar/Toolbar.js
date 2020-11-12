@@ -5,7 +5,14 @@ import NavigationItems from "../NavigationItems/NavigationItems";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import Logo from "../Logo/Logo";
 
-const Toolbar = ({cartToggle, closeSidebar,amountInCart,toggleSidebar,sideBar, navPic}) => {
+const Toolbar = ({
+  cartToggle,
+  closeSidebar,
+  amountInCart,
+  toggleSidebar,
+  sideBar,
+  navPic,
+}) => {
   const [show, setShow] = useState({
     visible: true,
     prevScroll: window.pageYOffset,
@@ -49,7 +56,11 @@ const Toolbar = ({cartToggle, closeSidebar,amountInCart,toggleSidebar,sideBar, n
             onClick={() => closeSideAndOpenCartBar()}
             amount={amountInCart}
           />
-          <Burger clicked={toggleSidebar} isOpened={sideBar} />
+          <Burger
+            className={classes.Burger}
+            clicked={toggleSidebar}
+            isOpened={sideBar}
+          />
         </div>
       </header>
     );
