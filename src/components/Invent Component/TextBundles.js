@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { act } from "react-dom/test-utils";
 import classes from "./Information/Information.module.css";
 
 const Display = ({ textContent, defaultContent }) => {
@@ -13,12 +14,12 @@ const Display = ({ textContent, defaultContent }) => {
     slice.forEach((content, index) => {
       sliceTemp.push(currentPage);
     });
-    let textTemp = [];
-    tempContent.forEach((data) => {
-      textTemp.push(data);
-    });
-    textTemp.unshift([defaultContent]);
+    sliceTemp[0] = true;
     setBoolArr(sliceTemp);
+    let contentArr = [];
+    contentArr.push(defaultContent);
+    console.log(contentArr);
+    setContent(contentArr);
   }, []);
 
   const showText = (buttonIndex) => {
@@ -64,13 +65,16 @@ const Display = ({ textContent, defaultContent }) => {
       </div>
     );
   });
-  let textBundleDiv = (
-    <div className={classes.TextBundleDiv}>
-      <h2>{defaultContent}</h2>
-    </div>
-  );
+  let textBundleDiv = null;
   if (content !== undefined && content !== null) {
     textBundleDiv = content.map((content, index) => {
+      if (content.includes(defaultContent)) {
+        return (
+          <div className={classes.TextBundleDiv} key={index}>
+            <p>{content}</p>
+          </div>
+        );
+      }
       return (
         <div className={classes.TextBundleDiv} key={index}>
           <h2>{content[0]}</h2>
