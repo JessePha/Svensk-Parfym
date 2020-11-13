@@ -18,11 +18,23 @@ const ProductDetails = ({
   let content = null;
   let disable1 = false;
   let disable2 = false;
+  let disable3 = false;
+  let checkProductForDisplay = false;
   let viewProduct = [];
   let { name, size } = useParams();
   let [price, setPrice] = useState(850);
   const [chosenItem, setChosenItem] = useState(null);
   const [disableButton, setDisableButton] = useState(false);
+
+  if (viewProduct) {
+    checkProductForDisplay = products.some(
+      (product) =>
+        product.name === "Discovery Set 1" ||
+        product.name === "Discovery Set 2" ||
+        product.name === "Discovery Set 3"
+    );
+  }
+
   const addAndShowItem = (data) => {
     addToCart(data.data, data.amount);
     setShowItemAdded(
@@ -46,6 +58,18 @@ const ProductDetails = ({
       price: viewProduct.price[1],
       size: viewProduct.size[0],
     });
+    if (
+      viewProduct.name === "Discovery Set 1" ||
+      viewProduct.name === "Discovery Set 2" ||
+      viewProduct.name === "Discovery Set 3"
+    ) {
+      setPrice(viewProduct.price);
+      setChosenItem({
+        ...viewProduct,
+        price: viewProduct.price,
+        size: viewProduct.size,
+      });
+    }
   }, []);
 
   if (products) {
@@ -61,8 +85,8 @@ const ProductDetails = ({
     disable2 = cartItems.some(
       (item) => item.name === name && item.count >= item.stock[1]
     );
+    disable3 = cartItems.some(item => item.name === name && item.count >= item.stock)
   }
-
 
   if (item !== null) {
     viewProduct = { ...item };
@@ -74,8 +98,7 @@ const ProductDetails = ({
           price: viewProduct.price[1],
           size: e.target.value,
         });
-      }
-      if (e.target.value === viewProduct.size[1]) {
+      } else if (e.target.value === viewProduct.size[1]) {
         setPrice(viewProduct.price[0]);
         setChosenItem({
           ...viewProduct,
@@ -101,6 +124,8 @@ const ProductDetails = ({
             disableButton={disableButton}
             disable1={disable1}
             disable2={disable2}
+            disable3={disable3}
+            displaySetProduct={checkProductForDisplay}
           />
           <Description viewProduct={viewProduct} />
         </div>
@@ -116,9 +141,7 @@ const ProductDetails = ({
                   onClick={() =>
                     addAndShowItem({ data: chosenItem, amount: 1 })
                   }
-                  disabled={
-                   disableButton || disable1 && disable2
-                  }
+                  disabled={disableButton || (disable1 && disable2)}
                 >
                   <BiShoppingBag className={classes.ShoppingBag} />
                   <p>Buy</p>

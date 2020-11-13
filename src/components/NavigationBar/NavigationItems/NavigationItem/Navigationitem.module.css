@@ -1,11 +1,12 @@
 .NavigationItem {
   padding: 2%;
+  margin-bottom: 10px;
 }
 
 .NavigationItem a {
   color: #ffffff;
   padding: 1% 0%;
-  font-size: 0.8rem;
+  font-size: 1rem;
   border-bottom: 1px solid transparent;
   text-decoration: none;
   transition: 0.5s ease;
