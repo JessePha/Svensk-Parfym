@@ -78,7 +78,6 @@ const Checkout = ({
       };
     }
     const result = await validatePayment(data);
-    console.log(result)
     setAccess(result.access);
     setClickSubmit(true);
     if (result.access && result.account >= totalPrice || result.access && result.account >= totalPrice) {
