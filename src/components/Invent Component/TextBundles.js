@@ -38,13 +38,15 @@ const Display = ({ textContent, defaultContent }) => {
     let active = boolTemp.findIndex((content, index) => {
       return index === buttonIndex;
     });
+
+    boolTemp[active] = true;
+
     let arr = [];
     boolTemp.findIndex((content, index) => {
       if (index !== buttonIndex) {
         arr.push(index);
       }
     });
-    boolTemp[active] = true;
     arr.forEach((content) => {
       boolTemp[content] = false;
     });

@@ -3,39 +3,45 @@
   max-width: 1080px;
   padding: 2% 2% 2% 2%;
 }
-#ProgressBarContainer {
+.ProgressBarContainer {
   position: relative;
   width: 90%;
   margin: auto;
   height: 10vw;
 }
-
-#ProgressBarContainer ul {
-  z-index: 99;
+.ButtonContainer ul {
   position: absolute;
   width: 100%;
   -webkit-tap-highlight-color: transparent;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  place-items: center;
 }
-#ProgressBarContainer li:before {
-  content: " ";
-  display: block;
-  margin: auto;
-  width: 30px;
-  height: 30px;
+.Buttons {
+  z-index: 99;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   border: solid 2px white;
   transition: all ease 0.3s;
   background-color: white;
   transition: background border 0.5s;
+  outline: none;
 }
-#ProgressBarContainer li:hover::before,
-#ProgressBarContainer li:active::before,
-#ProgressBarContainer li:focus::before {
-  border: #686d76;
+.Buttons:hover,
+.Buttons:active,
+.Buttons:focus {
+  width: 32px;
+  height: 32px;
+  border-color: #686d76;
+  background-color: #686d76;
+}
+.Active {
+  border-color: #686d76;
   background-color: #686d76;
 }
 
-#ProgressBarContainer li {
+.ProgressBarContainer li {
   list-style: none;
   float: left;
   width: 20%;
@@ -51,20 +57,19 @@
   position: relative;
 }
 
-#ProgressBarContainer li.StepInner {
+.ProgressBarContainer li.StepInner {
   position: absolute;
   width: 100%;
   bottom: 0;
   font-size: 14px;
 }
 
-#ProgressBarContainer li:active,
-#ProgressBarContainer li:hover {
+.ProgressBarContainer li:active,
+.ProgressBarContainer li:hover {
   color: #444;
 }
 
-
-#ProgressBarContainer #Line {
+.ProgressBarContainer #Line {
   width: 80%;
   background-color: #eee;
   height: 6px;
@@ -75,7 +80,7 @@
   transition: all ease 0.9s;
 }
 
-#ProgressBarContainer #LineProcess {
+.ProgressBarContainer #LineProcess {
   content: " ";
   width: 3%;
   height: 100%;
@@ -98,12 +103,17 @@
   padding: 30px 40px;
   text-align: center;
 }
- 
 
 @media (max-width: 700px) {
-  #ProgressBarContainer li:before {
-    width: 20px;
-    height: 20px;
+  .Buttons {
+    width: 25px;
+    height: 25px;
     margin-top: 1vh;
+  }
+  .Buttons :hover,
+  .Buttons :active,
+  .Buttons :focus {
+    width: 18px;
+    height: 18px;
   }
 }
