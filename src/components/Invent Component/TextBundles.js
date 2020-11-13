@@ -5,24 +5,34 @@ const Display = ({ textContent, defaultContent }) => {
   const [content, setContent] = useState(null);
   const [boolArr, setBoolArr] = useState([]);
   let tempContent = textContent;
-  let slice = tempContent.slice(0, 4);
+  let slice = tempContent.slice(0, 5);
   let currentPage = false;
 
   useEffect(() => {
-    let temp = [];
+    let sliceTemp = [];
     slice.forEach((content, index) => {
-      temp.push(currentPage);
+      sliceTemp.push(currentPage);
     });
-    setBoolArr(temp);
+    let textTemp = [];
+    tempContent.forEach((data) => {
+      textTemp.push(data);
+    });
+    textTemp.unshift([defaultContent]);
+    setBoolArr(sliceTemp);
   }, []);
+
   const showText = (buttonIndex) => {
     let data = [...tempContent];
     let temp = [];
-    temp = data.filter((content, index) => {
-      return index === buttonIndex * 2 || index === buttonIndex * 2 + 1;
-    });
+    if (buttonIndex === 0) {
+      temp.unshift([defaultContent]);
+      setContent(temp);
+    } else {
+      temp = data.filter((content, index) => {
+        return index === buttonIndex * 2 - 2 || index === buttonIndex * 2 - 1;
+      });
+    }
     setContent(temp);
-
     let boolTemp = [...boolArr];
     let active = boolTemp.findIndex((content, index) => {
       return index === buttonIndex;
@@ -37,9 +47,9 @@ const Display = ({ textContent, defaultContent }) => {
     arr.forEach((content) => {
       boolTemp[content] = false;
     });
-    console.log(boolTemp);
     setBoolArr(boolTemp);
   };
+
   let buttonDiv = slice.map((content, index) => {
     return (
       <div key={index} className={classes.ButtonDiv}>
@@ -55,12 +65,14 @@ const Display = ({ textContent, defaultContent }) => {
     );
   });
   let textBundleDiv = (
-    <div className={classes.defaultText}>{defaultContent}</div>
+    <div className={classes.TextBundleDiv}>
+      <h2>{defaultContent}</h2>
+    </div>
   );
   if (content !== undefined && content !== null) {
     textBundleDiv = content.map((content, index) => {
       return (
-        <div className={classes.TextBundleDiv} key={content[index]}>
+        <div className={classes.TextBundleDiv} key={index}>
           <h2>{content[0]}</h2>
           <p>{content[1]}</p>
         </div>
