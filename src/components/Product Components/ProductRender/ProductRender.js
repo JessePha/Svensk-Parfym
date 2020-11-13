@@ -21,7 +21,7 @@ const ProductRender = (props) => {
   ) {
     form = (
       <div className={classes.SelectForm}>
-        <div>
+        <div className = {classes.SetOption}>
           <label>
             <input
               onChange={props.selectedSize}
