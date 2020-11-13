@@ -67,7 +67,6 @@ const Process = (props) => {
     let activeArr = [];
     let inactiveArr = [];
     let boolTemp = [...boolArr];
-    console.log(boolTemp);
     boolTemp.forEach((content, index) => {
       if (index <= setActiveButton) {
         activeArr.push(index);
@@ -75,17 +74,14 @@ const Process = (props) => {
         inactiveArr.push(index);
       }
     });
-    console.log(inactiveArr);
     activeArr.forEach((content, index) => {
       boolTemp[content] = true;
     });
     inactiveArr.forEach((content, index) => {
       boolTemp[content] = false;
     });
-    console.log(boolTemp);
     setBoolArr(boolTemp);
   };
-  console.log(processContent);
   let dots = processContent.map((data, index) => {
     return (
       <button

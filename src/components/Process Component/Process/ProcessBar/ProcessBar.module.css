@@ -28,15 +28,14 @@
   transition: background border 0.5s;
   outline: none;
 }
-.Buttons:hover,
-.Buttons:active,
-.Buttons:focus {
+.Buttons:hover {
   width: 32px;
   height: 32px;
   border-color: #686d76;
   background-color: #686d76;
 }
 .Active {
+  
   border-color: #686d76;
   background-color: #686d76;
 }
@@ -110,10 +109,9 @@
     height: 25px;
     margin-top: 1vh;
   }
-  .Buttons :hover,
-  .Buttons :active,
-  .Buttons :focus {
-    width: 18px;
-    height: 18px;
+  .Buttons:hover {
+    width: 23px;
+    height: 23px;
+    margin-top: 1vh;
   }
 }
