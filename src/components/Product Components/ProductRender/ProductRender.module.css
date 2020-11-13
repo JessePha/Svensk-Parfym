@@ -124,6 +124,10 @@
   .price {
     display: none;
   }
+
+  .price p{
+    color: white;
+  }
 }
 @media screen and (max-width: 500px){
   .SelectForm > div:nth-child(1) {

@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./ShopRender.module.css";
 import { BiShoppingBag } from "react-icons/bi";
 
-const Perfume = ({
+const ShopRenderForSet = ({
   img,
   price,
   name,
@@ -21,21 +21,14 @@ const Perfume = ({
       >
         <BiShoppingBag className={classes.Bag} />
       </button>
-      <img src={img} alt="perfume" onClick={moreInfo}></img>
+      <img src={img} alt="perfume" onClick={moreInfo} />
       <div className={classes.productInfo}>
         <h3>{name}</h3>
-        {disable || outOfStock ? (
-          <p>Out of stock</p>
-        ) : (
-          <p>
-            {price[0]} - {price[1]} KR
-          </p>
-        )}
+        {disable || outOfStock ? <p>Out of stock</p> : <p>{price} KR</p>}
         <div className={classes.details}>
           <button
             style={{ border: "none", background: "none" }}
             onClick={moreInfo}
-            disabled={disable}
           >
             View detail
           </button>
@@ -45,4 +38,4 @@ const Perfume = ({
   );
 };
 
-export default Perfume;
+export default ShopRenderForSet;

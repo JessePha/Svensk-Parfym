@@ -1,23 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import Process from "../../components/Process Component/Process/Process";
 import Spinner from "../../components/UI/Spinner/Spinner";
-import { fetchProduct } from "../../store/actionFunc/indexAction";
+import { setProduct } from "../../store/actionFunc/indexAction";
+import { getAllProducts } from "../../handlepayment/handleProduct";
 
 let ProcessView = (props) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  useState(() => {
+  useEffect(() => {
     setLoading(true);
-    try {
-      props.fetchData();
-      setLoading(false);
-    } catch (error) {
-      setError(true);
-      setLoading(false);
-    }
-  });
+    getAllProducts(props.fetchData,setError);
+    setLoading(false)
+  }, []);
   let render = null;
   if (props.products.length > 0 && !loading) {
     render = <Process products={props.products} error={error} />;
@@ -34,7 +30,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchData: () => dispatch(fetchProduct()),
+    fetchData: (products) => dispatch(setProduct(products)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ProcessView);

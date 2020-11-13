@@ -23,7 +23,8 @@ const ProductRender = (props) => {
               onClick={() => changeActiveA()}
               value={props.viewProduct.size[0]}
               type="checkbox"
-              checked={activea}
+              checked={props.disable1 ? false :activea}
+              disabled={props.disable1}
             ></input>
             <span>{props.viewProduct.size[0]}</span>
           </label>
@@ -35,19 +36,25 @@ const ProductRender = (props) => {
               onClick={() => changeActiveB()}
               value={props.viewProduct.size[1]}
               type="checkbox"
-              checked={activeb}
+              checked={props.disable2 ? false : activeb}
+              disabled={props.disable2}
             ></input>
             <span>{props.viewProduct.size[1]}</span>
           </label>
         </div>
       </div>
       <div className={classes.price}>
-        <Price price={props.price} value="Kr" />
+        {props.disable1 && props.disable2  ? (
+          <p style = {{color: "white"}}>Out of stock</p>
+        ) : (
+          <Price price={props.price} value="Kr" />
+        )}
       </div>
       <div className={classes.AddToCartButtonContain2}>
         <button
           className={classes.AddToCartButton}
           onClick={() => props.addToCart({ data: props.chosenItem, amount: 1 })}
+          disabled={props.disableButton || props.disable1 && props.disable2}
         >
           <BiShoppingBag className={classes.ShoppingBag} />
           <p>Buy</p>

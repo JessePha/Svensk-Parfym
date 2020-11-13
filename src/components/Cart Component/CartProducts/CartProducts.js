@@ -2,10 +2,17 @@ import React from "react";
 import classes from "./CartProducts.module.css";
 import { connect } from "react-redux";
 import * as actionCreator from "../../../store/actionFunc/indexAction";
-import CheckoutButton from "../../UI/CheckoutButton/CheckoutButton"
+import CheckoutButton from "../../UI/CheckoutButton/CheckoutButton";
 import CartRender from "./CartRender/CartRender";
 
-const CartProducts = ({itemInCart,totalPrice,addItem,minusItem,removeItem, closed}) => {
+const CartProducts = ({
+  itemInCart,
+  totalPrice,
+  addItem,
+  minusItem,
+  removeItem,
+  closed,
+}) => {
   return (
     <div className={classes.CartProducts}>
       {itemInCart.map((item, index) => (
@@ -16,14 +23,20 @@ const CartProducts = ({itemInCart,totalPrice,addItem,minusItem,removeItem, close
           amount={item.count}
           price={item.price}
           size={item.size}
-          stock={item.stock}
           add={addItem}
           minus={minusItem}
           remove={removeItem}
+          disable={
+            item.count >= item.stock ||
+            item.count >= item.stock[0] ||
+            item.count >= item.stock[1]
+              ? true
+              : false
+          }
         />
       ))}
       <h3>Total Price: {totalPrice} Kr</h3>
-      <CheckoutButton closed={closed}/>
+      <CheckoutButton closed={closed} />
     </div>
   );
 };
@@ -36,9 +49,10 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    addItem: (name, size, stock) => dispatch(actionCreator.addItem(name, size, stock)),
+    addItem: (name, size) => dispatch(actionCreator.addItem(name, size)),
     minusItem: (name, size) => dispatch(actionCreator.minusItem(name, size)),
-    removeItem: (name, price, size) => dispatch(actionCreator.removeItem(name, price, size)),
+    removeItem: (name, price, size) =>
+      dispatch(actionCreator.removeItem(name, price, size)),
   };
 };
 

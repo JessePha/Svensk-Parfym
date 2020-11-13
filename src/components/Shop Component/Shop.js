@@ -1,15 +1,29 @@
 import React, { useState } from "react";
 import ShopRender from "./ShopRender/ShopRender";
+import ShopRenderForSet from "./ShopRender/ShopRenderForSet";
 import { useHistory } from "react-router-dom";
 import ShowAddedItem from "../UI/ShowAddedItem/ShowAddedItem";
 import "./Shop.css";
 
-const Shop = (props) => {
+const Shop = ({ addToCart, products, cartItem }) => {
   let history = useHistory();
   const [showItemAdded, setShowItemAdded] = useState(null);
+  const [disableButton, setDisableButton] = useState(false);
+  let discoverySet = products.filter(
+    (product) =>
+      product.name === "Discovery Set 1" ||
+      product.name === "Discovery Set 2" ||
+      product.name === "Discovery Set 3"
+  );
+  let perfumeSet = products.filter(
+    (product) =>
+      product.name !== "Discovery Set 1" &&
+      product.name !== "Discovery Set 2" &&
+      product.name !== "Discovery Set 3"
+  );
 
   const addAndShowItem = (data) => {
-    props.addToCart({...data}, 1);
+    addToCart(data, 1);
     setShowItemAdded(
       <ShowAddedItem
         url={data.url}
@@ -18,10 +32,11 @@ const Shop = (props) => {
         price={data.price}
       />
     );
-
+    setDisableButton(true);
     setTimeout(() => {
+      setDisableButton(false);
       setShowItemAdded(null);
-    }, 3000);
+    }, 2000);
   };
 
   const goTo = (name, size) => {
@@ -29,7 +44,33 @@ const Shop = (props) => {
   };
   let content = (
     <div className="perfumes">
-      {props.products.map((perfume, index) => (
+      {discoverySet.map((set, index) => (
+        <ShopRenderForSet
+          key={index}
+          img={set.url[0]}
+          name={set.name}
+          price={set.price}
+          moreInfo={() => goTo(set.name, set.size)}
+          addToCart={() =>
+            addAndShowItem({
+              ...set,
+              size: set.size,
+              price: set.price,
+            })
+          }
+          disable={set.stock === 0 ? true : false}
+          outOfStock={
+            cartItem.length > 0 &&
+            cartItem.some(
+              (item) => item.name === set.name && item.count >= set.stock
+            )
+              ? true
+              : false
+          }
+          disableButton={disableButton}
+        />
+      ))}
+      {perfumeSet.map((perfume, index) => (
         <ShopRender
           key={index}
           img={perfume.url}
@@ -43,6 +84,18 @@ const Shop = (props) => {
               price: perfume.price[1],
             })
           }
+          disable={perfume.stock === 0 ? true : false}
+          outOfStock={
+            cartItem.length > 0 &&
+            cartItem.some(
+              (item) =>
+                item.name === perfume.name &&
+                item.count >= perfume.stock[0]
+            )
+              ? true
+              : false
+          }
+          disableButton={disableButton}
         />
       ))}
     </div>

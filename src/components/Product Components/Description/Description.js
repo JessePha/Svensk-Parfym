@@ -19,7 +19,7 @@ let Description = ({ viewProduct }) => {
         <div>Description</div>
       </div>
       {showMore ? (
-        <div className={classes.DescText}>{viewProduct[0].description}</div>
+        <div className={classes.DescText}>{viewProduct.description}</div>
       ) : (
         ""
       )}
