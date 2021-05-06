@@ -70,6 +70,12 @@ input[type="password"] {
   padding: 2%;
   margin-top: 5%;
 }
+.cardElementContainer {
+  height: 40px;
+  width: 100%;
+  padding: 15px;
+  align-items: center;
+}
 @media (max-width: 1024px) {
   .h3 {
     font-size: 24px;
@@ -152,6 +158,7 @@ input[type="password"] {
     margin-top: 5%;
   }
 }
+
 @media (max-width: 426px) {
   .formDiv form {
     flex-direction: column;

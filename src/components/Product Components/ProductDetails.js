@@ -8,17 +8,8 @@ import ShowAddedItem from "../../components/UI/ShowAddedItem/ShowAddedItem";
 import Price from "../../components/UI/Price/Price";
 import ProductRender from "../../components/Product Components/ProductRender/ProductRender";
 
-const ProductDetails = ({
-  addToCart,
-  setShowItemAdded,
-  products,
-  item,
-  cartItems,
-}) => {
+const ProductDetails = ({ addToCart, setShowItemAdded, products, item }) => {
   let content = null;
-  let disable1 = false;
-  let disable2 = false;
-  let disable3 = false;
   let checkProductForDisplay = false;
   let viewProduct = [];
   let { name, size } = useParams();
@@ -49,7 +40,7 @@ const ProductDetails = ({
     setTimeout(() => {
       setDisableButton(false);
       setShowItemAdded(null);
-    }, 3000);
+    }, 2000);
   };
   useEffect(() => {
     setPrice(viewProduct.price[1]);
@@ -76,16 +67,6 @@ const ProductDetails = ({
     viewProduct = products.filter(
       (product) => product.name === name && product.size[0] === size
     );
-  }
-
-  if (cartItems !== undefined) {
-    disable1 = cartItems.some(
-      (item) => item.name === name && item.count >= item.stock[0]
-    );
-    disable2 = cartItems.some(
-      (item) => item.name === name && item.count >= item.stock[1]
-    );
-    disable3 = cartItems.some(item => item.name === name && item.count >= item.stock)
   }
 
   if (item !== null) {
@@ -122,9 +103,6 @@ const ProductDetails = ({
             addToCart={addAndShowItem}
             addAndShowItem={addAndShowItem}
             disableButton={disableButton}
-            disable1={disable1}
-            disable2={disable2}
-            disable3={disable3}
             displaySetProduct={checkProductForDisplay}
           />
           <Description viewProduct={viewProduct} />
@@ -141,7 +119,7 @@ const ProductDetails = ({
                   onClick={() =>
                     addAndShowItem({ data: chosenItem, amount: 1 })
                   }
-                  disabled={disableButton || (disable1 && disable2)}
+                  disabled={disableButton}
                 >
                   <BiShoppingBag className={classes.ShoppingBag} />
                   <p>Buy</p>

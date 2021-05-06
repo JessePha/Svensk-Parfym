@@ -1,6 +1,7 @@
 import * as firebase from "firebase/app";
 import "firebase/storage";
 import "firebase/firestore";
+import "firebase/functions";
 // Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: process.env.PARFYM_API,
@@ -15,4 +16,5 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const projectStorage = firebase.storage();
 const projectFirestore = firebase.firestore();
-export { projectStorage, projectFirestore };
+const projectFunctions = firebase.functions();
+export { projectStorage, projectFirestore, projectFunctions };
