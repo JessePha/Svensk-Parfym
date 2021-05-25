@@ -18,9 +18,10 @@
 .OrdAndSumContainer > div {
   flex: 1 1 50vw;
 }
-@media (max-width: 500px) {
+@media (max-width: 700px) {
   .PurchaseConfirmed {
     margin-top: 20%;
+
 
   }
   .OrdAndSumContainer {
@@ -28,5 +29,12 @@
   }
   .Message {
     font-size: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .PurchaseConfirmed {
+    margin-top: 15vh;
+
   }
 }
