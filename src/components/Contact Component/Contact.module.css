@@ -1,0 +1,72 @@
+.MainDiv {
+  margin-top: 10vh;
+  color: white;
+  text-align: center;
+  padding-left: 20vw;
+  padding-right: 20vw;
+  height: 75vh;
+
+
+}
+
+.Paragraph {
+  text-align: left;
+}
+
+.Header {
+  color: goldenrod;
+}
+
+.ArrowDiv {
+  display: flex;
+  align-items: left;
+  text-align: left;
+  color: goldenrod;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  margin-bottom: 2%;
+}
+
+.ArrowDiv>div {
+  margin-left: 2%;
+}
+
+
+.link {
+  color: white;
+
+}
+
+.flexContainer {
+  display: flex;
+  /* or inline-flex */
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 5vh;
+
+}
+@media (max-width: 700px) {
+  .flexContainer {
+    display: flex;
+    /* or inline-flex */
+    flex-direction: column;
+    justify-content: space-evenly;
+
+  }
+}
+
+@media (max-width: 500px) {
+
+  .flexContainer {
+    display: flex;
+    /* or inline-flex */
+    flex-direction: column;
+    justify-content: space-evenly;
+
+  }
+
+  .Paragraph {
+    text-align: center;
+  }
+}

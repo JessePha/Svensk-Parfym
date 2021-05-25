@@ -12,7 +12,10 @@ const Footer = () => {
         <Link className={classes.Link} to="/policy">
           POLICY
         </Link>
-        <li>CONTACT</li>
+        <br />
+        <Link className={classes.Link} to="/contact">
+          CONTACT
+        </Link>
         <li>INSTAGRAM</li>
       </ul>
     </footer>

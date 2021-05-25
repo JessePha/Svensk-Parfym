@@ -12,6 +12,7 @@ import ProcessView from "./view/Process View/ProcessView";
 import MissingPage from "./view/MissingPage view/MissingPageView";
 import PurchaseView from "./view/Purchase view/PurchaseView";
 import PolicyView from "./view/Policy View/PolicyView";
+import ContactView from "./view/Contact View/ContactView";
 const App = () => {
   return (
     <div className="App">
@@ -30,6 +31,7 @@ const App = () => {
             <Route exact path={"/process"} component={ProcessView} />
             <Route exact path={"/purchase/:orderid"} component={PurchaseView} />
             <Route path={"/policy"} component={PolicyView} />
+            <Route path={"/contact"} component={ContactView} />
             <Route path="" component={MissingPage} />
           </Switch>
         </View>
