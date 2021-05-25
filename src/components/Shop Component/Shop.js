@@ -58,15 +58,6 @@ const Shop = ({ addToCart, products, cartItem }) => {
               price: set.price,
             })
           }
-          disable={set.stock === 0 ? true : false}
-          outOfStock={
-            cartItem.length > 0 &&
-            cartItem.some(
-              (item) => item.name === set.name && item.count >= set.stock
-            )
-              ? true
-              : false
-          }
           disableButton={disableButton}
         />
       ))}
@@ -83,17 +74,6 @@ const Shop = ({ addToCart, products, cartItem }) => {
               size: perfume.size[0],
               price: perfume.price[1],
             })
-          }
-          disable={perfume.stock === 0 ? true : false}
-          outOfStock={
-            cartItem.length > 0 &&
-            cartItem.some(
-              (item) =>
-                item.name === perfume.name &&
-                item.count >= perfume.stock[0]
-            )
-              ? true
-              : false
           }
           disableButton={disableButton}
         />

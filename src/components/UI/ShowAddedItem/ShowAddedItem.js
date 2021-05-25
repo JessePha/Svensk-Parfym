@@ -12,7 +12,7 @@ const showAddedItem = ({ url, name, price, size }) => {
         <div>
           <p>{name}</p>
           <p>{size}</p>
-          <p>{`${price} Kr`}</p>
+          <p>{`${price} SEK`}</p>
         </div>
       </div>
     </div>

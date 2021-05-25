@@ -4,10 +4,11 @@ export const validatePayment = async (data) => {
   let { paymentMethod } = data;
   const { payexUser, payExpass } = data;
   const { cardNumber, cardHolder, cardExpire, cardCVV } = data;
+  let access = false;
+  let account = 0;
+  let expire = "";
+  let id = "";
   if (paymentMethod === "PayEx") {
-    let access = false;
-    let account = 0;
-    let id = "";
     if (payexUser !== "" && paymentMethod !== "") {
       await projectFirestore
         .collection(paymentMethod)
@@ -37,22 +38,31 @@ export const validatePayment = async (data) => {
       cardExpire !== "" &&
       cardCVV !== ""
     ) {
+      await projectFirestore
+        .collection(paymentMethod)
+        .where("cardholder", "==", cardHolder)
+        .where("cardnumber", "==", cardNumber)
+        .where("cardcw", "==", cardCVV)
+        .get()
+        .then((querySnapShot) => {
+          querySnapShot.forEach((doc) => {
+            if (doc.data()) {
+              access = true;
+              id = doc.id;
+              account = doc.data().account;
+              expire = doc.data().cardexpire;
+            }
+          });
+        })
+        .catch((error) => console.log(error));
+      return { access: access, account: account, id: id, expire: expire };
     }
   }
 };
 
 export const makeOrder = async (data) => {
-  let orderId = ""
-  await projectFirestore
-    .collection(data.type)
-    .add(data)
-    .then((docRef) => {
-      orderId = docRef.id
-    })
-    .catch(function (error) {
-      
-    });
-    return orderId
+  const result = await projectFirestore.collection(data.type).add(data);
+  return result.id;
 };
 
 export const updateUserAccount = async (data) => {
@@ -60,13 +70,6 @@ export const updateUserAccount = async (data) => {
     .collection(data.type)
     .doc(data.id)
     .update({ account: data.account })
-    .then(() => {
-      
-    })
-    .catch(function (error) {
-      
-    });
+    .then(() => {})
+    .catch(function (error) {});
 };
-
-
-

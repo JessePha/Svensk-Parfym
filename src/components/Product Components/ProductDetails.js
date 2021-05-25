@@ -8,21 +8,24 @@ import ShowAddedItem from "../../components/UI/ShowAddedItem/ShowAddedItem";
 import Price from "../../components/UI/Price/Price";
 import ProductRender from "../../components/Product Components/ProductRender/ProductRender";
 
-const ProductDetails = ({
-  addToCart,
-  setShowItemAdded,
-  products,
-  item,
-  cartItems,
-}) => {
+const ProductDetails = ({ addToCart, setShowItemAdded, products, item }) => {
   let content = null;
-  let disable1 = false;
-  let disable2 = false;
+  let checkProductForDisplay = false;
   let viewProduct = [];
   let { name, size } = useParams();
   let [price, setPrice] = useState(850);
   const [chosenItem, setChosenItem] = useState(null);
   const [disableButton, setDisableButton] = useState(false);
+
+  if (viewProduct) {
+    checkProductForDisplay = products.some(
+      (product) =>
+        product.name === "Discovery Set 1" ||
+        product.name === "Discovery Set 2" ||
+        product.name === "Discovery Set 3"
+    );
+  }
+
   const addAndShowItem = (data) => {
     addToCart(data.data, data.amount);
     setShowItemAdded(
@@ -37,7 +40,7 @@ const ProductDetails = ({
     setTimeout(() => {
       setDisableButton(false);
       setShowItemAdded(null);
-    }, 3000);
+    }, 2000);
   };
   useEffect(() => {
     setPrice(viewProduct.price[1]);
@@ -46,6 +49,18 @@ const ProductDetails = ({
       price: viewProduct.price[1],
       size: viewProduct.size[0],
     });
+    if (
+      viewProduct.name === "Discovery Set 1" ||
+      viewProduct.name === "Discovery Set 2" ||
+      viewProduct.name === "Discovery Set 3"
+    ) {
+      setPrice(viewProduct.price);
+      setChosenItem({
+        ...viewProduct,
+        price: viewProduct.price,
+        size: viewProduct.size,
+      });
+    }
   }, []);
 
   if (products) {
@@ -53,16 +68,6 @@ const ProductDetails = ({
       (product) => product.name === name && product.size[0] === size
     );
   }
-
-  if (cartItems !== undefined) {
-    disable1 = cartItems.some(
-      (item) => item.name === name && item.count >= item.stock[0]
-    );
-    disable2 = cartItems.some(
-      (item) => item.name === name && item.count >= item.stock[1]
-    );
-  }
-
 
   if (item !== null) {
     viewProduct = { ...item };
@@ -74,8 +79,7 @@ const ProductDetails = ({
           price: viewProduct.price[1],
           size: e.target.value,
         });
-      }
-      if (e.target.value === viewProduct.size[1]) {
+      } else if (e.target.value === viewProduct.size[1]) {
         setPrice(viewProduct.price[0]);
         setChosenItem({
           ...viewProduct,
@@ -99,15 +103,14 @@ const ProductDetails = ({
             addToCart={addAndShowItem}
             addAndShowItem={addAndShowItem}
             disableButton={disableButton}
-            disable1={disable1}
-            disable2={disable2}
+            displaySetProduct={checkProductForDisplay}
           />
           <Description viewProduct={viewProduct} />
         </div>
         <div className={classes.PriceAndBuyButtonContainer}>
           <div className={classes.PriceAndBuyButton}>
             <div>
-              <Price price={price} value="Kr" />
+              <Price price={price} value="SEK" />
             </div>
             <div className={classes.addToCart}>
               <div className={classes.AddToCartButtonContain}>
@@ -116,9 +119,7 @@ const ProductDetails = ({
                   onClick={() =>
                     addAndShowItem({ data: chosenItem, amount: 1 })
                   }
-                  disabled={
-                   disableButton || disable1 && disable2
-                  }
+                  disabled={disableButton}
                 >
                   <BiShoppingBag className={classes.ShoppingBag} />
                   <p>Buy</p>

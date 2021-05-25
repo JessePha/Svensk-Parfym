@@ -6,6 +6,10 @@ import { connect } from "react-redux";
 import classes from "../Checkout Component/Checkout.module.css";
 import { useHistory } from "react-router-dom";
 import { removeAllItemsFromCart } from "../../store/actionFunc/cartAction";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
+const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHED_KEY);
 
 const Checkout = ({
   data,
@@ -38,7 +42,11 @@ const Checkout = ({
       </div>
     );
   }
-  return <div className={Styles.Checkout}>{checkOut}</div>;
+  return (
+    <div className={Styles.Checkout}>
+      <Elements stripe={stripePromise}>{checkOut}</Elements>
+    </div>
+  );
 };
 
 const mapStateToProps = (state) => {
