@@ -18,6 +18,7 @@ const ProductView = (props) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    document.documentElement.scrollTop = 0;
     getSingleProduct(setItem, name, setError)
     setLoading(true);
   }, []);

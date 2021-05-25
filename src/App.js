@@ -19,7 +19,7 @@ const App = () => {
         <View>
           <Switch>
             <Route exact path="/" component={HomeView} />
-            <Route exact path="/invent" component={AboutUs} />
+            <Route exact path="/inventor" component={AboutUs} />
             <Route exact path="/Fragrance" component={ShopView} />
             <Route
               exact

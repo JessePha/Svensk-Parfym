@@ -69,7 +69,7 @@ const ProductRender = (props) => {
     <div className={classes.SelectOptions}>
       {form}
       <div className={classes.price}>
-        {<Price price={props.price} value="Kr" />}
+        {<Price price={props.price} value="SEK" />}
       </div>
       <div className={classes.AddToCartButtonContain2}>
         <button

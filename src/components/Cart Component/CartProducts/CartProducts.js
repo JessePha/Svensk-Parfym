@@ -28,7 +28,7 @@ const CartProducts = ({
           remove={removeItem}
         />
       ))}
-      <h3>Total Price: {totalPrice} Kr</h3>
+      <h3>Total Price: {totalPrice} SEK</h3>
       <CheckoutButton closed={closed} />
     </div>
   );

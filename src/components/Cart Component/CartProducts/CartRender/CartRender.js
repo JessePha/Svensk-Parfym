@@ -23,7 +23,7 @@ const CartRender = ({
         <div className={classes.InnerContainer}>
           <p>{name}</p>
           <p>size: {size} </p>
-          {<Price price={price} value="Kr" />}
+          {<Price price={price} value="SEK" />}
           <div className={classes.InnerItem}>
             <button onClick={() => add(name, size)}>
               +

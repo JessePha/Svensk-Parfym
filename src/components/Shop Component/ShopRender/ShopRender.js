@@ -24,7 +24,7 @@ const Perfume = ({
       <div className={classes.productInfo}>
         <h3>{name}</h3>
         <p>
-          {price[0]} - {price[1]} KR
+          {price[0]} - {price[1]} SEK
         </p>
         <div className={classes.details}>
           <button

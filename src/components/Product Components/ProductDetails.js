@@ -110,7 +110,7 @@ const ProductDetails = ({ addToCart, setShowItemAdded, products, item }) => {
         <div className={classes.PriceAndBuyButtonContainer}>
           <div className={classes.PriceAndBuyButton}>
             <div>
-              <Price price={price} value="Kr" />
+              <Price price={price} value="SEK" />
             </div>
             <div className={classes.addToCart}>
               <div className={classes.AddToCartButtonContain}>

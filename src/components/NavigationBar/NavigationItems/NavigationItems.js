@@ -2,7 +2,7 @@ import React from "react";
 import classes from "../NavigationItems/NavigationItems.module.css";
 import NavigationItem from "./NavigationItem/NavigationItem";
 const navigationItems = (props) => {
-  const items = ["", "FRAGRANCE", "INVENT", "PROCESS"];
+  const items = ["INVENTOR", "PROCESS", "FRAGRANCE"];
   return (
     <ul className={props.show ? classes.DesktopOnly : classes.NavigationItems}>
       {items.map((item) => (

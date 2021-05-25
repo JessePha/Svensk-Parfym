@@ -22,7 +22,7 @@ const ShopRenderForSet = ({
       <img src={img} alt="perfume" onClick={moreInfo} />
       <div className={classes.productInfo}>
         <h3>{name}</h3>
-        <p>{price} KR</p>
+        <p>{price} SEK</p>
         <div className={classes.details}>
           <button
             style={{ border: "none", background: "none" }}
