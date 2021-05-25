@@ -23,6 +23,7 @@ const Shop = ({ addToCart, products, cartItem }) => {
   );
 
   const addAndShowItem = (data) => {
+    console.log(data)
     addToCart(data, 1);
     setShowItemAdded(
       <ShowAddedItem

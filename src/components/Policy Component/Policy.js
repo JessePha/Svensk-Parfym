@@ -46,7 +46,12 @@ const Policy = (props) => {
             </div>
           </div>
           {boolArr[index] ? (
-            <p style={{cursor: "pointer"}} onClick={(event) => show(event, content)}>{content[1]}</p>
+            <p
+              style={{ cursor: "pointer" }}
+              onClick={(event) => show(event, content)}
+            >
+              {content[1]}
+            </p>
           ) : null}
           <br />
         </div>

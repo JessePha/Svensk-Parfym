@@ -1,22 +1,18 @@
 import React, { useEffect, useState } from "react";
-import ErrorMessage from "../../components/UI/ErrorMessage/ErrorMessage";
+import ErrorMessage from "../../components/UI/ErrorMessage/ErrorMessage"
 import Spinner from "../../components/UI/Spinner/Spinner";
-import Policy from "../../components/Policy Component/Policy";
-import { policyData } from "../../handlepayment/getCheckoutData";
-const PolicyView = () => {
-  const [policy, setPolicy] = useState([]);
+import Contact from "../../components/Contact Component/Contact"
+const ContactView = () => {
   let [error, setError] = useState(false);
   let [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
-    policyData(setPolicy, setError, setLoading);
   }, []);
 
   let content = <Spinner loading={loading} />;
-  if (policy.length > 0) {
-    content = <Policy policy={policy} />;
-  }
+    content = <Contact Contact={Contact} />;
+
 
   let errorMsg = null;
   if (error) {
@@ -30,4 +26,4 @@ const PolicyView = () => {
   );
 };
 
-export default PolicyView;
+export default ContactView;
