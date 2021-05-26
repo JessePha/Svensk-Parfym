@@ -46,7 +46,7 @@
   padding-top: 5vh;
 
 }
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .flexContainer {
     display: flex;
     /* or inline-flex */

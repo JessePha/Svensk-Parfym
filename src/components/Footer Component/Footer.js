@@ -12,9 +12,9 @@ const Footer = () => {
         <Link className={classes.Link} to="/policy">
           POLICY
         </Link>
-        <li className={classes.Link}>
+        <Link className={classes.Link} to="/contact">
           <a> CONTACT</a>
-        </li>
+        </Link>
         <li className={classes.Link}>
           <a href="https://www.instagram.com/svenskparfym/" target="_blank">
             INSTAGRAM
