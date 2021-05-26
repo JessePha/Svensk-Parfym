@@ -18,7 +18,6 @@ const Display = ({ textContent, defaultContent }) => {
     setBoolArr(sliceTemp);
     let contentArr = [];
     contentArr.push(defaultContent);
-    console.log(contentArr);
     setContent(contentArr);
   }, []);
 
