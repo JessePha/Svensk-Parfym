@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import Styles from "./CheckoutForm.module.css";
-import { useHistory } from "react-router-dom";
-import { makeOrder } from "../../../handlepayment/handlePayment";
 import classes from "./CheckoutForm.module.css";
 import { projectFunctions } from "../../../firestore/config";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { useStripe } from "@stripe/react-stripe-js";
+import CheckoutList from "../CheckoutList/CheckoutList";
 
 const Checkout = ({
   totalPrice,
   itemInCart,
   countries,
-  removeItemsFromCart,
 }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -20,9 +18,8 @@ const Checkout = ({
   const [city, setCity] = useState("");
   const [emailAdress, setEmailAdress] = useState("");
   const [country, setCountry] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState("");
+  const [loading, setLoading] = useState(false);
   const stripe = useStripe();
-  let history = useHistory();
   let Customer = {
     FName: firstName,
     LName: lastName,
@@ -32,7 +29,6 @@ const Checkout = ({
     City: city,
     Email: emailAdress,
     Country: country,
-    PaymentMethod: paymentMethod,
   };
 
   let orders = {
@@ -44,20 +40,18 @@ const Checkout = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const createStripeCheckout = projectFunctions.httpsCallable(
         "createStripeCheckout"
       );
-      const res = await createStripeCheckout();
-      const sessionId = res.data.id;
+      const result = await createStripeCheckout({ order: orders });
+      const sessionId = result.data.id;
       stripe.redirectToCheckout({ sessionId: sessionId });
-      //let id = await makeOrder(orders);
-      // removeItemsFromCart();
-      // localStorage.clear("itemCart");
-      // history.push(`/purchase/${id}`);
     } catch (error) {
       console.log("something went wrong: ", error);
     }
+    setLoading(false);
   };
 
   return (
@@ -159,9 +153,17 @@ const Checkout = ({
               ))}
             </select>
           </div>
-        </div>
-        <div>
-          <button type="submit">Slutför köp</button>
+          <CheckoutList />
+          <div className={classes.placeOrderButtonContainer}>
+            <button
+              disabled={loading}
+              className={loading ? classes.disableButton : classes.placeOrderButton}
+              type="submit"
+            >
+              {loading ?
+                "Processing. . .": "Place order"}
+            </button>
+          </div>
         </div>
       </form>
     </div>

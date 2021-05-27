@@ -12,12 +12,12 @@ const CheckoutList = (props) => {
             <img className={Styles.img} src={items.url} alt={items.name} />
             <p className={Styles.mapText}>
               {items.name} {items.size} ⨯ {items.count}:{" "}
-              {items.price * items.count}SEK{" "}
+              {items.price * items.count} SEK{" "}
             </p>
           </div>
         ))}
       </div>
-      <h4>Your total price is: {props.totalPrice}SEK</h4>
+      <h4>Your total price is: {props.totalPrice} SEK</h4>
     </div>
   );
 };

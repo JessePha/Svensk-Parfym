@@ -76,6 +76,37 @@ input[type="password"] {
   padding: 15px;
   align-items: center;
 }
+.placeOrderButtonContainer {
+  width: 100%;
+  text-align: center;
+  padding-top: 2rem;
+}
+.placeOrderButton {
+  color: #fff;
+  background-color: #222831;
+  border: none;
+  padding: 1.5em 10em;
+  font-size: 1em;
+  -webkit-box-shadow: 0px 1px 5px 1px #9eacb3;
+          box-shadow: 0px 1px 5px 1px #9eacb3;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, #3edbf0), color-stop(50%, transparent));
+  background-image: linear-gradient(90deg, #000000 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 400%;
+  -webkit-transition: color,background 500ms ease-in-out;
+  transition: color,background 500ms ease-in-out;
+}
+.disableButton {
+  color: #dddddd;
+  background-color: #222831;
+  border: none;
+  padding: 1.5em 10em;
+  font-size: 1em;
+}
+.placeOrderButton:hover {
+  background-position: 0;
+}
+
 @media (max-width: 1024px) {
   .h3 {
     font-size: 24px;
@@ -157,6 +188,9 @@ input[type="password"] {
     padding: 2%;
     margin-top: 5%;
   }
+  .placeOrderButton, .disableButton {
+    padding: 1em 8em;
+  }
 }
 
 @media (max-width: 426px) {
@@ -197,5 +231,9 @@ input[type="password"] {
     font-size: 12px;
     padding: 2%;
     margin-top: 5%;
+  }
+  .placeOrderButton, .disableButton {
+    font-size: 0.8em;
+    padding: 0.8em 5em;
   }
 }

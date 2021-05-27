@@ -1,6 +1,5 @@
 import React from "react";
 import CheckoutForm from "./CheckoutForm/CheckoutForm";
-import CheckoutList from "./CheckoutList/CheckoutList";
 import Styles from "../Checkout Component/Checkout.module.css";
 import { connect } from "react-redux";
 import classes from "../Checkout Component/Checkout.module.css";
@@ -38,7 +37,6 @@ const Checkout = ({
           pictures={url}
           removeItemsFromCart={removeItemsFromCart}
         />
-        <CheckoutList />
       </div>
     );
   }

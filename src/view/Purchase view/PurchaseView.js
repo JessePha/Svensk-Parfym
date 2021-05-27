@@ -8,6 +8,7 @@ const PurchaseView = () => {
   const [orderInfo, setOrderInfo] = useState(null);
   let { orderid } = useParams();
   useEffect(() => {
+    localStorage.clear("itemCart");
     const fetchOrder = () => {
       projectFirestore
         .collection("Orders")
