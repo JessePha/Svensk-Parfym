@@ -11,6 +11,7 @@ let HomeView = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   useEffect(() => {
+    localStorage.clear("itemCart");
     const fetchContent = () => {
       setLoading(true);
       let items = [];
