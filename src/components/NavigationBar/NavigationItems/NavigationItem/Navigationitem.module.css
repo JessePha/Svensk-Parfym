@@ -1,12 +1,10 @@
 .NavigationItem {
-  padding: 2%;
-  margin-bottom: 10px;
+  padding: 5%;
 }
 
 .NavigationItem a {
   color: #ffffff;
-  padding: 1% 0%;
-  font-size: 1rem;
+  font-size: 1.3rem;
   border-bottom: 1px solid transparent;
   text-decoration: none;
   transition: 0.5s ease;
@@ -16,13 +14,10 @@
 @media (min-width: 769px) {
   .NavigationItem a {
     color: white;
-    padding: 7% 0%;
+    padding: 0.5rem 0.5rem;
     font-size: 0.8rem;
     border-bottom: 1px solid transparent;
     transition: 0.5s ease;
-  }
-  .NavigationItem {
-    padding: 5%;
   }
 
   .NavigationItem a:hover {

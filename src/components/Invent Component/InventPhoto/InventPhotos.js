@@ -1,4 +1,4 @@
-import classes from './AboutUsPhoto.module.css';
+import classes from './InventPhoto.module.css';
 import React, { Component } from 'react';
 
 class AboutUsPhoto extends Component {

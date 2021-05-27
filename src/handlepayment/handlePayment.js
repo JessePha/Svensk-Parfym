@@ -48,9 +48,9 @@ export const validatePayment = async (data) => {
           querySnapShot.forEach((doc) => {
             if (doc.data()) {
               access = true;
-              id = doc.id
+              id = doc.id;
               account = doc.data().account;
-              expire = doc.data().cardexpire;              
+              expire = doc.data().cardexpire;
             }
           });
         })
@@ -61,15 +61,8 @@ export const validatePayment = async (data) => {
 };
 
 export const makeOrder = async (data) => {
-  let orderId = "";
-  await projectFirestore
-    .collection(data.type)
-    .add(data)
-    .then((docRef) => {
-      orderId = docRef.id;
-    })
-    .catch(function (error) {});
-  return orderId;
+  const result = await projectFirestore.collection(data.type).add(data);
+  return result.id;
 };
 
 export const updateUserAccount = async (data) => {

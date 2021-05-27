@@ -1,11 +1,18 @@
 .NavigationItems {
-    list-style: none;
-    color: rgb(220, 181, 72);
-    font-weight: 200;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+  color: rgb(220, 181, 72);
+  width: 100%;
+  height: 100%;
+  padding: 0rem 0rem 8rem 0rem;
+}
+@media (min-width: 769px) {
+  .NavigationItems {
+    display: flex;
+    flex-direction: row;
+    padding: 0rem 0rem 0rem 2rem;
   }
-  @media (min-width: 769px) {
-    .NavigationItems {
-      display: flex;
-      flex-direction: row;
-    }
-  }
+}

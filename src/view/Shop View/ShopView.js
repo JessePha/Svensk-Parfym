@@ -12,7 +12,7 @@ const ShopView = (props) => {
   const [error, setError] = useState(false);
   useEffect(() => {
     setLoading(true);
-    getAllProducts(props.fetchData, setError)
+    getAllProducts(props.fetchData, setError);
   }, []);
   let errorMsg = <ErrorMessage error={error} setError={setError} />;
   let content = (
@@ -23,7 +23,11 @@ const ShopView = (props) => {
   if (props.products.length > 0) {
     content = (
       <div className={classes.ShopView}>
-        <Shop cartItem = {props.itm} products={props.products} addToCart={props.addToCart} />
+        <Shop
+          cartItem={props.itm}
+          products={props.products}
+          addToCart={props.addToCart}
+        />
       </div>
     );
   }
@@ -37,7 +41,7 @@ const ShopView = (props) => {
 const mapStateToProps = (state) => {
   return {
     products: state.prd.products,
-    itm: state.crt.cartItem
+    itm: state.crt.cartItem,
   };
 };
 const mapDispatchToProps = (dispatch) => {

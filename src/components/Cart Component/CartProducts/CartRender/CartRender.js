@@ -11,7 +11,6 @@ const CartRender = ({
   add,
   minus,
   remove,
-  disable,
 }) => {
   return (
     <div className={classes.CartItem}>
@@ -24,16 +23,16 @@ const CartRender = ({
         <div className={classes.InnerContainer}>
           <p>{name}</p>
           <p>size: {size} </p>
-          {<Price price={price} value="Kr" />}
+          {<Price price={price} value="SEK" />}
           <div className={classes.InnerItem}>
-            <button onClick={() => add(name, size)} disabled={disable}>
+            <button style={{cursor: "pointer"}} onClick={() => add(name, size)}>
               +
             </button>
             <p>{amount}</p>
-            <button onClick={() => minus(name, size)}>
+            <button style={{cursor: "pointer"}}  onClick={() => minus(name, size)}>
               -
             </button>
-            <button onClick={() => remove(name, price, size)}>remove</button>
+            <button style={{cursor: "pointer"}}  onClick={() => remove(name, price, size)}>remove</button>
           </div>
         </div>
       </div>

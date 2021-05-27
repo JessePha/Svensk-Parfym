@@ -1,21 +1,14 @@
 import React, { useState } from "react";
 import Styles from "./CheckoutForm.module.css";
-import { useHistory } from "react-router-dom";
-import {
-  validatePayment,
-  makeOrder,
-  updateUserAccount,
-} from "../../../handlepayment/handlePayment";
-import { updateProduct, prepareUpdateStock } from "../../../handlepayment/handleProduct";
-import Message from "../../UI/messagePayment/message";
 import classes from "./CheckoutForm.module.css";
+import { projectFunctions } from "../../../firestore/config";
+import { useStripe } from "@stripe/react-stripe-js";
+import CheckoutList from "../CheckoutList/CheckoutList";
 
 const Checkout = ({
   totalPrice,
   itemInCart,
   countries,
-  removeItemsFromCart,
-  pictures,
 }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -25,18 +18,8 @@ const Checkout = ({
   const [city, setCity] = useState("");
   const [emailAdress, setEmailAdress] = useState("");
   const [country, setCountry] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState("");
-  const [cardNumber, setCardnumber] = useState("");
-  const [cardHolder, setCardHolder] = useState("");
-  const [cardExpire, setCardExpire] = useState("");
-  const [cardCVV, setCardCVV] = useState("");
-  const [payexUser, setPayexUser] = useState("");
-  const [payExpass, setPayexPass] = useState("");
-  const [access, setAccess] = useState(false);
-  const [enoughMoney, setEnoughMoney] = useState(false);
-  const [clickSubmit, setClickSubmit] = useState(false);
-  const [orderId, setOrderId] = useState("");
-  let history = useHistory();
+  const [loading, setLoading] = useState(false);
+  const stripe = useStripe();
   let Customer = {
     FName: firstName,
     LName: lastName,
@@ -46,7 +29,6 @@ const Checkout = ({
     City: city,
     Email: emailAdress,
     Country: country,
-    PaymentMethod: paymentMethod,
   };
 
   let orders = {
@@ -58,109 +40,18 @@ const Checkout = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let data = null;
-
-    const updateProducts = prepareUpdateStock(itemInCart);
-    if (paymentMethod === "PayEx") {
-      data = {
-        paymentMethod: paymentMethod,
-        payexUser: payexUser,
-        payExpass: payExpass,
-      };
-    }
-    if (paymentMethod === "VISA") {
-      data = {
-        paymentMethod: paymentMethod,
-        cardNumber: cardNumber,
-        cardHolder: cardHolder,
-        cardExpire: cardExpire,
-        cardCVV: cardCVV,
-      };
-    }
-    const result = await validatePayment(data);
-    setAccess(result.access);
-    setClickSubmit(true);
-    if (result.access && result.account >= totalPrice || result.access && result.account >= totalPrice) {
-      setEnoughMoney(true);
-      setAccess(result.access);
-      let id = await makeOrder(orders);
-      setOrderId(id);
-      updateUserAccount({
-        type: paymentMethod,
-        account: result.account - totalPrice,
-        id: result.id,
-      });
-      updateProducts.map((temp) =>
-        updateProduct({ updateProduct: temp.stock, id: temp.id })
+    setLoading(true);
+    try {
+      const createStripeCheckout = projectFunctions.httpsCallable(
+        "createStripeCheckout"
       );
+      const result = await createStripeCheckout({ order: orders });
+      const sessionId = result.data.id;
+      stripe.redirectToCheckout({ sessionId: sessionId });
+    } catch (error) {
+      console.log("something went wrong: ", error);
     }
-  };
-  const goBackToHomepage = () => {
-    setEnoughMoney(false);
-    setClickSubmit(false);
-    removeItemsFromCart();
-    localStorage.clear("itemCart");
-    history.push(`/purchase/${orderId}`);
-  };
-
-  const handlePayment = () => {
-    if (paymentMethod === "VISA") {
-      return (
-        <div>
-          <input
-            type="text"
-            value={cardNumber}
-            required={true}
-            placeholder="Card Number"
-            onChange={(e) => setCardnumber(e.target.value)}
-          />
-          <input
-            type="text"
-            value={cardHolder}
-            required
-            placeholder="Card Holder Name"
-            onChange={(e) => setCardHolder(e.target.value)}
-          />
-          <input
-            type="text"
-            value={cardExpire}
-            required
-            placeholder="Expiration Date"
-            onChange={(e) => setCardExpire(e.target.value)}
-          />
-          <input
-            type="text"
-            value={cardCVV}
-            required
-            placeholder="CCV/CID/CSC"
-            onChange={(e) => setCardCVV(e.target.value)}
-          />
-          <input type="submit" value="Place Order" />
-        </div>
-      );
-    } else if (paymentMethod === "PayEx") {
-      return (
-        <div>
-          <input
-            type="text"
-            value={payexUser}
-            required
-            placeholder="Username"
-            onChange={(e) => setPayexUser(e.target.value)}
-          />
-          <input
-            type="password"
-            value={payExpass}
-            required
-            placeholder="Password"
-            onChange={(e) => setPayexPass(e.target.value)}
-          />
-          <input type="submit" value="Place Order" />
-        </div>
-      );
-    } else {
-      return null;
-    }
+    setLoading(false);
   };
 
   return (
@@ -262,35 +153,19 @@ const Checkout = ({
               ))}
             </select>
           </div>
-        </div>
-        <div className={Styles.paymentMethods}>
-          <h3 className={Styles.h3}>Payment method:</h3>
-          <img
-            className={Styles.img}
-            src={pictures[0]}
-            alt="PayEx"
-            onClick={() => setPaymentMethod("PayEx")}
-          />
-          <img
-            className={Styles.img}
-            src={pictures[1]}
-            alt="Visa"
-            onClick={() => setPaymentMethod("VISA")}
-          />
-          {handlePayment()}
+          <CheckoutList />
+          <div className={classes.placeOrderButtonContainer}>
+            <button
+              disabled={loading}
+              className={loading ? classes.disableButton : classes.placeOrderButton}
+              type="submit"
+            >
+              {loading ?
+                "Processing. . .": "Place order"}
+            </button>
+          </div>
         </div>
       </form>
-      {
-        <Message
-          text={access && enoughMoney ? "Successfully" : "Invalid account"}
-          buttonText={access && enoughMoney ? "Continue" : "Try again"}
-          isError={access}
-          isClick={clickSubmit}
-          closeInfo={() =>
-            access && enoughMoney ? goBackToHomepage() : setClickSubmit(false)
-          }
-        />
-      }
     </div>
   );
 };

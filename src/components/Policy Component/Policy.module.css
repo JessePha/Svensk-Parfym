@@ -1,9 +1,11 @@
 .MainDiv {
-  margin-top: 5vw;
+  margin-top: 10vh;
   color: white;
   text-align: center;
   padding-left: 20vw;
   padding-right: 20vw;
+  height: 75vh; 
+
 }
 .Paragraph {
   text-align: left;
@@ -32,6 +34,8 @@
     padding-left: 15vw;
     padding-right: 15vw;
     font-size: 90%;
+    height: 80vh; 
+
   }
 }
 @media (max-width: 500px) {

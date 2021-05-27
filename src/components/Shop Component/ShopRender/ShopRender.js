@@ -9,7 +9,6 @@ const Perfume = ({
   moreInfo,
   addToCart,
   disable,
-  outOfStock,
   disableButton,
 }) => {
   return (
@@ -17,25 +16,20 @@ const Perfume = ({
       <button
         className={classes.DirectBuy}
         onClick={addToCart}
-        disabled={disable || disableButton || outOfStock}
+        disabled={disableButton}
       >
         <BiShoppingBag className={classes.Bag} />
       </button>
       <img src={img} alt="perfume" onClick={moreInfo}></img>
       <div className={classes.productInfo}>
         <h3>{name}</h3>
-        {disable || outOfStock ? (
-          <p>Out of stock</p>
-        ) : (
-          <p>
-            {price[0]} - {price[1]} KR
-          </p>
-        )}
+        <p>
+          {price[0]} - {price[1]} SEK
+        </p>
         <div className={classes.details}>
           <button
             style={{ border: "none", background: "none" }}
             onClick={moreInfo}
-            disabled={disable}
           >
             View detail
           </button>
