@@ -1,13 +1,13 @@
 .listDiv {
-  width: 60vw;
-  height: 30vw;
+  width: 100%;
+  height: 30%;
   overflow: auto;
 }
 .container {
-  margin-top: 5vw;
+  padding-top: 3em;
 }
 .container h3 {
-  font-size: 28px;
+  font-size: 2em;
 }
 .mapDiv img {
   width: 20%;
@@ -29,7 +29,7 @@
 }
 @media (max-width: 1024px) {
   .container h3 {
-    font-size: 24px;
+    font-size: 1.8em;
   }
   .mapDiv {
     padding: 3%;

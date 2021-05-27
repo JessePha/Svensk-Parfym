@@ -4,8 +4,7 @@
 
 .NavigationItem a {
   color: #ffffff;
-  font-size: 1.5rem;
-
+  font-size: 1.3rem;
   border-bottom: 1px solid transparent;
   text-decoration: none;
   transition: 0.5s ease;
@@ -19,9 +18,6 @@
     font-size: 0.8rem;
     border-bottom: 1px solid transparent;
     transition: 0.5s ease;
-  }
-  .NavigationItem {
-    padding: 5%;
   }
 
   .NavigationItem a:hover {

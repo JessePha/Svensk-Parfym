@@ -13,7 +13,7 @@ const Footer = () => {
           POLICY
         </Link>
         <Link className={classes.Link} to="/contact">
-          <a> CONTACT</a>
+          CONTACT
         </Link>
         <li className={classes.Link}>
           <a href="https://www.instagram.com/svenskparfym/" target="_blank">
